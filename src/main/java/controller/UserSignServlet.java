@@ -6,5 +6,4 @@ package controller;
  * @date 8/10/2021 - 15:22
  */
 public class UserSignServlet {
-
 }
