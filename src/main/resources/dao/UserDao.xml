@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.hzh.dao.LoginUser">
+<mapper namespace="dao.UserDao">
     <!--public User SelectInfoByPhone(@Param("phone") String phone,@Param("password") String password);-->
     <select id="SelectInfoByPhone" resultType="user">
          select
@@ -60,4 +60,13 @@
         where
         id=#{id}
     </select>
+
+    <insert id="participateAct" databaseId="mysql">
+        insert into activity_content(`id`,`student_count`)
+        values
+        (
+        #{id},#{count}
+        )
+    </insert>
+
 </mapper>

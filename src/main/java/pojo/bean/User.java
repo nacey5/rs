@@ -1,6 +1,9 @@
 package pojo.bean;
 import org.apache.ibatis.type.Alias;
 
+/**
+ * @author DAHUANG
+ */
 @Alias("user")
 public class User {
     String username;
@@ -12,7 +15,8 @@ public class User {
     String phone;
     String email;
     String collage;
-    User_pet pet;
+    UserPet pet;
+    Participater pars;
 
     /**
      * 注册所用的构造方法
@@ -42,6 +46,7 @@ public class User {
                 ", email='" + email + '\'' +
                 ", collage='" + collage + '\'' +
                 ", pet=" + pet +
+                ", pars=" + pars +
                 '}';
     }
 
@@ -59,11 +64,11 @@ public class User {
         this.collage = collage;
     }
 
-    public User_pet getPet() {
+    public UserPet getPet() {
         return pet;
     }
 
-    public void setPet(User_pet pet) {
+    public void setPet(UserPet pet) {
         this.pet = pet;
     }
 
@@ -137,6 +142,14 @@ public class User {
 
     public void setCollage(String collage) {
         this.collage = collage;
+    }
+
+    public Participater getPars() {
+        return pars;
+    }
+
+    public void setPars(Participater pars) {
+        this.pars = pars;
     }
 }
 

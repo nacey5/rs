@@ -1,11 +1,11 @@
 package dao;
 
 import pojo.bean.User;
-import pojo.bean.User_pet;
+import pojo.bean.UserPet;
 import org.apache.ibatis.annotations.Param;
 
 /**
- * @author WEIR
+ * @author DAHUANG
  * @description
  * @date 8/10/2021 - 15:37
  */
@@ -37,7 +37,7 @@ public interface UserDao {
      * @param id
      * @return
      */
-     User_pet selectPetNameById(@Param("id") Integer id);
+     UserPet selectPetNameById(@Param("id") Integer id);
 
     /**
      *通过用户id查询用户信息
@@ -57,4 +57,12 @@ public interface UserDao {
      * @param count
      */
      void checkCountExit(String count);
+
+    /**
+     * 学生参加某个活动
+     * @param id 活动id
+     * @param studentCount 学生账号
+     */
+     void participateAct(Integer id,Integer studentCount);
+
 }
