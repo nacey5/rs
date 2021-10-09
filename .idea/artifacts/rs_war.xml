@@ -7,7 +7,7 @@
         <packaging>war</packaging>
       </options>
     </properties>
-    <root id="archive" name="rs01-1.0-SNAPSHOT.war">
+    <root id="archive" name="rs-1.0-SNAPSHOT.war">
       <element id="artifact" artifact-name="rs:war exploded" />
     </root>
   </artifact>

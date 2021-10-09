@@ -14,6 +14,21 @@ public class User {
     String collage;
     User_pet pet;
 
+    /**
+     * 注册所用的构造方法
+     * @param username
+     * @param count
+     * @param password
+     * @param phone
+     */
+    public User(String username, Integer count, String password, String phone,String gender) {
+        this.username = username;
+        this.count = count;
+        this.password = password;
+        this.phone = phone;
+        this.gender= gender;
+    }
+
     @Override
     public String toString() {
         return "User{" +

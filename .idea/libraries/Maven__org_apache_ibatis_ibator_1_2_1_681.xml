@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: org.apache.ibatis:ibator:1.2.1.681">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/apache/ibatis/ibator/1.2.1.681/ibator-1.2.1.681.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/org/apache/ibatis/ibator/1.2.1.681/ibator-1.2.1.681-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/apache/ibatis/ibator/1.2.1.681/ibator-1.2.1.681-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

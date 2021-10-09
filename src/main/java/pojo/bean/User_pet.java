@@ -4,6 +4,7 @@ import org.apache.ibatis.type.Alias;
 
 @Alias("pet")
 public class User_pet {
+
     int id;
     String name;
 
