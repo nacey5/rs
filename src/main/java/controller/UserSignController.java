@@ -2,10 +2,13 @@ package controller;
 
 import common.exception.NullParameterException;
 import common.utils.JsonUtil;
+import common.utils.Md5Util;
 import common.utils.WebUtil;
 import pojo.bean.User;
+import pojo.dto.ResultState;
 import service.UserService;
 import service.impl.UserServiceImpl;
+
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -18,61 +21,63 @@ import java.util.Map;
  * @date 8/10/2021 - 15:22
  */
 @WebServlet("/UserSignServlet")
-public class UserSignController extends BaseController{
+public class UserSignController extends BaseController {
 
-    private static final UserService userService=new UserServiceImpl();
+    private static final UserService userService = new UserServiceImpl();
     /**
-     * 处理后的结果Map
+     *
      */
-    private static Map<String, Object> resultMap = new HashMap<>();
+    private ResultState state;
 
     /**
      * 用户登录
-     * @param req
-     * @param resp
+     *
+     * @param request
+     * @param response
      */
-    public void login(HttpServletRequest req, HttpServletResponse resp) {
-        String phone = req.getParameter("phone");
-        String password = req.getParameter("pwd");
+    public void login(HttpServletRequest request, HttpServletResponse response) {
+        String phone = request.getParameter("phone");
+        String password = request.getParameter("pwd");
         //登录
-        User user = userService.login(phone, password);
-        if (user==null) {
-            resultMap.put("msg", "用户不存在！");
-            resultMap.put("code", false);
+        User user = userService.login(phone, Md5Util.getMd5String(password));
+        if (user == null) {
+            state.setMsg("用户不存在！");
+            state.setCode(false);
         } else {
-            resultMap.put("code", true);
-            resultMap.put("msg", "登陆成功!");
+            state.setCode(true);
+            state.setMsg("登陆成功!");
         }
         //调用工具类返回结果
-        JsonUtil.returnJson(resp, resultMap);
+        JsonUtil.returnJson(response, state);
     }
 
     /**
      * 用户注册
-     * @param req
-     * @param resp
+     *
+     * @param request
+     * @param response
      */
-    public void register(HttpServletRequest req, HttpServletResponse resp) {
+    public void register(HttpServletRequest request, HttpServletResponse response) {
         //获取参数
-        String phone = req.getParameter("phone");
-        String password = req.getParameter("pwd");
-        String userName = req.getParameter("userName");
-        String gender = req.getParameter("gender");
+        String phone = request.getParameter("phone");
+        String password = request.getParameter("pwd");
+        String userName = request.getParameter("userName");
+        String gender = request.getParameter("gender");
         int count;
-        resultMap.put("msg", "注册成功!");
-        resultMap.put("code",true);
+        state.setMsg("注册成功!");
+        state.setCode(true);
         try {
             //调用工具类，将string转为int,
-            count = WebUtil.parseInt(req.getParameter("count"));
+            count = WebUtil.parseInt(request.getParameter("count"));
             //注册
-            userService.register(new User(userName, count, password, phone,gender));
+            userService.register(new User(userName, count, Md5Util.getMd5String(password), phone, gender));
         } catch (NullParameterException e) {
             //出现空参数异常
-            resultMap.put("msg", e.getMessage());
-            resultMap.put("code", false);
+            state.setMsg(e.getMessage());
+            state.setCode(false);
         }
         //调用工具类返回结果
-        JsonUtil.returnJson(resp, resultMap);
+        JsonUtil.returnJson(response, state);
     }
 
 //------------------转到SqlUtil------------------
