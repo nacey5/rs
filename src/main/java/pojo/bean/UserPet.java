@@ -2,13 +2,16 @@ package pojo.bean;
 
 import org.apache.ibatis.type.Alias;
 
+/**
+ * @author DAHUANG
+ */
 @Alias("pet")
-public class User_pet {
+public class UserPet {
 
     int id;
     String name;
 
-    public User_pet(String name) {
+    public UserPet(String name) {
         this.name = name;
     }
 

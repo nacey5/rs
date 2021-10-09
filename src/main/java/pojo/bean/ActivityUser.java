@@ -1,0 +1,111 @@
+package pojo.bean;
+
+import org.apache.ibatis.type.Alias;
+
+/**
+ * @author DAHUANG
+ */
+@Alias("activityUser")
+public class ActivityUser {
+    Integer id;
+    String name;
+    /**
+     * 学生学号
+     */
+    Integer organizer;
+    String time;
+    String adress;
+    String joinWay;
+    Integer level;
+    User user;
+
+    public ActivityUser(String name, Integer organizer, String time, String adress, String joinWay, Integer level) {
+        this.name = name;
+        this.organizer = organizer;
+        this.time = time;
+        this.adress = adress;
+        this.joinWay = joinWay;
+        this.level = level;
+    }
+
+    public ActivityUser() {
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Integer getOrganizer() {
+        return organizer;
+    }
+
+    public void setOrganizer(Integer organizer) {
+        this.organizer = organizer;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
+
+    public String getAdress() {
+        return adress;
+    }
+
+    public void setAdress(String adress) {
+        this.adress = adress;
+    }
+
+    public String getJoinWay() {
+        return joinWay;
+    }
+
+    public void setJoinWay(String joinWay) {
+        this.joinWay = joinWay;
+    }
+
+    public Integer getLevel() {
+        return level;
+    }
+
+    public void setLevel(Integer level) {
+        this.level = level;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    @Override
+    public String toString() {
+        return "ActivityUser{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", organizer=" + organizer +
+                ", time='" + time + '\'' +
+                ", adress='" + adress + '\'' +
+                ", joinWay='" + joinWay + '\'' +
+                ", level=" + level +
+                ", user=" + user +
+                '}';
+    }
+}

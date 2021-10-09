@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.ActivityDao">
+    <!--ActivityUser selectInfoById(@Param("id") Integer id);-->
+    <select id="selectInfoById" resultType="activityUser">
+        select *
+        from
+            activity_user
+        where
+            id=#{id}
+    </select>
+
+    <!--List<ActivityUser> selectActivitiesByOrganizer(@Param("org") Integer organizer);-->
+    <select id="selectActivitiesByOrganizer" resultType="activityUser">
+        select *
+        from
+            activity_user
+        where
+            organizer=#{org}
+    </select>
+
+    <!--@MapKey("name")
+        Map<String,ActivityUser> selectActivitiesByOrganizerReturnMap(@Param("org") Integer organizer);-->
+    <select id="selectActivitiesByOrganizerReturnMap" resultType="map">
+        select *
+        from
+        activity_user
+        where
+            organizer=#{org};
+    </select>
+
+    <!--    void addActivity(@Param("activity") ActivityUser activity); -->
+    <insert id="addActivity" parameterType="activityUser" useGeneratedKeys="true" keyProperty="id" databaseId="mysql">
+        insert into
+            activity_user(`name`,`organizer`,`time`,`adress`,`joinWay`,`level`)
+        values
+        (
+        #{name},#{organizer},#{time},#{adress},#{joinWay},#{level}
+        )
+    </insert>
+
+    <!--void deleteActivity(Integer id);-->
+    <delete id="deleteActivity">
+        delete from activity_user
+        where
+        id=#{id}
+    </delete>
+
+    <!--List<Integer> selectStudentsByArtId(Integer id);-->
+    <select id="selectStudentsByArtId" resultType="participater">
+        select
+            `id`,`student_count`
+        from
+            activity_content
+        where
+            id=#{id}
+    </select>
+
+    <resultMap id="InfoIncludeParsMap" type="activityUser">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="organizer" property="organizer"/>
+        <result column="time" property="time"/>
+        <result column="adress" property="adress"/>
+        <result column="joinWay" property="joinWay"/>
+        <result column="level" property="level"/>
+
+        <association property="user" javaType="user">
+            <id column="id" property="id"/>
+            <result column="name" property="username"/>
+            <result column="count" property="count"/>
+            <result column="phone" property="phone"/>
+            <result column="major" property="major"/>
+            <result column="collage" property="collage"/>
+            <result column="gender" property="gender"/>
+            <result column="email" property="email"/>
+        </association>
+    </resultMap>
+    <!--ActivityUser selectInfoIncludePars(Integer id);-->
+    <select id="selectInfoIncludePars" resultMap="activityUser">
+	select
+		d.name,e.*
+	from
+        user_student d,activity_user e
+    where
+        e.id=#{id}
+    </select>
+</mapper>
