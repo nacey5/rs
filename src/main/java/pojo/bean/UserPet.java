@@ -4,6 +4,8 @@ import org.apache.ibatis.type.Alias;
 
 /**
  * @author DAHUANG
+ * @description
+ * @date 9/10/2021 22:45
  */
 @Alias("pet")
 public class UserPet {

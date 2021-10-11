@@ -4,6 +4,7 @@ import org.apache.ibatis.annotations.MapKey;
 import org.apache.ibatis.annotations.Param;
 import pojo.bean.ActivityUser;
 import pojo.bean.Participater;
+import pojo.bean.Pictures;
 
 import java.util.List;
 import java.util.Map;
@@ -53,4 +54,26 @@ public interface ActivityDao {
      * @return
      */
     List<ActivityUser> selectInfoIncludePars(Integer id);
+
+    /**
+     * 添加活动的具体内容信息（不包括图片）
+     * @param id
+     * @param info
+     */
+    void addActivityInfo(@Param("id") Integer id,@Param("info") String info);
+
+    /**
+     * 为活动添加图片
+     * @param id
+     * @param picture
+     */
+    void addActivityPicture(@Param("id") Integer id,@Param("basecode") String picture);
+
+    /**
+     * 查询活动的所有图片
+     * @param id
+     * @return
+     */
+    List<Pictures> selectPicturesById(@Param("id") Integer id);
+
 }
