@@ -5,12 +5,12 @@ import org.apache.ibatis.type.Alias;
 /**
  * @author DAHUANG
  * @description
- * @date 05/10/2021 13:07
+ * @date 11/10/2021 20:05
  */
-@Alias("participater")
-public class Participater {
+@Alias("pic")
+public class Pictures {
     Integer id;
-    Integer studentCount;
+    String picture;
 
     public Integer getId() {
         return id;
@@ -20,21 +20,19 @@ public class Participater {
         this.id = id;
     }
 
-    public Integer getStudentCount() {
-        return studentCount;
+    public String getPicture() {
+        return picture;
     }
 
-    public void setStudentCount(Integer studentCount) {
-        this.studentCount = studentCount;
+    public void setPicture(String picture) {
+        this.picture = picture;
     }
 
     @Override
     public String toString() {
-        return "participater{" +
+        return "Pictures{" +
                 "id=" + id +
-                ", studentCount=" + studentCount +
+                ", picture='" + picture + '\'' +
                 '}';
     }
-
-
 }

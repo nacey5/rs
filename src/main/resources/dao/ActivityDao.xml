@@ -87,4 +87,33 @@
     where
         e.id=#{id}
     </select>
+
+    <insert id="addActivityInfo" databaseId="mysql">
+         insert into info_activity(`id`,`info`)
+    values
+    (
+        #{id},#{info}
+    )
+    </insert>
+
+    <insert id="addActivityPicture" databaseId="mysql">
+        insert into
+        picture_activity(`id`,`picture`)
+        values
+        (#{id},#{basecode})
+    </insert>
+
+    <resultMap id="picMap" type="pic">
+        <id column="id" property="id"/>
+        <result column="picture" property="picture"/>
+    </resultMap>
+    <!--List<Pictures> selectPicturesById(@Param("id") Integer id);-->
+    <select id="selectPicturesById" resultMap="picMap">
+        select
+            `id`,`picture`
+        from
+            picture_activity
+        where
+        id=#{id}
+    </select>
 </mapper>
