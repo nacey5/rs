@@ -15,7 +15,6 @@ public class ResultState {
      */
     private boolean code;
 
-    public static final Integer CODE =200;
     public ResultState(String msg, boolean code) {
         this.msg = msg;
         this.code = code;

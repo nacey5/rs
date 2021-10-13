@@ -18,7 +18,6 @@ public class Md5Util {
         try {
             // 生成一个MD5加密计算摘要
             MessageDigest md5 = MessageDigest.getInstance("MD5");
-            System.out.println(md5);
             // 计算md5函数
             md5.update(str.getBytes());
             //32位加密

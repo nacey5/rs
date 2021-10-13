@@ -33,18 +33,16 @@ public class UserSignController extends BaseController {
      */
     public void login(HttpServletRequest request, HttpServletResponse response) {
         String userName = request.getParameter("username");
-        String password = request.getParameter("pwd");
+        String password = request.getParameter("password");
         //登录
-//        User user = userService.login(phone, Md5Util.getMd5String(password));
-//        if (user == null) {
-//            state.setMsg("用户不存在！");
-//            state.setCode(false);
-//        } else {
-//            state.setCode(true);
-//            state.setMsg("登陆成功!");
-//        }
-        state.setCode(true);
-        state.setMsg(userName+password);
+        User user = userService.login(userName, Md5Util.getMd5String(password));
+        if (user == null) {
+            state.setMsg("用户不存在！");
+            state.setCode(false);
+        } else {
+            state.setCode(true);
+            state.setMsg("登陆成功!");
+        }
         //调用工具类返回结果
         JsonUtil.returnJson(response, state);
     }
