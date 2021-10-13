@@ -23,8 +23,14 @@ public interface ActivityDao {
     /**
      * 通过活动组织者学号查找活动
      */
+
     List<ActivityUser> selectActivitiesByOrganizer(@Param("org") Integer organizer);
 
+    /**
+     *
+     * @param organizer
+     * @return
+     */
     @MapKey("name")
     Map<String,ActivityUser> selectActivitiesByOrganizerReturnMap(@Param("org") Integer organizer);
 

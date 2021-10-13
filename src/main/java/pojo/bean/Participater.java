@@ -4,7 +4,7 @@ import org.apache.ibatis.type.Alias;
 
 /**
  * @author DAHUANG
- * @description
+ * @description 参赛者
  * @date 05/10/2021 13:07
  */
 @Alias("participater")

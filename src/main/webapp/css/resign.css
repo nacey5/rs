@@ -12,7 +12,7 @@ a {
     position: absolute;
     width: 100%;
     height: 100%;
-    background-image: url(../image/loginBg.jpg);
+    background-image: url(../../../../软设前端/image/loginBg.jpg);
     background-repeat: no-repeat;
     background-size: 100% 100%;
 }

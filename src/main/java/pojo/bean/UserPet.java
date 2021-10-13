@@ -4,7 +4,7 @@ import org.apache.ibatis.type.Alias;
 
 /**
  * @author DAHUANG
- * @description
+ * @description 昵称
  * @date 9/10/2021 22:45
  */
 @Alias("pet")

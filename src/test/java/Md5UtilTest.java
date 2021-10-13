@@ -4,7 +4,7 @@ import java.math.BigInteger;
 import java.security.MessageDigest;
 public class Md5UtilTest {
     public static void main(String[] args) {
-        System.out.println(Md5Util.getMd5String("1"));
+        System.out.println(Md5Util.getMd5String("123456"));
     }
 /**
  * @author WEIR

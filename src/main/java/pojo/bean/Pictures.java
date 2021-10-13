@@ -4,7 +4,7 @@ import org.apache.ibatis.type.Alias;
 
 /**
  * @author DAHUANG
- * @description
+ * @description 图片
  * @date 11/10/2021 20:05
  */
 @Alias("pic")
