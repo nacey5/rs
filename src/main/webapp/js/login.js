@@ -1,4 +1,4 @@
-window.addEventListener('load', function() {
+window.addEventListener('load', function () {
     var login = document.querySelector('.login');
     var username = login.querySelector('.username'); //获取账号输入框
     var psd = login.querySelector('.password'); //获取密码输入框
@@ -6,16 +6,22 @@ window.addEventListener('load', function() {
     // username.addEventListener('blur', function() {
 
     // })
-    loginBtn.addEventListener('click', function() {
-        $ajax({
+    loginBtn.addEventListener('click', function () {
+        $.ajax({
             type: "post",
             url: "http://localhost:8080/rs/UserSignServlet",
             data: {
+                'action': "login",
                 'username': username,
-                'password': password,
+                'password': psd,
             },
-            success: function(result) {
-                console.log(result);
+            dataType: "json",
+            success: function (result) {
+                console.log(result + "11111111111111");
+                window.load("resign.html");
+            },
+            error: function (result) {
+                console.log(result + "2222222");
             }
         })
 

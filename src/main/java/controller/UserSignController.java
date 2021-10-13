@@ -7,13 +7,9 @@ import common.utils.WebUtil;
 import pojo.bean.User;
 import pojo.dto.ResultState;
 import service.UserService;
-import service.impl.UserServiceImpl;
-
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * @author WEIR
@@ -23,11 +19,11 @@ import java.util.Map;
 @WebServlet("/UserSignServlet")
 public class UserSignController extends BaseController {
 
-    private static final UserService userService = new UserServiceImpl();
+    private static  UserService userService;
     /**
      *
      */
-    private ResultState state;
+    private ResultState state=new ResultState();
 
     /**
      * 用户登录
@@ -36,17 +32,19 @@ public class UserSignController extends BaseController {
      * @param response
      */
     public void login(HttpServletRequest request, HttpServletResponse response) {
-        String phone = request.getParameter("phone");
+        String userName = request.getParameter("username");
         String password = request.getParameter("pwd");
         //登录
-        User user = userService.login(phone, Md5Util.getMd5String(password));
-        if (user == null) {
-            state.setMsg("用户不存在！");
-            state.setCode(false);
-        } else {
-            state.setCode(true);
-            state.setMsg("登陆成功!");
-        }
+//        User user = userService.login(phone, Md5Util.getMd5String(password));
+//        if (user == null) {
+//            state.setMsg("用户不存在！");
+//            state.setCode(false);
+//        } else {
+//            state.setCode(true);
+//            state.setMsg("登陆成功!");
+//        }
+        state.setCode(true);
+        state.setMsg(userName+password);
         //调用工具类返回结果
         JsonUtil.returnJson(response, state);
     }

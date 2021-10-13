@@ -21,6 +21,9 @@ public class ResultState {
         this.code = code;
     }
 
+    public ResultState() {
+    }
+
     public String getMsg() {
         return msg;
     }

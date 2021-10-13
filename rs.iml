@@ -49,5 +49,6 @@
     <orderEntry type="library" name="Maven: org.mybatis:mybatis:3.4.5" level="project" />
     <orderEntry type="library" name="Maven: org.apache.ibatis:ibator:1.2.1.681" level="project" />
     <orderEntry type="library" name="Maven: com.google.code.gson:gson:2.8.7" level="project" />
+    <orderEntry type="library" name="jquery-1.12.4" level="application" />
   </component>
 </module>

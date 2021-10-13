@@ -24,13 +24,14 @@ public abstract class BaseController extends HttpServlet {
         req.setCharacterEncoding("UTF-8");
         resp.setCharacterEncoding("UTF-8");
         String action = req.getParameter("action");
+        System.out.println(action);
         try {
             //利用反射获取方法
-            Method method = this.getClass().getMethod(action, HttpServletRequest.class, HttpServletResponse.class);
+            Method method = this.getClass().getDeclaredMethod(action, HttpServletRequest.class, HttpServletResponse.class);
             //调用方法
             method.invoke(this, req, resp);
         } catch (Exception e) {
-            e.printStackTrace();
+//            e.printStackTrace();
         }
     }
 }
