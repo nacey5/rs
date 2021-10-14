@@ -9,8 +9,9 @@ import org.apache.ibatis.type.Alias;
  */
 @Alias("pet")
 public class UserPet {
-
+    //昵称id->数据库
     int id;
+    //昵称
     String name;
 
     public UserPet(String name) {

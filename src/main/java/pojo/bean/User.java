@@ -3,21 +3,32 @@ import org.apache.ibatis.type.Alias;
 
 /**
  * @author DAHUANG
- * @description
+ * @description 用户
  * @date 7/10/2021 18:45
  */
 @Alias("user")
 public class User {
+    //用户名
     String username;
+    //用户id
     Integer id;
+    //用户学号
     Integer count;
+    //用户专业
     String major;
+    //用户性别
     String gender;
+    //用户密码
     String password;
+    //用户手机电话
     String phone;
+    //用户邮箱
     String email;
+    //用户学院
     String collage;
+    //用户昵称类
     UserPet pet;
+    //参赛信息
     Participater pars;
 
     /**
