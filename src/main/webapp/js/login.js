@@ -6,6 +6,7 @@ window.addEventListener('load', function () {
     // username.addEventListener('blur', function() {
 
     // })
+
     loginBtn.addEventListener('click', function () {
         $.ajax({
             type: "post",

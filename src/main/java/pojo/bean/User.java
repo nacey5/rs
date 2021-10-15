@@ -55,6 +55,11 @@ public class User {
     public User() {
     }
 
+    public User(String username, Integer id) {
+        this.username = username;
+        this.id = id;
+    }
+
     public User(String username, Integer count, String major, String gender, String password, String phone, String email, String collage) {
         this.username = username;
         this.count = count;

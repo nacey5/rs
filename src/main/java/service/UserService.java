@@ -9,6 +9,12 @@ import pojo.bean.User;
  */
 public interface UserService {
     /**
+     * 检查用户是否存在
+     * @param count
+     * @return
+     */
+    Boolean checkUserName(Integer count);
+    /**
      * 用户登录
      * @param phone
      * @param password

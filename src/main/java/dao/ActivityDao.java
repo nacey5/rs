@@ -17,13 +17,16 @@ import java.util.Map;
 public interface ActivityDao {
     /**
      *通过id查询个人活动（非组织）
+     * @param id
+     * @return
      */
     ActivityUser selectInfoById(@Param("id") Integer id);
 
     /**
      * 通过活动组织者学号查找活动
+     * @param organizer
+     * @return
      */
-
     List<ActivityUser> selectActivitiesByOrganizer(@Param("org") Integer organizer);
 
     /**

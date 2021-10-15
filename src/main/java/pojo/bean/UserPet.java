@@ -13,6 +13,9 @@ public class UserPet {
     int id;
     String name;
 
+    public UserPet() {
+    }
+
     public UserPet(String name) {
         this.name = name;
     }
@@ -35,7 +38,7 @@ public class UserPet {
 
     @Override
     public String toString() {
-        return "User_pet{" +
+        return "UserPet{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 '}';

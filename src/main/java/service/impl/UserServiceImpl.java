@@ -20,6 +20,12 @@ public class UserServiceImpl implements UserService {
     private final UserDao mapper = openSession.getMapper(UserDao.class);
 
     @Override
+    public Boolean checkUserName(Integer count) {
+//        return mapper.checkCountExit(String.valueOf(count));
+        return true;
+    }
+
+    @Override
     public User login(String phone, String password) {
         try {
             return mapper.selectInfoByPhone(phone,password);
