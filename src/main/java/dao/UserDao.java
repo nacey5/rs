@@ -26,7 +26,7 @@ public interface UserDao {
      void addUser(User user);
 
     /**
-     * 通过id添加昵称
+     * 通过id添加昵称(√)
      * @param id
      * @param petName
      */
@@ -34,7 +34,7 @@ public interface UserDao {
 
     /**
      * 通过id查找昵称
-     * @param id
+     * @param id (√)
      * @return
      */
      UserPet selectPetNameById(@Param("id") Integer id);
@@ -53,13 +53,15 @@ public interface UserDao {
      void addInfo(User user);
 
     /**
-     * 检查账号是否存在
-     * @param count
+     * 检查账号是否存在(√)
+     * 登陆是用手机号码，也就是检测手机号是否已经被注册
+     * @param count 手机号
+     * @return true,表示账号存在，false,表示账号不存在
      */
-     void checkCountExit(String count);
+     boolean checkCountExit(@Param("phone") String count);
 
     /**
-     * 学生参加某个活动
+     * 学生参加某个活动(√)
      * @param id 活动id
      * @param studentCount 学生账号
      */
