@@ -4,7 +4,7 @@ import org.apache.ibatis.type.Alias;
 
 /**
  * @author DAHUANG
- * @description
+ * @description 活动的基本信息，不包括活动的具体内容
  * @date 8/10/2021 22:13
  */
 @Alias("activityUser")

@@ -9,7 +9,9 @@ import org.apache.ibatis.type.Alias;
  */
 @Alias("participater")
 public class Participater {
+    //对应的活动id
     Integer id;
+    //学生学号
     Integer studentCount;
 
     public Integer getId() {
