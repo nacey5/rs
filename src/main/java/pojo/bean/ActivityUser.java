@@ -2,13 +2,16 @@ package pojo.bean;
 
 import org.apache.ibatis.type.Alias;
 
+import java.io.Serializable;
+
 /**
  * @author DAHUANG
  * @description 活动的基本信息，不包括活动的具体内容
  * @date 8/10/2021 22:13
  */
 @Alias("activityUser")
-public class ActivityUser {
+public class ActivityUser implements Serializable {
+    private static final long serialVersionUID=116012455255456L;
     Integer id;
     String name;
     /**

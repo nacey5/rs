@@ -2,13 +2,16 @@ package pojo.bean;
 
 import org.apache.ibatis.type.Alias;
 
+import java.io.Serializable;
+
 /**
  * @author DAHUANG
  * @description 活动组织者的活动图片
  * @date 11/10/2021 20:05
  */
 @Alias("pic")
-public class Pictures {
+public class Pictures implements Serializable {
+    private static final long serialVersionUID=11572199855255456L;
     Integer id;
     String picture;
 

@@ -9,7 +9,7 @@ window.addEventListener('load', function () {
     loginBtn.addEventListener('click', function () {
         $.ajax({
             type: "post",
-            url: "http://localhost:8080/rs/UserSignServlet",
+            url: "http://rsrs.nat300.top/rs/UserSignServlet",
             data: {
                 'action': "login",
                 'username': username,
@@ -18,6 +18,7 @@ window.addEventListener('load', function () {
             // dataType: "json",
             success: function (result) {
                 console.log(result);
+
             }
         })
 

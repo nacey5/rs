@@ -3,6 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="dao.UserDao">
+    <cache eviction="FIFO" flushInterval="300000" readOnly="false"></cache>
     <!--public User SelectInfoByPhone(@Param("phone") String phone,@Param("password") String password);-->
     <select id="SelectInfoByPhone" resultType="user">
          select
