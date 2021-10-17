@@ -23,6 +23,8 @@ public class ActivityUser implements Serializable {
     String joinWay;
     Integer level;
     User user;
+    //内容
+    String info;
 
     public ActivityUser(String name, Integer organizer, String time, String adress, String joinWay, Integer level) {
         this.name = name;
@@ -34,6 +36,15 @@ public class ActivityUser implements Serializable {
     }
 
     public ActivityUser() {
+    }
+
+
+    public String getInfo() {
+        return info;
+    }
+
+    public void setInfo(String info) {
+        this.info = info;
     }
 
     public Integer getId() {
