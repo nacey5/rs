@@ -1,3 +1,5 @@
+/*登录*/
+
 * {
     margin: 0;
     padding: 0;
@@ -63,6 +65,20 @@ a {
     border: none;
     outline: medium;
     background-color: #f4f4f4;
+}
+
+.curBox {
+    display: none;
+    width: 335px;
+    height: 30px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    font-size: 13px;
+}
+
+.cur {
+    display: block;
+    border: 1px solid red;
 }
 
 .login .login_box img {
