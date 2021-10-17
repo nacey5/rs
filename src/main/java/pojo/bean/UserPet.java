@@ -2,13 +2,16 @@ package pojo.bean;
 
 import org.apache.ibatis.type.Alias;
 
+import java.io.Serializable;
+
 /**
  * @author DAHUANG
  * @description 昵称
  * @date 9/10/2021 22:45
  */
 @Alias("pet")
-public class UserPet {
+public class UserPet implements Serializable {
+    private static final long serialVersionUID=7844154663215456L;
     //昵称id->数据库
     int id;
     //昵称

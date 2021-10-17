@@ -23,6 +23,8 @@
         <!--显示指定的每个我们需要更改配置的值，即使他是默认的。防止版本更新带来的问题-->
         <setting name="lazyLoadingEnabled" value="true"/>
         <setting name="aggressiveLazyLoading" value="false"/>
+        <!--开启缓存-->
+        <setting name="cacheEnabled" value="true"/>
     </settings>
 
     <!--
