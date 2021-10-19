@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 /**
@@ -15,22 +16,26 @@ import java.lang.reflect.Method;
 public abstract class BaseController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doGet(req, resp);
+        System.out.println("get");
+        doPost(req, resp);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        System.out.println("base");
         //设置编码
         req.setCharacterEncoding("UTF-8");
         resp.setCharacterEncoding("UTF-8");
         String action = req.getParameter("action");
         System.out.println(action);
+        //利用反射获取方法
+        Method method = null;
         try {
-            //利用反射获取方法
-            Method method = this.getClass().getDeclaredMethod(action, HttpServletRequest.class, HttpServletResponse.class);
+            method = this.getClass().getDeclaredMethod(action, HttpServletRequest.class, HttpServletResponse.class);
             //调用方法
             method.invoke(this, req, resp);
-        } catch (Exception e) {
+        } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
 //            e.printStackTrace();
         }
     }

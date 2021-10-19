@@ -1,16 +1,19 @@
 package controller;
 
+import annotation.WebRequest.RequestMapping;
 import common.utils.JsonUtil;
-import common.utils.Md5Util;
-import common.utils.ObjectUtil;
-import common.utils.WebUtil;
-import pojo.bean.User;
 import pojo.dto.ResultState;
 import service.UserService;
 
+import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.util.Date;
+
+import static com.google.code.kaptcha.Constants.KAPTCHA_SESSION_KEY;
 
 /**
  * @author WEIR
@@ -24,7 +27,31 @@ public class UserSignController extends BaseController {
     /**
      *
      */
-    private ResultState state = new ResultState();
+    private ResultState result = new ResultState();
+
+    static String token;
+//    @Override
+//    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+//        doPost(req,resp);
+//    }
+//
+//    @Override
+//    protected void doPost(HttpServletRequest request, HttpServletResponse resp) throws ServletException, IOException {
+//
+//        request.setCharacterEncoding("UTF-8");
+//        resp.setCharacterEncoding("UTF-8");
+//        String action = request.getParameter("action");
+//
+//        if("login".equals(action)){
+//            login(request,resp);
+//        }else {
+//            register(request,resp);
+//        }
+//        // 获取Session中的验证码
+//        token = (String) request.getSession().getAttribute(KAPTCHA_SESSION_KEY);
+//        // 删除 Session中的验证码
+//        request.getSession().removeAttribute(KAPTCHA_SESSION_KEY);
+//    }
 
     /**
      * 用户登录
@@ -32,20 +59,30 @@ public class UserSignController extends BaseController {
      * @param request
      * @param response
      */
+//    @RequestMapping(url = "/UserSignServlet")
     public void login(HttpServletRequest request, HttpServletResponse response) {
-        String userName = request.getParameter("username");
-        String password = request.getParameter("password");
-        //登录
-        User user = userService.login(userName, Md5Util.getMd5String(password));
-        if (user == null) {
-            state.setMsg("用户不存在！");
-            state.setCode(false);
-        } else {
-            state.setCode(true);
-            state.setMsg("登陆成功!");
+        String phone = request.getParameter("phone");
+        String password = request.getParameter("psd");
+        String vcode = request.getParameter("vcode");
+        System.out.println(phone);
+        System.out.println("登录"+new Date().toString());
+//        //登录
+//        User user = userService.login(userName, Md5Util.getMd5String(password));
+//        if (user == null) {
+//            result.setMsg("用户不存在！");
+//            result.setCode(false);
+//        } else {
+        if("13456789000".equals(phone)&&"123456".equals(password)&&token!=null&&token.equalsIgnoreCase(vcode)){
+            result.setCode(true);
+            result.setMsg("登陆成功!");
+        }else if(token ==null||!token.equalsIgnoreCase(vcode)){
+            result.setMsg("验证码错误!");
+        }else {
+            result.setMsg("账号或密码错误!");
         }
+
         //调用工具类返回结果
-        JsonUtil.returnJson(response, state);
+        JsonUtil.returnJson(response, result);
     }
 
     /**
@@ -54,20 +91,32 @@ public class UserSignController extends BaseController {
      * @param request
      * @param response
      */
-    public void register(HttpServletRequest request, HttpServletResponse response) {
+    public void register(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        String vcode = request.getParameter("vcode");
+        String phone = request.getParameter("phone");
+        String password = request.getParameter("password");
+
+        System.out.println(phone+"11111");
+        System.out.println(password+"2222");
+        System.out.println("注册"+new Date().toString());
         //判断用户是否已存在
-        if (userService.checkUserName(Integer.valueOf(request.getParameter("count")))) {
-            //注册
-            //调用ObjectUtil工具类获取实例
-            userService.register((User) ObjectUtil.getObject(request, User.class));
-            state.setMsg("注册成功!");
-            state.setCode(true);
-        } else {
-            state.setMsg("注册失败!该用户已存在！");
-            state.setCode(false);
+//        if (userService.checkUserName(Integer.valueOf(request.getParameter("count")))) {
+//            //注册
+//            //调用ObjectUtil工具类获取实例
+//            userService.register((User) ObjectUtil.getObject(request, User.class));
+//        } else {
+//            result.setMsg("注册失败!该用户已存在！");
+//            result.setCode(false);
+//        }
+        String count = request.getParameter("count");
+        if(token!=null&&token.equalsIgnoreCase(vcode)){
+            result.setMsg("注册成功!");
+            result.setCode(true);
+        }else {
+            result.setMsg("验证码错误!");
         }
         //调用工具类返回结果
-        JsonUtil.returnJson(response, state);
+        JsonUtil.returnJson(response, result);
     }
 
     public static void setUserService(UserService userService) {

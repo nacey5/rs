@@ -1,4 +1,4 @@
-package enunms;
+package enums;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -16,7 +16,7 @@ public class  LoginPermissionEnum {
             /**
              * 所登陆权限的用户可以访问的页面在此定义
              */
-            new HashSet<>(Arrays.asList("/add","/login.html"))
+            new HashSet<>(Arrays.asList("/add"))
     );
 
 

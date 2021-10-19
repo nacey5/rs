@@ -1,8 +1,7 @@
 package controller;
 
+import common.utils.JsonUtil;
 import common.utils.ObjectUtil;
-import common.utils.WebUtil;
-import org.apache.commons.beanutils.BeanUtils;
 import pojo.bean.User;
 import service.UserService;
 
@@ -16,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
  * @date 9/10/2021 - 17:16
  */
 @WebServlet("/UserInfoServlet")
-public class UserInfoController extends BaseController {
+public class UserInfoController{
 
     private UserService userService;
 
@@ -26,29 +25,32 @@ public class UserInfoController extends BaseController {
 
     /**
      * 获取用户信息
+     *
      * @param request
      * @param response
      * @return
      */
     public void getUserInfo(HttpServletRequest request, HttpServletResponse response) {
         String id = request.getParameter("id");
+        User user = new User();
         try {
-            userService.queryUserInfo(WebUtil.parseInt(id, 0));
+            user = userService.queryUserInfo(Integer.valueOf(id));
         } catch (Exception e) {
             e.printStackTrace();
         }
+        JsonUtil.returnJson(response, user);
     }
 
     /**
      * 设置用户信息
+     *
      * @param request
      * @param response
      * @return
      */
     public void setUserInfo(HttpServletRequest request, HttpServletResponse response) {
         //调用ObjectUtil工具类获取实例
-        User user= (User) ObjectUtil.getObject(request, User.class);
+        User user = (User) ObjectUtil.getObject(request, User.class);
         userService.updateUser(user);
     }
-
 }

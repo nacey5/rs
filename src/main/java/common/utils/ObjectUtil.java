@@ -12,8 +12,15 @@ import java.lang.reflect.InvocationTargetException;
  * @date 14/10/2021 - 17:47
  */
 public class ObjectUtil {
-
+    /**
+     * 根据传入的类型获取对应的实例
+     * @param request
+     * @param t
+     * @param <T>
+     * @return
+     */
     public static <T> Object getObject(HttpServletRequest request, Class<T> t) {
+        //判断 t 输入哪个类型
         if (t.isInstance(ActivityUser.class)) {
             ActivityUser activityUser = new ActivityUser();
             try {

@@ -38,4 +38,11 @@ public interface UserService {
      * @param user
      */
     void updateUser(User user);
+
+    /**
+     * 添加用户头像
+     * @param id
+     * @param imgStr
+     */
+    void addUserImg(Integer id,String imgStr);
 }

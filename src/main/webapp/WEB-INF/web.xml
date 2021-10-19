@@ -13,4 +13,24 @@
         <servlet-name>KaptchaServlet</servlet-name>
         <url-pattern>/kaptcha.jpg</url-pattern>
     </servlet-mapping>
+<!--    &lt;!&ndash;为了允许跨域访问&ndash;&gt;-->
+<!--    <filter>-->
+<!--        <filter-name>CorsFilter</filter-name>-->
+<!--        <filter-class>org.du.personalsitemock.mockutil.CORSFilter</filter-class>-->
+<!--    </filter>-->
+
+<!--    <filter-mapping>-->
+<!--        <filter-name>CorsFilter</filter-name>-->
+<!--        <url-pattern>/*</url-pattern>-->
+<!--    </filter-mapping>-->
+    <!--为了允许跨域访问-->
+    <filter>
+        <filter-name>CorsFilter</filter-name>
+        <filter-class>org.apache.catalina.filters.CorsFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>CorsFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
 </web-app>

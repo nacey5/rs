@@ -1,12 +1,9 @@
 package service.impl;
 
+import common.factory.DaoFactory;
 import dao.UserDao;
-import org.apache.ibatis.session.SqlSession;
-import org.apache.ibatis.session.SqlSessionFactory;
 import pojo.bean.User;
 import service.UserService;
-
-import static common.utils.SqlUtil.getSqlSessionFactory;
 
 /**
  * @author WEIR
@@ -15,59 +12,55 @@ import static common.utils.SqlUtil.getSqlSessionFactory;
  */
 public class UserServiceImpl implements UserService {
 
-    private final SqlSessionFactory sqlSessionFactory = getSqlSessionFactory();
-    private final SqlSession openSession = sqlSessionFactory.openSession();
-    private final UserDao mapper = openSession.getMapper(UserDao.class);
+    private final UserDao userDao = (UserDao) DaoFactory.getDao(User.class);
 
     @Override
     public Boolean checkUserName(Integer count) {
-//        return mapper.checkCountExit(String.valueOf(count));
-        return true;
+        try {
+            return userDao.checkCountExit(String.valueOf(count));
+        } catch (Exception e) {
+            throw new RuntimeException("检验用户名失败！");
+        }
     }
 
     @Override
     public User login(String phone, String password) {
         try {
-            return mapper.selectInfoByPhone(phone,password);
-        } finally {
-            openSession.close();
+            return userDao.selectInfoByPhone(phone, password);
+        } catch (Exception e) {
+            throw new RuntimeException("登录失败！");
         }
     }
 
     @Override
     public void register(User user) {
         try {
-            mapper.addUser(user);
-            openSession.commit();
+            userDao.addUser(user);
         } catch (Exception e) {
             throw new RuntimeException("注册失败!");
-        } finally {
-            openSession.close();
         }
     }
 
     @Override
     public User queryUserInfo(Integer id) {
         try {
-            return mapper.selectInfoById(id);
-        } finally {
-            openSession.close();
+            return userDao.selectInfoById(id);
+        } catch (Exception e) {
+            throw new RuntimeException("获取用户信息失败!");
         }
     }
 
-    /**
-     * 完善资料
-     */
     @Override
-    public void updateUser(User user){
+    public void updateUser(User user) {
         try {
-            mapper.addInfo(user);
-//            System.out.println("完善资料成功");
-            openSession.commit();
-        }catch (Exception e){
-            throw  new RuntimeException("完善资料失败");
-        }finally {
-            openSession.close();
+            userDao.addInfo(user);
+        } catch (Exception e) {
+            throw new RuntimeException("完善资料失败！");
         }
+    }
+
+    @Override
+    public void addUserImg(Integer id, String imgStr) {
+
     }
 }

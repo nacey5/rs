@@ -11,6 +11,7 @@ import java.io.Serializable;
  */
 @Alias("pic")
 public class Pictures implements Serializable {
+
     private static final long serialVersionUID=11572199855255456L;
     Integer id;
     String picture;
