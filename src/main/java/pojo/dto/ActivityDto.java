@@ -12,5 +12,4 @@ import java.util.List;
 public class ActivityDto {
     private List<Pictures> picturesList;
     private String info;
-    private
 }

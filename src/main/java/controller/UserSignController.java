@@ -1,6 +1,5 @@
 package controller;
 
-import annotation.WebRequest.RequestMapping;
 import common.utils.JsonUtil;
 import pojo.dto.ResultState;
 import service.UserService;
@@ -21,7 +20,7 @@ import static com.google.code.kaptcha.Constants.KAPTCHA_SESSION_KEY;
  * @date 8/10/2021 - 15:22
  */
 @WebServlet("/UserSignServlet")
-public class UserSignController extends BaseController {
+public class UserSignController extends HttpServlet{
 
     private static UserService userService;
     /**
@@ -30,28 +29,30 @@ public class UserSignController extends BaseController {
     private ResultState result = new ResultState();
 
     static String token;
-//    @Override
-//    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//        doPost(req,resp);
-//    }
-//
-//    @Override
-//    protected void doPost(HttpServletRequest request, HttpServletResponse resp) throws ServletException, IOException {
-//
-//        request.setCharacterEncoding("UTF-8");
-//        resp.setCharacterEncoding("UTF-8");
-//        String action = request.getParameter("action");
-//
-//        if("login".equals(action)){
-//            login(request,resp);
-//        }else {
-//            register(request,resp);
-//        }
-//        // 获取Session中的验证码
-//        token = (String) request.getSession().getAttribute(KAPTCHA_SESSION_KEY);
-//        // 删除 Session中的验证码
-//        request.getSession().removeAttribute(KAPTCHA_SESSION_KEY);
-//    }
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        doPost(req,resp);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse resp) throws ServletException, IOException {
+
+        request.setCharacterEncoding("UTF-8");
+        resp.setCharacterEncoding("UTF-8");
+        String action = request.getParameter("action");
+
+        if("login".equals(action)){
+            login(request,resp);
+        }else if("register".equals(action)){
+            register(request,resp);
+        }else {
+            return;
+        }
+        // 获取Session中的验证码
+        token = (String) request.getSession().getAttribute(KAPTCHA_SESSION_KEY);
+        // 删除 Session中的验证码
+        request.getSession().removeAttribute(KAPTCHA_SESSION_KEY);
+    }
 
     /**
      * 用户登录

@@ -2,6 +2,7 @@ package controller;
 
 import common.utils.Base64Util;
 import common.utils.JsonUtil;
+import enums.UploadEnum;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileItemFactory;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
@@ -30,7 +31,6 @@ import java.util.Map;
 @WebServlet("/upload")
 public class UploadController extends HttpServlet {
 
-
     private static final ActivityService activityService = new ActivityServiceImpl();
     private static final UserService userService = new UserServiceImpl();
     private ResultState result = new ResultState();
@@ -40,19 +40,20 @@ public class UploadController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
+        //获取图片
         findPictures(request);
         switch (action) {
-            case : {
+            case UploadEnum.ADD_USER_IMG :{
                 addUserImg(id,picMap.get(id));
                 result.setCode(true);
                 break;
             }
-            case : {
+            case UploadEnum.ADD_ACTIVITY_PICTURE: {
                 setActivityPic(id,picMap.get(id));
                 result.setCode(true);
                 break;
             }
-            case ： {
+            case UploadEnum.ADD_ACTIVITY_FILE:{
 
                 break;
             }
