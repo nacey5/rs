@@ -115,6 +115,25 @@
         from
             picture_activity
         where
-        id=#{id}
+            id=#{id}
     </select>
+
+    <!--String getHeadPortrait(@Param("id") Integer id);-->
+    <select id="getHeadPortrait" resultType="string">
+        select pic_org
+        from
+            user_organization
+        where
+            id=#{id}
+    </select>
+
+    <!--void addHeadPortrait(@Param("baseCode")String pic,@Param("id") Integer id);-->
+    <update id="addHeadPortrait" databaseId="mysql">
+        update user_organization
+        set
+            pic_org=#{baseCode}
+        where
+            id=#{id}
+
+    </update>
 </mapper>

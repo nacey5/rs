@@ -67,4 +67,17 @@ public interface UserDao {
      */
      void participateAct(Integer id,Integer studentCount);
 
+    /**
+     *得到头像
+     * @param id
+     * @return 返回头像所存储的照片
+     */
+     String getHeadPortrait(@Param("id") Integer id);
+
+    /**
+     * 添加用户图片
+     * @param pic 图片所对应的base64编码
+     * @param id
+     */
+     void addHeadPortrait(@Param("baseCode")String pic,@Param("id") Integer id);
 }
