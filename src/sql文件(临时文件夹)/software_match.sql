@@ -54,7 +54,7 @@ CREATE TABLE `activity_organization` (
   `joinway` varchar(45) NOT NULL,
   `level` int DEFAULT NULL,
   PRIMARY KEY (`id`,`name`,`organizer`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -63,6 +63,7 @@ CREATE TABLE `activity_organization` (
 
 LOCK TABLES `activity_organization` WRITE;
 /*!40000 ALTER TABLE `activity_organization` DISABLE KEYS */;
+INSERT INTO `activity_organization` VALUES (1,'打架大赛','2021-11-11 00:00:00','中州','中州打架社团','线下',1);
 /*!40000 ALTER TABLE `activity_organization` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -128,7 +129,7 @@ DROP TABLE IF EXISTS `picture_activity`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `picture_activity` (
   `id` int DEFAULT NULL,
-  `picture` text
+  `picture` longtext
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -138,7 +139,7 @@ CREATE TABLE `picture_activity` (
 
 LOCK TABLES `picture_activity` WRITE;
 /*!40000 ALTER TABLE `picture_activity` DISABLE KEYS */;
-INSERT INTO `picture_activity` VALUES (1,'sdaasd456456'),(2,'shjasgdhjgd'),(2,'dhjfgkhjgsdafhjkgasdhf'),(2,'hgdsfhkjgsdakhjfgsdhjfgsdaghsdfhjgsdhfjgs');
+INSERT INTO `picture_activity` VALUES (1,'sdaasd456456'),(2,'shjasgdhjgd'),(2,'dhjfgkhjgsdafhjkgasdhf'),(2,'hgdsfhkjgsdakhjfgsdhjfgsdaghsdfhjgsdhfjgs'),(3,'hjksdfjhkgsdafhjk');
 /*!40000 ALTER TABLE `picture_activity` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -157,6 +158,7 @@ CREATE TABLE `user_organization` (
   `normalcount` int DEFAULT NULL,
   `phone` smallint NOT NULL,
   `password` varchar(255) NOT NULL,
+  `pic_org` longtext,
   PRIMARY KEY (`id`,`name`,`phone`,`managercount`),
   UNIQUE KEY `phone_UNIQUE` (`phone`),
   UNIQUE KEY `name_UNIQUE` (`name`),
@@ -194,7 +196,7 @@ CREATE TABLE `user_petname` (
 
 LOCK TABLES `user_petname` WRITE;
 /*!40000 ALTER TABLE `user_petname` DISABLE KEYS */;
-INSERT INTO `user_petname` VALUES (1,'汪汪'),(7,'小狗汪汪');
+INSERT INTO `user_petname` VALUES (1,'sakdjkl'),(2,'汪汪'),(7,'小狗汪汪'),(8,'蓝子');
 /*!40000 ALTER TABLE `user_petname` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -216,6 +218,7 @@ CREATE TABLE `user_student` (
   `password` varchar(255) NOT NULL,
   `email` varchar(255) DEFAULT NULL,
   `pet_name` varchar(255) NOT NULL,
+  `pic_user` longtext,
   PRIMARY KEY (`id`,`count`,`phone`,`pet_name`),
   UNIQUE KEY `count_UNIQUE` (`count`),
   UNIQUE KEY `phone_UNIQUE` (`phone`)
@@ -228,7 +231,7 @@ CREATE TABLE `user_student` (
 
 LOCK TABLES `user_student` WRITE;
 /*!40000 ALTER TABLE `user_student` DISABLE KEYS */;
-INSERT INTO `user_student` VALUES (1,201543220,'大黄','1008611','互联网金融与信息工程学院','计算机科学与技术','男','123456','dahuang@qq.com',''),(2,201543219,'大白','1008612',NULL,NULL,'男','abc123',NULL,''),(7,201543204,'小白','1008604',NULL,NULL,'男','a1160124552',NULL,''),(8,201543201,'小蓝','1008610',NULL,'大数据与信息分析',NULL,'a1160124552',NULL,'');
+INSERT INTO `user_student` VALUES (1,201543220,'大黄','1008611','互联网金融与信息工程学院','计算机科学与技术','男','123456','dahuang@qq.com','','ghdhghdgjhgdgyu45456asdf1f456d421z4fd564f52sa1f5sd456f4sd4545sdx12xc15es4f5sd422zx154a231d23a421z2315a4d5412341gh23jkh4kl1l3j45i4u5321dg231fdg456j454i56456y445u54d87sd89fg5xf6d4g56df4hg564g547fsg47sr4ty74uy45fdg4hj21fgd1h214shzdf1g454g78dfs74y544d211524x54x5464s856f745s64ts'),(2,201543219,'大白','1008612',NULL,NULL,'男','abc123',NULL,'','hgadfhydsgfjhsdaghgdsafhgasdyufyue578dsf857sda56f4sd352f4186sd5a74fasd41f56asd4f86asd74f54asdf56s7ad89f732w85e4r87e897485ag74856sdfghasd4g5674gh89asdf4g5641asdg85674asdg41asdg5674asd89g4we25r4g856wser74g4as1g6534azsd563g4as35dg857asd7g85sda74g56s41g56s7d4g564sdg56sdagsd'),(7,201543204,'小白','1008604',NULL,NULL,'男','a1160124552',NULL,'',NULL),(8,201543201,'小蓝','1008610',NULL,'大数据与信息分析',NULL,'a1160124552',NULL,'',NULL);
 /*!40000 ALTER TABLE `user_student` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -249,4 +252,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-10-11 20:10:54
+-- Dump completed on 2021-10-20 13:13:06
