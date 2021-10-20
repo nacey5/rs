@@ -110,5 +110,6 @@
         <!--<mapper resource="conf\mapper\LoginUser.xml"></mapper>-->
         <mapper resource="dao\UserDao.xml"></mapper>
         <mapper resource="dao\ActivityDao.xml"></mapper>
+        <mapper resource="dao\Organizator.xml"></mapper>
     </mappers>
 </configuration>

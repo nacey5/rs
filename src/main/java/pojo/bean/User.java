@@ -33,6 +33,8 @@ public class User implements Serializable {
     UserPet pet;
     //参赛信息
     Participater pars;
+    //头像
+    String headPortrait;
 
     /**
      * 注册所用的构造方法
@@ -166,6 +168,14 @@ public class User implements Serializable {
 
     public void setPars(Participater pars) {
         this.pars = pars;
+    }
+
+    public String getHeadPortrait() {
+        return headPortrait;
+    }
+
+    public void setHeadPortrait(String headPortrait) {
+        this.headPortrait = headPortrait;
     }
 }
 
