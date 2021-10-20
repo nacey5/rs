@@ -156,15 +156,16 @@ CREATE TABLE `user_organization` (
   `level` char(2) NOT NULL,
   `managercount` int NOT NULL,
   `normalcount` int DEFAULT NULL,
-  `phone` smallint NOT NULL,
+  `phone` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `pic_org` longtext,
+  `collage` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`,`name`,`phone`,`managercount`),
   UNIQUE KEY `phone_UNIQUE` (`phone`),
   UNIQUE KEY `name_UNIQUE` (`name`),
   KEY `manger_infromation_key_idx` (`managercount`),
   CONSTRAINT `manger_information_key` FOREIGN KEY (`managercount`) REFERENCES `user_student` (`count`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -173,6 +174,7 @@ CREATE TABLE `user_organization` (
 
 LOCK TABLES `user_organization` WRITE;
 /*!40000 ALTER TABLE `user_organization` DISABLE KEYS */;
+INSERT INTO `user_organization` VALUES (2,'AA','1',201543220,NULL,'1008611','123','454564sf56asd4f52sd41f564sdf564sd56f4asdf1asd56f45asd6f45sd24f8sd744s5rt4856s4g75ds4ag85sd74g8564sd56g4sd857sd8tr7456sd4fg1235sad1f5sdfsda4f56as0df74sdf47s56e4f','BB');
 /*!40000 ALTER TABLE `user_organization` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -252,4 +254,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-10-20 13:13:06
+-- Dump completed on 2021-10-20 17:48:53
