@@ -67,6 +67,7 @@ public class UserSignController extends HttpServlet{
         String vcode = request.getParameter("vcode");
         System.out.println(phone);
         System.out.println("登录"+new Date().toString());
+        System.out.println(token);
 //        //登录
 //        User user = userService.login(userName, Md5Util.getMd5String(password));
 //        if (user == null) {
