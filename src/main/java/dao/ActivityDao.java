@@ -85,4 +85,16 @@ public interface ActivityDao {
      */
     List<Pictures> selectPicturesById(@Param("id") Integer id);
 
+    /**
+     *得到头像
+     * @param id
+     * @return 返回头像所存储的照片
+     */
+    String getHeadPortrait(@Param("id") Integer id);
+
+    /**
+     * 添加组织图片
+     * @param pic
+     */
+    void addHeadPortrait(@Param("baseCode")String pic,@Param("id") Integer id);
 }

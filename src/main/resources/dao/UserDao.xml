@@ -105,7 +105,22 @@
         <![CDATA[ select count(${phone})
                   from user_student where phone=#{phone}]]>
     </select>
+    <!--String getHeadPortrait(@Param("id") Integer id);-->
+    <select id="getHeadPortrait" resultType="string">
+        select pic_user
+        from
+            user_student
+        where
+            id=#{id}
+    </select>
 
-
+    <!--void addHeadPortrait(@Param("baseCode")String pic);-->
+    <update id="addHeadPortrait" databaseId="mysql">
+        update user_student
+        set
+            pic_user=#{baseCode}
+        where
+            id=#{id}
+    </update>
 
 </mapper>
