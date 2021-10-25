@@ -22,7 +22,7 @@ public class Base64Test {
         File file = new File("");
         System.out.println(file.getAbsolutePath());
         img = Base64Util.toBase64(new File(file.getAbsolutePath() + "/src/main/webapp/image/zxb.jpg"));
-        System.out.println(img);
+//        System.out.println(img);
         new ActivityServiceImpl().addPicture(0, img);
     }
 }

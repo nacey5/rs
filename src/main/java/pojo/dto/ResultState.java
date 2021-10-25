@@ -1,6 +1,7 @@
 package pojo.dto;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author WEIR
@@ -8,15 +9,17 @@ import java.util.List;
  * @date 9/10/2021 - 17:57
  */
 public class ResultState {
-
+    //返回的信息
     private String msg;
+    //返回的状态吗
     private boolean code = false;
-    private List<String> picLists;
+    //可以放任何对象的map需要什么就存什么进去
+    private Map<String, Object> data;
 
-    public ResultState(String msg, boolean code,List<String> picLists) {
+    public ResultState(String msg, boolean code, Map<String, Object> data) {
         this.msg = msg;
         this.code = code;
-        this.picLists = picLists;
+        this.data = data;
     }
 
     public ResultState() {
@@ -38,11 +41,11 @@ public class ResultState {
         this.code = code;
     }
 
-    public List<String> getPicLists() {
-        return picLists;
+    public Map<String, Object> getData() {
+        return data;
     }
 
-    public void setPicLists(List<String> picLists) {
-        this.picLists = picLists;
+    public void setData(Map<String, Object> data) {
+        this.data = data;
     }
 }

@@ -1,5 +1,6 @@
 package controller;
 
+import annotation.WebRequest.RequestMapping;
 import common.utils.JsonUtil;
 import pojo.dto.ResultState;
 import service.UserService;
@@ -20,7 +21,7 @@ import static com.google.code.kaptcha.Constants.KAPTCHA_SESSION_KEY;
  * @date 8/10/2021 - 15:22
  */
 @WebServlet("/UserSignServlet")
-public class UserSignController extends HttpServlet{
+public class UserSignController extends BaseController {
 
     private static UserService userService;
     /**
@@ -29,30 +30,32 @@ public class UserSignController extends HttpServlet{
     private ResultState result = new ResultState();
 
     static String token;
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        doPost(req,resp);
-    }
 
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse resp) throws ServletException, IOException {
-
-        request.setCharacterEncoding("UTF-8");
-        resp.setCharacterEncoding("UTF-8");
-        String action = request.getParameter("action");
-
-        if("login".equals(action)){
-            login(request,resp);
-        }else if("register".equals(action)){
-            register(request,resp);
-        }else {
-            return;
-        }
-        // 获取Session中的验证码
-        token = (String) request.getSession().getAttribute(KAPTCHA_SESSION_KEY);
-        // 删除 Session中的验证码
-        request.getSession().removeAttribute(KAPTCHA_SESSION_KEY);
-    }
+//    @Override
+//    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+//        doPost(req, resp);
+//    }
+//
+//    @Override
+//    protected void doPost(HttpServletRequest request, HttpServletResponse resp) throws ServletException, IOException {
+//
+//        request.setCharacterEncoding("UTF-8");
+//        resp.setCharacterEncoding("UTF-8");
+//        String action = request.getParameter("action");
+//        System.out.println(action);
+//        if ("login".equals(action)) {
+//            login(request, resp);
+//        } else if ("register".equals(action)) {
+//            register(request, resp);
+//        } else {
+//            result.setMsg("xxxxx");
+//            JsonUtil.returnJson(resp, result);
+//        }
+//        // 获取Session中的验证码
+//        token = (String) request.getSession().getAttribute(KAPTCHA_SESSION_KEY);
+//        // 删除 Session中的验证码
+//        request.getSession().removeAttribute(KAPTCHA_SESSION_KEY);
+//    }
 
     /**
      * 用户登录
@@ -60,13 +63,13 @@ public class UserSignController extends HttpServlet{
      * @param request
      * @param response
      */
-//    @RequestMapping(url = "/UserSignServlet")
+    @RequestMapping(url = "/UserSignServlet")
     public void login(HttpServletRequest request, HttpServletResponse response) {
-        String phone = request.getParameter("phone");
-        String password = request.getParameter("psd");
+        String username = request.getParameter("username");
+        String password = request.getParameter("pwd");
         String vcode = request.getParameter("vcode");
-        System.out.println(phone);
-        System.out.println("登录"+new Date().toString());
+        System.out.println(username);
+        System.out.println("登录" + new Date().toString());
         System.out.println(token);
 //        //登录
 //        User user = userService.login(userName, Md5Util.getMd5String(password));
@@ -74,17 +77,19 @@ public class UserSignController extends HttpServlet{
 //            result.setMsg("用户不存在！");
 //            result.setCode(false);
 //        } else {
-        if("13456789000".equals(phone)&&"123456".equals(password)&&token!=null&&token.equalsIgnoreCase(vcode)){
-            result.setCode(true);
-            result.setMsg("登陆成功!");
-        }else if(token ==null||!token.equalsIgnoreCase(vcode)){
-            result.setMsg("验证码错误!");
-        }else {
-            result.setMsg("账号或密码错误!");
-        }
+//        if("13456789000".equals(phone)&&"123456".equals(password)&&token!=null&&token.equalsIgnoreCase(vcode)){
+//            result.setCode(true);
+//            result.setMsg("登陆成功!");
+//        }else if(token ==null||!token.equalsIgnoreCase(vcode)){
+//            result.setMsg("验证码错误!");
+//        }else {
+//        }
+        result.setMsg("账号或密码错误!");
 
         //调用工具类返回结果
         JsonUtil.returnJson(response, result);
+        System.out.println(request.getMethod());
+        System.out.println(result.toString());
     }
 
     /**
@@ -98,9 +103,9 @@ public class UserSignController extends HttpServlet{
         String phone = request.getParameter("phone");
         String password = request.getParameter("password");
 
-        System.out.println(phone+"11111");
-        System.out.println(password+"2222");
-        System.out.println("注册"+new Date().toString());
+        System.out.println(phone + "11111");
+        System.out.println(password + "2222");
+        System.out.println("注册" + new Date().toString());
         //判断用户是否已存在
 //        if (userService.checkUserName(Integer.valueOf(request.getParameter("count")))) {
 //            //注册
@@ -111,10 +116,10 @@ public class UserSignController extends HttpServlet{
 //            result.setCode(false);
 //        }
         String count = request.getParameter("count");
-        if(token!=null&&token.equalsIgnoreCase(vcode)){
+        if (token != null && token.equalsIgnoreCase(vcode)) {
             result.setMsg("注册成功!");
             result.setCode(true);
-        }else {
+        } else {
             result.setMsg("验证码错误!");
         }
         //调用工具类返回结果

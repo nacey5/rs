@@ -30,6 +30,7 @@ public class PageBo<T> {
     /**
      * 当前页面所有博客的作者头像*/
     private List<String> imgs;
+
     public String getUrl() {
         return url;
     }

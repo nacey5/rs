@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="dao.OragnizatorDao">
+<mapper namespace="dao.OrganizatorDao">
     <cache eviction="FIFO" flushInterval="300000" readOnly="false"></cache>
 
     <!--Organizer selectInfoByPhoneandPassword(@Param("phone") String phone, @Param("password") String password);-->

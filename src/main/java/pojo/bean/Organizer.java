@@ -4,24 +4,27 @@ import org.apache.ibatis.type.Alias;
 
 import java.io.Serializable;
 
+/**
+ * @author DAHUANG
+ */
 @Alias("org")
 public class Organizer implements Serializable {
-    private static final long serialVersionUID=54564123124215468L;
-    Integer id;
-    String name;
-    Integer level;
-    //管理者学号
-    Integer mangerCount;
-    String phone;
-    String password;
-    String collage;
-    //头像
-    String headPortrait;
+    private static final long serialVersionUID = 54564123124215468L;
+    private Integer id;
+    private String name;
+    private Integer level;
+    /**管理者学号*/
+    private Integer mangerCount;
+    private String phone;
+    private String password;
+    private String collage;
+    /**头像*/
+    private String headPortrait;
 
     public Organizer() {
     }
 
-    public Organizer( String name, Integer level, Integer mangerCount, String phone, String password, String collage, String headPortrait) {
+    public Organizer(String name, Integer level, Integer mangerCount, String phone, String password, String collage, String headPortrait) {
         this.name = name;
         this.level = level;
         this.mangerCount = mangerCount;
@@ -96,7 +99,7 @@ public class Organizer implements Serializable {
     }
 
     public void setHeadPortrait(String headPortrait) {
-        headPortrait = headPortrait;
+        this.headPortrait = headPortrait;
     }
 
     @Override
