@@ -32,6 +32,20 @@
             id=#{id}
     </select>
 
+    <!--void addInfo(@Param("id") Integer id);-->
+    <insert id="addInfo" databaseId="mysql">
+        insert into
+            info_organization(`id`,`info`)
+            values
+            (#{id},#{info})
+    </insert>
 
-
+    <!--String selectInfo(@Param("id")Integer id);-->
+    <select id="selectInfo" resultType="string">
+        select info
+        from
+            info_organization
+        where
+            id=#{id}
+    </select>
 </mapper>

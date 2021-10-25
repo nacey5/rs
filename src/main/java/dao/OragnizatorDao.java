@@ -25,4 +25,20 @@ public interface OragnizatorDao{
      * @return 返回头像所存储的照片
      */
     String getHeadPortrait(@Param("id") Integer id);
+
+
+    /*=================================================================================================*/
+    /**
+     * 添加组织社团的介绍信息
+     * @param id
+     * @param info
+     */
+    void addInfo(@Param("id") Integer id,@Param("info") String info);
+
+    /**
+     * 查找信息
+     * @param id
+     * @return
+     */
+    String selectInfo(@Param("id")Integer id);
 }
