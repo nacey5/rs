@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.UserDao">
+    <cache eviction="FIFO" flushInterval="300000" readOnly="false"/>
+    <!--public User SelectInfoByPhone(@Param("phone") String phone,@Param("password") String password);-->
+    <select id="SelectInfoByPhone" resultType="user">
+         select
+        * from user_student
+        where phone=#{phone}
+        and password=#{password}
+    </select>
+
+    <!--insert into
+        user_student(count,name,phone,password)
+        values
+        (201543219,'大白',1008612,'abc123')-->
+    <insert id="addUser" parameterType="user" useGeneratedKeys="true" keyProperty="id" databaseId="mysql">
+        insert into
+        user_student(`count`,`name`,`phone`,`password`,`collage`,`major`,`gender`,`email`)
+        values
+        (#{count},#{username},#{phone},#{password},#{collage},#{major},#{gender},#{email})
+    </insert>
+
+    <!--public void addPetName(int id);-->
+    <insert id="addPetName" parameterType="pet" keyProperty="id" databaseId="mysql">
+        insert into user_petname(id,pet_name) values (#{id},#{petName})
+    </insert>
+
+    <!--public User SelectInfoById(@Param("id")Integer id);-->
+    <resultMap id="UserInfoMap" type="user">
+        <id column="id" property="id"/>
+        <result column="name" property="username"/>
+        <result column="count" property="count"/>
+        <result column="phone" property="phone"/>
+        <result column="major" property="major"/>
+        <result column="collage" property="collage"/>
+        <result column="gender" property="gender"/>
+        <result column="email" property="email"/>
+
+        <association property="pet" javaType="pet">
+            <id column="id" property="id"/>
+            <result column="pet_name" property="name"/>
+        </association>
+    </resultMap>
+    <select id="SelectInfoById" resultMap="UserInfoMap">
+        select e.id id,e.name `name`,e.count `count`,e.phone phont,e.major major,e.collage collage,e.gender gender,e.email email,
+        d.id did,d.pet_name pet_name
+        from
+        user_student e,user_petname d
+        where e.id=d.id and e.id=#{id}
+    </select>
+
+    <!--public User_pet selectPetNameById(@Param("id") Integer id);-->
+    <select id="selectPetNameById" resultType="pet">
+        select
+        id,pet_name
+        from
+        user_petname
+        where
+        id=#{id}
+    </select>
+
+    <insert id="participateAct" databaseId="mysql">
+        insert into activity_content(`id`,`student_count`)
+        values
+        (
+        #{id},#{count}
+        )
+    </insert>
+
+
+    <!--void addPetName(@Param("id") int id,@Param("petName") String petName);-->
+    <insert id="addPetName" parameterType="pet" databaseId="mysql">
+        insert into
+            user_petname(`id`,`pet_name`)
+        values
+        (
+         #{id},#{petName}
+        )
+    </insert>
+
+    <!--void participateAct(@Param("id") Integer id,@Param("count") Integer studentCount);-->
+    <insert id="participateAct" databaseId="mysql">
+        insert into activity_content(`id`,`student_count`)
+        values
+        (
+            #{id},#{count}
+        )
+    </insert>
+
+    <!--UserPet selectPetNameById(@Param("id") Integer id);-->
+<!--    <select id="selectPetNameById" resultType="pet">-->
+<!--        select-->
+<!--               pet_name-->
+<!--        from-->
+<!--            user_petname-->
+<!--        where-->
+<!--            id=#{id}-->
+<!--    </select>-->
+
+    <!--boolean checkCountExit(String count);-->
+    <select id="checkCountExit" resultType="java.lang.Boolean">
+        <![CDATA[ select count(${phone})
+                  from user_student where phone=#{phone}]]>
+    </select>
+    <!--String getHeadPortrait(@Param("id") Integer id);-->
+    <select id="getHeadPortrait" resultType="string">
+        select pic_user
+        from
+            user_student
+        where
+            id=#{id}
+    </select>
+
+    <!--void addHeadPortrait(@Param("baseCode")String pic);-->
+    <update id="addHeadPortrait" databaseId="mysql">
+        update user_student
+        set
+            pic_user=#{baseCode}
+        where
+            id=#{id}
+    </update>
+
+</mapper>
