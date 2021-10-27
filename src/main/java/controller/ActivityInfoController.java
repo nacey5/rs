@@ -7,6 +7,7 @@ import pojo.bean.Pictures;
 import service.ActivityService;
 import service.impl.ActivityServiceImpl;
 
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
@@ -16,6 +17,7 @@ import java.util.List;
  * @description 活动信息
  * @date 16/10/2021 - 20:59
  */
+@WebServlet("/ActivityInfo")
 public class ActivityInfoController  extends BaseController{
 
     private ActivityService activityService=new ActivityServiceImpl();

@@ -1,13 +1,9 @@
 import common.utils.Base64Util;
-import dao.ActivityDao;
+
 import org.junit.Test;
-import service.ActivityService;
 import service.impl.ActivityServiceImpl;
 
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.net.URI;
-import java.net.URISyntaxException;
 
 /**
  * @author WEIR
@@ -17,12 +13,13 @@ import java.net.URISyntaxException;
 public class Base64Test {
 
     @Test
-    public static void main(String[] args) {
+    public void test() {
         String img = null;
         File file = new File("");
-        System.out.println(file.getAbsolutePath());
+//        System.out.println(file.getAbsolutePath());
         img = Base64Util.toBase64(new File(file.getAbsolutePath() + "/src/main/webapp/image/zxb.jpg"));
 //        System.out.println(img);
-        new ActivityServiceImpl().addPicture(0, img);
+        new ActivityServiceImpl().addPicture(7, "sssssssssssssssssssssssssssssss");
+        System.out.println(new ActivityServiceImpl().getPicture(2));
     }
 }

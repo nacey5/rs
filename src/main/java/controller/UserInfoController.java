@@ -3,6 +3,7 @@ package controller;
 import common.utils.JsonUtil;
 import common.utils.ObjectUtil;
 import pojo.bean.User;
+import pojo.dto.ResultState;
 import service.UserService;
 
 import javax.servlet.annotation.WebServlet;
@@ -14,10 +15,11 @@ import javax.servlet.http.HttpServletResponse;
  * @description
  * @date 9/10/2021 - 17:16
  */
-@WebServlet("/UserInfoServlet")
+@WebServlet("/UserInfo")
 public class UserInfoController{
 
     private UserService userService;
+    private final ResultState result = new ResultState();
 
     public void setUserService(UserService userService) {
         this.userService = userService;
@@ -38,7 +40,8 @@ public class UserInfoController{
         } catch (Exception e) {
             e.printStackTrace();
         }
-        JsonUtil.returnJson(response, user);
+        result.getData().put("user",user);
+        JsonUtil.returnJson(response, result);
     }
 
     /**

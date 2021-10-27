@@ -9,7 +9,7 @@
     resource: 引入类路径下的资源
     url: 引入网络路径或者磁盘路径下的资源
     -->
-    <properties resource="druid.properties"></properties>
+    <properties resource="druid.properties"/>
 
     <!--
       settings包含很多重要的设置项
@@ -108,9 +108,9 @@
          -->
         <!--<package name="com.hzh.mybatis.dao"/>-->
         <!--<mapper resource="conf\mapper\LoginUser.xml"></mapper>-->
-        <mapper resource="dao\Organizator.xml"></mapper>
-        <mapper resource="dao\UserDao.xml"></mapper>
-        <mapper resource="dao\ActivityDao.xml"></mapper>
+        <mapper resource="dao\Organizator.xml"/>
+        <mapper resource="dao\UserDao.xml"/>
+        <mapper resource="dao\ActivityDao.xml"/>
 
     </mappers>
 </configuration>

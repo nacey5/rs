@@ -1,6 +1,8 @@
 package common.utils;
 
+import dao.ActivityDao;
 import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
@@ -14,10 +16,9 @@ import java.io.InputStream;
  */
 public class SqlUtil {
     /**
-     *
      * @return
      */
-    public static SqlSessionFactory getSqlSessionFactory() {
+    public static SqlSession getOpeningSession() {
         String resource = "mybatis-config.xml";
         InputStream inputStream = null;
         try {
@@ -25,8 +26,7 @@ public class SqlUtil {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return new SqlSessionFactoryBuilder().build(inputStream);
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+        return sqlSessionFactory.openSession();
     }
-
-
 }

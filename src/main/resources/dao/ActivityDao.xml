@@ -3,7 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="dao.ActivityDao">
-    <cache eviction="FIFO" flushInterval="300000" readOnly="false"></cache>
+    <cache eviction="FIFO" flushInterval="300000" readOnly="false"/>
     <!--ActivityUser selectInfoById(@Param("id") Integer id);-->
     <select id="selectInfoById" resultType="activityUser">
         select *

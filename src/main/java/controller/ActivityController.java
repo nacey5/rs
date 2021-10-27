@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
  * @description
  * @date 13/10/2021 - 19:02
  */
-@WebServlet("/ActivityServlet")
+@WebServlet("/Activity")
 public class ActivityController{
 
     private static ActivityService activityService;

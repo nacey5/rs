@@ -1,13 +1,13 @@
 package service.impl;
 
-import common.factory.DaoFactory;
+import common.utils.SqlUtil;
 import dao.ActivityDao;
+import org.apache.ibatis.session.SqlSession;
 import pojo.bean.ActivityUser;
 import pojo.bean.Participater;
 import pojo.bean.Pictures;
 import service.ActivityService;
 import java.util.List;
-
 /**
  * @author WEIR
  * @description
@@ -15,11 +15,13 @@ import java.util.List;
  */
 public class ActivityServiceImpl implements ActivityService {
 
-     private final ActivityDao activityDao= (ActivityDao) DaoFactory.getDao(ActivityDao.class);
+    private final SqlSession openSession = SqlUtil.getOpeningSession();
+    private final ActivityDao activityDao = openSession.getMapper(ActivityDao.class);
 
     @Override
     public void addActivity(ActivityUser activityUser) {
         activityDao.addActivity(activityUser);
+        openSession.commit();
     }
 
     @Override
@@ -29,7 +31,8 @@ public class ActivityServiceImpl implements ActivityService {
 
     @Override
     public void updateActivityById(Integer id, ActivityUser activityUser) {
-        activityDao.addActivityInfo(id,activityUser.getInfo());
+        activityDao.addActivityInfo(id, activityUser.getInfo());
+        openSession.commit();
     }
 
     @Override
@@ -40,6 +43,7 @@ public class ActivityServiceImpl implements ActivityService {
     @Override
     public void addPicture(Integer id, String pic) {
         activityDao.addActivityPicture(id, pic);
+        openSession.commit();
     }
 
     @Override
@@ -54,7 +58,8 @@ public class ActivityServiceImpl implements ActivityService {
 
     @Override
     public void addActivityInfo(Integer id, String info) {
-        activityDao.addActivityInfo(id,info);
+        activityDao.addActivityInfo(id, info);
+        openSession.commit();
     }
 
     @Override

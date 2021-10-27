@@ -1,7 +1,8 @@
 package service.impl;
 
-import common.factory.DaoFactory;
+import common.utils.SqlUtil;
 import dao.UserDao;
+import org.apache.ibatis.session.SqlSession;
 import pojo.bean.User;
 import service.UserService;
 
@@ -12,7 +13,8 @@ import service.UserService;
  */
 public class UserServiceImpl implements UserService {
 
-    private final UserDao userDao = (UserDao) DaoFactory.getDao(User.class);
+    private final SqlSession openSession = SqlUtil.getOpeningSession();
+    private final UserDao userDao = openSession.getMapper(UserDao.class);
 
     @Override
     public Boolean checkUserName(Integer count) {
@@ -36,6 +38,7 @@ public class UserServiceImpl implements UserService {
     public void register(User user) {
         try {
             userDao.addUser(user);
+            openSession.commit();
         } catch (Exception e) {
             throw new RuntimeException("注册失败!");
         }
@@ -54,13 +57,19 @@ public class UserServiceImpl implements UserService {
     public void updateUser(User user) {
         try {
             userDao.addInfo(user);
+            openSession.commit();
         } catch (Exception e) {
             throw new RuntimeException("完善资料失败！");
         }
     }
 
     @Override
-    public void addUserImg(Integer id, String imgStr) {
-
+    public void addUserImg(Integer id, String pic) {
+        try {
+            userDao.addHeadPortrait(pic,id);
+            openSession.commit();
+        } catch (Exception e) {
+            throw new RuntimeException("添加头像失败！");
+        }
     }
 }

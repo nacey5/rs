@@ -28,7 +28,7 @@ import java.util.Map;
  * @description 处理文件上传
  * @author 23931
  */
-@WebServlet("/upload")
+@WebServlet("/Upload")
 public class UploadController extends HttpServlet {
 
     private static final ActivityService activityService = new ActivityServiceImpl();
