@@ -3,7 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="dao.UserDao">
-    <cache eviction="FIFO" flushInterval="300000" readOnly="false"/>
+    <cache eviction="FIFO" flushInterval="300000" readOnly="false"></cache>
     <!--public User SelectInfoByPhone(@Param("phone") String phone,@Param("password") String password);-->
     <select id="SelectInfoByPhone" resultType="user">
          select
@@ -71,34 +71,6 @@
     </insert>
 
 
-    <!--void addPetName(@Param("id") int id,@Param("petName") String petName);-->
-    <insert id="addPetName" parameterType="pet" databaseId="mysql">
-        insert into
-            user_petname(`id`,`pet_name`)
-        values
-        (
-         #{id},#{petName}
-        )
-    </insert>
-
-    <!--void participateAct(@Param("id") Integer id,@Param("count") Integer studentCount);-->
-    <insert id="participateAct" databaseId="mysql">
-        insert into activity_content(`id`,`student_count`)
-        values
-        (
-            #{id},#{count}
-        )
-    </insert>
-
-    <!--UserPet selectPetNameById(@Param("id") Integer id);-->
-<!--    <select id="selectPetNameById" resultType="pet">-->
-<!--        select-->
-<!--               pet_name-->
-<!--        from-->
-<!--            user_petname-->
-<!--        where-->
-<!--            id=#{id}-->
-<!--    </select>-->
 
     <!--boolean checkCountExit(String count);-->
     <select id="checkCountExit" resultType="java.lang.Boolean">

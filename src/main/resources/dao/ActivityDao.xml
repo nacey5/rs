@@ -80,7 +80,7 @@
         </association>
     </resultMap>
     <!--ActivityUser selectInfoIncludePars(Integer id);-->
-    <select id="selectInfoIncludePars" resultMap="activityUser">
+    <select id="selectInfoIncludePars" resultMap="InfoIncludeParsMap">
 	select
 		d.name,e.*
 	from

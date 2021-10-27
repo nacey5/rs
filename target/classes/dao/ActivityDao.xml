@@ -3,7 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="dao.ActivityDao">
-    <cache eviction="FIFO" flushInterval="300000" readOnly="false"/>
+    <cache eviction="FIFO" flushInterval="300000" readOnly="false"></cache>
     <!--ActivityUser selectInfoById(@Param("id") Integer id);-->
     <select id="selectInfoById" resultType="activityUser">
         select *
@@ -27,7 +27,7 @@
     <select id="selectActivitiesByOrganizerReturnMap" resultType="map">
         select *
         from
-            activity_user
+        activity_user
         where
             organizer=#{org};
     </select>
@@ -38,7 +38,7 @@
             activity_user(`name`,`organizer`,`time`,`adress`,`joinWay`,`level`)
         values
         (
-            #{name},#{organizer},#{time},#{adress},#{joinWay},#{level}
+        #{name},#{organizer},#{time},#{adress},#{joinWay},#{level}
         )
     </insert>
 
@@ -46,7 +46,7 @@
     <delete id="deleteActivity">
         delete from activity_user
         where
-            id=#{id}
+        id=#{id}
     </delete>
 
     <!--List<Integer> selectStudentsByArtId(Integer id);-->
@@ -80,28 +80,28 @@
         </association>
     </resultMap>
     <!--ActivityUser selectInfoIncludePars(Integer id);-->
-    <select id="selectInfoIncludePars" resultMap="activityUser">
-        select
-            d.name,e.*
-        from
-            user_student d,activity_user e
-        where
-            e.id=#{id}
+    <select id="selectInfoIncludePars" resultMap="InfoIncludeParsMap">
+	select
+		d.name,e.*
+	from
+        user_student d,activity_user e
+    where
+        e.id=#{id}
     </select>
 
     <insert id="addActivityInfo" databaseId="mysql">
-        insert into info_activity(`id`,`info`)
-        values
-        (
-            #{id},#{info}
-        )
+         insert into info_activity(`id`,`info`)
+    values
+    (
+        #{id},#{info}
+    )
     </insert>
 
     <insert id="addActivityPicture" databaseId="mysql">
         insert into
-            picture_activity(`id`,`picture`)
+        picture_activity(`id`,`picture`)
         values
-            (#{id},#{basecode})
+        (#{id},#{basecode})
     </insert>
 
     <resultMap id="picMap" type="pic">

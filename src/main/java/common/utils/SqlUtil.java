@@ -14,7 +14,7 @@ import java.io.InputStream;
  */
 public class SqlUtil {
     /**
-     *获取SqlSessionFactory
+     *
      * @return
      */
     public static SqlSessionFactory getSqlSessionFactory() {
@@ -27,5 +27,6 @@ public class SqlUtil {
         }
         return new SqlSessionFactoryBuilder().build(inputStream);
     }
+
 
 }
