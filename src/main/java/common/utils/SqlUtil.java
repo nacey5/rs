@@ -18,7 +18,7 @@ public class SqlUtil {
      * @return
      */
     public static SqlSessionFactory getSqlSessionFactory() {
-        String resource = "conf/mybatis-config.xml";
+        String resource = "mybatis-config.xml";
         InputStream inputStream = null;
         try {
             inputStream = Resources.getResourceAsStream(resource);
@@ -27,4 +27,6 @@ public class SqlUtil {
         }
         return new SqlSessionFactoryBuilder().build(inputStream);
     }
+
+
 }
