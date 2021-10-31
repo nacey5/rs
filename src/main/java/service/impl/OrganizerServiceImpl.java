@@ -46,7 +46,12 @@ public class OrganizerServiceImpl implements OrganizerService {
     }
 
     @Override
-    public List<Organizer> getOrgs() {
-        return null;
+    public List<Organizer> getOrgs(int start,int end) {
+        return orgDao.getOrgs(start,end);
+    }
+
+    @Override
+    public boolean checkOrgName(Integer count) {
+        return false;
     }
 }

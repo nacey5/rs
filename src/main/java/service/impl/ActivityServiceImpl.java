@@ -6,8 +6,10 @@ import org.apache.ibatis.session.SqlSession;
 import pojo.bean.ActivityUser;
 import pojo.bean.Participater;
 import pojo.bean.Pictures;
+import pojo.bo.PageBo;
 import service.ActivityService;
 import java.util.List;
+
 /**
  * @author WEIR
  * @description
@@ -42,8 +44,12 @@ public class ActivityServiceImpl implements ActivityService {
 
     @Override
     public void addPicture(Integer id, String pic) {
-        activityDao.addActivityPicture(id, pic);
-        openSession.commit();
+        try {
+            activityDao.addActivityPicture(id, pic);
+            openSession.commit();
+        } catch (Exception e) {
+            throw new RuntimeException("注册失败!");
+        }
     }
 
     @Override
@@ -57,15 +63,19 @@ public class ActivityServiceImpl implements ActivityService {
     }
 
     @Override
-    public List<ActivityUser> getActivity() {
-        return null;
+    public List<ActivityUser> getActivity(int start, int end) {
+        return activityDao.getActivity(start, end);
     }
 
 
     @Override
     public void addActivityInfo(Integer id, String info) {
-        activityDao.addActivityInfo(id, info);
-        openSession.commit();
+        try {
+            activityDao.addActivityInfo(id, info);
+            openSession.commit();
+        } catch (Exception e) {
+            throw new RuntimeException("添加活动失败!");
+        }
     }
 
     @Override
@@ -76,6 +86,12 @@ public class ActivityServiceImpl implements ActivityService {
     @Override
     public List<ActivityUser> selectInfoIncludePars(Integer id) {
         return activityDao.selectInfoIncludePars(id);
+    }
+
+    @Override
+    public PageBo<ActivityUser> page(int pageNo, int pageSize, Integer id) {
+
+        return null;
     }
 
 }

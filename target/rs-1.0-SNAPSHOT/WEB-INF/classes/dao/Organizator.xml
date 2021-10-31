@@ -3,16 +3,15 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="dao.OrganizatorDao">
-    <cache eviction="FIFO" flushInterval="300000" readOnly="false"></cache>
+    <cache eviction="FIFO" flushInterval="300000" readOnly="false"/>
 
-    <!--Organizer selectInfoByPhoneandPassword(@Param("phone") String phone, @Param("password") String password);-->
-    <select id="selectInfoByPhoneandPassword" resultType="org">
+    <!--Organizer selectInfoByPhoneAndPassword(@Param("phone") String phone, @Param("password") String password);-->
+    <select id="selectInfoByPhoneAndPassword" resultType="org">
         select
             * from user_organization
         where `phone`=#{phone}
           and `password`=#{password}
     </select>
-
 
     <!--void addOrg(Organizer org);-->
     <!--头像，姓名，管理者学号，联系手机号码(登陆)，密码，学院-->
@@ -47,5 +46,17 @@
             info_organization
         where
             id=#{id}
+    </select>
+
+    <!--    List<Organizer> getOrgs(@Param("num1") Integer number1,@Param("num2") Integer number2);   -->
+    <select id="getOrgs" resultType="org">
+        select *
+        from
+            user_organization
+        where 1=1
+        order by
+            id
+            asc limit
+            #{num1},#{num2}
     </select>
 </mapper>

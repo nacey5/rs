@@ -56,8 +56,18 @@ public interface OrganizerService {
     /**
      * 一次性查询几个（具体看设计图）社团组织(用于展示在社团组织页面)
      *
+     * @param start
+     * @param end
      * @return 社团组织对象数组
      */
-    List<Organizer> getOrgs();
+    List<Organizer> getOrgs(int start, int end);
+
+    /**
+     * 检查组织是否存在
+     *
+     * @param count
+     * @return
+     */
+    boolean checkOrgName(Integer count);
 }
 

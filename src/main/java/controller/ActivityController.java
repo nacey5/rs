@@ -1,8 +1,10 @@
 package controller;
 
+import com.google.gson.JsonObject;
 import common.utils.JsonUtil;
 import common.utils.ObjectUtil;
 import pojo.bean.ActivityUser;
+import pojo.dto.ResultState;
 import service.ActivityService;
 
 import javax.servlet.annotation.WebServlet;
@@ -21,6 +23,7 @@ import java.util.List;
 public class ActivityController{
 
     private static ActivityService activityService;
+    private final ResultState result = new ResultState();
 
     /**
      * 添加活动
@@ -61,13 +64,19 @@ public class ActivityController{
     public void selectActivity(HttpServletRequest request, HttpServletResponse response) {
         String id = request.getParameter("id");
         ActivityUser activityUser = activityService.selectActivity(Integer.valueOf(id));
-        JsonUtil.returnJson(response,activityUser);
+        result.getData().put("activityUser",activityUser);
+        JsonUtil.returnJson(response,result);
     }
 
-    public static List<ActivityUser> getActList(){
-//        activityService.
-        return null;
+    public void getActList(HttpServletRequest request, HttpServletResponse response){
+
+        List<ActivityUser> actList = activityService.getActivity(-1, 1);
+        result.getData().put("actList",actList);
+        JsonUtil.returnJson(response,result);
     }
+
+
+
     public static void setActivityService(ActivityService activityService) {
         ActivityController.activityService = activityService;
     }

@@ -4,6 +4,7 @@ import org.apache.ibatis.annotations.Param;
 import pojo.bean.ActivityUser;
 import pojo.bean.Participater;
 import pojo.bean.Pictures;
+import pojo.bo.PageBo;
 
 import java.util.List;
 
@@ -69,10 +70,11 @@ public interface ActivityService {
 
     /**
      * 一次性查询几个（具体看设计图）活动(用于展示在赛事活动页面)
-     *
+     * @param start
+     * @param end
      * @return
      */
-    List<ActivityUser> getActivity();
+    List<ActivityUser> getActivity(int start,int end);
 
     /**
      * 添加活动的具体内容信息
@@ -92,4 +94,21 @@ public interface ActivityService {
      * @return
      */
     List<ActivityUser> selectInfoIncludePars(Integer id);
+
+    /**
+     *查询分页的活动
+     * @param pageNo 页码
+     * @param pageSize 当前页显示数量
+     * @param id  用户id
+     * @return 查询到的博客
+     */
+    PageBo<ActivityUser> page(int pageNo, int pageSize, Integer id);
+//    /**
+//     *查询分页的活动
+//     * @param pageNo 页码
+//     * @param pageSize 当前页显示数量
+//     * @param id  用户id
+//     * @return 查询到的博客
+//     */
+//    PageBo<ActivityUser> page(int pageNo, int pageSize, Integer id);
 }

@@ -34,7 +34,7 @@ public class UserSignController extends BaseController {
      * @param response
      */
     public void login(HttpServletRequest request, HttpServletResponse response) {
-        String token= WebUtil.getCode(request);
+        String token = WebUtil.getCode(request);
         String userName = request.getParameter("username");
         String password = request.getParameter("psd");
         String vcode = request.getParameter("vcode");
@@ -61,23 +61,19 @@ public class UserSignController extends BaseController {
      * @param response
      */
     public void register(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        String token= WebUtil.getCode(request);
+        String token = WebUtil.getCode(request);
         String vcode = request.getParameter("vcode");
         System.out.println("注册" + new Date().toString());
-        //判断用户是否已存在
-        if (userService.checkUserName(Integer.valueOf(request.getParameter("count")))) {
-            //注册
+        if (!token.equalsIgnoreCase(vcode)) {
+            result.setMsg("验证码错误!");
+        }else if (userService.checkUserName(Integer.valueOf(request.getParameter("count")))) {
+            //判断用户是否已存在
             //调用ObjectUtil工具类获取实例
             userService.register((User) ObjectUtil.getObject(request, User.class));
-        } else {
-            result.setMsg("注册失败!该用户已存在！");
-            result.setCode(false);
-        }
-        if (token != null && token.equalsIgnoreCase(vcode)) {
-            result.setMsg("注册成功!");
+            result.setMsg("注册成功！");
             result.setCode(true);
         } else {
-            result.setMsg("验证码错误!");
+            result.setMsg("该用户已存在！");
         }
         //调用工具类返回结果
         JsonUtil.returnJson(response, result);
