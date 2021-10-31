@@ -25,6 +25,7 @@ public class ActivityUser implements Serializable {
     User user;
     //内容
     String info;
+    String status;
 
     public ActivityUser(String name, Integer organizer, String time, String adress, String joinWay, Integer level) {
         this.name = name;
@@ -36,6 +37,14 @@ public class ActivityUser implements Serializable {
     }
 
     public ActivityUser() {
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public String getInfo() {
@@ -121,6 +130,8 @@ public class ActivityUser implements Serializable {
                 ", joinWay='" + joinWay + '\'' +
                 ", level=" + level +
                 ", user=" + user +
+                ", info='" + info + '\'' +
+                ", status='" + status + '\'' +
                 '}';
     }
 }
