@@ -97,4 +97,26 @@ public interface ActivityDao {
      * @param pic
      */
     void addHeadPortrait(@Param("baseCode")String pic,@Param("id") Integer id);
+
+    /**
+     * 一次性查询多个活动，具体取决于页面，limit
+     * select *from activity_organization where 1=1 order by id asc limit #{num}
+     * @param number1 从num1+1行开始
+     * @param number2 找到多少行数据 如select * from student limit 2,8;  返回3到10行记录
+     * @return
+     */
+    List<ActivityUser> getActivity(@Param("num1") Integer number1,@Param("num2") Integer number2);
+
+    /**
+     * 得到活动的状态
+     * @param id
+     * @return
+     */
+    String getStatus(@Param("id") Integer id);
+
+    /**
+     * 更新活动状态,将活动的状态由true改成false
+     * @param id
+     */
+    void upStatus(@Param("id")Integer id);
 }

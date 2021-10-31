@@ -4,17 +4,16 @@ import org.apache.ibatis.annotations.Param;
 import pojo.bean.Organizer;
 import pojo.bean.User;
 
-/**
- * @author DAHUANG
- */
-public interface OrganizatorDao {
+import java.util.List;
+
+public interface OragnizatorDao{
     /**
-     * 通过手机号码和密码查询组织
+     * 通过手机号码和密码查询用户
      * @param phone
      * @param password
      * @return
      */
-    Organizer selectInfoByPhoneAndPassword(@Param("phone") String phone, @Param("password") String password);
+    Organizer selectInfoByPhoneandPassword(@Param("phone") String phone, @Param("password") String password);
 
     /**
      * 添加组织用户
@@ -25,11 +24,12 @@ public interface OrganizatorDao {
     /**
      *得到头像
      * @param id
-     * @return 返回头像所存储的照片对应的base64编码
+     * @return 返回头像所存储的照片
      */
     String getHeadPortrait(@Param("id") Integer id);
 
 
+    /*=================================================================================================*/
     /**
      * 添加组织社团的介绍信息
      * @param id
@@ -43,4 +43,12 @@ public interface OrganizatorDao {
      * @return
      */
     String selectInfo(@Param("id")Integer id);
+
+    /**
+     * 查询几条数据
+     * @param number1 从num+1条数据开始
+     * @param number2 查询多少行
+     * @return
+     */
+    List<Organizer> getOrgs(@Param("num1") Integer number1,@Param("num2") Integer number2);
 }
