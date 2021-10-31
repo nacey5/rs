@@ -30,9 +30,7 @@ public class ActivityInfoController  extends BaseController{
     public void setActivityInfo(HttpServletRequest request, HttpServletResponse response){
         String info=request.getParameter("ActivityInfo");
         activityService.addActivityInfo(Integer.valueOf(request.getParameter ("actId")),info);
-
     }
-
 
     /**
      *获取活动信息
@@ -40,9 +38,8 @@ public class ActivityInfoController  extends BaseController{
      * @param response
      */
     public void getActivityInfo(HttpServletRequest request, HttpServletResponse response){
-        ActivityUser activityUserser = activityService.selectActivity(Integer.valueOf(request.getParameter("actId")));
-
-        JsonUtil.returnJson(response,activityUserser.getInfo());
+        ActivityUser activityUser = activityService.selectActivity(Integer.valueOf(request.getParameter("actId")));
+        JsonUtil.returnJson(response,activityUser.getInfo());
     }
 
     public void setActivityService(ActivityService activityService) {
