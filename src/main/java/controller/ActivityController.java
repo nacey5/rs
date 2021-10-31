@@ -8,6 +8,9 @@ import service.ActivityService;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
 
 /**
  * @author WEIR
@@ -61,6 +64,10 @@ public class ActivityController{
         JsonUtil.returnJson(response,activityUser);
     }
 
+    public static List<ActivityUser> getActList(){
+//        activityService.
+        return null;
+    }
     public static void setActivityService(ActivityService activityService) {
         ActivityController.activityService = activityService;
     }

@@ -22,11 +22,23 @@ public class ActivityInfoController  extends BaseController{
 
     private ActivityService activityService=new ActivityServiceImpl();
 
+    /**
+     *设置活动信息
+     * @param request
+     * @param response
+     */
     public void setActivityInfo(HttpServletRequest request, HttpServletResponse response){
         String info=request.getParameter("ActivityInfo");
         activityService.addActivityInfo(Integer.valueOf(request.getParameter ("actId")),info);
 
     }
+
+
+    /**
+     *获取活动信息
+     * @param request
+     * @param response
+     */
     public void getActivityInfo(HttpServletRequest request, HttpServletResponse response){
         ActivityUser activityUserser = activityService.selectActivity(Integer.valueOf(request.getParameter("actId")));
 

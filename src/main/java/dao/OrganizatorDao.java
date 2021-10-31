@@ -30,7 +30,6 @@ public interface OrganizatorDao {
     String getHeadPortrait(@Param("id") Integer id);
 
 
-    /*=================================================================================================*/
     /**
      * 添加组织社团的介绍信息
      * @param id

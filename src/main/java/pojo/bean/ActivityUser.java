@@ -38,7 +38,6 @@ public class ActivityUser implements Serializable {
     public ActivityUser() {
     }
 
-
     public String getInfo() {
         return info;
     }

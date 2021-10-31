@@ -68,6 +68,13 @@ public interface ActivityService {
     List<Participater> selectStudentInActivity(Integer id);
 
     /**
+     * 一次性查询几个（具体看设计图）活动(用于展示在赛事活动页面)
+     *
+     * @return
+     */
+    List<ActivityUser> getActivity();
+
+    /**
      * 添加活动的具体内容信息
      * @param id
      * @param info

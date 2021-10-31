@@ -6,6 +6,8 @@ import org.apache.ibatis.session.SqlSession;
 import pojo.bean.Organizer;
 import service.OrganizerService;
 
+import java.util.List;
+
 /**
  * @author WEIR
  * @description
@@ -30,5 +32,21 @@ public class OrganizerServiceImpl implements OrganizerService {
     @Override
     public String selectHeadPortrait(Integer id) {
         return orgDao.getHeadPortrait(id);
+    }
+
+    @Override
+    public void addInfo(Integer id, String info) {
+        orgDao.addInfo(id,info);
+        openSession.commit();
+    }
+
+    @Override
+    public String selectInfo(Integer id) {
+        return orgDao.selectInfo(id);
+    }
+
+    @Override
+    public List<Organizer> getOrgs() {
+        return null;
     }
 }

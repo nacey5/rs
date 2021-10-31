@@ -57,6 +57,12 @@ public class ActivityServiceImpl implements ActivityService {
     }
 
     @Override
+    public List<ActivityUser> getActivity() {
+        return null;
+    }
+
+
+    @Override
     public void addActivityInfo(Integer id, String info) {
         activityDao.addActivityInfo(id, info);
         openSession.commit();

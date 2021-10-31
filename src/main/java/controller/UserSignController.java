@@ -40,9 +40,9 @@ public class UserSignController extends BaseController {
         String vcode = request.getParameter("vcode");
         System.out.println("登录" + new Date().toString());
         //登录
-        User user = userService.login(userName, Md5Util.getMd5String(password));
-        if (user == null) {
-            result.setMsg("用户不存在！");
+//        User user = userService.login(userName, Md5Util.getMd5String(password));
+        if (userName == null) {
+            result.setMsg("用户名错误或密码错误！");
             result.setCode(false);
         } else if ("13456789000".equals(userName) && "123456".equals(password) && token != null && token.equalsIgnoreCase(vcode)) {
             result.setCode(true);

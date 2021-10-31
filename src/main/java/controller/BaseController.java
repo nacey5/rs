@@ -23,12 +23,14 @@ public abstract class BaseController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        System.out.println("base");
         //设置编码
         req.setCharacterEncoding("UTF-8");
         resp.setCharacterEncoding("UTF-8");
         String action = req.getParameter("action");
+
+        System.out.println("base");
         System.out.println(action);
+
         //利用反射获取方法
         Method method = null;
         try {

@@ -1,7 +1,10 @@
 package service;
 
 import org.apache.ibatis.annotations.Param;
+import pojo.bean.ActivityUser;
 import pojo.bean.Organizer;
+
+import java.util.List;
 
 /**
  * @author WEIR
@@ -49,5 +52,12 @@ public interface OrganizerService {
      * @return
      */
     String selectInfo(Integer id);
+
+    /**
+     * 一次性查询几个（具体看设计图）社团组织(用于展示在社团组织页面)
+     *
+     * @return 社团组织对象数组
+     */
+    List<Organizer> getOrgs();
 }
 
