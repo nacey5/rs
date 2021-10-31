@@ -1,0 +1,174 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+}
+
+li {
+    list-style-type: none;
+}
+
+.header {
+    width: 1200px;
+    height: 60px;
+    margin: 0 auto;
+}
+
+.header .logo {
+    width: 120px;
+    height: 60px;
+    float: left;
+}
+
+.header .nav {
+    width: 480px;
+    height: 80px;
+    float: left;
+}
+
+.header .nav ul li {
+    float: left;
+    width: 80px;
+    margin-left: 20px;
+    line-height: 60px;
+    text-align: center;
+}
+
+
+/* 导航栏浮动 */
+
+.nav ul li:hover {
+    background-color: rgb(116, 203, 191);
+}
+
+.header .search {
+    position: relative;
+    float: left;
+    width: 200px;
+    margin-left: 150px;
+    line-height: 60px;
+}
+
+.header .search input {
+    width: 285px;
+    line-height: 35px;
+    border: 1px solid #000;
+    border-radius: 5px;
+    outline: none;
+}
+
+.header .search img {
+    position: absolute;
+    top: 25%;
+    margin-left: 250px;
+}
+
+.header .login {
+    float: right;
+}
+
+.header .login span {
+    line-height: 60px;
+}
+
+.content {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.content .wrap {
+    width: 1180px;
+    height: 420px;
+    margin: 0 auto;
+}
+
+.content .sports {
+    width: 1200px;
+    height: 300px;
+}
+
+.sports-title {
+    width: 90px;
+    height: 30px;
+    margin: 10px 0;
+    line-height: 30px;
+    background-color: rgb(116, 203, 191);
+    color: #fff;
+    text-align: center;
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+.sports .sports-img {
+    width: 682px;
+    height: 260px;
+}
+
+.sports .sports-p {
+    width: 518px;
+    height: 260px;
+    text-align: center;
+}
+
+.sports h3 {
+    margin-top: 90px;
+}
+
+.academic {
+    clear: both;
+    width: 1200px;
+    height: 360px;
+    margin-top: 30px;
+}
+
+.academic-img {
+    width: 600px;
+    height: 290px;
+}
+
+.academic .academic-p {
+    width: 600px;
+    height: 30px;
+}
+
+.academic .academic-p p {
+    line-height: 30px;
+    text-align: center;
+}
+
+.voluntary {
+    position: relative;
+    width: 1200px;
+    height: 360px;
+    margin-top: 30px;
+}
+
+.voluntary-img {
+    width: 600px;
+    height: 320px;
+}
+
+.voluntary-p {
+    width: 590px;
+    height: 30px;
+    position: absolute;
+    bottom: 0;
+    background-color: rgb(114, 111, 105);
+    color: #fff;
+    opacity: .8;
+}
+
+.voluntary-p p {
+    line-height: 30px;
+    margin-left: 10px;
+}
