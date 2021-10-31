@@ -4,6 +4,8 @@ import org.apache.ibatis.annotations.Param;
 import pojo.bean.Organizer;
 import pojo.bean.User;
 
+import java.util.List;
+
 public interface OragnizatorDao{
     /**
      * 通过手机号码和密码查询用户
@@ -41,4 +43,12 @@ public interface OragnizatorDao{
      * @return
      */
     String selectInfo(@Param("id")Integer id);
+
+    /**
+     * 查询几条数据
+     * @param number1 从num+1条数据开始
+     * @param number2 查询多少行
+     * @return
+     */
+    List<Organizer> getOrgs(@Param("num1") Integer number1,@Param("num2") Integer number2);
 }

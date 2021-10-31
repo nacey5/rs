@@ -136,4 +136,34 @@
             id=#{id}
 
     </update>
+
+    <!--List<ActivityUser> getActivity();-->
+    <select id="getActivity" resultType="activityUser">
+        select *
+        from
+             activity_organization
+        where 1=1
+        order by
+                 id
+        asc limit
+            #{num1},#{num2}
+    </select>
+
+    <!--String getStatus(@Param("id") Integer id);-->
+    <select id="getStatus" resultType="string">
+        select
+               `status`
+        from
+            activity_organization
+        where
+              id=#{id}
+    </select>
+
+    <!--void upStatus(@Param("id")Integer id);-->
+    <update id="upStatus">
+        update activity_organization
+        set `status`='false'
+        where id=#{id}
+    </update>
+
 </mapper>
