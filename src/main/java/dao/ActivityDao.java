@@ -119,4 +119,18 @@ public interface ActivityDao {
      * @param id
      */
     void upStatus(@Param("id")Integer id);
+
+    /**
+     * 获得某一张活动的图片，用于轮播图
+     * @param id
+     * @return
+     */
+    String getCarouselPic(@Param("id") Integer id);
+
+    /**
+     * 根据名字查看活动是否存在
+     * @param name
+     * @return
+     */
+    boolean checkActivityExist(@Param("name") String name);
 }

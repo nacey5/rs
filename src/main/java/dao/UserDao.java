@@ -80,4 +80,5 @@ public interface UserDao {
      * @param id
      */
      void addHeadPortrait(@Param("baseCode")String pic,@Param("id") Integer id);
+
 }

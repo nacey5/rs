@@ -166,4 +166,21 @@
         where id=#{id}
     </update>
 
+    <!--String getCarouselPic(@Param("id") Integer id);-->
+    <select id="getCarouselPic" resultType="string">
+        select
+               picture
+        from
+             picture_activity
+        where
+              id=#{id}
+        limit 1
+    </select>
+
+    <!--boolean checkActivityExist(@Param("name") String name);-->
+    <select id="checkActivityExist" resultType="java.lang.Boolean">
+         <![CDATA[ select count(`name`)
+                   from activity_organization where `name`=#{name}]]>
+    </select>
+
 </mapper>
