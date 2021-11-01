@@ -183,4 +183,44 @@
                    from activity_organization where `name`=#{name}]]>
     </select>
 
+    <!--void setActMainPic(@Param("id") Integer id,@Param("mainPic") String picture);-->
+    <insert id="setActMainPic" databaseId="mysql">
+        insert into
+            pcituremain_activity(`id`,`picture`)
+        values
+            (#{id},#{mainPic})
+    </insert>
+
+    <!--Pictures getActMainPic(@Param("id")Integer id);-->
+    <select id="getActMainPic" resultType="pic">
+        select
+            *
+        from
+            pcituremain_activity
+        where
+            id=#{id}
+    </select>
+
+    <!--List<Organizer> getOrgSearch(@Param("nameSer")String name);-->
+    <select id="getOrgSearch" resultType="org">
+        select
+            * from
+            user_organization
+        where
+                `name`
+                like
+                '%${nameSer}%'
+    </select>
+
+    <!--List<ActivityUser> getActSearch(@Param("nameSer")String name);-->
+    <select id="getActSearch" resultType="activityUser">
+        select
+            * from
+            activity_organization
+        where
+                `name`
+                like
+                '%${nameSer}%'
+    </select>
+
 </mapper>

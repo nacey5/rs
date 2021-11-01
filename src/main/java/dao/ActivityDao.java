@@ -3,6 +3,7 @@ package dao;
 import org.apache.ibatis.annotations.MapKey;
 import org.apache.ibatis.annotations.Param;
 import pojo.bean.ActivityUser;
+import pojo.bean.Organizer;
 import pojo.bean.Participater;
 import pojo.bean.Pictures;
 
@@ -26,6 +27,19 @@ public interface ActivityDao {
     boolean checkActivityExist(@Param("name") String name);
     //直接将这个方法的返回值改为 List<ActivityUser>
 
+    /**
+     * 模糊查询组织
+     * @param name
+     * @return
+     */
+    List<Organizer> getOrgSearch(@Param("nameSer")String name);
+
+    /**
+     * 模糊查询活动
+     * @param name
+     * @return
+     */
+    List<ActivityUser> getActSearch(@Param("nameSer")String name);
     //-----------------------------------分割线---------上面是需要新增的方法-----------------------------
     //-----------------------------------------------------------------------------------------------
 
@@ -141,4 +155,18 @@ public interface ActivityDao {
      */
     String getCarouselPic(@Param("id") Integer id);
 
+    /**
+     * 插入活动的主照片
+     * @param id
+     * @param picture
+     * @return
+     */
+    void setActMainPic(@Param("id") Integer id,@Param("mainPic") String picture);
+
+    /**
+     * 得到活动的主照片
+     * @param id
+     * @return
+     */
+    Pictures getActMainPic(@Param("id")Integer id);
 }
