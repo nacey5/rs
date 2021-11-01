@@ -26,9 +26,15 @@
                 </div>
                 <div class="resign_box">
                     <p>注册类型&nbsp;
-                        <input type="radio" name="resign-man">个人注册
-                        <input type="radio" name="resign-man">社团组织注册
+                        <input type="radio" name="resign-man" class="resign-man">个人注册
+                        <input type="radio" name="resign-man" class="resign-man">社团组织注册
                     </p>
+                </div>
+                <div class="resignbox" style="display: none;">
+                    <p>社团组织名称&nbsp;<input type="text" class="name"></p>
+                </div>
+                <div class="resignbox" style="display: none;">
+                    <p>社团组织所属学院&nbsp;<input type="text" class="college"></p>
                 </div>
                 <div class="resign_box">
                     <p>密码&nbsp;<input type="password" placeholder="请输入密码" class="password"></p>
@@ -48,5 +54,7 @@
         </div>
     </div>
 </body>
+<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="../js/resign.js"></script>
 
 </html>
