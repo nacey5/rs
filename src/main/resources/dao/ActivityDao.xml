@@ -223,4 +223,12 @@
                 '%${nameSer}%'
     </select>
 
+    <!--Integer countAllAct();-->
+    <select id="countAllAct" resultType="Integer">
+        select
+            count(*)
+        from
+             activity_organization
+    </select>
+
 </mapper>

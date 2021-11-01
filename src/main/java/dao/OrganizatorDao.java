@@ -71,6 +71,11 @@ public interface OrganizatorDao {
      */
     List<Organizer> getOrgs(@Param("num1") Integer number1, @Param("num2") Integer number2);
 
+    /**
+     * 统计所有组织的数量
+     * @return
+     */
+    Integer countAllOrg();
 }
 
 

@@ -169,4 +169,10 @@ public interface ActivityDao {
      * @return
      */
     Pictures getActMainPic(@Param("id")Integer id);
+
+    /**
+     * 统计活动个数
+     * @return
+     */
+    Integer countAllAct();
 }

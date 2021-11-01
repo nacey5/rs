@@ -100,4 +100,10 @@ public interface UserDao {
      * @param id
      */
      void addHeadPortrait(@Param("baseCode")String pic,@Param("id") Integer id);
+
+    /**
+     * 对用户个数进行统计
+     * @return 返回用户的数量
+     */
+     Integer countAllUser();
 }
