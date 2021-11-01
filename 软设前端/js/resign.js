@@ -8,6 +8,8 @@ window.addEventListener('load', function() {
     var man = resign.querySelectorAll('.resign-man'); //注册类型输入框
     var button = resign.querySelector('button'); //注册按钮
     var resignbox = resign.querySelectorAll('.resignbox');
+    var name = resign.querySelector('.name');
+    var college = resign.querySelector('.college');
 
     //当选择社团组织时,页面中需要出现社团组织名称和社团组织归属学院的框
     for (let i = 0; i < man.length; i++) {
@@ -51,9 +53,11 @@ window.addEventListener('load', function() {
                     type: 'post',
                     url: 'http://rsrs.nat300.top/rs/UserSignServlet',
                     data: {
-                        name: JSON.stringify(phone),
+                        name: JSON.stringify(name),
                         managercount: JSON.stringify(no),
+                        phone: JSON.stringify(phone),
                         pwd: JSON.stringify(psd),
+                        college: JSON.stringify(college),
                         vcode: JSON.stringify(code)
                     },
                     success: function(result) {
