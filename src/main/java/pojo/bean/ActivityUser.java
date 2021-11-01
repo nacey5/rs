@@ -27,7 +27,6 @@ public class ActivityUser implements Serializable {
     String info;
     String status;
 
-
     public ActivityUser(String name, Integer organizer, String time, String adress, String joinWay, Integer level) {
         this.name = name;
         this.organizer = organizer;

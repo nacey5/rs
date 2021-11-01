@@ -59,4 +59,12 @@
             asc limit
             #{num1},#{num2}
     </select>
+
+    <!--Integer countAllOrg();-->
+    <select id="countAllOrg" resultType="Integer">
+        select
+            count(*)
+        from
+            user_organization
+    </select>
 </mapper>

@@ -1,7 +1,6 @@
 package controller;
 
 import common.utils.JsonUtil;
-import common.utils.Md5Util;
 import common.utils.ObjectUtil;
 import common.utils.WebUtil;
 import pojo.bean.User;
@@ -13,8 +12,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Date;
-
-import static com.google.code.kaptcha.Constants.KAPTCHA_SESSION_KEY;
 
 /**
  * @author WEIR
@@ -50,6 +47,8 @@ public class UserSignController extends BaseController {
         } else if (token == null || !token.equalsIgnoreCase(vcode)) {
             result.setMsg("验证码错误!");
         }
+        //存入当前登录的用户
+//        request.getSession().setAttribute("nowUser",user);
         //调用工具类返回结果
         JsonUtil.returnJson(response, result);
     }
@@ -66,7 +65,7 @@ public class UserSignController extends BaseController {
         System.out.println("注册" + new Date().toString());
         if (!token.equalsIgnoreCase(vcode)) {
             result.setMsg("验证码错误!");
-        }else if (userService.checkUserName(Integer.valueOf(request.getParameter("count")))) {
+        }else if (userService.checkUserCount(Integer.valueOf(request.getParameter("count")))) {
             //判断用户是否已存在
             //调用ObjectUtil工具类获取实例
             userService.register((User) ObjectUtil.getObject(request, User.class));

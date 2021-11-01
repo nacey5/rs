@@ -1,7 +1,6 @@
 package controller;
 
 import common.utils.JsonUtil;
-import pojo.bean.ActivityUser;
 import pojo.bean.Pictures;
 import pojo.dto.ResultState;
 import service.ActivityService;
@@ -10,7 +9,9 @@ import service.UserService;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author WEIR
@@ -22,9 +23,30 @@ public class PictureController extends BaseController {
 
     private static UserService userService;
     private static ActivityService activityService;
-
     private  ResultState result = new ResultState();
+//    private Map<String, Object> datas=result.getDatas();
 
+    /**
+     * 获取指定赛事的图片
+     *
+     * @param request
+     * @param response
+     */
+    public void getMatchAndOrgPic(HttpServletRequest request, HttpServletResponse response) {
+//        int id = (int)request.getSession().getAttribute("id");
+        //获取查询到的图片
+//        List<Pictures> picList = activityService.getPicture(id);
+        List<String> picList=new ArrayList<>();
+        picList.add("image/indexs/zxb.jpg");
+        picList.add("image/indexs/xshzx_0.jpg");
+        picList.add("image/indexs/shetuanzhaoxin_0.jpg");
+        picList.add("image/indexs/zuzishetuan.jpg");
+        System.out.println(result.getDatas());
+        //往结果里面存图片数组
+        result.getDatas().put("picList", picList);
+        //调用工具类返回结果
+        JsonUtil.returnJson(response, result);
+    }
     /**
      * 获取指定赛事的图片
      *
@@ -37,7 +59,7 @@ public class PictureController extends BaseController {
         //获取查询到的图片
         List<Pictures> picList = activityService.getPicture(id);
         //往结果里面存图片数组
-        result.getData().put("picList", picList);
+        result.getDatas().put("picList", picList);
         //调用工具类返回结果
         JsonUtil.returnJson(response, result);
     }
@@ -47,10 +69,10 @@ public class PictureController extends BaseController {
      * @param request
      * @param response
      */
-    public  void getMatchPicList(HttpServletRequest request, HttpServletResponse response) {
+    public void getMatchPicList(HttpServletRequest request, HttpServletResponse response) {
         List<Pictures> picList = null;
         //往结果里面存图片数组
-        result.getData().put("picList", picList);
+        result.getDatas().put("picList", picList);
         //调用工具类返回结果
         JsonUtil.returnJson(response, result);
     }

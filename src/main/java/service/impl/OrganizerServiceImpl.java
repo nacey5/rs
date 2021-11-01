@@ -25,6 +25,7 @@ public class OrganizerServiceImpl implements OrganizerService {
 
     @Override
     public void orgRegister(Organizer org) {
+        org.setId(orgDao.countAllOrg());
         orgDao.addOrg(org);
         openSession.commit();
     }
@@ -53,5 +54,10 @@ public class OrganizerServiceImpl implements OrganizerService {
     @Override
     public boolean checkOrgName(Integer count) {
         return false;
+    }
+
+    @Override
+    public List<Organizer> queryOrgsByName(String name) {
+        return orgDao.queryOrgsByName(name);
     }
 }

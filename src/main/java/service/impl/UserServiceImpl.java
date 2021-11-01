@@ -17,7 +17,7 @@ public class UserServiceImpl implements UserService {
     private final UserDao userDao = openSession.getMapper(UserDao.class);
 
     @Override
-    public Boolean checkUserName(Integer count) {
+    public Boolean checkUserCount(Integer count) {
         try {
             return userDao.checkCountExit(String.valueOf(count));
         } catch (Exception e) {
@@ -36,6 +36,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void register(User user) {
+        user.setId(userDao.countAllUser());
         try {
             userDao.addUser(user);
             openSession.commit();
@@ -72,4 +73,10 @@ public class UserServiceImpl implements UserService {
             throw new RuntimeException("添加头像失败！");
         }
     }
+
+    @Override
+    public User queryUserByName(String name) {
+        return null;
+    }
+
 }

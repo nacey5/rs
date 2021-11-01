@@ -1,6 +1,5 @@
 package service;
 
-import org.apache.ibatis.annotations.Param;
 import pojo.bean.ActivityUser;
 import pojo.bean.Participater;
 import pojo.bean.Pictures;
@@ -44,6 +43,12 @@ public interface ActivityService {
      */
     ActivityUser selectActivity(Integer id);
 
+    /**
+     * 根据名字查看活动是否存在
+     * @param name
+     * @return
+     */
+    boolean checkActivityName(String name);
     /**
      * 添加活动图片（base64编码形式）
      *
@@ -95,14 +100,21 @@ public interface ActivityService {
      */
     List<ActivityUser> selectInfoIncludePars(Integer id);
 
+//    /**
+//     *查询分页的活动
+//     * @param pageNo 页码
+//     * @param pageSize 当前页显示数量
+//     * @param id  用户id
+//     * @return 查询到的博客
+//     */
+//    PageBO<ActivityUser> page(int pageNo, int pageSize, Integer id);
+
     /**
-     *查询分页的活动
-     * @param pageNo 页码
-     * @param pageSize 当前页显示数量
-     * @param id  用户id
-     * @return 查询到的博客
+     * 通过活动名称查询活动
+     * @param searchText
+     * @return
      */
-    PageBo<ActivityUser> page(int pageNo, int pageSize, Integer id);
+    List<ActivityUser> searchActivityByName(String searchText);
 //    /**
 //     *查询分页的活动
 //     * @param pageNo 页码

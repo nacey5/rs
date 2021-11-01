@@ -95,5 +95,30 @@
             id=#{id}
     </update>
 
+    <!--User queryUserByName(@Param("name")String name);-->
+    <select id="queryUserByName" resultType="user">
+        select *
+        from
+            user_student
+        where
+            `name`=#{name}
+    </select>
 
+    <!--List<ActivityUser> selectActListByUserId(@Param("id") Integer id);-->
+    <select id="selectActListByUserId" resultType="activityUser">
+        select
+            ao.*
+        from
+            activity_organization ao ,
+            activity_content ac
+        where
+            ao.id=ac.id
+          and
+            ac.student_count=(select count from user_student where id=#{id})
+    </select>
+
+    <!--Integer countAllUser();-->
+    <select id="countAllUser" resultType="Integer">
+        select count(*) from user_student
+    </select>
 </mapper>

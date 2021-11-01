@@ -69,5 +69,11 @@ public interface OrganizerService {
      * @return
      */
     boolean checkOrgName(Integer count);
+    /**
+     * 根据组织名称查询组织对象-----(模糊查询)
+     * @param name 组织名
+     * @return 返回名称中含有name的组织
+     */
+    List<Organizer> queryOrgsByName(String name);
 }
 

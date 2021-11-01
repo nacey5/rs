@@ -13,7 +13,7 @@ public interface UserService {
      * @param count
      * @return
      */
-    Boolean checkUserName(Integer count);
+    Boolean checkUserCount(Integer count);
     /**
      * 用户登录
      * @param phone
@@ -45,4 +45,11 @@ public interface UserService {
      * @param imgStr
      */
     void addUserImg(Integer id,String imgStr);
+    /**
+     * 根据用户名查询用户信息
+     * @param name 用户名
+     * @return 返回null表示没有这个用户，反之亦然
+     */
+    User queryUserByName(String name);
+
 }

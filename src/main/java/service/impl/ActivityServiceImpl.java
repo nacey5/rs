@@ -6,8 +6,8 @@ import org.apache.ibatis.session.SqlSession;
 import pojo.bean.ActivityUser;
 import pojo.bean.Participater;
 import pojo.bean.Pictures;
-import pojo.bo.PageBo;
 import service.ActivityService;
+
 import java.util.List;
 
 /**
@@ -22,8 +22,13 @@ public class ActivityServiceImpl implements ActivityService {
 
     @Override
     public void addActivity(ActivityUser activityUser) {
-        activityDao.addActivity(activityUser);
-        openSession.commit();
+        try {
+            activityUser.setId(activityDao.countAllAct());
+            activityDao.addActivity(activityUser);
+            openSession.commit();
+        } catch (Exception e) {
+            throw new RuntimeException("添加活动失败!");
+        }
     }
 
     @Override
@@ -33,13 +38,22 @@ public class ActivityServiceImpl implements ActivityService {
 
     @Override
     public void updateActivityById(Integer id, ActivityUser activityUser) {
-        activityDao.addActivityInfo(id, activityUser.getInfo());
-        openSession.commit();
+        try {
+            activityDao.addActivityInfo(id, activityUser.getInfo());
+            openSession.commit();
+        } catch (Exception e) {
+            throw new RuntimeException("更新活动信息失败!");
+        }
     }
 
     @Override
     public ActivityUser selectActivity(Integer id) {
         return activityDao.selectInfoById(id);
+    }
+
+    @Override
+    public boolean checkActivityName(String name) {
+        return activityDao.checkActivityExist(name);
     }
 
     @Override
@@ -89,8 +103,7 @@ public class ActivityServiceImpl implements ActivityService {
     }
 
     @Override
-    public PageBo<ActivityUser> page(int pageNo, int pageSize, Integer id) {
-
+    public List<ActivityUser> searchActivityByName(String searchText) {
         return null;
     }
 

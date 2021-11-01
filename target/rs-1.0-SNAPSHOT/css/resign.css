@@ -24,7 +24,7 @@ a {
     right: 0;
     bottom: 0;
     width: 400px;
-    height: 450px;
+    height: 425px;
     margin: auto;
     background-color: #ffffff;
     opacity: 0.7;
@@ -43,9 +43,9 @@ a {
 
 .resign .resign_box {
     width: 335px;
-    height: 45px;
+    height: 35px;
     margin: 0 auto;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     border: 1px solid #f4f4f4;
     background-color: #f4f4f4;
     box-shadow: 5px 5px 3px #d6d6d6;
@@ -54,12 +54,12 @@ a {
 .resign .resign_box p {
     float: left;
     margin-left: 5px;
-    line-height: 45px;
-    font-size: 16px;
+    line-height: 35px;
+    font-size: 14px;
 }
 
 .resign .resign_box input {
-    font-size: 16px;
+    font-size: 14px;
     border: none;
     outline: medium;
     background-color: #f4f4f4;
@@ -68,7 +68,7 @@ a {
 .resign .resign_box img {
     float: right;
     width: 75px;
-    height: 45px;
+    height: 35px;
 }
 
 .resign button {
@@ -84,8 +84,7 @@ a {
 
 .resign .resignFooter {
     width: 360px;
-    height: 45px;
-    padding: 5px;
+    height: 25px;
     margin: 0 auto;
     font-size: 14px;
     color: #a1a1a1;
@@ -97,5 +96,32 @@ a {
 
 .resign .login {
     float: right;
-    line-height: 45px;
+    line-height: 25px;
+}
+
+
+/*社团组织所属的框*/
+
+.resign .resignbox {
+    width: 335px;
+    height: 35px;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    border: 1px solid #f4f4f4;
+    background-color: #f4f4f4;
+    box-shadow: 5px 5px 3px #d6d6d6;
+}
+
+.resign .resignbox p {
+    float: left;
+    margin-left: 5px;
+    line-height: 35px;
+    font-size: 14px;
+}
+
+.resign .resignbox input {
+    font-size: 14px;
+    border: none;
+    outline: medium;
+    background-color: #f4f4f4;
 }

@@ -1,6 +1,6 @@
 package pojo.dto;
 
-import java.util.List;
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -14,12 +14,12 @@ public class ResultState {
     //返回的状态吗
     private boolean code = false;
     //可以放任何对象的map需要什么就存什么进去
-    private Map<String, Object> data;
+    private Map<String, Object> datas =new HashMap<>();
 
-    public ResultState(String msg, boolean code, Map<String, Object> data) {
+    public ResultState(String msg, boolean code, Map<String, Object> datas) {
         this.msg = msg;
         this.code = code;
-        this.data = data;
+        this.datas = datas;
     }
 
     public ResultState() {
@@ -41,11 +41,11 @@ public class ResultState {
         this.code = code;
     }
 
-    public Map<String, Object> getData() {
-        return data;
+    public Map<String, Object> getDatas() {
+        return datas;
     }
 
-    public void setData(Map<String, Object> data) {
-        this.data = data;
+    public void setDatas(Map<String, Object> datas) {
+        this.datas = datas;
     }
 }

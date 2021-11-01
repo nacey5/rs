@@ -40,7 +40,7 @@ public class UserInfoController{
         } catch (Exception e) {
             e.printStackTrace();
         }
-        result.getData().put("user",user);
+        result.getDatas().put("user",user);
         JsonUtil.returnJson(response, result);
     }
 
