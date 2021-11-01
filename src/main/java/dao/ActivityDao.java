@@ -15,6 +15,20 @@ import java.util.Map;
  * @date 9/10/2021 19:08
  */
 public interface ActivityDao {
+
+    //-----------------------------------------------------------------------------------------------
+    //-----------------------------------------------------------------------------------------------
+    /**
+     * 根据名字查看活动是否存在-----(模糊查询)
+     * @param name
+     * @return 返回名称中含有name的活动
+     */
+    boolean checkActivityExist(@Param("name") String name);
+    //直接将这个方法的返回值改为 List<ActivityUser>
+
+    //-----------------------------------分割线---------上面是需要新增的方法-----------------------------
+    //-----------------------------------------------------------------------------------------------
+
     /**
      *通过id查询个人活动（非组织）
      * @param id
@@ -127,10 +141,4 @@ public interface ActivityDao {
      */
     String getCarouselPic(@Param("id") Integer id);
 
-    /**
-     * 根据名字查看活动是否存在
-     * @param name
-     * @return
-     */
-    boolean checkActivityExist(@Param("name") String name);
 }

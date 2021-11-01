@@ -1,8 +1,11 @@
 package dao;
 
+import pojo.bean.ActivityUser;
 import pojo.bean.User;
 import pojo.bean.UserPet;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 /**
  * @author DAHUANG
@@ -10,6 +13,23 @@ import org.apache.ibatis.annotations.Param;
  * @date 8/10/2021 - 15:37
  */
 public interface UserDao {
+    //-----------------------------------------------------------------------------------------------
+    //-----------------------------------------------------------------------------------------------
+    /**
+     * 根据用户名查询用户信息
+     * @param name 用户名
+     * @return 返回null表示没有这个用户，反之亦然
+     */
+    User queryUserByName(@Param("name")String name);
+
+    /**
+     * 通过用户id查询当前用户参与的所有活动
+     * @param id
+     * @return
+     */
+    List<ActivityUser> selectActListByUserId(Integer id);
+  //-----------------------------------分割线*********上面是需要新增的方法************------------------
+    // -----------------------------------------------------------------------------------------------
 
     /**
      * 通过手机号码和密码查询用户
@@ -80,5 +100,4 @@ public interface UserDao {
      * @param id
      */
      void addHeadPortrait(@Param("baseCode")String pic,@Param("id") Integer id);
-
 }
