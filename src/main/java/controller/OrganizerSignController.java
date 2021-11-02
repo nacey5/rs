@@ -45,6 +45,8 @@ public class OrganizerSignController {
             result.setMsg("登陆成功!");
             result.setCode(true);
         }
+        //存入当前登录的用户
+        request.getSession().setAttribute("nowOrg", organizer);
         //调用工具类返回结果
         JsonUtil.returnJson(response, result);
     }

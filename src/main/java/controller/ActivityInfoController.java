@@ -1,16 +1,13 @@
 package controller;
 
-import common.utils.Base64Util;
 import common.utils.JsonUtil;
 import pojo.bean.ActivityUser;
-import pojo.bean.Pictures;
+import pojo.dto.ResultState;
 import service.ActivityService;
 import service.impl.ActivityServiceImpl;
-
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.List;
 
 /**
  * @author WEIR
@@ -21,6 +18,7 @@ import java.util.List;
 public class ActivityInfoController  extends BaseController{
 
     private ActivityService activityService=new ActivityServiceImpl();
+    private ResultState result = new ResultState();
 
     /**
      *设置活动信息
@@ -39,7 +37,8 @@ public class ActivityInfoController  extends BaseController{
      */
     public void getActivityInfo(HttpServletRequest request, HttpServletResponse response){
         ActivityUser activityUser = activityService.selectActivity(Integer.valueOf(request.getParameter("actId")));
-        JsonUtil.returnJson(response,activityUser.getInfo());
+        result.getDatas().put("activityInfo",activityUser.getInfo());
+        JsonUtil.returnJson(response,result);
     }
 
     public void setActivityService(ActivityService activityService) {

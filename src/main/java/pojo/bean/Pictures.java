@@ -16,6 +16,11 @@ public class Pictures implements Serializable {
     Integer id;
     String picture;
 
+    public Pictures(Integer id, String picture) {
+        this.id = id;
+        this.picture = picture;
+    }
+
     public Integer getId() {
         return id;
     }

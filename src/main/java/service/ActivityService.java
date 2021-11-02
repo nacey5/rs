@@ -3,8 +3,6 @@ package service;
 import pojo.bean.ActivityUser;
 import pojo.bean.Participater;
 import pojo.bean.Pictures;
-import pojo.bo.PageBo;
-
 import java.util.List;
 
 /**

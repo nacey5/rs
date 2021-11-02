@@ -22,7 +22,7 @@ public abstract class BaseController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+//        req.getRequestURI()
         //设置编码
         req.setCharacterEncoding("UTF-8");
         resp.setCharacterEncoding("UTF-8");

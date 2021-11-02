@@ -1,76 +1,121 @@
 package controller;
 
+import annotation.WebRequest.RequestMapping;
 import common.utils.JsonUtil;
+import pojo.bean.ActivityUser;
+import pojo.bean.Organizer;
 import pojo.bean.Pictures;
 import pojo.dto.ResultState;
 import service.ActivityService;
+import service.OrganizerService;
 import service.UserService;
+import service.impl.ActivityServiceImpl;
+import service.impl.OrganizerServiceImpl;
+import service.impl.UserServiceImpl;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 /**
  * @author WEIR
- * @description
+ * @description 获取各种图片
  * @date 20/10/2021 - 16:51
  */
 @WebServlet("/Picture")
 public class PictureController extends BaseController {
-
-    private static UserService userService;
-    private static ActivityService activityService;
-    private  ResultState result = new ResultState();
-//    private Map<String, Object> datas=result.getDatas();
+    public static final String PIC_BASE_URL = "http://rsrs.nat300.top/rs/";
+    //    public static final String PIC_BASE_URL = "http://localhost:8080/rs/";
+    private static UserService userService=new UserServiceImpl();
+    private static ActivityService activityService=new ActivityServiceImpl();
+    private static OrganizerService organizerService =new OrganizerServiceImpl();
+    private ResultState result = new ResultState();
 
     /**
-     * 获取指定赛事的图片
+     * 获取*****首页****轮播图的图片
      *
      * @param request
      * @param response
      */
     public void getMatchAndOrgPic(HttpServletRequest request, HttpServletResponse response) {
-//        int id = (int)request.getSession().getAttribute("id");
         //获取查询到的图片
-//        List<Pictures> picList = activityService.getPicture(id);
+        List<Pictures> pictures= activityService.getPicture(0);
+        //创建图片路径的字符串数组
         List<String> picList=new ArrayList<>();
-        picList.add("image/indexs/zxb.jpg");
-        picList.add("image/indexs/xshzx_0.jpg");
-        picList.add("image/indexs/shetuanzhaoxin_0.jpg");
-        picList.add("image/indexs/zuzishetuan.jpg");
-        System.out.println(result.getDatas());
+        for (Pictures picture : pictures) {
+            picList.add(picture.getPicture());
+        }
         //往结果里面存图片数组
         result.getDatas().put("picList", picList);
+        System.out.println(picList.toString());
         //调用工具类返回结果
         JsonUtil.returnJson(response, result);
     }
+
     /**
-     * 获取指定赛事的图片
+     * 获取*****指定赛事*****的图片
      *
      * @param request
      * @param response
      */
+//    @RequestMapping(value="")
     public void getMatchPic(HttpServletRequest request, HttpServletResponse response) {
 
-        int id = (int)request.getSession().getAttribute("id");
+        int id = (int) request.getSession().getAttribute("id");
         //获取查询到的图片
-        List<Pictures> picList = activityService.getPicture(id);
+        List<Pictures> pictures = activityService.getPicture(id);
+        //创建图片路径的字符串数组
+        List<String> picList=new ArrayList<>();
+        for (Pictures picture : pictures) {
+            picList.add(picture.getPicture());
+        }
         //往结果里面存图片数组
         result.getDatas().put("picList", picList);
         //调用工具类返回结果
         JsonUtil.returnJson(response, result);
     }
+
     /**
-     * 获取轮播图中赛事的图片
+     * 获取*****赛事*****轮播图中的图片
      *
      * @param request
      * @param response
      */
     public void getMatchPicList(HttpServletRequest request, HttpServletResponse response) {
-        List<Pictures> picList = null;
+
+        List<String> picList = new ArrayList<>();
+        //查询活动并且遍历
+        for (ActivityUser activityUser : activityService.getActivity(-1, 1)) {
+            //获取对于的图片数组
+            List<Pictures> picture = activityService.getPicture(activityUser.getId());
+            //取第一张添加
+            picList.add(picture.get(0).getPicture());
+        }
+        //往结果里面存图片数组
+        result.getDatas().put("picList", picList);
+        //调用工具类返回结果
+        JsonUtil.returnJson(response, result);
+    }
+
+    /**
+     * 获取****社团组织****轮播图中的图片
+     *
+     * @param request
+     * @param response
+     */
+    public void getOrgPicList(HttpServletRequest request, HttpServletResponse response) {
+
+        List<String> picList = new ArrayList<>();
+
+        for (Organizer organizer : organizerService.getOrgs(-1, 1)) {
+            //获取对应的图片数组，获取头像(图片)
+            String picture = organizer.getHeadPortrait();
+            picList.add(picture);
+        }
         //往结果里面存图片数组
         result.getDatas().put("picList", picList);
         //调用工具类返回结果

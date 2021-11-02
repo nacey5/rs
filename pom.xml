@@ -5,9 +5,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.example</groupId>
-    <artifactId>rs</artifactId>
+    <artifactId>FindMore</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>rs01</name>
+    <name>FindMore</name>
     <packaging>war</packaging>
 
     <properties>

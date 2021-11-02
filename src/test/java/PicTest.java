@@ -1,4 +1,7 @@
+import controller.PictureController;
 import org.junit.Test;
+import pojo.bean.Pictures;
+import service.impl.ActivityServiceImpl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,12 +13,21 @@ import java.util.List;
  */
 public class PicTest {
     @Test
-    public  void setPic(){
-        List<String> picList=new ArrayList<>();
-        picList.add("image/indexs/zxb.jpg");
-        picList.add("image/indexs/xshzx_0.jpg");
-        picList.add("image/indexs/shetuanzhaoxin_0.jpg");
-        picList.add("image/indexs/zuzishetuan.jpg");
-
+    public void setPic() {
+        ActivityServiceImpl activityService = new ActivityServiceImpl();
+//        List<String> picList = new ArrayList<>();
+//        picList.add(PictureController.PIC_BASE_URL + "image/zxb.jpg");
+//        picList.add(PictureController.PIC_BASE_URL + "image/xshzx_0.jpg");
+//        picList.add(PictureController.PIC_BASE_URL + "image/shetuanzhaoxin_0.jpg");
+//        picList.add(PictureController.PIC_BASE_URL + "image/zuzishetuan.jpg");
+//        for (String s : picList) {
+//            activityService.addPicture(0,s);
+//        }
+//        activityService.addPicture(2, picList.get(0));
+//
+//        activityService.addPicture(3, picList.get(1));
+        for (Pictures pictures : activityService.getPicture(0)) {
+            System.out.println(pictures);
+        }
     }
 }

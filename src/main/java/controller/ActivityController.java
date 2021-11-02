@@ -24,21 +24,23 @@ public class ActivityController {
     private final ResultState result = new ResultState();
 
     /**
-     * 添加活动
+     * 发布活动
      *
      * @param request
      * @param response
      */
     public void addActivity(HttpServletRequest request, HttpServletResponse response) {
+
         //调用ObjectUtil工具类获取实例
         ActivityUser addActivity = (ActivityUser) ObjectUtil.getObject(request, ActivityUser.class);
         if (activityService.checkActivityName(request.getParameter("name"))) {
             activityService.addActivity(addActivity);
-            result.setMsg("添加活动成功");
+            result.setMsg("添加活动成功！");
             result.setCode(true);
         } else {
-            result.setMsg("添加活动失败");
+            result.setMsg("添加活动失败！该活动已存在！");
         }
+
         JsonUtil.returnJson(response, result);
     }
 

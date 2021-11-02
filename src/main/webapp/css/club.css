@@ -1,0 +1,64 @@
+.club-activity {
+    width: 1200px;
+}
+
+.left {
+    float: left;
+    width: 580px;
+    height: 620px;
+}
+
+.left img {
+    width: 580px;
+    height: 360px;
+}
+
+.p {
+    width: 580px;
+    height: 260px;
+}
+
+.p h5 {
+    margin-top: 80px;
+    text-align: center;
+}
+
+.p p {
+    text-align: center;
+}
+
+.right {
+    float: right;
+    width: 580px;
+    height: 670px;
+}
+
+.right img {
+    width: 580px;
+    height: 360px;
+}
+
+.right>p {
+    float: right;
+    height: 50px;
+    line-height: 50px;
+}
+
+
+/* 轮播图 */
+
+.wrap {
+    position: relative;
+    width: 1180px;
+    height: 420px;
+    margin: 0 auto;
+}
+
+.wrap img {
+    position: absolute;
+    z-index: 1;
+}
+
+.img-active {
+    z-index: 2;
+}

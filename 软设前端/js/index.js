@@ -4,7 +4,8 @@ window.addEventListener('load', function() {
     //获取轮播图图片数据
     $.ajax({
             type: 'post',
-            url: 'http://rsrs.nat300.top/rs/Picture',
+            // url: 'http://rsrs.nat300.top/rs/Picture',
+            url: 'http://localhost:8080`/rs/Picture',
             dataType: 'json',
             data: {
                 action: "getMatchAndOrgPic"

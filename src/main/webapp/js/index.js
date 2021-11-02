@@ -1,11 +1,14 @@
 window.addEventListener('load', function () {
+    var wrap = this.document.querySelector('.wrap');
+    var imgs = wrap.querySelectorAll('img'); //轮播图的图片
+    //获取轮播图图片数据
     $.ajax({
         type: 'post',
         // url: 'http://rsrs.nat300.top/rs/Picture',
         url: 'http://localhost:8080/rs/Picture',
         dataType: 'json',
         data: {
-            action: "getMatchAndOrgPic",
+            action: "getMatchAndOrgPic"
         },
         success: function (result) {
             for (let i = 0; i < result.datas.picList.length; i++) {
@@ -13,9 +16,6 @@ window.addEventListener('load', function () {
             }
         }
     })
-    var wrap = this.document.querySelector('.wrap');
-    var imgs = wrap.querySelectorAll('img'); //轮播图的图片
-    //获取轮播图图片数据
 
     //轮播图
     var index = 0;
@@ -45,10 +45,11 @@ window.addEventListener('load', function () {
             index = 0;
             imgs[Number(index)].classList.add('img-active'); //给当前图片添加img-active 
         }
-    }
 
+    }
     var timer = setInterval(function () {
         show();
     }, 4000);
+
 
 })
