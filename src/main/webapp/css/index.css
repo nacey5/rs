@@ -116,6 +116,36 @@ a {
 }
 
 
+/* 轮播图小圆点 */
+
+.slide_points {
+    position: absolute;
+    left: 50%;
+    bottom: 25%;
+    transform: translateX(-80%);
+    font-size: 0;
+    width: 100px;
+    z-index: 7;
+}
+
+.slide_points .slide_point {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    background-color: #fff;
+    border: 1px solid #000;
+    border-radius: 50%;
+    margin-right: 12px;
+}
+
+.slide_points .slide_point_active {
+    width: 14px;
+    height: 14px;
+    border: 2px solid #fff;
+    background-color: #cd3333;
+}
+
+
 /* 精彩赛事，社团组织 */
 
 .content li {
@@ -163,12 +193,14 @@ a {
 
 /* 登录进去之后显示的div */
 
-.login-true {
+.login-true1,
+.login-true2 {
     display: none;
     float: right;
 }
 
-.login-true span {
+.login-true1,
+.login-true2 span {
     line-height: 60px;
     text-align: center;
 }
