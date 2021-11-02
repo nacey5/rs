@@ -6,14 +6,13 @@ window.addEventListener('load', function() {
     //获取轮播图图片数据
     $.ajax({
             type: 'post',
-            // url: 'http://rsrs.nat300.top/rs/Picture',
-            url: 'http://localhost:8080`/rs/Picture',
+            url: 'http://rsrs.nat300.top/FindMore/Picture',
             dataType: 'json',
             data: {
                 action: "getMatchAndOrgPic"
             },
             success: function(result) {
-                for (let i = 0; i < imgs.length; i++) {
+                for (let i = 0; i < result.datas.picList.length; i++) {
                     imgs[i].src = result.datas.picList[i];
 
                 }
@@ -35,7 +34,7 @@ window.addEventListener('load', function() {
                 }
                 this.classList.add('img-active');
                 index = this.getAttribute('index'); //将图片和小圆点的索引号关联起来
-                points[index].classList.add('slide_point_active'); //给当前小圆点添加slide_point_active
+                points[Number(index)].classList.add('slide_point_active'); //给当前小圆点添加slide_point_active
             })
             // 点击小圆点时
         points[i].addEventListener('click', function() {
@@ -45,7 +44,7 @@ window.addEventListener('load', function() {
             }
             this.classList.add('slide_point_active');
             index = this.getAttribute('index'); //将图片和小圆点的索引号关联起来
-            imgs[index].classList.add('img-active'); //给当前小圆点添加slide_point_active
+            imgs[Number(index)].classList.add('img-active'); //给当前小圆点添加slide_point_active
         })
     }
     //自动播放

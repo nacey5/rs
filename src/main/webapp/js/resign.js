@@ -35,8 +35,9 @@ window.addEventListener('load', function() {
             if (man[0]) {
                 $.ajax({
                     type: 'post',
-                    url: 'http://rsrs.nat300.top/rs/UserSignServlet',
+                    url: 'http://rsrs.nat300.top/FindMore/UserSignServlet',
                     data: {
+                        action:"register",
                         phone: JSON.stringify(phone),
                         count: JSON.stringify(no),
                         pwd: JSON.stringify(psd),
@@ -51,8 +52,9 @@ window.addEventListener('load', function() {
             else {
                 $.ajax({
                     type: 'post',
-                    url: 'http://rsrs.nat300.top/rs/UserSignServlet',
+                    url: 'http://rsrs.nat300.top/FindMore/OrganizerSignServlet',
                     data: {
+                        action:"register",
                         name: JSON.stringify(name),
                         managercount: JSON.stringify(no),
                         phone: JSON.stringify(phone),

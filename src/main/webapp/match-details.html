@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>赛事详情</title>
+    <link rel="stylesheet" href="css/match.css">
+    <link rel="stylesheet" href="css/match-details.css">
+</head>
+
+<body>
+    <div class="header">
+        <!-- 顶部导航栏 -->
+        <div class="nav-box">
+            <div class="logo">
+                <img src="image/logo.png" alt="logo">
+            </div>
+            <div class="nav">
+                <ul>
+                    <li><a href="index.html">首页</a></li>
+                    <li>
+                        <a href="match.html">赛事</a>
+                    </li>
+                    <li><a href="club.html">社团组织</a></li>
+                </ul>
+            </div>
+            <div class="search">
+                <input type="text">
+                <img src="image/搜索图标.jpg" alt="">
+            </div>
+            <div class="login">
+                <span><a href="login.html">登录</a>&nbsp;|</span>
+                <span><a href="resign.html">注册</a></span>
+            </div>
+            <!-- 个人登录之后显示 -->
+            <div class="login-true1">
+                <div class="photo">
+                    <img src="" alt="">
+                    <ul>
+                        <li><a href="person_center.html">个人中心</a></li>
+                        <li><a href="myActive.html">我的活动</a></li>
+                        <li><a href="macth-send.html">赛事发布</a></li>
+                    </ul>
+                </div>
+                <span><a href="index.html">退出</a></span>
+            </div>
+            <!-- 社团组织登录之后显示 -->
+            <div class="login-true2">
+                <div class="photo">
+                    <img src="" alt="">
+                    <ul>
+                        <li><a href="club_center.html">个人中心</a></li>
+                        <li><a href="myActive.html">我的活动</a></li>
+                        <li><a href="macth-send.html">赛事发布</a></li>
+                    </ul>
+                </div>
+                <span><a href="index.html">退出</a></span>
+            </div>
+        </div>
+    </div>
+    <div class="content">
+        <h2>第十届软件设计大赛</h2>
+        <div class="active-jieshao">
+            <div class="left">
+                <p class="title">活动介绍</p>
+                <p></p>
+            </div>
+            <div class="right">
+                <!-- 判断登录的是社团组织直接把这个按钮隐藏 -->
+                <button class="list"><a>参赛者名单</a></button>
+                <button class="count"><a>参赛总人数</a></button>
+            </div>
+        </div>
+        <div class="active-time">
+            <p class="title">时间安排</p>
+            <div>
+                <span>报名时间：<p></p></span>
+            </div>
+            <div>
+                <span>初赛时间：<p></p></span>
+            </div>
+            <div>
+                <span>决赛时间：<p></p></span>
+            </div>
+        </div>
+        <div class="sign-method">
+            <p class="title">报名方式</p>
+            <p class="code">微信扫码下方二维码</p>
+            <img src="" alt="">
+        </div>
+    </div>
+</body>
+
+</html>

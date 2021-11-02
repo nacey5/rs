@@ -1,7 +1,5 @@
 package common.utils;
 
-import oracle.jrockit.jfr.events.RequestableEventEnvironment;
-
 import javax.servlet.http.HttpServletRequest;
 
 import static com.google.code.kaptcha.Constants.KAPTCHA_SESSION_KEY;

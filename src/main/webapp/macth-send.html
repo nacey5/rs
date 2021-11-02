@@ -12,7 +12,7 @@
 
 <body>
     <div class="header">
-        <div class="logo"></div>
+        <div class="logo"><img src="image/logo.png" alt="logo"></div>
         <div class="nav">
             <ul>
                 <li>首页</li>
@@ -69,14 +69,16 @@
                 <p>文字介绍</p>
                 <textarea cols="150" rows="8" placeholder="请输入活动相关的文字介绍"></textarea>
                 <p>图片介绍</p>
-                <div class="file">
-                    <img src="" alt="">
-                    <input type="file" name="file" accept="image/gif,image/jpeg,image/jpg,image/png,image/svg">
+                <div class="fileBox">
+                    <img src="" alt="" class="file_img">
+                    <input type="file" name="file" class="file" accept="image/gif,image/jpeg,image/jpg,image/png,image/svg">
                     <button>提交</button>
                 </div>
             </div>
         </div>
     </div>
 </body>
+<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="js/match-send.js"></script>
 
 </html>
