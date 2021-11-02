@@ -8,8 +8,8 @@ window.addEventListener('load', function() {
     var curBox = login.querySelector('.curBox');
 
     loginBtn.addEventListener('click', function(e) {
-        if (phone.innerHTML == "" || psd.innerHTML == "" || code == "") {
-            alert("请输入用户名");
+        if (phone.value == "" || psd.value == "" || code.value == "") {
+            alert("请输入完整信息");
             return false;
         }
         phone.addEventListener('blur', function() {
@@ -29,11 +29,26 @@ window.addEventListener('load', function() {
                 return true;
             }
         }
+        vcode.addEventListener('click', function() {
+            $.ajax({
+                type: 'post',
+                url: 'http://rsrs.nat300.top/rs/UserSignServlet',
+                dataType: 'json',
+                data: {
+                    'action': "login",
+                    'phone': JSON.stringify(phone),
+                    'pwd': JSON.stringify(psd),
+                    'vcode': JSON.stringify(code)
+                },
+                success: function(result) {
+                    console.log(result); //这里更换验证码图片
+                }
+            })
+        })
         $.ajax({
             type: 'post',
             url: 'http://rsrs.nat300.top/rs/UserSignServlet',
             dataType: 'json',
-
             data: {
                 'action': "login",
                 'phone': JSON.stringify(phone),
