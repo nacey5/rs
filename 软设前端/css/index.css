@@ -30,7 +30,7 @@ a {
 }
 
 .index-box .header .logo {
-    width: 120px;
+    width: 80px;
     height: 60px;
     float: left;
 }
@@ -98,6 +98,7 @@ a {
     width: 1180px;
     height: 420px;
     margin: 0 auto;
+    margin-top: 20px;
 }
 
 .content {
@@ -121,7 +122,7 @@ a {
 .slide_points {
     position: absolute;
     left: 50%;
-    bottom: 25%;
+    bottom: 5%;
     transform: translateX(-80%);
     font-size: 0;
     width: 100px;
