@@ -83,18 +83,18 @@ textarea {
     outline: none;
 }
 
-.file img {
-    width: 500px;
-    height: 200px;
+.fileBox img {
+    width: 682px;
+    height: 260px;
 }
 
-.file input {
+.fileBox input {
     width: 70px;
     height: 36px;
     margin-left: 20px;
 }
 
-.file button {
+.fileBox button {
     width: 50px;
     height: 30px;
     border: none;
