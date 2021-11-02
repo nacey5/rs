@@ -1,6 +1,8 @@
 package filter;
 import annotation.WebRequest.WebRequestError;
 import enums.LoginPermissionEnum;
+import pojo.bean.Organizer;
+import pojo.bean.User;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
@@ -33,9 +35,23 @@ public class DetectionLoginFilter implements Filter {
             return;
         }
         session=request.getSession(false);
-        if (session!=null){
-            filterChain.doFilter(servletRequest,servletResponse);
-            return;
+        /**
+         * 在session中获得的对象如果是Organizer类
+         */
+        if (session!=null&&(session.getAttribute("nowOrg")!=null)){
+            if (!LoginPermissionEnum.CHECK_NOT_MAP_ORG.contains(requestURI)){
+                filterChain.doFilter(servletRequest,servletResponse);
+                return;
+            }
+        }
+        /**
+         * 在session中获得的对象如果是User类
+         */
+        if (session!=null&&(session.getAttribute("nowUser")!=null)){
+            if (!LoginPermissionEnum.CHECK_NOT_MAP_USER.contains(requestURI)){
+                filterChain.doFilter(servletRequest,servletResponse);
+                return;
+            }
         }
         Class<? extends DetectionLoginFilter> aClass = getClass();
         WebRequestError annotation = aClass.getAnnotation(WebRequestError.class);

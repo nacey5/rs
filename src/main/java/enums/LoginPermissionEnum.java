@@ -14,9 +14,23 @@ public class  LoginPermissionEnum {
     //设置放行的的后缀
     public static final Set<String> CHECK_MAP= Collections.unmodifiableSet(
             /**
-             * 所登陆权限的用户可以访问的页面在此定义
+             * 游客未登录之前可以访问的页面
              */
-            new HashSet<>(Arrays.asList("/add"))
+            new HashSet<>(Arrays.asList("/add","login.html"))
+    );
+
+    public static final Set<String> CHECK_NOT_MAP_ORG=Collections.unmodifiableSet(
+            /**
+             * 组织登陆之后不可以访问的页面
+             */
+            new HashSet<>(Arrays.asList(""))
+    );
+
+    public static final Set<String> CHECK_NOT_MAP_USER=Collections.unmodifiableSet(
+            /**
+             * 用户登陆之后不可以访问的页面
+             */
+            new HashSet<>(Arrays.asList(""))
     );
 
 

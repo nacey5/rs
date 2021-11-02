@@ -106,4 +106,10 @@ public interface UserDao {
      * @return 返回用户的数量
      */
      Integer countAllUser();
+
+    /**
+     * 发布学生个人活动
+     * @param activity
+     */
+    void addUserActivity(ActivityUser activity);
 }

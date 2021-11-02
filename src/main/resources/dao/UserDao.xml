@@ -121,4 +121,14 @@
     <select id="countAllUser" resultType="Integer">
         select count(*) from user_student
     </select>
+
+    <!--void addUserActivity(ActivityUser activity);-->
+    <insert id="addUserActivity" parameterType="activityUser" useGeneratedKeys="true" keyProperty="id" databaseId="mysql">
+        insert into
+            activity_user(`name`,`organizer`,`time`,`adress`,`joinWay`,`level`)
+        values
+        (
+            #{name},#{organizer},#{time},#{adress},#{joinWay},#{level}
+        )
+    </insert>
 </mapper>
