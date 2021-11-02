@@ -14,7 +14,7 @@ li {
 }
 
 .header .logo {
-    width: 120px;
+    width: 80px;
     height: 60px;
     float: left;
 }
@@ -76,6 +76,9 @@ li {
     width: 1200px;
     height: 500px;
     margin: 0 auto;
+    background-image: url(../image/message-icon1.jpg);
+    background-repeat: no-repeat;
+    background-position: 700px center;
 }
 
 .content .avatar_change {
@@ -99,11 +102,13 @@ li {
 }
 
 .content .message {
-    width: 120px;
+    width: 550px;
     height: 70px;
     margin-left: 24px;
-    margin-bottom: 15px;
     font-weight: bold;
+    background-image: url(../image/message-icon2.jpg);
+    background-repeat: no-repeat;
+    background-position: top right;
 }
 
 .content .message p {
@@ -141,6 +146,7 @@ li {
     display: block;
     width: 100px;
     height: 60px;
+    cursor: pointer;
     border: 1px solid rgb(203, 243, 255);
-    background-color: #fff;
+    background-color: rgb(203, 243, 255);
 }

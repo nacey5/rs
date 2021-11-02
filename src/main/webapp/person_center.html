@@ -6,12 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>个人中心</title>
-    <link rel="stylesheet" href="css/person_center.css">
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/person_center.css">
 </head>
 
 <body>
     <div class="header">
-        <div class="logo"></div>
+        <div class="logo"><img src="../image/logo.png" alt="logo"></div>
         <div class="nav">
             <ul>
                 <li>首页</li>
@@ -22,8 +23,32 @@
         <div class="avatar_box">
             <div class="avatar"><img src="" alt=""></div>
             <div class="sign_out">
-                <a href="index.html">退出</a>
+                <a href="../html/index.html">退出</a>
             </div>
+        </div>
+        <!-- 个人登录之后显示 -->
+        <div class="login-true1">
+            <div class="photo">
+                <img src="" alt="">
+                <ul class="nav2">
+                    <li><a href="../html/person_center.html">个人中心</a></li>
+                    <li><a href="myActive">我的活动</a></li>
+                    <li><a href="../html/macth-send.html">赛事发布</a></li>
+                </ul>
+            </div>
+            <span><a href="../html/index.html">退出</a></span>
+        </div>
+        <!-- 社团组织登录之后显示 -->
+        <div class="login-true2">
+            <div class="photo">
+                <img src="" alt="">
+                <ul class="nav2">
+                    <li><a href="../html/club_center.html">个人中心</a></li>
+                    <li><a href="../html/myActive.html">我的活动</a></li>
+                    <li><a href="../html/macth-send.html">赛事发布</a></li>
+                </ul>
+            </div>
+            <span><a href="../html/index.html">退出</a></span>
         </div>
     </div>
     <div class="content">
@@ -42,8 +67,8 @@
         </div>
         <div class="form" id="sex">
             <p>性别
-                <input type="radio">男
-                <input type="radio">女</p>
+                <input type="radio" name="sex">男
+                <input type="radio" name="sex">女</p>
         </div>
         <div class="form" id="phone">
             <p>手机号码<input type="text" placeholder="请输入手机号码"></p>
