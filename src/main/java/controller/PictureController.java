@@ -30,9 +30,9 @@ import java.util.Map;
 public class PictureController extends BaseController {
     public static final String PIC_BASE_URL = "http://rsrs.nat300.top/rs/";
     //    public static final String PIC_BASE_URL = "http://localhost:8080/rs/";
-    private static UserService userService=new UserServiceImpl();
-    private static ActivityService activityService=new ActivityServiceImpl();
-    private static OrganizerService organizerService =new OrganizerServiceImpl();
+    private static final UserService userService=new UserServiceImpl();
+    private static final ActivityService activityService=new ActivityServiceImpl();
+    private static final OrganizerService organizerService =new OrganizerServiceImpl();
     private ResultState result = new ResultState();
 
     /**

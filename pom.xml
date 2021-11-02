@@ -100,7 +100,7 @@
         <dependency>
             <groupId>com.google.code.kaptcha</groupId>
             <artifactId>kaptcha</artifactId>
-            <version>2.3</version>
+            <version>2.3.2</version>
         </dependency>
 
     </dependencies>

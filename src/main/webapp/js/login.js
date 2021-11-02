@@ -8,7 +8,7 @@ window.addEventListener('load', function() {
     var curBox = login.querySelector('.curBox');
 
     loginBtn.addEventListener('click', function(e) {
-        if (phone.value ==''|| psd.value=='' || code.value=='') {
+        if (phone.value == "" || psd.value == "" || code.value == "") {
             alert("请输入完整信息");
             return false;
         }
@@ -23,13 +23,32 @@ window.addEventListener('load', function() {
             // 判断手机号码输入是否正确
         function phoneFun(phone) {
             var myreg = /^[1][3,4,5,7,8,9][0-9]{9}$/;
-            return myreg.test(phone);
+            if (!myreg.test(phone)) {
+                return false;
+            } else {
+                return true;
+            }
         }
+        vcode.addEventListener('click', function() {
+            $.ajax({
+                type: 'post',
+                url: 'http://rsrs.nat300.top/rs/UserSignServlet',
+                dataType: 'json',
+                data: {
+                    'action': "login",
+                    'phone': JSON.stringify(phone),
+                    'pwd': JSON.stringify(psd),
+                    'vcode': JSON.stringify(code)
+                },
+                success: function(result) {
+                    console.log(result); //这里更换验证码图片
+                }
+            })
+        })
         $.ajax({
             type: 'post',
-            url: 'http://rsrs.nat300.top/FindMore/UserSignServlet',
+            url: 'http://rsrs.nat300.top/rs/UserSignServlet',
             dataType: 'json',
-
             data: {
                 'action': "login",
                 'phone': JSON.stringify(phone),
@@ -37,13 +56,12 @@ window.addEventListener('load', function() {
                 'vcode': JSON.stringify(code)
             },
             success: function(result) {
-                if (result.msg == '用户名错误或密码错误！') {
+                if (result.msg == '用户不存在') {
                     alert("用户名错误或密码错误");
-                }else if (result.code) {
+                }
+                if (result.code == false) {
                     alert("验证码错误");
-                    code.val("");
-                }else if(result.msg=='登录成功！'){
-                    alert("登陆成功！");
+                    code.innerHTML = "";
                 }
 
             },

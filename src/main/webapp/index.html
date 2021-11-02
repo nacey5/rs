@@ -17,22 +17,44 @@
                 <div class="logo"></div>
                 <div class="nav">
                     <ul>
-                        <li>首页</li>
-                        <li><a href="match.html">赛事</a></li>
+                        <li><a href="index.html">首页</a></li>
+                        <li>
+                            <a href="match.html">赛事</a>
+                        </li>
                         <li><a href="club.html">社团组织</a></li>
                     </ul>
                 </div>
                 <div class="search">
                     <input type="text">
-                    <img src=" image/搜索图标.jpg" alt="">
+                    <img src="image/搜索图标.jpg" alt="">
                 </div>
                 <div class="login">
-                    <span><a href="  login.html">登录</a>&nbsp;|</span>
-                    <span><a href="  resign.html">注册</a></span>
+                    <span><a href="login.html">登录</a>&nbsp;|</span>
+                    <span><a href="resign.html">注册</a></span>
                 </div>
-                <div class="login-true">
-                    <div class="photo"><img src="" alt=""></div>
-                    <span><a href="  index.html">退出</a></span>
+                <!-- 个人登录之后显示 -->
+                <div class="login-true1">
+                    <div class="photo">
+                        <img src="" alt="">
+                        <ul>
+                            <li><a href="person_center.html">个人中心</a></li>
+                            <li><a href="myActive.html">我的活动</a></li>
+                            <li><a href="macth-send.html">赛事发布</a></li>
+                        </ul>
+                    </div>
+                    <span><a href="index.html">退出</a></span>
+                </div>
+                <!-- 社团组织登录之后显示 -->
+                <div class="login-true2">
+                    <div class="photo">
+                        <img src="" alt="">
+                        <ul>
+                            <li><a href="club_center.html">个人中心</a></li>
+                            <li><a href="myActive.html">我的活动</a></li>
+                            <li><a href="macth-send.html">赛事发布</a></li>
+                        </ul>
+                    </div>
+                    <span><a href="index.html">退出</a></span>
                 </div>
             </div>
             <!-- 轮播图 -->
@@ -41,16 +63,21 @@
                 <img src="" alt="">
                 <img src="" alt="">
             </div>
+            <ol class="slide_points">
+                <li class="slide_point slide_point_active"></li>
+                <li class="slide_point"></li>
+                <li class="slide_point"></li>
+            </ol>
         </div>
         <div class="content">
             <ul class="score">
-                <li><img src=" image/score.jpg" alt=""></li>
+                <li><img src="image/score.jpg" alt=""></li>
                 <li><img src="" alt=""></li>
                 <li><img src="" alt=""></li>
                 <li><img src="" alt=""></li>
             </ul>
             <ul class="club">
-                <li><img src=" image/club.jpg" alt=""></li>
+                <li><img src="image/club.jpg" alt=""></li>
                 <li><img src="" alt=""></li>
                 <li><img src="" alt=""></li>
                 <li><img src="" alt=""></li>
@@ -67,6 +94,6 @@
     </div>
 </body>
 <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
-<script src=" js/index.js"></script>
+<script src="js/index.js"></script>
 
 </html>

@@ -35,17 +35,14 @@ window.addEventListener('load', function() {
             if (man[0]) {
                 $.ajax({
                     type: 'post',
-                    // url: 'http://rsrs.nat300.top/FindMore/UserSignServlet',
-                    url: 'http://localhost:8080/FindMore/UserSignServlet',
+                    url: 'http://rsrs.nat300.top/rs/UserSignServlet',
                     data: {
-                        action: "register",
                         phone: JSON.stringify(phone),
                         count: JSON.stringify(no),
                         pwd: JSON.stringify(psd),
                         vcode: JSON.stringify(code)
                     },
                     success: function(result) {
-                        alert(result.code);
                         console.log(result);
                     }
                 })
@@ -54,10 +51,8 @@ window.addEventListener('load', function() {
             else {
                 $.ajax({
                     type: 'post',
-                    // url: 'http://rsrs.nat300.top/FindMore/OrganizerSignController',
-                    url: 'http://localhost:8080/FindMore/OrganizerSignController',
+                    url: 'http://rsrs.nat300.top/rs/UserSignServlet',
                     data: {
-                        action: "register",
                         name: JSON.stringify(name),
                         managercount: JSON.stringify(no),
                         phone: JSON.stringify(phone),
@@ -66,7 +61,6 @@ window.addEventListener('load', function() {
                         vcode: JSON.stringify(code)
                     },
                     success: function(result) {
-                        alert(result.code);
                         console.log(result);
                     }
                 })

@@ -21,7 +21,6 @@ public class DetectionLoginFilter implements Filter {
 
     }
 
-
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         HttpServletRequest request= (HttpServletRequest) servletRequest;
@@ -58,7 +57,6 @@ public class DetectionLoginFilter implements Filter {
         url=annotation.value();
         //拒绝其访问请求
         request.getRequestDispatcher(url).forward(servletRequest, servletResponse);
-
     }
 
     @Override
