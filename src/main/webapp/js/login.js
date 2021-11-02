@@ -27,7 +27,7 @@ window.addEventListener('load', function() {
         }
         $.ajax({
             type: 'post',
-            url: 'http://rsrs.nat300.top/rs/UserSignServlet',
+            url: 'http://rsrs.nat300.top/FindMore/UserSignServlet',
             dataType: 'json',
 
             data: {

@@ -35,8 +35,8 @@ window.addEventListener('load', function() {
             if (man[0]) {
                 $.ajax({
                     type: 'post',
-                    // url: 'http://rsrs.nat300.top/rs/UserSignServlet',
-                    url: 'http://localhost:8080/rs/UserSignServlet',
+                    // url: 'http://rsrs.nat300.top/FindMore/UserSignServlet',
+                    url: 'http://localhost:8080/FindMore/UserSignServlet',
                     data: {
                         action: "register",
                         phone: JSON.stringify(phone),
@@ -54,8 +54,8 @@ window.addEventListener('load', function() {
             else {
                 $.ajax({
                     type: 'post',
-                    // url: 'http://rsrs.nat300.top/rs/OrganizerSignController',
-                    url: 'http://localhost:8080/rs/OrganizerSignController',
+                    // url: 'http://rsrs.nat300.top/FindMore/OrganizerSignController',
+                    url: 'http://localhost:8080/FindMore/OrganizerSignController',
                     data: {
                         action: "register",
                         name: JSON.stringify(name),
