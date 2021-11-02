@@ -1,7 +1,21 @@
 window.addEventListener('load', function() {
     var wrap = this.document.querySelector('.wrap');
     var imgs = wrap.querySelectorAll('img'); //轮播图的图片
-    //轮播图
+    //获取轮播图图片数据
+    $.ajax({
+            type: 'post',
+            url: 'http://rsrs.nat300.top/rs/Picture',
+            dataType: 'json',
+            data: {
+                action: "getMatchAndOrgPic"
+            },
+            success: function(result) {
+                for (let i = 0; i < imgs.length; i++) {
+                    imgs[i].src = result.datas.picList[i];
+                }
+            }
+        })
+        //轮播图
     var index = 0;
     var j = 0;
     for (j = 0; j < imgs.length; j++) {
@@ -34,15 +48,6 @@ window.addEventListener('load', function() {
     var timer = setInterval(function() {
         show();
     }, 4000);
-    //获取轮播图图片数据
-    $.ajax({
-        type: 'post',
-        url: 'http://rsrs.nat300.top/rs/Picture',
-        dataType: 'json',
-        success: function(result) {
-            for (let i = 0; i < imgs.length; i++) {
-                imgs[i].src = result[i].url;
-            }
-        }
-    })
+
+
 })
