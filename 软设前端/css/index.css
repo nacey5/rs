@@ -53,7 +53,7 @@ a {
     position: relative;
     float: left;
     width: 200px;
-    margin-left: 400px;
+    margin-left: 300px;
     line-height: 60px;
 }
 
@@ -109,11 +109,10 @@ a {
     position: absolute;
     width: 1180px;
     height: 420px;
-    z-index: 1;
 }
 
 .img-active {
-    z-index: 2;
+    z-index: 5;
 }
 
 
@@ -159,4 +158,17 @@ a {
 
 .footer .contact span a {
     color: #000;
+}
+
+
+/* 登录进去之后显示的div */
+
+.login-true {
+    display: none;
+    float: right;
+}
+
+.login-true span {
+    line-height: 60px;
+    text-align: center;
 }
