@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登录</title>
+    <link rel="stylesheet" type="text/css" href=" css/login.css">
+</head>
+<!-- 登录页面 -->
+
+<body>
+    <div class="loginBox">
+        <div class="login">
+            <div class="loginTitle">
+                <h3>登录</h3>
+            </div>
+            <div>
+                <div class="login_box">
+                    <p>账号&nbsp;<input type="text" placeholder="手机号码" name="phone" class="phoneNo"></p>
+                </div>
+                <div class="curBox">请输入11位数的正确的手机号码</div>
+                <div class="login_box">
+                    <p>密码&nbsp;<input type="password" name="password" class="password"></p>
+                </div>
+                <div class="curBox">请输入正确的密码</div>
+                <div class="login_box">
+                    <p>验证码&nbsp;<input type="text" name="code" class="code"></p>
+<!--                    <img src=" image/Yanzhengma.jpg" title="点击切换图片" class="vcode">-->
+                    <img src="kaptcha.jpg" title="点击切换图片" class="vcode" alt="">
+                </div>
+                <div class="curBox">请输入正确的验证码</div>
+                <button>登录</button>
+                <div class="loginFooter">
+                    <span class="forgetPsd"><a href="javascript:;">忘记密码</a></span>
+                    <span class="resign"><a href="  resign.html">注册</a></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src=" js/login.js"></script>
+
+</html>

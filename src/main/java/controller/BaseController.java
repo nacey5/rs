@@ -23,6 +23,7 @@ public abstract class BaseController extends HttpServlet {
         //设置编码类型，防止乱码
         req.setCharacterEncoding("UTF-8");
         resp.setCharacterEncoding("UTF-8");
+
         String action = req.getParameter("action");
         try {
             // 获取action业务鉴别字符串，获取相应的业务 方法反射对象

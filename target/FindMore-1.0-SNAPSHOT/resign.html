@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>注册</title>
+    <link rel="stylesheet" type="text/css" href="css/resign.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript" src=" "></script>
+</head>
+
+<body>
+<div class="resignBox">
+    <div class="resign">
+        <div class="resignTitle">
+            <h3>注册</h3>
+        </div>
+        <div>
+            <div class="resign_box">
+                <p>注册类型&nbsp;
+                    <input type="radio" name="resign-man" class="resign-man" value="User">个人注册
+                    <input type="radio" name="resign-man" class="resign-man" value="Org">社团组织注册
+                </p>
+            </div>
+            <div class="resign_box">
+                <p>账号&nbsp;<input type="text" placeholder="请输入手机号码" class="phone"></p>
+            </div>
+            <div class="resign_box">
+                <p>学号&nbsp;<input type="text" placeholder="请输入学号" class="userno"></p>
+            </div>
+
+            <div class="resignbox" style="display: none;">
+                <p>社团组织名称&nbsp;<input type="text" class="name"></p>
+            </div>
+            <div class="resignbox" style="display: none;">
+                <p>社团组织所属学院&nbsp;<input type="text" class="college"></p>
+            </div>
+            <div class="resign_box">
+                <p>密码&nbsp;<input type="password" placeholder="请输入密码" class="password"></p>
+            </div>
+            <div class="resign_box">
+                <p>确认密码&nbsp;<input type="password" placeholder="请再次输入密码" class="passwordAgain"></p>
+            </div>
+            <div class="resign_box">
+                <p>验证码&nbsp;<input type="text" name="code" class="code"></p>
+                <!--                    <img src="image/Yanzhengma.jpg" alt="">-->
+                <img src="kaptcha.jpg" title="点击切换图片" class="vcode" alt="">
+
+            </div>
+            <button>注册</button>
+            <div class="resignFooter">
+                <span class="login"><a href="login.html">登录</a></span>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="js/resign.js"></script>
+
+</html>

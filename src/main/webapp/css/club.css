@@ -1,5 +1,6 @@
 .club-activity {
     width: 1200px;
+    margin-top: 30px;
 }
 
 .left {
@@ -55,11 +56,51 @@
     margin-top: 20px;
 }
 
+.content {
+    width: 1200px;
+    margin: 0 auto;
+}
+
 .wrap img {
     position: absolute;
-    z-index: 1;
+    width: 1180px;
+    height: 420px;
 }
 
 .img-active {
-    z-index: 2;
+    z-index: 5;
+}
+
+
+/* 轮播图小圆点 */
+
+.slide_points {
+    position: absolute;
+    left: 50%;
+    bottom: 5%;
+    transform: translateX(-80%);
+    font-size: 0;
+    width: 100px;
+    z-index: 7;
+}
+
+.slide_points .slide_point {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    background-color: #fff;
+    border: 1px solid #000;
+    border-radius: 50%;
+    margin-right: 12px;
+}
+
+.slide_points .slide_point_active {
+    width: 14px;
+    height: 14px;
+    border: 2px solid #fff;
+    background-color: #cd3333;
+}
+
+.change {
+    cursor: pointer;
 }

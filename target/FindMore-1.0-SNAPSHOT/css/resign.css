@@ -1,0 +1,131 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+}
+.code{
+    width: 90px;
+    height: 45px;
+}
+.resignBox {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: url(../image/loginBg.jpg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+.resign {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 400px;
+    height: 425px;
+    margin: auto;
+    background-color: #ffffff;
+    opacity: 0.6;
+}
+
+.resign .resignTitle {
+    height: 45px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.resign .resignTitle h3 {
+    line-height: 45px;
+    font-weight: normal;
+}
+
+.resign .resign_box {
+    width: 335px;
+    height: 35px;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    border: 1px solid #f4f4f4;
+    background-color: #f4f4f4;
+    box-shadow: 5px 5px 3px #d6d6d6;
+}
+
+.resign .resign_box p {
+    float: left;
+    margin-left: 5px;
+    line-height: 35px;
+    font-size: 14px;
+}
+
+.resign .resign_box input {
+    font-size: 14px;
+    border: none;
+    outline: medium;
+    background-color: #f4f4f4;
+}
+
+.resign .resign_box img {
+    float: right;
+    width: 75px;
+    height: 35px;
+    cursor: pointer;
+}
+
+.resign button {
+    display: block;
+    width: 180px;
+    height: 45px;
+    margin: 0 auto;
+    margin-top: 20px;
+    background-color: #74cbbf;
+    border-radius: 5px;
+    border: none;
+}
+
+.resign .resignFooter {
+    width: 360px;
+    height: 25px;
+    margin: 0 auto;
+    font-size: 14px;
+    color: #a1a1a1;
+}
+
+.resign .resignFooter a {
+    color: #a1a1a1;
+}
+
+.resign .login {
+    float: right;
+    line-height: 25px;
+}
+
+
+/*社团组织所属的框*/
+
+.resign .resignbox {
+    width: 335px;
+    height: 35px;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    border: 1px solid #f4f4f4;
+    background-color: #f4f4f4;
+    box-shadow: 5px 5px 3px #d6d6d6;
+}
+
+.resign .resignbox p {
+    float: left;
+    margin-left: 5px;
+    line-height: 35px;
+    font-size: 14px;
+}
+
+.resign .resignbox input {
+    font-size: 14px;
+    border: none;
+    outline: medium;
+    background-color: #f4f4f4;
+}
