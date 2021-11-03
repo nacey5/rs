@@ -67,4 +67,14 @@
         from
             user_organization
     </select>
+
+    <!--Organizer selectOrgByHeadPortrait(@Param("picCode")String picCode);-->
+    <select id="selectOrgByHeadPortrait" resultType="org">
+        select
+               *
+        from
+             user_organization
+        where
+              pic_org=#{picCode}
+    </select>
 </mapper>

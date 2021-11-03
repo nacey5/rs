@@ -182,4 +182,11 @@ public interface ActivityDao {
      * @return
      */
     Integer getLevelByID(@Param("id") Integer id);
+
+    /**
+     * 通过主图片获得活动
+     * @param picCode
+     * @return
+     */
+    ActivityUser selectActByMainPic(@Param("picCode") String picCode);
 }

@@ -141,4 +141,14 @@
         where
             id=#{id}
     </select>
+
+    <!--User selectUserByHeadPortrait(@Param("picCode")String picCode);-->
+    <select id="selectUserByHeadPortrait" resultType="user">
+        select
+               *
+        from
+             user_student
+        where
+              pic_user=#{picCode}
+    </select>
 </mapper>

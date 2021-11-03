@@ -119,4 +119,11 @@ public interface UserDao {
      * @return
      */
     Integer getLevelByID(@Param("id") Integer id);
+
+    /**
+     * 通过头像获得用户信息
+     * @param picCode
+     * @return
+     */
+    User selectUserByHeadPortrait(@Param("picCode")String picCode);
 }

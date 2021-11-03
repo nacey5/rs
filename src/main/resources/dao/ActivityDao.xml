@@ -240,4 +240,10 @@
         where
             id=#{id}
     </select>
+
+    <!--ActivityUser selectActByMainPic(@Param("picCode") String picCode);-->
+    <select id="selectActByMainPic" resultType="activityUser">
+        select ao.*from activity_organization ao,pcituremain_activity pa
+        where ao.id=(select pa.id where pa.picture=#{picCode})
+    </select>
 </mapper>
