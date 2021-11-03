@@ -1,3 +1,4 @@
+import common.utils.Md5Util;
 import controller.PictureController;
 import org.junit.Test;
 import pojo.bean.Pictures;
@@ -33,7 +34,8 @@ public class PicTest {
 //            System.out.println(pictures);
 //        }
         UserService userService=new UserServiceImpl();
-        userService.register(new User(201543239,"123d","13068524158"));
+        userService.register(new User(201543000,Md5Util.getMd5String("123d"),"13126021980"));
        // activityService.addPicture(2,"asdaddadad");
+//        userService.login("13012344321", "123456");
     }
 }

@@ -1,0 +1,272 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+}
+
+li {
+    list-style-type: none;
+}
+
+.header {
+    width: 1200px;
+    height: 60px;
+    margin: 0 auto;
+}
+
+.header .logo {
+    width: 80px;
+    height: 60px;
+    float: left;
+}
+
+.header .nav {
+    width: 480px;
+    height: 80px;
+    float: left;
+}
+
+.header .nav ul li {
+    float: left;
+    width: 80px;
+    margin-left: 20px;
+    line-height: 60px;
+    text-align: center;
+}
+
+
+/* 导航栏浮动 */
+
+.nav ul li:hover {
+    background-color: rgb(116, 203, 191);
+}
+
+
+/* 登录进去之后显示的div */
+
+.login-true1 {
+    display: none;
+    float: right;
+}
+
+.login-true2 {
+    display: none;
+    float: right;
+}
+
+.login-true1 span {
+    line-height: 60px;
+    text-align: center;
+}
+
+.login-true2 span {
+    line-height: 60px;
+    text-align: center;
+}
+
+
+/* 二级导航栏 */
+
+.nav2 {
+    display: none;
+    width: 105px;
+    height: 105px;
+}
+
+.nav2 li {
+    line-height: 35px;
+}
+
+.nav2 li:hover {
+    color: #fff;
+    background-color: rgb(116, 203, 191);
+}
+
+
+/* 点击头像之后二级导航栏出现 */
+
+.photo:hover .nav2 {
+    display: block;
+}
+
+.header .search {
+    position: relative;
+    float: left;
+    width: 200px;
+    margin-left: 150px;
+    line-height: 60px;
+}
+
+.header .search input {
+    width: 285px;
+    line-height: 35px;
+    border: 1px solid #000;
+    border-radius: 5px;
+    outline: none;
+}
+
+.header .search img {
+    position: absolute;
+    top: 25%;
+    margin-left: 250px;
+}
+
+.header .login {
+    float: right;
+}
+
+.header .login span {
+    line-height: 60px;
+}
+
+.content {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+
+/* 轮播图 */
+
+.wrap {
+    position: relative;
+    width: 1180px;
+    height: 420px;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+
+.content {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.wrap img {
+    position: absolute;
+    width: 1180px;
+    height: 420px;
+}
+
+.img-active {
+    z-index: 5;
+}
+
+
+/* 轮播图小圆点 */
+
+.slide_points {
+    position: absolute;
+    left: 50%;
+    bottom: 5%;
+    transform: translateX(-80%);
+    font-size: 0;
+    width: 100px;
+    z-index: 7;
+}
+
+.slide_points .slide_point {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    background-color: #fff;
+    border: 1px solid #000;
+    border-radius: 50%;
+    margin-right: 12px;
+}
+
+.slide_points .slide_point_active {
+    width: 14px;
+    height: 14px;
+    border: 2px solid #fff;
+    background-color: #cd3333;
+}
+
+.content .sports {
+    width: 1200px;
+    height: 300px;
+}
+
+.sports-title {
+    width: 90px;
+    height: 30px;
+    margin: 10px 0;
+    line-height: 30px;
+    background-color: rgb(116, 203, 191);
+    color: #fff;
+    text-align: center;
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+.sports .sports-img {
+    width: 682px;
+    height: 260px;
+}
+
+.sports .sports-p {
+    width: 518px;
+    height: 260px;
+    text-align: center;
+}
+
+.sports h3 {
+    margin-top: 90px;
+}
+
+.academic {
+    clear: both;
+    width: 1200px;
+    height: 360px;
+    margin-top: 30px;
+}
+
+.academic-img {
+    width: 600px;
+    height: 290px;
+}
+
+.academic .academic-p {
+    width: 600px;
+    height: 30px;
+}
+
+.academic .academic-p p {
+    line-height: 30px;
+    text-align: center;
+}
+
+.voluntary {
+    position: relative;
+    width: 1200px;
+    height: 360px;
+    margin-top: 30px;
+}
+
+.voluntary-img {
+    width: 600px;
+    height: 320px;
+}
+
+.voluntary-p {
+    width: 590px;
+    height: 30px;
+    position: absolute;
+    bottom: 0;
+    background-color: rgb(114, 111, 105);
+    color: #fff;
+    opacity: .8;
+}
+
+.voluntary-p p {
+    line-height: 30px;
+    margin-left: 10px;
+}

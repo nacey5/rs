@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.OrganizatorDao">
+    <cache eviction="FIFO" flushInterval="300000" readOnly="false"/>
+
+    <!--Organizer selectInfoByPhoneAndPassword(@Param("phone") String phone, @Param("password") String password);-->
+    <select id="selectInfoByPhoneAndPassword" resultType="org">
+        select
+            * from user_organization
+        where `phone`=#{phone}
+          and `password`=#{password}
+    </select>
+
+    <!--void addOrg(Organizer org);-->
+    <!--头像，姓名，管理者学号，联系手机号码(登陆)，密码，学院-->
+    <insert id="addOrg" parameterType="org" useGeneratedKeys="true" keyProperty="id" databaseId="mysql">
+        insert into
+            user_organization(`name`,`level`,`managercount`,`phone`,`password`,`pic_org`,`collage`)
+        values
+        (#{name},#{level},#{mangerCount},#{phone},#{password},#{headPortrait},#{collage})
+    </insert>
+
+    <!--String getHeadPortrait(@Param("id") Integer id);-->
+    <select id="getHeadPortrait" resultType="string">
+        select pic_org
+        from
+            user_organization
+        where
+            id=#{id}
+    </select>
+
+    <!--void addInfo(@Param("id") Integer id);-->
+    <insert id="addInfo" databaseId="mysql">
+        insert into
+            info_organization(`id`,`info`)
+            values
+            (#{id},#{info})
+    </insert>
+
+    <!--String selectInfo(@Param("id")Integer id);-->
+    <select id="selectInfo" resultType="string">
+        select info
+        from
+            info_organization
+        where
+            id=#{id}
+    </select>
+
+    <!--    List<Organizer> getOrgs(@Param("num1") Integer number1,@Param("num2") Integer number2);   -->
+    <select id="getOrgs" resultType="org">
+        select *
+        from
+            user_organization
+        where 1=1
+        order by
+            id
+            asc limit
+            #{num1},#{num2}
+    </select>
+
+    <!--Integer countAllOrg();-->
+    <select id="countAllOrg" resultType="Integer">
+        select
+            count(*)
+        from
+            user_organization
+    </select>
+</mapper>

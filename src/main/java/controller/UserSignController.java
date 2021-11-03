@@ -41,22 +41,35 @@ public class UserSignController extends BaseController {
      */
     public void login(HttpServletRequest request, HttpServletResponse response) {
         String token = WebUtil.getCode(request);
-        System.out.println(WebUtil.getCode(request));
-        String userName = request.getParameter("username");
+        String phone = request.getParameter("phone");
         String password = request.getParameter("password");
         String vcode = request.getParameter("vcode");
+        System.out.println(phone);
+        System.out.println(vcode);
         System.out.println("登录" + DATE);
-        //登录
-        User user = userService.login(userName, Md5Util.getMd5String(password));
-        if (user == null) {
-            result.setMsg("用户名错误或密码错误！");
-        } else if (!token.equalsIgnoreCase(vcode)) {
-            result.setMsg("验证码错误!");
+        User user = null;
+        //判断验证码
+        if (token != null && token.equalsIgnoreCase(vcode)) {
+            //登录
+            if (userService.checkUserCount(phone)) {
+                try {
+                    user = userService.login(phone, Md5Util.getMd5String(password));
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                if (user == null) {
+                    result.setMsg("用户名错误或密码错误！");
+                } else {
+                    result.setMsg("登陆成功!");
+                    result.setCode(true);
+                    //存入当前登录的用户
+                    request.getSession().setAttribute("nowUser", user);
+                }
+            }else {
+                result.setMsg("用户名不存在！");
+            }
         } else {
-            result.setMsg("登陆成功!");
-            result.setCode(true);
-            //存入当前登录的用户
-            request.getSession().setAttribute("nowUser", user);
+            result.setMsg("验证码错误!");
         }
         //调用工具类返回结果
         JsonUtil.returnJson(response, result);
@@ -68,20 +81,14 @@ public class UserSignController extends BaseController {
      * @param request
      * @param response
      */
-    public void register(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void register(HttpServletRequest request, HttpServletResponse response) throws
+            ServletException, IOException {
         // 获取Session中的验证码
-        String token = (String) request.getSession().getAttribute(KAPTCHA_SESSION_KEY);
-        // 删除 Session中的验证码
-        request.getSession().removeAttribute(KAPTCHA_SESSION_KEY);
-
-        System.out.println("验证码：" + token);
+        String token = WebUtil.getCode(request);
         String vcode = request.getParameter("vcode");
-
-        System.out.println(vcode);
-
-        String phone=request.getParameter("phone");
-        Integer count= Integer.valueOf(request.getParameter("count"));
-        String password= request.getParameter("password");
+        String phone = request.getParameter("phone");
+        Integer count = Integer.valueOf(request.getParameter("count"));
+        String password = request.getParameter("password");
         System.out.println("注册" + DATE);
         //检查 验证码是否正确
         if (token != null && token.equalsIgnoreCase(vcode)) {
@@ -89,12 +96,14 @@ public class UserSignController extends BaseController {
             if (!userService.checkUserCount(phone)) {
                 //判断用户是否已存在
                 //调用ObjectUtil工具类获取实例
-                userService.register(new User(count,phone,password));
-                System.out.println("注册成功！");
+                try {
+                    userService.register(new User(count, phone, password));
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
                 result.setMsg("注册成功！");
                 result.setCode(true);
             } else {
-                System.out.println("该用户已存在！");
                 result.setMsg("该用户已存在！");
             }
         } else {

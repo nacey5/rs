@@ -1,0 +1,103 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+}
+
+.content {
+    width: 1200px;
+    margin: 0 auto;
+    margin-left: 44px;
+}
+
+.content .title {
+    width: 350px;
+    height: 50px;
+    background-image: url(../image/score-icon2.jpg);
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.content .title h3 {
+    margin-left: 55px;
+}
+
+.scoreBox {
+    width: 1200px;
+    height: 300px;
+    margin-left: 44px;
+}
+
+.score {
+    float: left;
+    width: 500px;
+    margin-right: 25px;
+}
+
+.score p {
+    height: 45px;
+    margin-top: 10px;
+    font-size: 15px;
+    line-height: 45px;
+}
+
+.score div {
+    width: 500px;
+    height: 33px;
+    border: 1px solid #000;
+}
+
+.score div input {
+    width: 400px;
+    line-height: 30px;
+    margin-left: 5px;
+    border: none;
+    outline: none;
+}
+
+.score div img {
+    float: right;
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+}
+
+.activeBox {
+    margin-left: 44px;
+}
+
+.activeBox p {
+    height: 45px;
+    margin-top: 10px;
+    font-size: 15px;
+    line-height: 45px;
+}
+
+textarea {
+    padding-left: 5px;
+    padding-top: 5px;
+    outline: none;
+}
+
+.fileBox img {
+    width: 682px;
+    height: 260px;
+}
+
+.fileBox input {
+    width: 70px;
+    height: 36px;
+    margin-left: 20px;
+}
+
+.fileBox button {
+    width: 50px;
+    height: 30px;
+    border: none;
+    background-color: rgb(115, 203, 190);
+    cursor: pointer;
+}

@@ -1,0 +1,128 @@
+/*登录*/
+
+* {
+    margin: 0;
+    padding: 0;
+}
+.code{
+    width: 90px;
+    height: 45px;
+}
+a {
+    text-decoration: none;
+    color: #000;
+}
+.loginBox {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: url(../image/loginBg.jpg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+.login {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 400px;
+    height: 345px;
+    margin: auto;
+    background-color: #ffffff;
+    opacity: 0.6;
+}
+
+.login .loginTitle {
+    height: 45px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.login .loginTitle h3 {
+    line-height: 45px;
+    font-weight: normal;
+}
+
+.login .login_box {
+    width: 335px;
+    height: 45px;
+    margin: 0 auto;
+    margin-bottom: 15px;
+    border: 1px solid #f4f4f4;
+    background-color: #f4f4f4;
+    box-shadow: 5px 5px 3px #d6d6d6;
+}
+
+.login .login_box p {
+    float: left;
+    margin-left: 5px;
+    line-height: 45px;
+    font-size: 16px;
+}
+
+.code {
+    width: ;
+}
+
+.login .login_box input {
+    font-size: 16px;
+    border: none;
+    outline: medium;
+    background-color: #f4f4f4;
+}
+
+.curBox {
+    display: none;
+    width: 335px;
+    height: 30px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    font-size: 13px;
+}
+
+.cur {
+    display: block;
+    border: 1px solid red;
+}
+
+.login .login_box img {
+    float: right;
+    width: 85px;
+    height: 45px;
+}
+
+.login button {
+    display: block;
+    width: 180px;
+    height: 45px;
+    margin: 0 auto;
+    margin-top: 20px;
+    background-color: #74cbbf;
+    border-radius: 5px;
+    border: none;
+}
+
+.login .loginFooter {
+    width: 360px;
+    height: 45px;
+    padding: 5px;
+    margin: 0 auto;
+    font-size: 14px;
+    color: #a1a1a1;
+}
+
+.login .loginFooter a {
+    color: #a1a1a1;
+}
+
+.login .forgetPsd {
+    float: left;
+    line-height: 45px;
+}
+
+.login .resign {
+    float: right;
+    line-height: 45px;
+}

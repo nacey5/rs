@@ -1,0 +1,39 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+h2 {
+    margin-top: 40px;
+    font-weight: normal;
+}
+
+.title {
+    margin: 20px 0;
+    color: rgb(116, 203, 191);
+}
+
+.active-jieshao {
+    width: 1200px;
+    height: 150px;
+}
+
+.right button {
+    width: 80px;
+    height: 45px;
+    border: none;
+    cursor: pointer;
+    background-color: rgb(116, 203, 191);
+}
+
+.right button a {
+    color: #fff;
+}
+
+.content span {
+    font-size: 14px;
+}
+
+.code {
+    font-size: 14px;
+}

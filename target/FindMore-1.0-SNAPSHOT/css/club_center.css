@@ -1,0 +1,210 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style-type: none;
+}
+
+.header {
+    width: 1200px;
+    height: 80px;
+    margin: 0 auto;
+}
+
+.header .logo {
+    width: 80px;
+    height: 60px;
+    float: left;
+}
+
+.header .nav {
+    width: 480px;
+    height: 80px;
+    float: left;
+}
+
+.header .nav ul li {
+    float: left;
+    width: 80px;
+    margin-left: 20px;
+    line-height: 60px;
+    text-align: center;
+}
+
+
+/* 登录进去之后显示的div */
+
+.login-true1 {
+    display: none;
+    float: right;
+}
+
+.login-true2 {
+    display: none;
+    float: right;
+}
+
+.login-true1 span {
+    line-height: 60px;
+    text-align: center;
+}
+
+.login-true2 span {
+    line-height: 60px;
+    text-align: center;
+}
+
+
+/* 二级导航栏 */
+
+.nav2 {
+    display: none;
+    width: 105px;
+    height: 105px;
+}
+
+.nav2 li {
+    line-height: 35px;
+}
+
+.nav2 li:hover {
+    color: #fff;
+    background-color: rgb(116, 203, 191);
+}
+
+
+/* 点击头像之后二级导航栏出现 */
+
+.photo:hover .nav2 {
+    display: block;
+}
+
+.header .avatar_box {
+    float: right;
+    width: 210px;
+    height: 80px;
+}
+
+.header .avatar_box .avatar {
+    float: left;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: rgb(203, 243, 255);
+}
+
+.header .avatar_box .sign_out {
+    float: right;
+    width: 60px;
+    height: 40px;
+    margin-top: 20px;
+    border: 1px solid rgb(203, 243, 255);
+}
+
+.header .avatar_box .sign_out a {
+    display: inline-block;
+    width: 60px;
+    line-height: 40px;
+    text-decoration: none;
+    text-align: center;
+    color: #000;
+}
+
+
+/* 导航栏浮动 */
+
+.nav ul li:hover {
+    background-color: rgb(116, 203, 191);
+}
+
+.content {
+    clear: both;
+    width: 1200px;
+    height: 500px;
+    margin: 0 auto;
+}
+
+.content .avatar_change {
+    height: 100px;
+}
+
+.content .avatar_change .img_change {
+    width: 80px;
+    height: 80px;
+    margin-left: 24px;
+    border-radius: 50%;
+    background-color: rgb(203, 243, 255);
+}
+
+.content .avatar_change p {
+    width: 80px;
+    margin-left: 24px;
+    text-align: center;
+    border: 1px solid red;
+    font-size: 13px;
+}
+
+.content .message {
+    width: 120px;
+    height: 70px;
+    margin-left: 24px;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.content .message p {
+    line-height: 70px;
+}
+
+.content .form {
+    width: 550px;
+    height: 40px;
+    margin-left: 30px;
+    line-height: 40px;
+    border: 1px solid rgb(203, 243, 255);
+}
+
+.content .form p {
+    margin-left: 5px;
+}
+
+.content .form input {
+    display: inline-block;
+    margin-left: 10px;
+    outline: none;
+    border: none;
+}
+
+.content #jianjie {
+    width: 550px;
+    height: 100px;
+}
+
+.content #jianjie p {
+    float: left;
+    width: 45px;
+    line-height: 100px;
+}
+
+.content #jianjie textarea {
+    outline: none;
+    border: none;
+}
+
+.submit {
+    clear: both;
+    width: 100px;
+    height: 60px;
+    margin: 0 auto;
+    margin-top: 40px;
+}
+
+.submit button {
+    display: block;
+    width: 100px;
+    height: 60px;
+    border: 1px solid rgb(203, 243, 255);
+    background-color: #fff;
+}
