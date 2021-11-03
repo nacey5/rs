@@ -73,6 +73,7 @@ window.addEventListener('load', function() {
     //获取社团的图片
     var club = this.document.querySelector('.club-activity');
     var imgs1 = club.querySelectorAll('img');
+    var ps = club.querySelectorAll('p');
     var change = club.querySelector('.change');
     change.addEventListener('click', function() {
         $.ajax({
@@ -84,7 +85,8 @@ window.addEventListener('load', function() {
             },
             success: function(result) {
                 for (let i = 0; i < imgs1.length; i++) {
-                    imgs1[i].src = result.datas.picList[i];
+                    imgs1[i].src = result.datas.picList[i]; //图片渲染
+                    ps[i].innerHTML = result //补充完整文字渲染
                 }
             }
         })
