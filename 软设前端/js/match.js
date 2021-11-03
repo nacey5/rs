@@ -6,10 +6,10 @@ window.addEventListener('load', function() {
     //获取轮播图图片数据
     $.ajax({
             type: 'post',
-            url: 'http://rsrs.nat300.top/FindMore/Picture',
+            url: '', //填写赛事页面轮播图的接口路径
             dataType: 'json',
             data: {
-                action: "getMatchAndOrgPic"
+                action: ""
             },
             success: function(result) {
                 for (let i = 0; i < imgs.length; i++) {
@@ -70,44 +70,52 @@ window.addEventListener('load', function() {
     var timer = setInterval(function() {
         show();
     }, 4000);
-
-    // 赛事活动
-    var score = this.document.querySelector('.score');
-    var imgs1 = score.querySelectorAll('img');
+    // 体育赛事获取数据
+    var sports = this.document.querySelector('.sports');
+    var imgs1 = sports.querySelectorAll('img');
     $.ajax({
-            type: "post",
-            url: 'http://rsrs.nat300.top/FindMore/Picture',
+            type: 'post',
+            url: '', //填写体育赛事的接口路径
             dataType: 'json',
             data: {
-                action: "getIndexMatchPic"
+                action: ""
             },
             success: function(result) {
-                for (let i = 1; i < imgs.length; i++) {
+                for (let i = 0; i < imgs1.length; i++) {
                     imgs1[i].src = result.datas.picList[i];
-
                 }
             }
         })
-        // 社团组织
-    var club = this.document.querySelector('.club');
-    var imgs2 = club.querySelectorAll('img');
+        // 学术活动获取数据
+    var academic = this.document.querySelector('.academic');
+    var imgs2 = academic.querySelectorAll('img');
     $.ajax({
-            type: "post",
-            url: 'http://rsrs.nat300.top/FindMore/Picture',
+            type: 'post',
+            url: '', //填写体育赛事的接口路径
             dataType: 'json',
             data: {
-                action: "getIndexOrgPic"
+                action: ""
             },
             success: function(result) {
-                for (let i = 1; i < imgs.length; i++) {
+                for (let i = 0; i < imgs2.length; i++) {
                     imgs2[i].src = result.datas.picList[i];
-
                 }
             }
         })
-        // 模糊查询时动态创建提示框
-    var searchA = this.document.querySelector('.searchA');
-    // 如果需要创建多个就用for循环
-    var li = searchA.createElement("li"); //动态创建li
-    searchA.appendChild(li); //将创建的li添加到searchA中
+        // 志愿活动获取数据
+    var voluntary = this.document.querySelector('.voluntary');
+    var imgs3 = voluntary.querySelectorAll('img');
+    $.ajax({
+        type: 'post',
+        url: '', //填写体育赛事的接口路径
+        dataType: 'json',
+        data: {
+            action: ""
+        },
+        success: function(result) {
+            for (let i = 0; i < imgs3.length; i++) {
+                imgs3[i].src = result.datas.picList[i];
+            }
+        }
+    })
 })
