@@ -231,4 +231,13 @@
              activity_organization
     </select>
 
+    <!--Integer getLevelByID(@Param("id") Integer id);-->
+    <select id="getLevelByID" resultType="Integer">
+        select
+            `level`
+        from
+            activity_organization
+        where
+            id=#{id}
+    </select>
 </mapper>

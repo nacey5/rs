@@ -112,4 +112,11 @@ public interface UserDao {
      * @param activity
      */
     void addUserActivity(ActivityUser activity);
+
+    /**
+     *获得活动的类型，0为体育活动，1为学术活动，2为志愿活动
+     * @param id
+     * @return
+     */
+    Integer getLevelByID(@Param("id") Integer id);
 }
