@@ -71,43 +71,75 @@ window.addEventListener('load', function() {
         show();
     }, 4000);
 
-    // 赛事活动
-    var score = this.document.querySelector('.score');
-    var imgs1 = score.querySelectorAll('img');
-    $.ajax({
-            type: "post",
-            url: 'http://rsrs.nat300.top/FindMore/Picture',
-            dataType: 'json',
-            data: {
-                action: "getIndexMatchPic"
-            },
-            success: function(result) {
-                for (let i = 1; i < imgs.length; i++) {
-                    imgs1[i].src = result.datas.picList[i];
-
-                }
+    //查询用户
+    $.post("", { action: "getUser", from: "login" }, function(data) {
+        //返回的用户为空，即没有登录用户
+        if (data.user == null) {
+            $(".login").html("登录")
+                .click(function() {
+                    window.location.href = "login.html"
+                });
+            $(".login").html("注册")
+                .click(function() {
+                    window.location.href = "register.html"
+                });
+        } else {
+            //返回用户不为空，展示用户头像
+            //判断登录为个人用户时
+            if () {
+                $(".login").hide();
+                $(".login-true1").show();
+                $("#img").src() = "" //头像路径
             }
-        })
-        // 社团组织
-    var club = this.document.querySelector('.club');
-    var imgs2 = club.querySelectorAll('img');
-    $.ajax({
-            type: "post",
-            url: 'http://rsrs.nat300.top/FindMore/Picture',
-            dataType: 'json',
-            data: {
-                action: "getIndexOrgPic"
-            },
-            success: function(result) {
-                for (let i = 1; i < imgs.length; i++) {
-                    imgs2[i].src = result.datas.picList[i];
-
-                }
+            //判断登录为社团组织时
+            if () {
+                $(".login").hide();
+                $(".login-true2").show();
+                $("#img").src() = "" //头像路径
             }
-        })
-        // 模糊查询时动态创建提示框
-    var searchA = this.document.querySelector('.searchA');
-    // 如果需要创建多个就用for循环
-    var li = searchA.createElement("li"); //动态创建li
-    searchA.appendChild(li); //将创建的li添加到searchA中
+            $(".avatar").click(function() {
+                window.location.href = "index.html"
+            });
+        }
+
+        // 赛事活动
+        var score = this.document.querySelector('.score');
+        var imgs1 = score.querySelectorAll('img');
+        $.ajax({
+                type: "post",
+                url: 'http://rsrs.nat300.top/FindMore/Picture',
+                dataType: 'json',
+                data: {
+                    action: "getIndexMatchPic"
+                },
+                success: function(result) {
+                    for (let i = 1; i < imgs.length; i++) {
+                        imgs1[i].src = result.datas.picList[i];
+
+                    }
+                }
+            })
+            // 社团组织
+        var club = this.document.querySelector('.club');
+        var imgs2 = club.querySelectorAll('img');
+        $.ajax({
+                type: "post",
+                url: 'http://rsrs.nat300.top/FindMore/Picture',
+                dataType: 'json',
+                data: {
+                    action: "getIndexOrgPic"
+                },
+                success: function(result) {
+                    for (let i = 1; i < imgs.length; i++) {
+                        imgs2[i].src = result.datas.picList[i];
+
+                    }
+                }
+            })
+            // 模糊查询时动态创建提示框
+        var searchA = this.document.querySelector('.searchA');
+        // 如果需要创建多个就用for循环
+        var li = searchA.createElement("li"); //动态创建li
+        searchA.appendChild(li); //将创建的li添加到searchA中
+    })
 })
