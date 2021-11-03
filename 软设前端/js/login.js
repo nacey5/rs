@@ -30,20 +30,9 @@ window.addEventListener('load', function() {
             }
         }
         vcode.addEventListener('click', function() {
-            $.ajax({
-                type: 'post',
-                url: 'http://rsrs.nat300.top/rs/UserSignServlet',
-                dataType: 'json',
-                data: {
-                    'action': "login",
-                    'phone': JSON.stringify(phone),
-                    'pwd': JSON.stringify(psd),
-                    'vcode': JSON.stringify(code)
-                },
-                success: function(result) {
-                    console.log(result); //这里更换验证码图片
-                }
-            })
+            //这里更换验证码图片路径
+            vcode.src = "http://localhost:8080/wawablog/kaptcha.jpg?d=" + new Date();
+
         })
         $.ajax({
             type: 'post',
