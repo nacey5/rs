@@ -33,7 +33,6 @@ window.addEventListener('load', function () {
                 return true;
             }
         }
-
         $.ajax({
             type: 'post',
             // url: 'http://rsrs.nat300.top/FindMore/UserSignServlet',
@@ -50,7 +49,7 @@ window.addEventListener('load', function () {
                 if (result.code) {
                     window.location.href = "index.html";
                 } else {
-                    code.innerHTML = "";
+                   window.location.reload();
                 }
             },
             error: function (aa) {

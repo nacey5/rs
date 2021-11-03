@@ -6,8 +6,7 @@ window.addEventListener('load', function () {
     //获取轮播图图片数据
     $.ajax({
         type: 'post',
-        // url: 'http://rsrs.nat300.top/FindMore/Picture'
-        url: 'http://localhost:8080/FindMore/Picture',
+        url: 'http://rsrs.nat300.top/FindMore/Picture',
         dataType: 'json',
         data: {
             action: "getMatchAndOrgPic"
@@ -15,40 +14,10 @@ window.addEventListener('load', function () {
         success: function (result) {
             for (let i = 0; i < imgs.length; i++) {
                 imgs[i].src = result.datas.picList[i];
+
             }
         }
     })
-    //获取———赛事活动篇——图片数据
-    $.ajax({
-        type: 'post',
-        // url: 'http://rsrs.nat300.top/FindMore/Picture',
-        url: 'http://localhost:8080/FindMore/Picture',
-        dataType: 'json',
-        data: {
-            action: "getIndexMatchPic"
-        },
-        success: function (result) {
-            // for (let i = 0; i < result.datas.picList.length; i++) {
-            //     imgs[i].src = result.datas.picList[i];
-            // }
-        }
-    })
-    //获取——社团组织篇——图片数据
-    $.ajax({
-        type: 'post',
-        // url: 'http://rsrs.nat300.top/FindMore/Picture',
-        url: 'http://localhost:8080/FindMore/Picture',
-        dataType: 'json',
-        data: {
-            action: "getIndexOrgPic"
-        },
-        success: function (result) {
-            // for (let i = 0; i < result.datas.picList.length; i++) {
-            //     imgs[i].src = result.datas.picList[i];
-            // }
-        }
-    })
-
     //轮播图
     var index = 0;
     var j = 0;
@@ -103,5 +72,77 @@ window.addEventListener('load', function () {
         show();
     }, 4000);
 
-
+    //查询用户
+    $.ajax({
+        type: "post",
+        url: "http://localhost:8080/FindMore/Find",
+        dataType: "json",
+        data: {action: "findUserOrOrg"},
+        success: function (data) {
+            //返回的code为false，即没有登录用户
+            if (!data.code) {
+                $(".login").html("登录")
+                    .click(function () {
+                        window.location.href = "login.html"
+                    });
+                $(".login").html("注册")
+                    .click(function () {
+                        window.location.href = "register.html"
+                    });
+            } else {
+                //否则，展示用户头像
+                //判断登录为个人用户时
+                if (data.datas.nowUser != null) {
+                    $(".login").hide();
+                    $(".login-true1").show();
+                    $(".img").src = data.datas.nowUser.headPortrait;//头像路径
+                } else {
+                    //否则为社团组织时
+                    $(".login").hide();
+                    $(".login-true2").show();
+                    $(".img").src = data.datas.nowOrg.headPortrait;//头像路径
+                }
+                $(".avatar").click(function () {
+                    window.location.href = "index.html"
+                });
+            }
+        },
+    })
+    // 赛事活动
+    var score = this.document.querySelector('.score');
+    var imgs1 = score.querySelectorAll('img');
+    $.ajax({
+        type: "post",
+        url: 'http://rsrs.nat300.top/FindMore/Picture',
+        dataType: 'json',
+        data: {
+            action: "getIndexMatchPic"
+        },
+        success: function (result) {
+            for (let i = 1; i < imgs.length; i++) {
+                imgs1[i].src = result.datas.picList[i];
+            }
+        }
+    })
+    // 社团组织
+    var club = this.document.querySelector('.club');
+    var imgs2 = club.querySelectorAll('img');
+    $.ajax({
+        type: "post",
+        url: 'http://rsrs.nat300.top/FindMore/Picture',
+        dataType: 'json',
+        data: {
+            action: "getIndexOrgPic"
+        },
+        success: function (result) {
+            for (let i = 1; i < imgs.length; i++) {
+                imgs2[i].src = result.datas.picList[i];
+            }
+        }
+    })
+    // 模糊查询时动态创建提示框
+    var searchA = this.document.querySelector('.searchA');
+    // 如果需要创建多个就用for循环
+    var li = searchA.createElement("li"); //动态创建li
+    searchA.appendChild(li); //将创建的li添加到searchA中
 })

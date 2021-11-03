@@ -80,9 +80,9 @@ public class PictureController extends BaseController {
     }
     public void getIndexMatchPic(HttpServletRequest request, HttpServletResponse response) {
         List<String> picList=new ArrayList<>();
-        picList.add(PIC_BASE_URL+"image/yiyujingsai.jpg");
-        picList.add(PIC_BASE_URL+"image/leifeng.jpg");
-        picList.add(PIC_BASE_URL+"image/xushujingsai.jpg");
+        picList.add(PIC_BASE_URL+"image/knowledge.jpg");
+        picList.add(PIC_BASE_URL+"image/sport.jpg");
+        picList.add(PIC_BASE_URL+"image/love.jpg");
         //往结果里面存图片数组
         result.getDatas().put("picList", picList);
         System.out.println(picList.toString());
