@@ -5,7 +5,7 @@
 <mapper namespace="dao.UserDao">
     <cache eviction="FIFO" flushInterval="300000" readOnly="false"></cache>
     <!--public User SelectInfoByPhone(@Param("phone") String phone,@Param("password") String password);-->
-    <select id="SelectInfoByPhone" resultType="user">
+    <select id="selectInfoByPhone" resultType="user">
          select
         * from user_student
         where phone=#{phone}
