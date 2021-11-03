@@ -4,12 +4,14 @@
     margin: 0;
     padding: 0;
 }
-
+.code{
+    width: 90px;
+    height: 45px;
+}
 a {
     text-decoration: none;
     color: #000;
 }
-
 .loginBox {
     position: absolute;
     width: 100%;
@@ -83,7 +85,7 @@ a {
 
 .login .login_box img {
     float: right;
-    width: 75px;
+    width: 85px;
     height: 45px;
 }
 

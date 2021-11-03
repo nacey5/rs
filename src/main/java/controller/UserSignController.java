@@ -38,20 +38,19 @@ public class UserSignController extends BaseController {
         String userName = request.getParameter("username");
         String password = request.getParameter("psd");
         String vcode = request.getParameter("vcode");
-        System.out.println("登录" +DATE);
+        System.out.println("登录" + DATE);
         //登录
         User user = userService.login(userName, Md5Util.getMd5String(password));
         if (user == null) {
             result.setMsg("用户名错误或密码错误！");
-            result.setCode(false);
-        } else if ("13456789000".equals(userName) && "123456".equals(password) && token != null && token.equalsIgnoreCase(vcode)) {
-            result.setCode(true);
-            result.setMsg("登陆成功!");
-        } else if (token == null || !token.equalsIgnoreCase(vcode)) {
+        } else if (!token.equalsIgnoreCase(vcode)) {
             result.setMsg("验证码错误!");
+        } else {
+            result.setMsg("登陆成功!");
+            result.setCode(true);
+            //存入当前登录的用户
+            request.getSession().setAttribute("nowUser", user);
         }
-        //存入当前登录的用户
-        request.getSession().setAttribute("nowUser", user);
         //调用工具类返回结果
         JsonUtil.returnJson(response, result);
     }
@@ -65,10 +64,10 @@ public class UserSignController extends BaseController {
     public void register(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String token = WebUtil.getCode(request);
         String vcode = request.getParameter("vcode");
-        System.out.println("注册"+DATE);
+        System.out.println("注册" + DATE);
         if (!token.equalsIgnoreCase(vcode)) {
             result.setMsg("验证码错误!");
-        } else if (userService.checkUserCount(Integer.valueOf(request.getParameter("count")))) {
+        } else if (!userService.checkUserCount(Integer.valueOf(request.getParameter("count")))) {
             //判断用户是否已存在
             //调用ObjectUtil工具类获取实例
             userService.register((User) ObjectUtil.getObject(request, User.class));

@@ -14,10 +14,38 @@ window.addEventListener('load', function() {
             success: function(result) {
                 for (let i = 0; i < result.datas.picList.length; i++) {
                     imgs[i].src = result.datas.picList[i];
-
                 }
             }
         })
+    //获取———赛事活动篇——图片数据
+    $.ajax({
+        type: 'post',
+        url: 'http://rsrs.nat300.top/FindMore/Picture',
+        dataType: 'json',
+        data: {
+            action: "getMatchPic"
+        },
+        success: function(result) {
+            for (let i = 0; i < result.datas.picList.length; i++) {
+                imgs[i].src = result.datas.picList[i];
+            }
+        }
+    })
+    //获取——社团组织篇——图片数据
+    $.ajax({
+        type: 'post',
+        url: 'http://rsrs.nat300.top/FindMore/Picture',
+        dataType: 'json',
+        data: {
+            action: "getOrgPic"
+        },
+        success: function(result) {
+            for (let i = 0; i < result.datas.picList.length; i++) {
+                imgs[i].src = result.datas.picList[i];
+            }
+        }
+    })
+
         //轮播图
     var index = 0;
     var j = 0;
