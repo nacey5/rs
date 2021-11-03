@@ -31,51 +31,55 @@
         <div class="title">
             <h3>赛事发布</h3>
         </div>
-        <div class="scoreBox">
-            <div class="score">
-                <p>赛事标题</p>
-                <div>
-                    <input type="text" placeholder="请输入赛事发布的标题">
-                    <img src="../image/score-icon1.jpg" alt="">
+        <form name="text1" id="scoreBox">
+            <div class="scoreBox">
+                <div class="score">
+                    <p>赛事标题</p>
+                    <div>
+                        <input type="text" placeholder="请输入赛事发布的标题">
+                        <img src="../image/score-icon1.jpg" alt="">
+                    </div>
                 </div>
-            </div>
-            <div class="score">
-                <p>时间</p>
-                <div>
-                    <input type="text" placeholder="请输入赛事举行的时间">
-                    <img src="../image/score-icon3.jpg" alt="">
+                <div class="score">
+                    <p>时间</p>
+                    <div>
+                        <input type="text" placeholder="请输入赛事举行的时间">
+                        <img src="../image/score-icon3.jpg" alt="">
+                    </div>
                 </div>
-            </div>
-            <div class="score">
-                <p>联系方式</p>
-                <div><input type="text" placeholder="请输入赛事负责人的联系方式"></div>
+                <div class="score">
+                    <p>联系方式</p>
+                    <div><input type="text" placeholder="请输入赛事负责人的联系方式"></div>
 
+                </div>
+                <div class="score">
+                    <p>地点</p>
+                    <div>
+                        <input type="text" placeholder="请输入赛事举行的地点">
+                        <img src="../image/score-icon4.jpg" alt="">
+                    </div>
+                </div>
+                <div class="score">
+                    <p>报名方式</p>
+                    <div><input type="text" placeholder="请输入参加赛事的报名方式"></div>
+                </div>
             </div>
-            <div class="score">
-                <p>地点</p>
+        </form>
+        <form name="text2" id="activeBox">
+            <div class="activeBox">
+                <h3>活动介绍</h3>
                 <div>
-                    <input type="text" placeholder="请输入赛事举行的地点">
-                    <img src="../image/score-icon4.jpg" alt="">
+                    <p>文字介绍</p>
+                    <textarea cols="150" rows="8" placeholder="请输入活动相关的文字介绍" class="textarea"></textarea>
+                    <p>图片介绍</p>
+                    <div class="fileBox">
+                        <img src="" alt="" class="file_img">
+                        <input type="file" name="file" class="file" accept="image/gif,image/jpeg,image/jpg,image/png,image/svg">
+                        <button>提交</button>
+                    </div>
                 </div>
             </div>
-            <div class="score">
-                <p>报名方式</p>
-                <div><input type="text" placeholder="请输入参加赛事的报名方式"></div>
-            </div>
-        </div>
-        <div class="activeBox">
-            <h3>活动介绍</h3>
-            <div>
-                <p>文字介绍</p>
-                <textarea cols="150" rows="8" placeholder="请输入活动相关的文字介绍"></textarea>
-                <p>图片介绍</p>
-                <div class="fileBox">
-                    <img src="" alt="" class="file_img">
-                    <input type="file" name="file" class="file" accept="image/gif,image/jpeg,image/jpg,image/png,image/svg">
-                    <button>提交</button>
-                </div>
-            </div>
-        </div>
+        </form>
     </div>
 </body>
 <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
