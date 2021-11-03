@@ -71,6 +71,14 @@ window.addEventListener('load', function() {
         show();
     }, 4000);
 
+    //点击图片跳转到赛事详情页面
+    var imgList = document.querySelectorAll('img');
+    for (let i = 0; i < imgList.length; i++) {
+        imgList[i].addEventListener('click', function() {
+            window.open('match-details.html');
+        })
+    }
+
     //查询用户
     $.post("", { action: "getUser", from: "login" }, function(data) {
         //返回的用户为空，即没有登录用户
@@ -141,5 +149,8 @@ window.addEventListener('load', function() {
         // 如果需要创建多个就用for循环
         var li = searchA.createElement("li"); //动态创建li
         searchA.appendChild(li); //将创建的li添加到searchA中
+
+
+
     })
 })
