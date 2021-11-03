@@ -14,13 +14,29 @@ window.addEventListener('load', function() {
                 document.querySelector(".file_img").src = this.result;
             }
         }
-        // 将用户上传的图片传输到服务器
+        //赛事相关的信息上传到服务器
     var formData = new FormData();
-    formData.append('input', input.files[0]);
+    formData.append('file', $("#scoreBox").input);
+    $.ajax({
+            url: "http://rsrs.nat300.top/FindMore/addActivity",
+            type: "post",
+            data: formData,
+            processData: false, // 告诉jQuery不要去处理发送的数据
+            contentType: false, // 告诉jQuery不要去设置Content-Type请求头
+            dataType: 'text',
+            success: function(data) {
+                console.log(data);
+            },
+            error: function(data) {}
+        })
+        // 将用户上传的文字介绍和图片介绍传输到服务器
+    var formData1 = new FormData();
+    formData1.append('file', $(".textarea").files);
+    formData1.append('file', input.files[0]);
     $.ajax({
         url: "http://rsrs.nat300.top/FindMore/addActivity",
         type: "post",
-        data: formData,
+        data: formData1,
         processData: false, // 告诉jQuery不要去处理发送的数据
         contentType: false, // 告诉jQuery不要去设置Content-Type请求头
         dataType: 'text',
