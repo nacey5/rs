@@ -131,7 +131,6 @@ public class PictureController extends BaseController {
     public void getOrgPicList(HttpServletRequest request, HttpServletResponse response) {
 
         List<String> picList = new ArrayList<>();
-
         for (Organizer organizer : organizerService.getOrgs(-1, 1)) {
             //获取对应的图片数组，获取头像(图片)
             String picture = organizer.getHeadPortrait();

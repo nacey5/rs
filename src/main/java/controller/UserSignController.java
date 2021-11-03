@@ -28,7 +28,7 @@ import static com.google.code.kaptcha.Constants.KAPTCHA_SESSION_KEY;
  */
 @WebServlet("/UserSignServlet")
 public class UserSignController extends BaseController {
-
+    public static final String NOW_USER = "nowUser";
     public static final String DATE = new SimpleDateFormat("yyyy-MM-dd HH:mm").format(new Date());
     private static final UserService userService = new UserServiceImpl();
     private final ResultState result = new ResultState();
@@ -63,9 +63,9 @@ public class UserSignController extends BaseController {
                     result.setMsg("登陆成功!");
                     result.setCode(true);
                     //存入当前登录的用户
-                    request.getSession().setAttribute("nowUser", user);
+                    request.getSession().setAttribute(NOW_USER, user);
                 }
-            }else {
+            } else {
                 result.setMsg("用户名不存在！");
             }
         } else {

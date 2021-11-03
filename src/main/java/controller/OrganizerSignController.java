@@ -8,6 +8,7 @@ import pojo.bean.User;
 import pojo.dto.ResultState;
 import service.OrganizerService;
 import service.UserService;
+import service.impl.OrganizerServiceImpl;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -19,13 +20,14 @@ import javax.servlet.http.HttpServletResponse;
  * @date 27/10/2021 - 15:22
  */
 @WebServlet("/Organizer")
-public class OrganizerSignController extends BaseController{
-
-    private static OrganizerService organizerService;
+public class OrganizerSignController extends BaseController {
+    public static final String NOW_ORG = "nowOrg";
+    private static OrganizerService organizerService=new OrganizerServiceImpl();
     private ResultState result = new ResultState();
 
     /**
      * 社团组织登录
+     *
      * @param request
      * @param response
      */
@@ -46,13 +48,14 @@ public class OrganizerSignController extends BaseController{
             result.setCode(true);
         }
         //存入当前登录的用户
-        request.getSession().setAttribute("nowOrg", organizer);
+        request.getSession().setAttribute(NOW_ORG, organizer);
         //调用工具类返回结果
         JsonUtil.returnJson(response, result);
     }
 
     /**
      * 社团组织注册
+     *
      * @param request
      * @param response
      */

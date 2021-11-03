@@ -6,15 +6,14 @@ window.addEventListener('load', function() {
     //获取轮播图图片数据
     $.ajax({
             type: 'post',
-            url: 'http://rsrs.nat300.top/FindMore/Picture',
+            url: "http://localhost8080/FindMore/Picture",
             dataType: 'json',
             data: {
-                action: "getMatchAndOrgPic"
+                action: "getOrgPicList"
             },
             success: function(result) {
                 for (let i = 0; i < imgs.length; i++) {
                     imgs[i].src = result.datas.picList[i];
-
                 }
             }
         })
@@ -70,43 +69,26 @@ window.addEventListener('load', function() {
     var timer = setInterval(function() {
         show();
     }, 4000);
-
-    // 赛事活动
-    var score = this.document.querySelector('.score');
-    var imgs1 = score.querySelectorAll('img');
-    $.ajax({
-            type: "post",
-            url: 'http://rsrs.nat300.top/FindMore/Picture',
+    //获取社团的图片
+    var club = this.document.querySelector('.club-activity');
+    var imgs1 = club.querySelectorAll('img');
+    var ps = club.querySelectorAll('p');
+    var change = club.querySelector('.change');
+    change.addEventListener('click', function() {
+        $.ajax({
+            type: 'post',
+            url: "http://localhost8080/FindMore/Picture",
             dataType: 'json',
             data: {
-                action: "getIndexMatchPic"
+                action: ""
             },
             success: function(result) {
-                for (let i = 1; i < imgs.length; i++) {
-                    imgs1[i].src = result.datas.picList[i];
-
+                for (let i = 0; i < imgs1.length; i++) {
+                    imgs1[i].src = result.datas.picList[i]; //图片渲染
+                    ps[i].innerHTML = result //补充完整文字渲染
                 }
             }
         })
-        // 社团组织
-    var club = this.document.querySelector('.club');
-    var imgs2 = club.querySelectorAll('img');
-    $.ajax({
-            type: "post",
-            url: 'http://rsrs.nat300.top/FindMore/Picture',
-            dataType: 'json',
-            data: {
-                action: "getIndexOrgPic"
-            },
-            success: function(result) {
-                for (let i = 1; i < imgs.length; i++) {
-                    imgs2[i].src = result.datas.picList[i];
-                }
-            }
-        })
-        // 模糊查询时动态创建提示框
-    var searchA = this.document.querySelector('.searchA');
-    // 如果需要创建多个就用for循环
-    var li = searchA.createElement("li"); //动态创建li
-    searchA.appendChild(li); //将创建的li添加到searchA中
+    })
+
 })
