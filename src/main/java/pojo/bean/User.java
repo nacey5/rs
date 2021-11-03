@@ -35,6 +35,7 @@ public class User implements Serializable {
     Participater pars;
     //头像
     String headPortrait;
+    Integer level;
 
     /**
      * 注册所用的构造方法
@@ -65,6 +66,8 @@ public class User implements Serializable {
                 ", collage='" + collage + '\'' +
                 ", pet=" + pet +
                 ", pars=" + pars +
+                ", headPortrait='" + headPortrait + '\'' +
+                ", level=" + level +
                 '}';
     }
 
@@ -80,6 +83,14 @@ public class User implements Serializable {
         this.phone = phone;
         this.email = email;
         this.collage = collage;
+    }
+
+    public Integer getLevel() {
+        return level;
+    }
+
+    public void setLevel(Integer level) {
+        this.level = level;
     }
 
     public UserPet getPet() {
