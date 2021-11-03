@@ -21,7 +21,7 @@ import java.util.Map;
  * @date 2/11/2021 - 01:00
  */
 @WebServlet("/Search")
-public class SearchController {
+public class SearchController extends BaseController{
 
     private ResultState result=new ResultState();
     /**

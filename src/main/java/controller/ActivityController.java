@@ -18,7 +18,7 @@ import java.util.List;
  * @date 13/10/2021 - 19:02
  */
 @WebServlet("/Activity")
-public class ActivityController {
+public class ActivityController extends BaseController {
 
     private static ActivityService activityService;
     private final ResultState result = new ResultState();

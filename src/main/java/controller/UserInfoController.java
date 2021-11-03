@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
  * @date 9/10/2021 - 17:16
  */
 @WebServlet("/UserInfo")
-public class UserInfoController{
+public class UserInfoController extends BaseController{
 
     private UserService userService;
     private final ResultState result = new ResultState();

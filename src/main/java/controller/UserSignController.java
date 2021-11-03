@@ -64,10 +64,15 @@ public class UserSignController extends BaseController {
     public void register(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String token = WebUtil.getCode(request);
         String vcode = request.getParameter("vcode");
+        System.out.println(request.getParameter("phone"));
+        System.out.println(request.getParameter("count"));
+        System.out.println(request.getParameter("password"));
+        Integer phone=Integer.valueOf(request.getParameter("phone"));
         System.out.println("注册" + DATE);
+        System.out.println(phone);
         if (!token.equalsIgnoreCase(vcode)) {
             result.setMsg("验证码错误!");
-        } else if (!userService.checkUserCount(Integer.valueOf(request.getParameter("count")))) {
+        } else if (!userService.checkUserCount(phone)) {
             //判断用户是否已存在
             //调用ObjectUtil工具类获取实例
             userService.register((User) ObjectUtil.getObject(request, User.class));

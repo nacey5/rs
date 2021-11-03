@@ -29,6 +29,7 @@ public class ObjectUtil {
             } catch (IllegalAccessException | InvocationTargetException e) {
                 e.printStackTrace();
             }
+            System.out.println(activityUser);
             return activityUser;
         }else if(t.isInstance(User.class)){
             User user = new User();

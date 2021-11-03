@@ -28,7 +28,7 @@ import java.util.Map;
  */
 @WebServlet("/Picture")
 public class PictureController extends BaseController {
-    public static final String PIC_BASE_URL = "http://rsrs.nat300.top/rs/";
+    public static final String PIC_BASE_URL = "http://rsrs.nat300.top/FindMore/";
     //    public static final String PIC_BASE_URL = "http://localhost:8080/rs/";
     private static final UserService userService=new UserServiceImpl();
     private static final ActivityService activityService=new ActivityServiceImpl();
@@ -78,7 +78,28 @@ public class PictureController extends BaseController {
         //调用工具类返回结果
         JsonUtil.returnJson(response, result);
     }
-
+    public void getIndexMatchPic(HttpServletRequest request, HttpServletResponse response) {
+        List<String> picList=new ArrayList<>();
+        picList.add(PIC_BASE_URL+"image/yiyujingsai.jpg");
+        picList.add(PIC_BASE_URL+"image/leifeng.jpg");
+        picList.add(PIC_BASE_URL+"image/xushujingsai.jpg");
+        //往结果里面存图片数组
+        result.getDatas().put("picList", picList);
+        System.out.println(picList.toString());
+        //调用工具类返回结果
+        JsonUtil.returnJson(response, result);
+    }
+    public void getIndexOrgPic(HttpServletRequest request, HttpServletResponse response) {
+        List<String> picList=new ArrayList<>();
+        picList.add(PIC_BASE_URL+"image/lunhua.jpg");
+        picList.add(PIC_BASE_URL+"image/lanqiu.jpg");
+        picList.add(PIC_BASE_URL+"image/sheying.jpg");
+        //往结果里面存图片数组
+        result.getDatas().put("picList", picList);
+        System.out.println(picList.toString());
+        //调用工具类返回结果
+        JsonUtil.returnJson(response, result);
+    }
     /**
      * 获取*****赛事*****轮播图中的图片
      *
@@ -121,5 +142,4 @@ public class PictureController extends BaseController {
         //调用工具类返回结果
         JsonUtil.returnJson(response, result);
     }
-
 }

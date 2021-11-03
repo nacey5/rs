@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
  * @date 27/10/2021 - 15:22
  */
 @WebServlet("/Organizer")
-public class OrganizerSignController {
+public class OrganizerSignController extends BaseController{
 
     private static OrganizerService organizerService;
     private ResultState result = new ResultState();
@@ -29,7 +29,7 @@ public class OrganizerSignController {
      * @param request
      * @param response
      */
-    public void login(HttpServletRequest request, HttpServletResponse response) {
+    public void orgLogin(HttpServletRequest request, HttpServletResponse response) {
         String token = WebUtil.getCode(request);
         String vcode = request.getParameter("vcode");
         String userName = request.getParameter("username");
@@ -56,7 +56,7 @@ public class OrganizerSignController {
      * @param request
      * @param response
      */
-    public void register(HttpServletRequest request, HttpServletResponse response) {
+    public void orgRegister(HttpServletRequest request, HttpServletResponse response) {
 
         String token = WebUtil.getCode(request);
         String vcode = request.getParameter("vcode");

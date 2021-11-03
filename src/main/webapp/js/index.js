@@ -12,7 +12,7 @@ window.addEventListener('load', function() {
                 action: "getMatchAndOrgPic"
             },
             success: function(result) {
-                for (let i = 0; i < result.datas.picList.length; i++) {
+                for (let i = 0; i < imgs.length; i++) {
                     imgs[i].src = result.datas.picList[i];
                 }
             }
@@ -23,12 +23,12 @@ window.addEventListener('load', function() {
         url: 'http://rsrs.nat300.top/FindMore/Picture',
         dataType: 'json',
         data: {
-            action: "getMatchPic"
+            action: "getIndexMatchPic"
         },
         success: function(result) {
-            for (let i = 0; i < result.datas.picList.length; i++) {
-                imgs[i].src = result.datas.picList[i];
-            }
+            // for (let i = 0; i < result.datas.picList.length; i++) {
+            //     imgs[i].src = result.datas.picList[i];
+            // }
         }
     })
     //获取——社团组织篇——图片数据
@@ -37,12 +37,12 @@ window.addEventListener('load', function() {
         url: 'http://rsrs.nat300.top/FindMore/Picture',
         dataType: 'json',
         data: {
-            action: "getOrgPic"
+            action: "getIndexOrgPic"
         },
         success: function(result) {
-            for (let i = 0; i < result.datas.picList.length; i++) {
-                imgs[i].src = result.datas.picList[i];
-            }
+            // for (let i = 0; i < result.datas.picList.length; i++) {
+            //     imgs[i].src = result.datas.picList[i];
+            // }
         }
     })
 

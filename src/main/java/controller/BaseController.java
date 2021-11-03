@@ -38,7 +38,7 @@ public abstract class BaseController extends HttpServlet {
             //调用方法
             method.invoke(this, req, resp);
         } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
-//            e.printStackTrace();
+            e.printStackTrace();
         }
     }
 }

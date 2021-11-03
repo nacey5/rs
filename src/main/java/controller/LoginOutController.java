@@ -11,7 +11,7 @@ import javax.servlet.http.HttpSession;
  * @date 2/11/2021 - 15:06
  */
 @WebServlet("/LoginOut")
-public class LoginOutController {
+public class LoginOutController extends BaseController{
     /**
      * 注销
      *
