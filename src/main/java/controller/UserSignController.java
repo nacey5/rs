@@ -7,13 +7,19 @@ import common.utils.WebUtil;
 import pojo.bean.User;
 import pojo.dto.ResultState;
 import service.UserService;
+import service.impl.UserServiceImpl;
 
+import javax.servlet.ServletException;
+import javax.servlet.ServletOutputStream;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
+import static com.google.code.kaptcha.Constants.KAPTCHA_SESSION_KEY;
+
 
 /**
  * @author WEIR
@@ -24,7 +30,7 @@ import java.util.Date;
 public class UserSignController extends BaseController {
 
     public static final String DATE = new SimpleDateFormat("yyyy-MM-dd HH:mm").format(new Date());
-    private static UserService userService;
+    private static final UserService userService = new UserServiceImpl();
     private final ResultState result = new ResultState();
 
     /**
@@ -35,8 +41,9 @@ public class UserSignController extends BaseController {
      */
     public void login(HttpServletRequest request, HttpServletResponse response) {
         String token = WebUtil.getCode(request);
+        System.out.println(WebUtil.getCode(request));
         String userName = request.getParameter("username");
-        String password = request.getParameter("psd");
+        String password = request.getParameter("password");
         String vcode = request.getParameter("vcode");
         System.out.println("登录" + DATE);
         //登录
@@ -61,31 +68,40 @@ public class UserSignController extends BaseController {
      * @param request
      * @param response
      */
-    public void register(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        String token = WebUtil.getCode(request);
+    public void register(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // 获取Session中的验证码
+        String token = (String) request.getSession().getAttribute(KAPTCHA_SESSION_KEY);
+        // 删除 Session中的验证码
+        request.getSession().removeAttribute(KAPTCHA_SESSION_KEY);
+
+        System.out.println("验证码：" + token);
         String vcode = request.getParameter("vcode");
-        System.out.println(request.getParameter("phone"));
-        System.out.println(request.getParameter("count"));
-        System.out.println(request.getParameter("password"));
-        Integer phone=Integer.valueOf(request.getParameter("phone"));
+
+        System.out.println(vcode);
+
+        String phone=request.getParameter("phone");
+        Integer count= Integer.valueOf(request.getParameter("count"));
+        String password= request.getParameter("password");
         System.out.println("注册" + DATE);
-        System.out.println(phone);
-        if (!token.equalsIgnoreCase(vcode)) {
-            result.setMsg("验证码错误!");
-        } else if (!userService.checkUserCount(phone)) {
-            //判断用户是否已存在
-            //调用ObjectUtil工具类获取实例
-            userService.register((User) ObjectUtil.getObject(request, User.class));
-            result.setMsg("注册成功！");
-            result.setCode(true);
+        //检查 验证码是否正确
+        if (token != null && token.equalsIgnoreCase(vcode)) {
+            //判断用户名是否存在
+            if (!userService.checkUserCount(phone)) {
+                //判断用户是否已存在
+                //调用ObjectUtil工具类获取实例
+                userService.register(new User(count,phone,password));
+                System.out.println("注册成功！");
+                result.setMsg("注册成功！");
+                result.setCode(true);
+            } else {
+                System.out.println("该用户已存在！");
+                result.setMsg("该用户已存在！");
+            }
         } else {
-            result.setMsg("该用户已存在！");
+            result.setMsg("验证码错误!");
         }
         //调用工具类返回结果
         JsonUtil.returnJson(response, result);
     }
 
-    public static void setUserService(UserService userService) {
-        UserSignController.userService = userService;
-    }
 }

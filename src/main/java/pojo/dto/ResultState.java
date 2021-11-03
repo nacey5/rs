@@ -48,4 +48,13 @@ public class ResultState {
     public void setDatas(Map<String, Object> datas) {
         this.datas = datas;
     }
+
+    @Override
+    public String toString() {
+        return "ResultState{" +
+                "msg='" + msg + '\'' +
+                ", code=" + code +
+                ", datas=" + datas +
+                '}';
+    }
 }
