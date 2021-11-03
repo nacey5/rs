@@ -11,6 +11,7 @@ import java.io.Serializable;
 @Alias("user")
 public class User implements Serializable {
     private static final long serialVersionUID=8452144756218456L;
+    public static final String BASE_NAME="findmore";
     //用户名
     String username;
     //用户id
@@ -39,17 +40,14 @@ public class User implements Serializable {
 
     /**
      * 注册所用的构造方法
-     * @param username
      * @param count
      * @param password
      * @param phone
      */
-    public User(String username, Integer count, String password, String phone,String gender) {
-        this.username = username;
+    public User(Integer count, String password, String phone ){
         this.count = count;
         this.password = password;
         this.phone = phone;
-        this.gender= gender;
     }
 
     @Override

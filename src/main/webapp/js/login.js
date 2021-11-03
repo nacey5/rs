@@ -35,26 +35,10 @@ window.addEventListener('load', function () {
                 return true;
             }
         }
-
-        // vcode.addEventListener('click', function () {
-        //     $.ajax({
-        //         type: 'post',
-        //         url: 'http://rsrs.nat300.top/FindMore/UserSignServlet',
-        //         dataType: 'json',
-        //         data: {
-        //             'action': "login",
-        //             'phone': JSON.stringify(phone),
-        //             'password': JSON.stringify(psd),
-        //             'vcode': JSON.stringify(code)
-        //         },
-        //         success: function (result) {
-        //             console.log(result); //这里更换验证码图片
-        //         }
-        //     })
-        // })
         $.ajax({
             type: 'post',
-            url: 'http://rsrs.nat300.top/FindMore/UserSignServlet',
+            // url: 'http://rsrs.nat300.top/FindMore/UserSignServlet',
+            url: 'http://localhost:8080/FindMore/UserSignServlet',
             dataType: 'json',
             data: {
                 'action': "login",

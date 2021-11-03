@@ -3,6 +3,7 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
+
     <!-- 验证码配置-->
     <servlet>
         <servlet-name>KaptchaServlet</servlet-name>
@@ -12,20 +13,10 @@
         <servlet-name>KaptchaServlet</servlet-name>
         <url-pattern>/kaptcha.jpg</url-pattern>
     </servlet-mapping>
-<!--    &lt;!&ndash;为了允许跨域访问&ndash;&gt;-->
-<!--    <filter>-->
-<!--        <filter-name>CorsFilter</filter-name>-->
-<!--        <filter-class>org.du.personalsitemock.mockutil.CORSFilter</filter-class>-->
-<!--    </filter>-->
-
-<!--    <filter-mapping>-->
-<!--        <filter-name>CorsFilter</filter-name>-->
-<!--        <url-pattern>/*</url-pattern>-->
-<!--    </filter-mapping>-->
     <!--为了允许跨域访问-->
     <filter>
         <filter-name>CorsFilter</filter-name>
-        <filter-class>org.apache.catalina.filters.CorsFilter</filter-class>
+        <filter-class>filter.CorsFilter</filter-class>
     </filter>
     <filter-mapping>
         <filter-name>CorsFilter</filter-name>

@@ -1,7 +1,6 @@
 package common.utils;
 
 import javax.servlet.http.HttpServletRequest;
-
 import static com.google.code.kaptcha.Constants.KAPTCHA_SESSION_KEY;
 
 /**
@@ -16,8 +15,9 @@ public class WebUtil {
      * @return
      */
     public static String getCode(HttpServletRequest request){
-        // 获取Session中的验证码
+        //获取Session中的验证码
         String token = (String) request.getSession().getAttribute(KAPTCHA_SESSION_KEY);
+        System.out.println("验证码为："+token);
         // 删除 Session中的验证码
         request.getSession().removeAttribute(KAPTCHA_SESSION_KEY);
         return token;

@@ -17,9 +17,9 @@ public class UserServiceImpl implements UserService {
     private final UserDao userDao = openSession.getMapper(UserDao.class);
 
     @Override
-    public Boolean checkUserCount(Integer count) {
+    public Boolean checkUserCount(String count) {
         try {
-            return userDao.checkCountExit(String.valueOf(count));
+            return userDao.checkCountExit(count);
         } catch (Exception e) {
             throw new RuntimeException("检验用户名失败！");
         }
@@ -37,6 +37,8 @@ public class UserServiceImpl implements UserService {
     @Override
     public void register(User user) {
         user.setId(userDao.countAllUser());
+        //设置用户默认名称
+        user.setUsername(User.BASE_NAME+user.getId());
         try {
             userDao.addUser(user);
             openSession.commit();

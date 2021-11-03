@@ -13,7 +13,7 @@ public interface UserService {
      * @param count
      * @return
      */
-    Boolean checkUserCount(Integer count);
+    Boolean checkUserCount(String count);
     /**
      * 用户登录
      * @param phone

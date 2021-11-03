@@ -1,7 +1,10 @@
 import controller.PictureController;
 import org.junit.Test;
 import pojo.bean.Pictures;
+import pojo.bean.User;
+import service.UserService;
 import service.impl.ActivityServiceImpl;
+import service.impl.UserServiceImpl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,9 +28,12 @@ public class PicTest {
 //        }
 //        activityService.addPicture(2, picList.get(0));
 //
-//        activityService.addPicture(3, picList.get(1));
-        for (Pictures pictures : activityService.getPicture(0)) {
-            System.out.println(pictures);
-        }
+////        activityService.addPicture(3, picList.get(1));
+//        for (Pictures pictures : activityService.getPicture(0)) {
+//            System.out.println(pictures);
+//        }
+        UserService userService=new UserServiceImpl();
+        userService.register(new User(201543239,"123d","13068524158"));
+       // activityService.addPicture(2,"asdaddadad");
     }
 }

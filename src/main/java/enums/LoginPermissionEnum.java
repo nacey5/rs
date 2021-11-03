@@ -16,7 +16,7 @@ public class  LoginPermissionEnum {
             /**
              * 游客未登录之前可以访问的页面
              */
-            new HashSet<>(Arrays.asList("/add","login.html"))
+            new HashSet<>(Arrays.asList("/login.html","/register.html","/index.html"))
     );
 
     public static final Set<String> CHECK_NOT_MAP_ORG=Collections.unmodifiableSet(
