@@ -258,4 +258,33 @@
           and
             ac.id=#{id}
     </select>
+
+    <!--void AddActTime(@Param("id") Integer id,@Param("sign") String signTime,@Param("first") String firstTime,@Param("end") String endTime);-->
+    <insert id="AddActTime" databaseId="mysql">
+        insert  into
+            time_activity (`id`,`sign_up_end_time`,`first_match_time`,`final_match_time`)
+        values
+            (#{id},#{sign},#{first},#{end})
+    </insert>
+
+    <!--String getActSignTime(@Param("id") Integer id);-->
+    <select id="getActSignTime" resultType="string">
+        select `sign_up_end_time`
+        from time_activity
+        where id=#{id}
+    </select>
+
+    <!--String getActFirstTime(@Param("id") Integer id);-->
+    <select id="getActFirstTime" resultType="string">
+        select `first_match_time`
+        from time_activity
+        where id=#{id}
+    </select>
+
+    <!--String getActEndTime(@Param("id")Integer id);-->
+    <select id="getActEndTime" resultType="string">
+        select `final_match_time`
+        from  time_activity
+        where id=#{id}
+    </select>
 </mapper>
