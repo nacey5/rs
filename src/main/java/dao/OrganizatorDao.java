@@ -76,6 +76,13 @@ public interface OrganizatorDao {
      * @return
      */
     Integer countAllOrg();
+
+    /**
+     * 通过头像获得组织信息
+     * @param picCode
+     * @return
+     */
+    Organizer selectOrgByHeadPortrait(@Param("picCode")String picCode);
 }
 
 
