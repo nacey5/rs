@@ -1,5 +1,7 @@
 package pojo.bean;
 
+import controller.OrganizerSignController;
+import controller.PictureController;
 import org.apache.ibatis.type.Alias;
 
 import java.io.Serializable;
@@ -9,16 +11,26 @@ public class Organizer implements Serializable {
     private static final long serialVersionUID=54564123124215468L;
     Integer id;
     String name;
-    Integer level;
+    Integer level=0;
     //管理者学号
     Integer mangerCount;
     String phone;
     String password;
     String collage;
-    //头像
-    String headPortrait;
+    /**头像*/
+    String headPortrait= PictureController.PIC_BASE_URL+"image/org.png";
 
     String info;
+
+    public Organizer(String name, Integer level, Integer mangerCount, String phone, String password, String headPortrait, String collage) {
+        this.name = name;
+        this.level = level;
+        this.mangerCount = mangerCount;
+        this.phone = phone;
+        this.password = password;
+        this.collage = collage;
+        this.headPortrait = headPortrait;
+    }
 
     public Organizer(String name, Integer level, Integer mangerCount, String phone, String password, String collage, String headPortrait, String info) {
         this.name = name;
@@ -33,8 +45,6 @@ public class Organizer implements Serializable {
 
     public Organizer() {
     }
-
-
 
     public static long getSerialVersionUID() {
         return serialVersionUID;

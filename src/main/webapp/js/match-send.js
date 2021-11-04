@@ -18,14 +18,16 @@ window.addEventListener('load', function () {
     var formData = new FormData();
     formData.append('input', input.files[0]);
     $.ajax({
-        // url: "http://rsrs.nat300.top/FindMore/addActivity",
-        url: "http://localhost:8080/FindMore/addActivity",
+        url: "http://rsrs.nat300.top/FindMore/Activity",
+        // url: "http://localhost:8080/FindMore/Activity",
         type: "post",
+        action:"addActivity",
         data: formData,
         processData: false, // 告诉jQuery不要去处理发送的数据
         contentType: false, // 告诉jQuery不要去设置Content-Type请求头
         dataType: 'text',
         success: function (data) {
+            alert(data)
             console.log(data);
         },
         error: function (data) {

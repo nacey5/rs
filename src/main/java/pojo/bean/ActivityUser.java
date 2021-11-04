@@ -21,6 +21,7 @@ public class ActivityUser implements Serializable {
     String time;
     String adress;
     String joinWay;
+    /**体育0，学术1，志愿2*/
     Integer level;
     User user;
     //内容

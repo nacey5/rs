@@ -3,6 +3,7 @@ package controller;
 import common.utils.JsonUtil;
 import pojo.bean.ActivityUser;
 import pojo.bean.Organizer;
+import pojo.bean.Pictures;
 import pojo.dto.ResultState;
 import service.ActivityService;
 import service.OrganizerService;
@@ -12,6 +13,7 @@ import service.impl.OrganizerServiceImpl;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -46,8 +48,13 @@ public class SearchController extends BaseController{
         } else {
             //搜索赛事活动标题
             //查询对应的赛事活动
+            List<String> actPicList=new ArrayList<>();
             List<ActivityUser> actList = activityService.searchActivityByName(searchText);
+            for (ActivityUser activityUser:actList) {
+                actPicList.add(activityService.getActMainPic(activityUser.getId()).getPicture());
+            }
             result.getDatas().put("actList",actList);
+            result.getDatas().put("actPicList",actPicList);
         }
         //使用json工具类返回结果
         JsonUtil.returnJson(response, result);

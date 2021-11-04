@@ -21,9 +21,56 @@ public class ActivityServiceImpl implements ActivityService {
     private final ActivityDao activityDao = openSession.getMapper(ActivityDao.class);
 
     @Override
+    public List<Pictures> selectPicturesById(Integer id) {
+        return activityDao.selectPicturesById(id);
+    }
+
+    @Override
+    public List<Participater> selectStudentsByArtId(Integer id) {
+        return activityDao.selectStudentsByArtId(id);
+    }
+
+    @Override
+    public ActivityUser selectActByMainPic(String picCode) {
+        return activityDao.selectActByMainPic(picCode);
+    }
+
+    @Override
+    public String getStatus(Integer id) {
+        return activityDao.getStatus(id);
+    }
+
+    @Override
+    public void upStatus(Integer id) {
+        activityDao.upStatus(id);
+    }
+
+    @Override
+    public void setActMainPic(Integer id, String picture) {
+        try {
+            activityDao.setActMainPic(id, picture);
+            openSession.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public Pictures getActMainPic(Integer id) {
+        return activityDao.getActMainPic(id);
+    }
+
+    @Override
+    public List<ActivityUser> getActsByLevel(Integer level) {
+        return activityDao.getActsByLevel(level);
+    }
+
+    @Override
     public void addActivity(ActivityUser activityUser) {
         try {
-            activityUser.setId(activityDao.countAllAct());
+            //设置id
+            Integer sum = activityDao.countAllAct();
+            activityUser.setId(++sum);
             activityDao.addActivity(activityUser);
             openSession.commit();
         } catch (Exception e) {

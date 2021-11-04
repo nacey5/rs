@@ -1,4 +1,6 @@
 package pojo.bean;
+import controller.PictureController;
+import controller.UserSignController;
 import org.apache.ibatis.type.Alias;
 
 import java.io.Serializable;
@@ -13,7 +15,7 @@ public class User implements Serializable {
     private static final long serialVersionUID=8452144756218456L;
     public static final String BASE_NAME="findmore";
     //用户名
-    String username;
+    String username=BASE_NAME;
     //用户id
     Integer id;
     //用户学号
@@ -34,8 +36,8 @@ public class User implements Serializable {
     UserPet pet;
     //参赛信息
     Participater pars;
-    //头像
-    String headPortrait;
+    /*头像*/
+    String headPortrait= PictureController.PIC_BASE_URL+"image/user.png";
     Integer level;
 
     /**

@@ -56,7 +56,10 @@ a {
     margin-left: 300px;
     line-height: 60px;
 }
-
+.content img {
+    width: 290px;
+    height: 360px;
+}
 .index-box .header .nav-box .search input {
     width: 285px;
     line-height: 35px;

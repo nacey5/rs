@@ -8,11 +8,12 @@ window.addEventListener('load', function () {
         type: 'post',
         url: 'http://rsrs.nat300.top/FindMore/Picture',
         dataType: 'json',
+        sync:false,
         data: {
             action: "getMatchAndOrgPic"
         },
         success: function (result) {
-            for (let i = 0; i < imgs.length; i++) {
+            for (let i = 0; i < result.datas.picList.length; i++) {
                 imgs[i].src = result.datas.picList[i];
 
             }
@@ -73,76 +74,117 @@ window.addEventListener('load', function () {
     }, 4000);
 
     //查询用户
-    $.ajax({
-        type: "post",
-        url: "http://localhost:8080/FindMore/Find",
-        dataType: "json",
-        data: {action: "findUserOrOrg"},
-        success: function (data) {
-            //返回的code为false，即没有登录用户
-            if (!data.code) {
-                $(".login").html("登录")
-                    .click(function () {
-                        window.location.href = "login.html"
-                    });
-                $(".login").html("注册")
-                    .click(function () {
-                        window.location.href = "register.html"
-                    });
-            } else {
-                //否则，展示用户头像
-                //判断登录为个人用户时
-                if (data.datas.nowUser != null) {
-                    $(".login").hide();
-                    $(".login-true1").show();
-                    $(".img").src = data.datas.nowUser.headPortrait;//头像路径
+    function findUser() {
+        $.ajax({
+            type: "post",
+            url: "http://localhost:8080/FindMore/Find",
+            dataType: "json",
+            sync:false,
+            data: {action: "findUserOrOrg"},
+            success: function (data) {
+                //返回的code为false，即没有登录用户
+                if (!data.code) {
+                    $(".login").html("登录")
+                        .click(function () {
+                            window.location.href = "login.html"
+                        });
+                    $(".login").html("注册")
+                        .click(function () {
+                            window.location.href = "register.html"
+                        });
                 } else {
-                    //否则为社团组织时
-                    $(".login").hide();
-                    $(".login-true2").show();
-                    $(".img").src = data.datas.nowOrg.headPortrait;//头像路径
+                    //否则，展示用户头像
+                    //判断登录为个人用户时
+                    if (data.datas.nowUser != null) {
+                        $(".login").hide();
+                        $(".login-true1").show();
+                        $(".img").src = data.datas.nowUser.headPortrait;//头像路径
+                    } else {
+                        //否则为社团组织时
+                        $(".login").hide();
+                        $(".login-true2").show();
+                        $(".img").src = data.datas.nowOrg.headPortrait;//头像路径
+                    }
+                    $(".avatar").click(function () {
+                        window.location.href = "index.html"
+                    });
                 }
-                $(".avatar").click(function () {
-                    window.location.href = "index.html"
-                });
-            }
-        },
-    })
-    // 赛事活动
-    var score = this.document.querySelector('.score');
-    var imgs1 = score.querySelectorAll('img');
-    $.ajax({
-        type: "post",
-        url: 'http://rsrs.nat300.top/FindMore/Picture',
-        dataType: 'json',
-        data: {
-            action: "getIndexMatchPic"
-        },
-        success: function (result) {
-            for (let i = 1; i < imgs.length; i++) {
-                imgs1[i].src = result.datas.picList[i];
-            }
-        }
-    })
+            },
+        })
+    }
+//图片已经固定
+    // // 赛事活动
+    // function match() {
+    //     var score = this.document.querySelector('.score');
+    //     var imgs1 = score.querySelectorAll('img');
+    //     $.ajax({
+    //         type: "post",
+    //         url: 'http://rsrs.nat300.top/FindMore/Picture',
+    //         // url: '"http://localhost:8080/FindMore/Picture',
+    //         dataType: 'json',
+    //         data: {
+    //             action: "getIndexMatchPic"
+    //         },
+    //         success: function (result) {
+    //             for (let i = 1; i < result.datas.picList.length; i++) {
+    //                 imgs1[i].src = result.datas.picList[i - 1];
+    //             }
+    //             club();
+    //         }
+    //     })
+    // }
+
     // 社团组织
-    var club = this.document.querySelector('.club');
-    var imgs2 = club.querySelectorAll('img');
-    $.ajax({
-        type: "post",
-        url: 'http://rsrs.nat300.top/FindMore/Picture',
-        dataType: 'json',
-        data: {
-            action: "getIndexOrgPic"
-        },
-        success: function (result) {
-            for (let i = 1; i < imgs.length; i++) {
-                imgs2[i].src = result.datas.picList[i];
+    function club() {
+        var club = this.document.querySelector('.club');
+        var imgs2 = club.querySelectorAll('img');
+        $.ajax({
+            type: "post",
+            url: 'http://rsrs.nat300.top/FindMore/Picture',
+            // url: '"http://localhost:8080/FindMore/Picture',
+            dataType: 'json',
+            data: {
+                action: "getIndexOrgPic"
+            },
+            success: function (result) {
+                for (let i = 1; i < result.datas.picList.length; i++) {
+                    imgs2[i].src = result.datas.picList[i - 1];
+                }
+                findUser();
             }
-        }
-    })
+        })
+    }
+
     // 模糊查询时动态创建提示框
     var searchA = this.document.querySelector('.searchA');
     // 如果需要创建多个就用for循环
     var li = searchA.createElement("li"); //动态创建li
     searchA.appendChild(li); //将创建的li添加到searchA中
+
+    //-------------11.04---搜索按钮点击事件---------
+    //搜索框中的内容
+    var searchText;
+    $.ajax({
+        type: 'post',
+        url: 'http://rsrs.nat300.top/rs/Search',
+        dataType: 'json',
+        data: {
+            'action': "search",
+            'searchText': searchText,
+        },
+        success: function (result) {
+            //返回活动数组
+            if (result.searchType == "activity") {
+//返回的result.data.actList为数组，需要遍历使用
+                // 活动图片 result.data.actPicList[0]
+                // 活动名称 result.data.actList[0].name
+                // 活动时间 result.data.actList[0].time
+                // 活动状态 result.data.actList[0].status
+            } else if (result.searchType == "organzier") {
+//返回的result.data.orgList为数组，需要遍历使用
+                // 组织图片 result.data.orgList[0].headPortrait
+                // 组织名称 result.data.orgList[0].name
+            }
+        }
+    })
 })

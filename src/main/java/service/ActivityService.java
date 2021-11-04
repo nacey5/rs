@@ -1,5 +1,6 @@
 package service;
 
+import org.apache.ibatis.annotations.Param;
 import pojo.bean.ActivityUser;
 import pojo.bean.Participater;
 import pojo.bean.Pictures;
@@ -12,12 +13,63 @@ import java.util.List;
  */
 public interface ActivityService {
     /**
+     * 查询活动的所有图片
+     * @param id
+     * @return
+     */
+    List<Pictures> selectPicturesById(Integer id);
+
+    /**
+     * 通过活动id查找参加活动的学生
+     * @param id
+     * @return
+     */
+    List<Participater> selectStudentsByArtId( Integer id);
+    /**
+     * 通过主图片获得活动
+     * @param picCode
+     * @return
+     */
+    ActivityUser selectActByMainPic(String picCode);
+    /**
+     * 得到活动的状态
+     * @param id
+     * @return
+     */
+    String getStatus(Integer id);
+
+    /**
+     * 更新活动状态,将活动的状态由true改成false
+     * @param id
+     */
+    void upStatus(Integer id);
+
+    /**
+     * 插入活动的主照片
+     * @param id
+     * @param picture
+     * @return
+     */
+    void setActMainPic( Integer id, String picture);
+
+    /**
+     * 得到活动的主照片
+     * @param id
+     * @return
+     */
+    Pictures getActMainPic(Integer id);
+    /**
+     * 根据level查询活动，返回该level的所有活动
+     * @param level
+     * @return
+     */
+    List<ActivityUser> getActsByLevel(Integer level);
+    /**
      * 增加活动
      *
      * @param activityUser
      */
     void addActivity(ActivityUser activityUser);
-
     /**
      * 删除活动
      *
@@ -48,7 +100,7 @@ public interface ActivityService {
      */
     boolean checkActivityName(String name);
     /**
-     * 添加活动图片（base64编码形式）
+     * 添加活动图片
      *
      * @param id
      * @param pic

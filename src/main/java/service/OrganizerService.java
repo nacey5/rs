@@ -12,14 +12,16 @@ import java.util.List;
  * @date 20/10/2021 - 19:31
  */
 public interface OrganizerService {
+
+
     /**
-     * 通过手机号码和密码查询组织
+     * (登录)通过手机号码和密码查询组织
      *
      * @param phone
      * @param password
      * @return
      */
-    Organizer selectInfoByPhoneAndPassword(String phone, String password);
+    Organizer orgLogin(String phone, String password);
 
     /**
      * 注册
@@ -27,7 +29,6 @@ public interface OrganizerService {
      * @param org
      */
     void orgRegister(Organizer org);
-
 
     /**
      * 查询头像
@@ -65,10 +66,10 @@ public interface OrganizerService {
     /**
      * 检查组织是否存在
      *
-     * @param count
+     * @param name
      * @return
      */
-    boolean checkOrgName(Integer count);
+    boolean checkOrgName(String name);
     /**
      * 根据组织名称查询组织对象-----(模糊查询)
      * @param name 组织名

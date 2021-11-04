@@ -80,12 +80,12 @@ window.addEventListener('load', function() {
             url: "http://localhost8080/FindMore/Picture",
             dataType: 'json',
             data: {
-                action: ""
+                action: "getOrgList"
             },
             success: function(result) {
                 for (let i = 0; i < imgs1.length; i++) {
                     imgs1[i].src = result.datas.picList[i]; //图片渲染
-                    ps[i].innerHTML = result //补充完整文字渲染
+                    ps[i].innerHTML = result.datas.infoList[i] //补充完整文字渲染
                 }
             }
         })

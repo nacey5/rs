@@ -116,17 +116,22 @@ window.addEventListener('load', function () {
                     type: 'post',
                     url: 'http://rsrs.nat300.top/FindMore/Organizer',
                     data: {
-                        action: "register",
-                        name: JSON.stringify(name.value),
-                        managercount: JSON.stringify(no.value),
-                        phone: JSON.stringify(phone.value),
-                        password: JSON.stringify(psd.value),
-                        college: JSON.stringify(college.value),
-                        vcode: JSON.stringify(code.value)
+                        action: "orgRegister",
+                        name: name.value,
+                        managercount:no.value,
+                        phone:phone.value,
+                        password: psd.value,
+                        college: college.value,
+                        vcode: code.value
                     },
                     success: function (result) {
-                        alert(result.code);
-                        console.log(result);
+                        alert(result.msg);
+                        if (result.code) {
+                            window.location.href = "login.html";
+                        }else {
+                            window.location.reload();
+                            alert("撒撒发达");
+                        }
                     }
                 })
             }

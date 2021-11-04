@@ -44,7 +44,7 @@
             <result column="pet_name" property="name"/>
         </association>
     </resultMap>
-    <select id="SelectInfoById" resultMap="UserInfoMap">
+    <select id="selectInfoById" resultMap="UserInfoMap">
         select e.id id,e.name `name`,e.count `count`,e.phone phont,e.major major,e.collage collage,e.gender gender,e.email email,
         d.id did,d.pet_name pet_name
         from
@@ -69,8 +69,6 @@
         #{id},#{count}
         )
     </insert>
-
-
 
     <!--boolean checkCountExit(String count);-->
     <select id="checkCountExit" resultType="java.lang.Boolean">

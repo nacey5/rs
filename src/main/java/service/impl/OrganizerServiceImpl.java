@@ -19,15 +19,21 @@ public class OrganizerServiceImpl implements OrganizerService {
     private final OrganizatorDao orgDao= openSession.getMapper(OrganizatorDao.class);
 
     @Override
-    public Organizer selectInfoByPhoneAndPassword(String phone, String password) {
+    public Organizer orgLogin(String phone, String password) {
         return orgDao.selectInfoByPhoneAndPassword(phone, password);
     }
 
     @Override
     public void orgRegister(Organizer org) {
-        org.setId(orgDao.countAllOrg());
-        orgDao.addOrg(org);
-        openSession.commit();
+            Integer sum= orgDao.countAllOrg();
+            org.setId(++sum);
+        System.out.println(org.toString());
+            orgDao.addOrg(org);
+        try {
+            openSession.commit();
+        } catch (Exception e) {
+            throw new RuntimeException("组织注册失败");
+        }
     }
 
     @Override
@@ -52,8 +58,8 @@ public class OrganizerServiceImpl implements OrganizerService {
     }
 
     @Override
-    public boolean checkOrgName(Integer count) {
-        return false;
+    public boolean checkOrgName(String name) {
+        return orgDao.checkOrgName(name)!=null;
     }
 
     @Override

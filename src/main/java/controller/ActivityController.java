@@ -3,14 +3,21 @@ package controller;
 import common.utils.JsonUtil;
 import common.utils.ObjectUtil;
 import pojo.bean.ActivityUser;
+import pojo.bean.Pictures;
 import pojo.bean.User;
 import pojo.dto.ResultState;
 import service.ActivityService;
+import service.UserService;
+import service.impl.ActivityServiceImpl;
+import service.impl.UserServiceImpl;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author WEIR
@@ -20,7 +27,8 @@ import java.util.List;
 @WebServlet("/Activity")
 public class ActivityController extends BaseController {
 
-    private static ActivityService activityService;
+    private static ActivityService activityService = new ActivityServiceImpl();
+    private static UserService userService = new UserServiceImpl();
     private final ResultState result = new ResultState();
 
     /**
@@ -31,16 +39,30 @@ public class ActivityController extends BaseController {
      */
     public void addActivity(HttpServletRequest request, HttpServletResponse response) {
 
+        Map<String, Object> upload = (Map<String, Object>) UploadController.upload(request, ActivityUser.class);
+        ActivityUser addActivity = new ActivityUser();
+        List<String> actList = (List<String>) upload.get("actList");
+
+        addActivity.setName(actList.get(0));
+        addActivity.setTime(actList.get(1));
+        addActivity.setOrganizer(Integer.valueOf(actList.get(2)));
+        addActivity.setAdress(actList.get(3));
+        addActivity.setJoinWay(actList.get(4));
+
         //调用ObjectUtil工具类获取实例
-        ActivityUser addActivity = (ActivityUser) ObjectUtil.getObject(request, ActivityUser.class);
-        if (activityService.checkActivityName(request.getParameter("name"))) {
-            activityService.addActivity(addActivity);
+        if (activityService.checkActivityName(addActivity.getName())) {
+            try {
+                activityService.addActivity(addActivity);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
             result.setMsg("添加活动成功！");
             result.setCode(true);
+            //存入session
+            request.getSession().setAttribute("newAct", addActivity);
         } else {
             result.setMsg("添加活动失败！该活动已存在！");
         }
-
         JsonUtil.returnJson(response, result);
     }
 
@@ -108,12 +130,16 @@ public class ActivityController extends BaseController {
      * @param response
      */
     public void getUserActList(HttpServletRequest request, HttpServletResponse response) {
-        User nowUser= (User) request.getSession().getAttribute("nowUser");
-//activityService.
+        User nowUser = (User) request.getSession().getAttribute("nowUser");
+        List<ActivityUser> actList = userService.selectActListByUserId(nowUser.getId());
+        List<String> picList = new ArrayList<>();
+        for (ActivityUser activityUser : actList) {
+            picList.add(activityService.getActMainPic(activityUser.getId()).getPicture());
+        }
+        result.getDatas().put("actList", actList);
+        result.getDatas().put("actPicList", picList);
+
         JsonUtil.returnJson(response, result);
     }
 
-    public static void setActivityService(ActivityService activityService) {
-        ActivityController.activityService = activityService;
-    }
 }

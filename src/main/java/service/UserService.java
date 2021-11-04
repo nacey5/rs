@@ -1,6 +1,9 @@
 package service;
 
+import pojo.bean.ActivityUser;
 import pojo.bean.User;
+
+import java.util.List;
 
 /**
  * @author WEIR
@@ -8,6 +11,12 @@ import pojo.bean.User;
  * @date 8/10/2021 - 15:37
  */
 public interface UserService {
+    /**
+     * 通过用户id查询当前用户参与的所有活动
+     * @param id
+     * @return
+     */
+    List<ActivityUser> selectActListByUserId(Integer id);
     /**
      * 检查用户是否存在
      * @param count

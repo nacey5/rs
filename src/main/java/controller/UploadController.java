@@ -1,11 +1,13 @@
 package controller;
 
+import com.sun.javafx.collections.MappingChange;
 import common.utils.JsonUtil;
 import enums.UploadEnum;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileItemFactory;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import pojo.bean.ActivityUser;
 import pojo.bean.Pictures;
 import pojo.dto.ResultState;
 import service.ActivityService;
@@ -70,9 +72,10 @@ public class UploadController extends HttpServlet {
      *
      * @param request
      */
-    public <T> Object upload(HttpServletRequest request, Class<T> tClass) {
+    public static <T> Object upload(HttpServletRequest request, Class<T> tClass) {
         String imgPath;
-        List<String> msgList = new ArrayList<>();
+        List<String> actList = new ArrayList<>();
+        Pictures pic = new Pictures(-1, "");
         if (ServletFileUpload.isMultipartContent(request)) {
             //创建FileItemFactory工厂实现类
             FileItemFactory fileItemFactory = new DiskFileItemFactory();
@@ -86,7 +89,14 @@ public class UploadController extends HttpServlet {
                     // 普通表单项
                     if (fileItem.isFormField()) {
                         // 设置UTF-8，解决乱码问题，存入字符数组
-                        msgList.add(fileItem.getString("UTF-8"));
+
+                        //如果类型是活动的话,将数据添加到actList中
+                        if (tClass.isInstance(ActivityUser.class)) {
+                            actList.add(fileItem.getString("UTF-8"));
+                        } else {
+                            id = Integer.valueOf(fileItem.getString("UTF-8"));
+                            pic.setId(id);
+                        }
                     } else {
                         //上传的图片
                         imgPath = "image/" + fileItem.getName();
@@ -94,15 +104,22 @@ public class UploadController extends HttpServlet {
                         String imgSavePath = PictureController.PIC_BASE_URL + imgPath;
                         //保存图片
                         fileItem.write(new File(imgSavePath));
-                        //返回图片路径
-                        return imgSavePath;
+                        //返回图片
+                        pic.setPicture(imgSavePath);
                     }
                 }
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
-        return null;
+        //如果类型是活动的话
+        if (tClass.isInstance(ActivityUser.class)){
+            Map<String, Object>map=new HashMap<>();
+            map.put("actList",actList);
+            map.put("picture",pic);
+            return map;
+        }
+        return pic;
     }
 
     /**

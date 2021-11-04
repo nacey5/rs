@@ -3,8 +3,11 @@ package service.impl;
 import common.utils.SqlUtil;
 import dao.UserDao;
 import org.apache.ibatis.session.SqlSession;
+import pojo.bean.ActivityUser;
 import pojo.bean.User;
 import service.UserService;
+
+import java.util.List;
 
 /**
  * @author WEIR
@@ -15,6 +18,11 @@ public class UserServiceImpl implements UserService {
 
     private final SqlSession openSession = SqlUtil.getOpeningSession();
     private final UserDao userDao = openSession.getMapper(UserDao.class);
+
+    @Override
+    public List<ActivityUser> selectActListByUserId(Integer id) {
+        return userDao.selectActListByUserId(id);
+    }
 
     @Override
     public Boolean checkUserCount(String count) {
@@ -36,10 +44,11 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void register(User user) {
-        user.setId(userDao.countAllUser());
-        //设置用户默认名称
-        user.setUsername(User.BASE_NAME+user.getId());
         try {
+            Integer sum = userDao.countAllUser();
+            user.setId(++sum);
+            //设置用户默认名称
+            user.setUsername(user.getUsername() + user.getId());
             userDao.addUser(user);
             openSession.commit();
         } catch (Exception e) {
@@ -69,7 +78,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public void addUserImg(Integer id, String pic) {
         try {
-            userDao.addHeadPortrait(pic,id);
+            userDao.addHeadPortrait(pic, id);
             openSession.commit();
         } catch (Exception e) {
             throw new RuntimeException("添加头像失败！");
