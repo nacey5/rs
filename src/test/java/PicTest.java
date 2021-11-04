@@ -1,10 +1,7 @@
 import org.junit.Test;
 import pojo.bean.Organizer;
 import service.OrganizerService;
-import service.UserService;
-import service.impl.ActivityServiceImpl;
 import service.impl.OrganizerServiceImpl;
-import service.impl.UserServiceImpl;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -40,8 +37,8 @@ public class PicTest {
 //        System.out.println(userService.queryUserInfo().toString());
 //        organizerService.orgRegister(new Organizer("小行星", 0, 201643239,
 //                "13053211234", "123456", null, null));
-        Organizer organizer = organizerService.orgLogin("13053211234", "123546");
-        System.out.println(organizer.toString());
+        Organizer organizer = organizerService.orgLogin("13053211234", "123456");
+        System.out.println(organizer);
 
         System.out.println(new SimpleDateFormat("yyyy.MM.dd").format(new Date()));
     }

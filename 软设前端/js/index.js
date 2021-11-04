@@ -86,17 +86,17 @@ window.addEventListener('load', function() {
         } else {
             //返回用户不为空，展示用户头像
             //判断登录为个人用户时
-            if () {
-                $(".login").hide();
-                $(".login-true1").show();
-                $("#img").src() = "" //头像路径
-            }
+            // if () {
+            //     $(".login").hide();
+            //     $(".login-true1").show();
+            //     // $("#img").src() = "" //头像路径
+            // }
             //判断登录为社团组织时
-            if () {
-                $(".login").hide();
-                $(".login-true2").show();
-                $("#img").src() = "" //头像路径
-            }
+            // if () {
+            //     $(".login").hide();
+            //     $(".login-true2").show();
+            //     // $("#img").src() = "" //头像路径
+            // }
             $(".avatar").click(function() {
                 window.location.href = "index.html"
             });

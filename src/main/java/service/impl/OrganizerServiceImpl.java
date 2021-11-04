@@ -16,19 +16,24 @@ import java.util.List;
 public class OrganizerServiceImpl implements OrganizerService {
 
     private final SqlSession openSession = SqlUtil.getOpeningSession();
-    private final OrganizatorDao orgDao= openSession.getMapper(OrganizatorDao.class);
+    private final OrganizatorDao orgDao = openSession.getMapper(OrganizatorDao.class);
 
     @Override
     public Organizer orgLogin(String phone, String password) {
-        return orgDao.selectInfoByPhoneAndPassword(phone, password);
+        try {
+            return orgDao.selectInfoByPhoneAndPassword(phone, password);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     @Override
     public void orgRegister(Organizer org) {
-            Integer sum= orgDao.countAllOrg();
-            org.setId(++sum);
+        Integer sum = orgDao.countAllOrg();
+        org.setId(++sum);
         System.out.println(org.toString());
-            orgDao.addOrg(org);
+        orgDao.addOrg(org);
         try {
             openSession.commit();
         } catch (Exception e) {
@@ -43,7 +48,7 @@ public class OrganizerServiceImpl implements OrganizerService {
 
     @Override
     public void addInfo(Integer id, String info) {
-        orgDao.addInfo(id,info);
+        orgDao.addInfo(id, info);
         openSession.commit();
     }
 
@@ -53,13 +58,13 @@ public class OrganizerServiceImpl implements OrganizerService {
     }
 
     @Override
-    public List<Organizer> getOrgs(int start,int end) {
-        return orgDao.getOrgs(start,end);
+    public List<Organizer> getOrgs(int start, int end) {
+        return orgDao.getOrgs(start, end);
     }
 
     @Override
     public boolean checkOrgName(String name) {
-        return orgDao.checkOrgName(name)!=null;
+        return orgDao.checkOrgName(name) != null;
     }
 
     @Override
