@@ -70,6 +70,15 @@ window.addEventListener('load', function() {
     var timer = setInterval(function() {
         show();
     }, 4000);
+
+    //点击图片跳转到赛事详情页面
+    var imgList = document.querySelectorAll('img');
+    for (let i = 0; i < imgList.length; i++) {
+        imgList[i].addEventListener('click', function() {
+            window.open('match-details.html');
+        })
+    }
+
     // 体育赛事获取数据
     var sports = this.document.querySelector('.sports');
     var imgs1 = sports.querySelectorAll('img');
