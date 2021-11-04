@@ -206,11 +206,26 @@ a {
 .login-true1 {
     display: none;
     float: right;
+    width: 210px;
+    height: 80px;
 }
 
 .login-true2 {
     display: none;
     float: right;
+    width: 210px;
+    height: 80px;
+}
+
+
+/* 头像 */
+
+.photo {
+    float: left;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: rgb(203, 243, 255);
 }
 
 .login-true1 span {
@@ -221,6 +236,17 @@ a {
 .login-true2 span {
     line-height: 60px;
     text-align: center;
+}
+
+
+/* 退出 */
+
+.avatar {
+    float: right;
+    width: 60px;
+    height: 40px;
+    margin-top: 20px;
+    border: 1px solid rgb(203, 243, 255);
 }
 
 
