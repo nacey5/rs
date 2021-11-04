@@ -246,4 +246,16 @@
         select ao.*from activity_organization ao,pcituremain_activity pa
         where ao.id=(select pa.id where pa.picture=#{picCode})
     </select>
+
+    <!--List<User> selectParByActId(@Param("id") Integer id);-->
+    <select id="selectParByActId" resultType="user">
+        select
+            us.name `username`,us.id,us.count,us.major,us.gender,us.password,us.phone,us.email,us.collage
+        from
+            user_student us,activity_content ac
+        where
+            ac.student_count=us.count
+          and
+            ac.id=#{id}
+    </select>
 </mapper>

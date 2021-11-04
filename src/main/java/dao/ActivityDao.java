@@ -2,10 +2,7 @@ package dao;
 
 import org.apache.ibatis.annotations.MapKey;
 import org.apache.ibatis.annotations.Param;
-import pojo.bean.ActivityUser;
-import pojo.bean.Organizer;
-import pojo.bean.Participater;
-import pojo.bean.Pictures;
+import pojo.bean.*;
 
 import java.util.List;
 import java.util.Map;
@@ -195,4 +192,11 @@ public interface ActivityDao {
      * @return
      */
     ActivityUser selectActByMainPic(@Param("picCode") String picCode);
+
+    /**
+     * 通过活动id查找出参加的用户
+     * @param id
+     * @return
+     */
+    List<User> selectParByActId(@Param("id") Integer id);
 }
