@@ -1,6 +1,5 @@
 package controller;
 
-import com.sun.javafx.collections.MappingChange;
 import common.utils.JsonUtil;
 import enums.UploadEnum;
 import org.apache.commons.fileupload.FileItem;
@@ -40,7 +39,13 @@ public class UploadController extends HttpServlet {
     private static Integer id;
 
     @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        doPost(req,resp);
+    }
+
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        System.out.println(request.getRequestURI());
         String action = request.getParameter("action");
         //获取图片
         Pictures uploadPic = (Pictures) upload(request, Pictures.class);
@@ -84,6 +89,9 @@ public class UploadController extends HttpServlet {
             try {
                 // 解析上传的数据，得到每一个表单项FileItem
                 List<FileItem> list = servletFileUpload.parseRequest(request);
+
+                System.out.println(list);
+
                 // 遍历判断每一个表单项，是普通类型，还是上传的图片
                 for (FileItem fileItem : list) {
                     // 普通表单项
@@ -106,6 +114,7 @@ public class UploadController extends HttpServlet {
                         fileItem.write(new File(imgSavePath));
                         //返回图片
                         pic.setPicture(imgSavePath);
+                        System.out.println("上传成功！");
                     }
                 }
             } catch (Exception e) {

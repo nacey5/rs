@@ -6,7 +6,8 @@ window.addEventListener('load', function () {
     //获取轮播图图片数据
     $.ajax({
         type: 'post',
-        url: "http://localhost8080/FindMore/Picture",
+        // url: "http://localhost8080/FindMore/Picture",
+        url: "http://rsrs.nat300.top/FindMore/Picture",
         dataType: 'json',
         sync:false,
         data: {
@@ -76,7 +77,8 @@ window.addEventListener('load', function () {
     var imgs1 = sports.querySelectorAll('img');
     $.ajax({
         type: 'post',
-        url: "http://localhost8080/FindMore/Picture",
+        // url: "http://localhost8080/FindMore/Picture",
+        url: "http://rsrs.nat300.top/FindMore/Picture",
         dataType: 'json',
         sync:false,
         data: {
@@ -95,7 +97,8 @@ window.addEventListener('load', function () {
     var imgs2 = academic.querySelectorAll('img');
     $.ajax({
         type: 'post',
-        url: "http://localhost8080/FindMore/Picture",
+        // url: "http://localhost8080/FindMore/Picture",
+        url: "http://rsrs.nat300.top/FindMore/Picture",
         dataType: 'json',
         sync:false,
         data: {
@@ -114,7 +117,8 @@ window.addEventListener('load', function () {
     var imgs3 = voluntary.querySelectorAll('img');
     $.ajax({
         type: 'post',
-        url: "http://localhost8080/FindMore/Picture",
+        // url: "http://localhost8080/FindMore/Picture",
+        url: "http://rsrs.nat300.top/FindMore/Picture",
         dataType: 'json',
         sync:false,
         data: {

@@ -3,7 +3,6 @@ package controller;
 import common.utils.JsonUtil;
 import common.utils.ObjectUtil;
 import pojo.bean.ActivityUser;
-import pojo.bean.Pictures;
 import pojo.bean.User;
 import pojo.dto.ResultState;
 import service.ActivityService;
@@ -15,7 +14,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -42,13 +40,12 @@ public class ActivityController extends BaseController {
         Map<String, Object> upload = (Map<String, Object>) UploadController.upload(request, ActivityUser.class);
         ActivityUser addActivity = new ActivityUser();
         List<String> actList = (List<String>) upload.get("actList");
-
         addActivity.setName(actList.get(0));
         addActivity.setTime(actList.get(1));
         addActivity.setOrganizer(Integer.valueOf(actList.get(2)));
         addActivity.setAdress(actList.get(3));
         addActivity.setJoinWay(actList.get(4));
-
+        System.out.println(actList);
         //调用ObjectUtil工具类获取实例
         if (activityService.checkActivityName(addActivity.getName())) {
             try {

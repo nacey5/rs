@@ -63,7 +63,9 @@ public class UserSignController extends BaseController {
                     result.setMsg("登陆成功!");
                     result.setCode(true);
                     //存入当前登录的用户
-                    request.getSession().setAttribute(NOW_USER, user);
+                    request.getSession().setAttribute("nowUser", user);
+                    System.out.println("登陆成功！");
+                    System.out.println(request.getSession().getAttribute("nowUser").toString());
                 }
             } else {
                 result.setMsg("用户名不存在！");

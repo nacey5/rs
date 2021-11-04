@@ -1,6 +1,5 @@
 package controller;
 
-import annotation.WebRequest.RequestMapping;
 import common.utils.JsonUtil;
 import pojo.bean.ActivityUser;
 import pojo.bean.Organizer;
@@ -17,9 +16,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * @author WEIR
@@ -28,8 +25,8 @@ import java.util.Map;
  */
 @WebServlet("/Picture")
 public class PictureController extends BaseController {
-    public static final String PIC_BASE_URL = "http://rsrs.nat300.top/FindMore/";
-    //        public static final String PIC_BASE_URL = "http://localhost:8080/FindMore/";
+//    public static final String PIC_BASE_URL = "http://rsrs.nat300.top/FindMore/";
+            public static final String PIC_BASE_URL = "http://localhost:8080/FindMore/";
     private static final UserService userService = new UserServiceImpl();
     private static final ActivityService activityService = new ActivityServiceImpl();
     private static final OrganizerService organizerService = new OrganizerServiceImpl();
@@ -51,7 +48,6 @@ public class PictureController extends BaseController {
         }
         //往结果里面存图片数组
         result.getDatas().put("picList", picList);
-        System.out.println(picList.toString());
         //调用工具类返回结果
         JsonUtil.returnJson(response, result);
     }
@@ -113,12 +109,13 @@ public class PictureController extends BaseController {
 
         List<String> picList = new ArrayList<>();
         //查询活动并且遍历
-        for (ActivityUser activityUser : activityService.getActivity(-1, 1)) {
-            //获取对于的图片数组
-            List<Pictures> picture = activityService.getPicture(activityUser.getId());
-            //取第一张添加
-            picList.add(picture.get(0).getPicture());
-        }
+//        for (ActivityUser activityUser : activityService.getActivity(-1, 1)) {
+//            //获取对于的图片数组
+//            List<Pictures> picture = activityService.getPicture(activityUser.getId());
+//            //取第一张添加
+//            picList.add(picture.get(0).getPicture());
+//        }
+
         //往结果里面存图片数组
         result.getDatas().put("picList", picList);
         //调用工具类返回结果

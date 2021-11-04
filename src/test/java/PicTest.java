@@ -26,8 +26,7 @@ public class PicTest {
 //            activityService.addPicture(0,s);
 //        }
 //        activityService.addPicture(2, picList.get(0));
-//
-////        activityService.addPicture(3, picList.get(1));
+//        activityService.addPicture(3, picList.get(1));
 //        for (Pictures pictures : activityService.getPicture(0)) {
 //            System.out.println(pictures);
 //        }

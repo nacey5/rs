@@ -26,7 +26,7 @@ import java.util.List;
  * @date 3/11/2021 - 22:39
  */
 @WebServlet("/Find")
-public class FindController {
+public class FindController extends BaseController{
 
     private static ActivityService activityService=new ActivityServiceImpl();
     private static UserService userService=new UserServiceImpl();
@@ -40,21 +40,21 @@ public class FindController {
      * @param response
      */
     public void findUserOrOrg(HttpServletRequest request, HttpServletResponse response) {
-        HttpSession session = request.getSession();
-        User nowUser= (User) session.getAttribute(UserSignController.NOW_USER);
-        Organizer nowOrg= (Organizer)session.getAttribute(OrganizerSignController.NOW_ORG);
+        User nowUser= (User) request.getSession().getAttribute("nowUser");
+        Organizer nowOrg= (Organizer)request.getSession().getAttribute(OrganizerSignController.NOW_ORG);
+        System.out.println("now——>"+nowUser);
         if (nowUser!=null){
             //个人登录
             result.setCode(true);
-            result.getDatas().put(UserSignController.NOW_USER,nowUser);
+            result.getDatas().put("nowUser",nowUser);
         }else if(nowOrg!=null){
             //组织登录
             result.setCode(true);
-            result.getDatas().put(UserSignController.NOW_USER,nowOrg);
+            result.getDatas().put("nowOrg",nowOrg);
         }
         //如果两种清空都不是，则无用户登录，可将result直接返回，因为其code默认为false
-
         JsonUtil.returnJson(response,result);
+        System.out.println(result.toString());
     }
     /**
      * 查询登录的USer
