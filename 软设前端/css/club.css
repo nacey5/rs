@@ -1,3 +1,8 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
 .club-activity {
     width: 1200px;
     margin-top: 30px;
@@ -10,22 +15,37 @@
 }
 
 .left img {
+    display: block;
     width: 580px;
     height: 360px;
 }
 
 .p {
+    position: relative;
     width: 580px;
     height: 260px;
 }
 
 .p h5 {
-    margin-top: 80px;
+    padding-top: 80px;
     text-align: center;
 }
 
-.p p {
+.p .p2 {
+    height: 100px;
     text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.p:hover .p2 {
+    position: absolute;
+    bottom: 0px;
+    width: 580px;
+    height: 260px;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 2;
 }
 
 .right {
@@ -35,6 +55,7 @@
 }
 
 .right img {
+    display: block;
     width: 580px;
     height: 360px;
 }
