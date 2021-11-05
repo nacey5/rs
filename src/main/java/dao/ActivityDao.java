@@ -199,4 +199,34 @@ public interface ActivityDao {
      * @return
      */
     List<User> selectParByActId(@Param("id") Integer id);
+
+    /**
+     * 添加时间
+     * @param id
+     * @param signTime 报名截止时间
+     * @param firstTime 初赛时间
+     * @param endTime 决赛时间
+     */
+    void AddActTime(@Param("id") Integer id,@Param("sign") String signTime,@Param("first") String firstTime,@Param("end") String endTime);
+
+    /**
+     * 得到活动报名的截止时间
+     * @param id
+     * @return
+     */
+    String getActSignTime(@Param("id") Integer id);
+
+    /**
+     * 得到初赛的时间
+     * @param id
+     * @return
+     */
+    String getActFirstTime(@Param("id") Integer id);
+
+    /**
+     * 得到决赛时间
+     * @param id
+     * @return
+     */
+    String getActEndTime(@Param("id")Integer id);
 }
