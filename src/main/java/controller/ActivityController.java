@@ -36,16 +36,9 @@ public class ActivityController extends BaseController {
      * @param response
      */
     public void addActivity(HttpServletRequest request, HttpServletResponse response) {
-
-        Map<String, Object> upload = (Map<String, Object>) UploadController.upload(request, ActivityUser.class);
-        ActivityUser addActivity = new ActivityUser();
-        List<String> actList = (List<String>) upload.get("actList");
-        addActivity.setName(actList.get(0));
-        addActivity.setTime(actList.get(1));
-        addActivity.setOrganizer(Integer.valueOf(actList.get(2)));
-        addActivity.setAdress(actList.get(3));
-        addActivity.setJoinWay(actList.get(4));
-        System.out.println(actList);
+        System.out.println(request.getParameter("name"));
+        ActivityUser addActivity= (ActivityUser) ObjectUtil.getObject(request,ActivityUser.class);
+        System.out.println(addActivity.toString());
         //调用ObjectUtil工具类获取实例
         if (activityService.checkActivityName(addActivity.getName())) {
             try {

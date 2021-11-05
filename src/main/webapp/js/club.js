@@ -4,19 +4,20 @@ window.addEventListener('load', function() {
     var ol = document.querySelector('.slide_points'); //获取小圆点所在列表
     var points = ol.getElementsByTagName('li'); //获取小圆点
     //获取轮播图图片数据
-    $.ajax({
-            type: 'post',
-            url: "http://localhost8080/FindMore/Picture",
-            dataType: 'json',
-            data: {
-                action: "getOrgPicList"
-            },
-            success: function(result) {
-                for (let i = 0; i < imgs.length; i++) {
-                    imgs[i].src = result.datas.picList[i];
-                }
-            }
-        })
+    // $.ajax({
+    //         type: 'post',
+    //     url: "http://localhost8080/FindMore/Picture",
+    //     dataType: 'json',
+    //         data: {
+    //             action: "getOrgPicList",
+    //         },
+    //         success: function(result) {
+    //             for (let i = 0; i < imgs.length; i++) {
+    //                 imgs[i].src = result.datas.picList[i];
+    //             }
+    //         }
+    //     })
+
         //轮播图
     var index = 0;
     var j = 0;
@@ -69,23 +70,51 @@ window.addEventListener('load', function() {
     var timer = setInterval(function() {
         show();
     }, 4000);
+
+    //点击图片跳转到赛事详情页面
+    var imgList = document.querySelectorAll('img');
+    for (let i = 0; i < imgList.length; i++) {
+        imgList[i].addEventListener('click', function() {
+            window.open('match-details.html');
+        })
+    }
+
     //获取社团的图片
     var club = this.document.querySelector('.club-activity');
     var imgs1 = club.querySelectorAll('img');
     var ps = club.querySelectorAll('p');
     var change = club.querySelector('.change');
+    //获取轮播图下方图片数据
+    $.ajax({
+        type: 'post',
+        // url: "http://localhost8080/FindMore/Picture",
+        url: "http://rsrs.nat300.top/FindMore/Picture",
+        dataType: 'json',
+        // sync:false,
+        data: {
+            action: "getOrgList",
+        },
+        success: function(result) {
+            alert("组织图片");
+            for (let i = 0; i < imgs1.length; i++) {
+                imgs1[i].src = result.datas.picList[i]; //图片渲染
+                ps[i].innerHTML = result.datas.infoList[i]  //补充完整文字渲染
+            }
+        }
+    })
+    //点击“换一批”
     change.addEventListener('click', function() {
         $.ajax({
             type: 'post',
             url: "http://localhost8080/FindMore/Picture",
             dataType: 'json',
             data: {
-                action: "getOrgList"
+                action: "getOrgList",
             },
             success: function(result) {
                 for (let i = 0; i < imgs1.length; i++) {
                     imgs1[i].src = result.datas.picList[i]; //图片渲染
-                    ps[i].innerHTML = result.datas.infoList[i] //补充完整文字渲染
+                    ps[i].innerHTML = result.datas.infoList[i]  //补充完整文字渲染
                 }
             }
         })

@@ -8,9 +8,7 @@ import pojo.bean.User;
 import pojo.dto.ResultState;
 import service.UserService;
 import service.impl.UserServiceImpl;
-
 import javax.servlet.ServletException;
-import javax.servlet.ServletOutputStream;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -28,6 +26,7 @@ import static com.google.code.kaptcha.Constants.KAPTCHA_SESSION_KEY;
  */
 @WebServlet("/UserSignServlet")
 public class UserSignController extends BaseController {
+
     public static final String NOW_USER = "nowUser";
     public static final String DATE = new SimpleDateFormat("yyyy-MM-dd HH:mm").format(new Date());
     private static final UserService userService = new UserServiceImpl();
@@ -40,16 +39,20 @@ public class UserSignController extends BaseController {
      * @param response
      */
     public void login(HttpServletRequest request, HttpServletResponse response) {
-        String token = WebUtil.getCode(request);
+//        String token = WebUtil.getCode(request);
+        //获取Session中的验证码
+        String token = (String) request.getSession().getAttribute(KAPTCHA_SESSION_KEY);
+        System.out.println("验证码为："+token);
+        // 删除 Session中的验证码
+        request.getSession().removeAttribute(KAPTCHA_SESSION_KEY);
         String phone = request.getParameter("phone");
         String password = request.getParameter("password");
         String vcode = request.getParameter("vcode");
-        System.out.println(phone);
         System.out.println(vcode);
         System.out.println("登录" + DATE);
         User user = null;
         //判断验证码
-        if (token != null && token.equalsIgnoreCase(vcode)) {
+//        if (token != null && token.equalsIgnoreCase(vcode)) {
             //登录
             if (userService.checkUserCount(phone)) {
                 try {
@@ -70,9 +73,9 @@ public class UserSignController extends BaseController {
             } else {
                 result.setMsg("用户名不存在！");
             }
-        } else {
-            result.setMsg("验证码错误!");
-        }
+//        } else {
+//            result.setMsg("验证码错误!");
+//        }
         //调用工具类返回结果
         JsonUtil.returnJson(response, result);
     }

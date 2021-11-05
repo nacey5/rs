@@ -14,7 +14,7 @@ window.addEventListener('load', function () {
             action: "getMatchAndOrgPic"
         },
         success: function (result) {
-            for (let i = 0; i < result.datas.picList.length; i++) {
+            for (let i = 0; i < imgs.length; i++) {
                 imgs[i].src = result.datas.picList[i];
             }
         }
@@ -97,12 +97,12 @@ window.addEventListener('load', function () {
                 if (data.datas.nowUser != null) {
                     $(".login").hide();
                     $(".login-true1").show();
-                    $(".img").src = data.datas.nowUser.headPortrait;//头像路径
+                    $(".img1").src = data.datas.nowUser.headPortrait;//头像路径
                 } else if(data.datas.nowOrg!=null){
                     //否则为社团组织时
                     $(".login").hide();
                     $(".login-true2").show();
-                    $(".img").src = data.datas.nowOrg.headPortrait;//头像路径
+                    $(".img2").src = data.datas.nowOrg.headPortrait;//头像路径
                 }
                 $(".avatar").click(function () {
                     window.location.href = "index.html"
@@ -111,47 +111,45 @@ window.addEventListener('load', function () {
         },
     })
 //图片已经固定
-    // // 赛事活动
-    // function match() {
-    //     var score = this.document.querySelector('.score');
-    //     var imgs1 = score.querySelectorAll('img');
-    //     $.ajax({
-    //         type: "post",
-    //         url: 'http://rsrs.nat300.top/FindMore/Picture',
-    //         // url: '"http://localhost:8080/FindMore/Picture',
-    //         dataType: 'json',
-    //         data: {
-    //             action: "getIndexMatchPic"
-    //         },
-    //         success: function (result) {
-    //             for (let i = 1; i < result.datas.picList.length; i++) {
-    //                 imgs1[i].src = result.datas.picList[i - 1];
-    //             }
-    //             club();
-    //         }
-    //     })
-    // }
-
-    // // 社团组织
-    // function club() {
-    //     var club = this.document.querySelector('.club');
-    //     var imgs2 = club.querySelectorAll('img');
-    //     $.ajax({
-    //         type: "post",
-    //         url: 'http://rsrs.nat300.top/FindMore/Picture',
-    //         // url: '"http://localhost:8080/FindMore/Picture',
-    //         dataType: 'json',
-    //         data: {
-    //             action: "getIndexOrgPic"
-    //         },
-    //         success: function (result) {
-    //             for (let i = 1; i < result.datas.picList.length; i++) {
-    //                 imgs2[i].src = result.datas.picList[i - 1];
-    //             }
-    //             findUser();
-    //         }
-    //     })
-    // }
+    // 赛事活动
+    function match() {
+        var score = this.document.querySelector('.score');
+        var imgs1 = score.querySelectorAll('img');
+        $.ajax({
+            type: "post",
+            // url: 'http://rsrs.nat300.top/FindMore/Picture',
+            url: '"http://localhost:8080/FindMore/Picture',
+            dataType: 'json',
+            sync: false,
+            data: {
+                action: "getIndexMatchPic"
+            },
+            success: function (result) {
+                for (let i = 1; i < result.datas.picList.length; i++) {
+                    imgs1[i].src = result.datas.picList[i - 1];
+                }
+            }
+        })
+    }
+    // 社团组织
+    function club() {
+        var club = this.document.querySelector('.club');
+        var imgs2 = club.querySelectorAll('img');
+        $.ajax({
+            type: "post",
+            // url: 'http://rsrs.nat300.top/FindMore/Picture',
+            url: '"http://localhost:8080/FindMore/Picture',
+            dataType: 'json',
+            data: {
+                action: "getIndexOrgPic"
+            },
+            success: function (result) {
+                for (let i = 1; i < result.datas.picList.length; i++) {
+                    imgs2[i].src = result.datas.picList[i - 1];
+                }
+            }
+        })
+    }
 //
 //     // 模糊查询时动态创建提示框
 //     var searchA = this.document.querySelector('.searchA');

@@ -46,9 +46,10 @@ public class UploadController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         System.out.println(request.getRequestURI());
-        String action = request.getParameter("action");
+        String action = request.getParameter("addType");
         //获取图片
-        Pictures uploadPic = (Pictures) upload(request, Pictures.class);
+        Pictures uploadPic = (Pictures) upload(request);
+        System.out.println(uploadPic.getPicture());
         switch (action) {
             case UploadEnum.ADD_USER_IMG: {
                 addUserImg(id, uploadPic.getPicture());
@@ -77,9 +78,8 @@ public class UploadController extends HttpServlet {
      *
      * @param request
      */
-    public static <T> Object upload(HttpServletRequest request, Class<T> tClass) {
+    public static <T> Object upload(HttpServletRequest request) {
         String imgPath;
-        List<String> actList = new ArrayList<>();
         Pictures pic = new Pictures(-1, "");
         if (ServletFileUpload.isMultipartContent(request)) {
             //创建FileItemFactory工厂实现类
@@ -89,22 +89,14 @@ public class UploadController extends HttpServlet {
             try {
                 // 解析上传的数据，得到每一个表单项FileItem
                 List<FileItem> list = servletFileUpload.parseRequest(request);
-
                 System.out.println(list);
-
                 // 遍历判断每一个表单项，是普通类型，还是上传的图片
                 for (FileItem fileItem : list) {
                     // 普通表单项
                     if (fileItem.isFormField()) {
                         // 设置UTF-8，解决乱码问题，存入字符数组
-
+                        System.out.println("普通");
                         //如果类型是活动的话,将数据添加到actList中
-                        if (tClass.isInstance(ActivityUser.class)) {
-                            actList.add(fileItem.getString("UTF-8"));
-                        } else {
-                            id = Integer.valueOf(fileItem.getString("UTF-8"));
-                            pic.setId(id);
-                        }
                     } else {
                         //上传的图片
                         imgPath = "image/" + fileItem.getName();
@@ -120,13 +112,6 @@ public class UploadController extends HttpServlet {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-        }
-        //如果类型是活动的话
-        if (tClass.isInstance(ActivityUser.class)){
-            Map<String, Object>map=new HashMap<>();
-            map.put("actList",actList);
-            map.put("picture",pic);
-            return map;
         }
         return pic;
     }

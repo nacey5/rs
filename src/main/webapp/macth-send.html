@@ -15,7 +15,8 @@
         <div class="logo"><img src="image/logo.png" alt="logo"></div>
         <div class="nav">
             <ul>
-                <li>首页</li>
+                <li>
+                    <a href="index.html"></a>首页</li>
                 <li><a href="match.html">赛事</a></li>
                 <li><a href="club.html">社团组织</a></li>
             </ul>
@@ -31,50 +32,67 @@
         <div class="title">
             <h3>赛事发布</h3>
         </div>
-        <div class="scoreBox">
-            <div class="score">
-                <p>赛事标题</p>
+        <form name="text1" id="scoreBox">
+            <div class="scoreBox">
+                <div class="score">
+                    <p>赛事标题</p>
+                    <div>
+                        <input type="text" placeholder="请输入赛事发布的标题" name="title" class="title">
+                        <img src="image/score-icon1.jpg" alt="">
+                    </div>
+                </div>
+                <div class="score">
+                    <p>赛事类型</p>
+                    <div>
+                        <input id="type" type="text" placeholder="请选择" disabled="disabled">
+                        <select>
+                            <option>体育赛事</option>
+                            <option>学术活动</option>
+                            <option>志愿活动</option>
+                        </select>
+
+                    </div>
+                </div>
+                <div class="score">
+                    <p>时间</p>
+                    <div>
+                        <input type="text" placeholder="请输入赛事举行的时间" name="time" class="time">
+                        <img src="image/score-icon3.jpg" alt="">
+                    </div>
+                </div>
+                <div class="score">
+                    <p>联系方式</p>
+                    <div><input type="text" placeholder="请输入赛事负责人的学号" name="count" class="count"></div>
+
+                </div>
+                <div class="score">
+                    <p>地点</p>
+                    <div>
+                        <input type="text" placeholder="请输入赛事举行的地点" name="adress" class="adress">
+                        <img src="image/score-icon4.jpg" alt="">
+                    </div>
+                </div>
+                <div class="score">
+                    <p>报名方式</p>
+                    <div><input type="text" placeholder="请输入参加赛事的报名方式" name="joinWay" class="joinWay"></div>
+                </div>
+            </div>
+        </form>
+        <form name="text2" id="activeBox">
+            <div class="activeBox">
+                <h3>活动介绍</h3>
                 <div>
-                    <input type="text" placeholder="请输入赛事发布的标题">
-                    <img src="image/score-icon1.jpg" alt="">
+                    <p>文字介绍</p>
+                    <textarea cols="150" rows="8" placeholder="请输入活动相关的文字介绍" class="textarea"></textarea>
+                    <p>图片介绍</p>
+                    <div class="fileBox">
+                        <img src="" alt="" class="file_img">
+                        <input type="file" name="file" class="file" accept="image/gif,image/jpeg,image/jpg,image/png,image/svg">
+                        <button>提交</button>
+                    </div>
                 </div>
             </div>
-            <div class="score">
-                <p>时间</p>
-                <div>
-                    <input type="text" placeholder="请输入赛事举行的时间(如：2021.11.07)">
-                    <img src="image/score-icon3.jpg" alt="">
-                </div>
-            </div>
-            <div class="score">
-                <p>联系方式</p>
-                <div><input type="text" placeholder="请输入赛事负责人的学号"></div>
-            </div>
-            <div class="score">
-                <p>地点</p>
-                <div>
-                    <input type="text" placeholder="请输入赛事举行的地点">
-                    <img src="image/score-icon4.jpg" alt="">
-                </div>
-            </div>
-            <div class="score">
-                <p>报名方式</p>
-                <div><input type="text" placeholder="请输入参加赛事的报名方式(线上或线下)"></div>
-            </div>
-        </div>
-        <div class="activeBox">
-            <h3>活动介绍</h3>
-            <div>
-                <p>文字介绍</p>
-                <textarea cols="150" rows="8" placeholder="请输入活动相关的文字介绍"></textarea>
-                <p>图片介绍</p>
-                <div class="fileBox">
-                    <img src="" alt="" class="file_img">
-                    <input type="file" name="file" class="file" accept="image/gif,image/jpeg,image/jpg,image/png,image/svg">
-                    <button>提交</button>
-                </div>
-            </div>
-        </div>
+        </form>
     </div>
 </body>
 <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>

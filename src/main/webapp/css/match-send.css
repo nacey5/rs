@@ -10,8 +10,8 @@ a {
 
 .content {
     width: 1200px;
+    height: 905px;
     margin: 0 auto;
-    margin-left: 44px;
 }
 
 .content .title {
@@ -100,4 +100,22 @@ textarea {
     border: none;
     background-color: rgb(115, 203, 190);
     cursor: pointer;
+}
+
+
+/* 赛事类型下拉框 */
+
+#type {
+    display: inline-block;
+    width: 150px;
+    background-color: #fff;
+}
+
+select {
+    float: right;
+    width: 100px;
+    height: 33px;
+    margin-right: 10px;
+    border: none;
+    outline: none;
 }

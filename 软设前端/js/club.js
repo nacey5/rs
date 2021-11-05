@@ -6,15 +6,14 @@ window.addEventListener('load', function() {
     //获取轮播图图片数据
     $.ajax({
             type: 'post',
-            url: '', //填写社团组织页面轮播图的接口路径
-            dataType: 'json',
+        url: "http://localhost8080/FindMore/Picture",
+        dataType: 'json',
             data: {
-                action: ""
+                action: "getOrgPicList",
             },
             success: function(result) {
                 for (let i = 0; i < imgs.length; i++) {
                     imgs[i].src = result.datas.picList[i];
-
                 }
             }
         })
@@ -87,15 +86,15 @@ window.addEventListener('load', function() {
     change.addEventListener('click', function() {
         $.ajax({
             type: 'post',
-            url: '', //填写体育赛事的接口路径
+            url: "http://localhost8080/FindMore/Picture",
             dataType: 'json',
             data: {
-                action: ""
+                action: "getOrgList",
             },
             success: function(result) {
                 for (let i = 0; i < imgs1.length; i++) {
                     imgs1[i].src = result.datas.picList[i]; //图片渲染
-                    ps[i].innerHTML = result //补充完整文字渲染
+                    ps[i].innerHTML = result.datas.infoList[i]  //补充完整文字渲染
                 }
             }
         })

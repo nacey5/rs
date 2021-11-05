@@ -1,5 +1,3 @@
-import common.utils.Base64Util;
-
 import org.junit.Test;
 import service.impl.ActivityServiceImpl;
 

@@ -5,12 +5,21 @@
          version="4.0">
 
     <!-- 验证码配置-->
+<!--    <servlet>-->
+<!--        <servlet-name>KaptchaServlet</servlet-name>-->
+<!--        <servlet-class>com.google.code.kaptcha.servlet.KaptchaServlet</servlet-class>-->
+<!--    </servlet>-->
+<!--    <servlet-mapping>-->
+<!--        <servlet-name>KaptchaServlet</servlet-name>-->
+<!--        <url-pattern>/kaptcha.jpg</url-pattern>-->
+<!--    </servlet-mapping>-->
+
     <servlet>
-        <servlet-name>KaptchaServlet</servlet-name>
+        <servlet-name>kaptchaServlet</servlet-name>
         <servlet-class>com.google.code.kaptcha.servlet.KaptchaServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>KaptchaServlet</servlet-name>
+        <servlet-name>kaptchaServlet</servlet-name>
         <url-pattern>/kaptcha.jpg</url-pattern>
     </servlet-mapping>
     <!--为了允许跨域访问-->

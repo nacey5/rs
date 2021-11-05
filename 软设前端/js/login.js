@@ -31,28 +31,28 @@ window.addEventListener('load', function() {
         }
         vcode.addEventListener('click', function() {
             //这里更换验证码图片路径
-            vcode.src = "http://localhost:8080/wawablog/kaptcha.jpg?d=" + new Date();
+            vcode.src = "http://localhost:8080/FindMore/kaptcha.jpg?d=" + new Date();
+            // vcode.src = "http://rsrs.nat300.top/FindMore/kaptcha.jpg?d=" + new Date();
 
         })
         $.ajax({
             type: 'post',
-            url: 'http://rsrs.nat300.top/rs/UserSignServlet',
+            // url: 'http://rsrs.nat300.top/FindMore/UserSignServlet',
+            url: 'http://localhost:8080/FindMore/UserSignServlet',
             dataType: 'json',
             data: {
                 'action': "login",
-                'phone': JSON.stringify(phone),
-                'pwd': JSON.stringify(psd),
-                'vcode': JSON.stringify(code)
+                'phone': (phone.value),
+                'password': (psd.value),
+                'vcode': (code.value)
             },
             success: function(result) {
-                if (result.msg == '用户不存在') {
-                    alert("用户名错误或密码错误");
-                }
-                if (result.code == false) {
-                    alert("验证码错误");
-                    code.innerHTML = "";
-                }
-
+               alert(result.msg);
+               if(result.code){
+                   window.location.href="index.html";
+               }else{
+                   window.location.reload();
+               }
             },
             error: function(aa) {
                 console.log(aa);

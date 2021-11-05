@@ -88,6 +88,7 @@ public class PictureController extends BaseController {
     }
 
     public void getIndexOrgPic(HttpServletRequest request, HttpServletResponse response) {
+
         List<String> picList = new ArrayList<>();
         picList.add(PIC_BASE_URL + "image/lunhua.jpg");
         picList.add(PIC_BASE_URL + "image/lanqiu.jpg");
@@ -109,7 +110,7 @@ public class PictureController extends BaseController {
 
         List<String> picList = new ArrayList<>();
         //查询活动并且遍历
-//        for (ActivityUser activityUser : activityService.getActivity(-1, 1)) {
+//        for (ActivityUser activityUser : activityService.getActivity(0, 3)) {
 //            //获取对于的图片数组
 //            List<Pictures> picture = activityService.getPicture(activityUser.getId());
 //            //取第一张添加
@@ -131,13 +132,16 @@ public class PictureController extends BaseController {
     public void getOrgPicList(HttpServletRequest request, HttpServletResponse response) {
 
         List<String> picList = new ArrayList<>();
-        for (Organizer organizer : organizerService.getOrgs(-1, 1)) {
+        List<String> infoList = new ArrayList<>();
+        for (Organizer org : organizerService.getOrgs(0,3)) {
             //获取对应的图片数组，获取头像(图片)
-            String picture = organizer.getHeadPortrait();
+            String picture = org.getHeadPortrait();
             picList.add(picture);
+            infoList.add(org.getInfo());
         }
         //往结果里面存图片数组
         result.getDatas().put("picList", picList);
+        result.getDatas().put("infoList", infoList);
         //调用工具类返回结果
         JsonUtil.returnJson(response, result);
     }
@@ -192,14 +196,22 @@ public class PictureController extends BaseController {
 
         List<String> picList = new ArrayList<>();
         List<String> infoList = new ArrayList<>();
-        for (Organizer organizer : organizerService.getOrgs(-1, 1)) {
+        List<Organizer> orgs = null;
+        try {
+            orgs = organizerService.getOrgs(0, 4);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        System.out.println(orgs);
+        for (Organizer organizer : orgs) {
             //获取对应的图片数组，获取头像(图片)
             String picture = organizer.getHeadPortrait();
             picList.add(picture);
-            infoList.add(organizer.getInfo());
+            infoList.add( organizerService.selectInfo(organizer.getId()));
         }
         //往结果里面存图片数组
         result.getDatas().put("picList", picList);
+        result.getDatas().put("infoList", infoList);
         //调用工具类返回结果
         JsonUtil.returnJson(response, result);
     }

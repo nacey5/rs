@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
+import static com.google.code.kaptcha.Constants.KAPTCHA_SESSION_KEY;
+
 /**
  * @author WEIR
  * @description

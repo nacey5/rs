@@ -1,6 +1,5 @@
 package pojo.bean;
 
-import controller.OrganizerSignController;
 import controller.PictureController;
 import org.apache.ibatis.type.Alias;
 
@@ -18,7 +17,7 @@ public class Organizer implements Serializable {
     String password;
     String collage;
     /**头像*/
-    String headPortrait= PictureController.PIC_BASE_URL+"image/org.png";
+    String headPortrait;
 
     String info;
 

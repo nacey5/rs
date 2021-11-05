@@ -78,7 +78,6 @@
             <artifactId>ibator</artifactId>
             <version>1.2.1.681</version>
         </dependency>
-
         <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
@@ -94,13 +93,11 @@
             <artifactId>commons-beanutils</artifactId>
             <version>1.9.2</version>
         </dependency>
-
-
-<!--        <dependency>-->
-<!--        <groupId>com.google.code.kaptcha</groupId>-->
-<!--        <artifactId>kaptcha</artifactId>-->
-<!--        <version>2.3</version>-->
-<!--        </dependency>-->
+                <dependency>
+                <groupId>com.google.code.kaptcha</groupId>
+                <artifactId>kaptcha</artifactId>
+                <version>2.3</version>
+                </dependency>
     </dependencies>
 
     <build>
@@ -116,6 +113,14 @@
             </resource>
             <resource>
                 <directory>src/main/resources</directory>
+                <includes>
+                    <include>**/*.properties</include>
+                    <include>**/*.xml</include>
+                </includes>
+                <filtering>false</filtering>
+            </resource>
+            <resource>
+                <directory>src/main/webapp</directory>
                 <includes>
                     <include>**/*.properties</include>
                     <include>**/*.xml</include>
