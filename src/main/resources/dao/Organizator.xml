@@ -48,10 +48,13 @@
 
     <!--    List<Organizer> getOrgs(@Param("num1") Integer number1,@Param("num2") Integer number2);   -->
     <select id="getOrgs" resultType="org">
-        select *
-        from user_organization
-        where 1 = 1
-        order by id
+        select
+            `id`,`name`,`level`,`managercount` mangerCount,`phone`,`password`,`pic_org` headPortrait,`collage`
+        from
+            user_organization
+        where 1=1
+        order by
+            id
             asc
         limit #{num1},#{num2}
     </select>
