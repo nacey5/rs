@@ -229,4 +229,11 @@ public interface ActivityDao {
      * @return
      */
     String getActEndTime(@Param("id")Integer id);
+
+    /**
+     * 通过level查找活动
+     * @param level
+     * @return
+     */
+    List<ActivityUser> getOrgActByLevel(@Param("level") Integer level);
 }

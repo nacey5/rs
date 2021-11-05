@@ -126,4 +126,11 @@ public interface UserDao {
      * @return
      */
     User selectUserByHeadPortrait(@Param("picCode")String picCode);
+
+    /**
+     *
+     * @param level
+     * @return
+     */
+    List<ActivityUser> getUserActByLevel(@Param("level") Integer level);
 }

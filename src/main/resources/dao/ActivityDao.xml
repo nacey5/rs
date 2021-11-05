@@ -287,4 +287,22 @@
         from  time_activity
         where id=#{id}
     </select>
+
+    <!--List<ActivityUser> getOrgActByLevel(@Param("level") Integer level);-->
+    <select id="getOrgActByLevel" resultType="activityUser">
+        select *
+        from
+            activity_organization
+        where
+            `level`=#{level}
+    </select>
+
+    <!--List<ActivityUser> getUserActByLevel(@Param("level") Integer level);-->
+    <select id="getUserActByLevel" resultType="activityUser">
+        select *
+        from
+            activity_user
+        where
+            `level`=#{level}
+    </select>
 </mapper>
