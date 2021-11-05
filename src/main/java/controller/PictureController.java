@@ -109,16 +109,13 @@ public class PictureController extends BaseController {
     public void getMatchPicList(HttpServletRequest request, HttpServletResponse response) {
 
         List<String> picList = new ArrayList<>();
-        //查询活动并且遍历
-//        for (ActivityUser activityUser : activityService.getActivity(0, 3)) {
-//            //获取对于的图片数组
-//            List<Pictures> picture = activityService.getPicture(activityUser.getId());
-//            //取第一张添加
-//            picList.add(picture.get(0).getPicture());
-//        }
+        picList.add(PIC_BASE_URL + "image/chuyun.jpg");
+        picList.add(PIC_BASE_URL + "image/sport.jpg");
+        picList.add(PIC_BASE_URL + "image/love.jpg");
 
         //往结果里面存图片数组
         result.getDatas().put("picList", picList);
+        System.out.println(picList);
         //调用工具类返回结果
         JsonUtil.returnJson(response, result);
     }
@@ -133,12 +130,15 @@ public class PictureController extends BaseController {
 
         List<String> picList = new ArrayList<>();
         List<String> infoList = new ArrayList<>();
-        for (Organizer org : organizerService.getOrgs(0,3)) {
-            //获取对应的图片数组，获取头像(图片)
-            String picture = org.getHeadPortrait();
-            picList.add(picture);
-            infoList.add(org.getInfo());
-        }
+//        for (Organizer org : organizerService.getOrgs(0,3)) {
+//            //获取对应的图片数组，获取头像(图片)
+//            String picture = org.getHeadPortrait();
+//            picList.add(picture);
+//            infoList.add(org.getInfo());
+//        }
+        picList.add(PIC_BASE_URL + "image/chuyun.jpg");
+        picList.add(PIC_BASE_URL + "image/sport.jpg");
+        picList.add(PIC_BASE_URL + "image/love.jpg");
         //往结果里面存图片数组
         result.getDatas().put("picList", picList);
         result.getDatas().put("infoList", infoList);

@@ -6,8 +6,8 @@ window.addEventListener('load', function () {
     //获取轮播图图片数据
     $.ajax({
         type: 'post',
-        // url: "http://localhost8080/FindMore/Picture",
-        url: "http://rsrs.nat300.top/FindMore/Picture",
+        url: "http://localhost8080/FindMore/Picture",
+        // url: "http://rsrs.nat300.top/FindMore/Picture",
         dataType: 'json',
         sync:false,
         data: {
@@ -88,13 +88,15 @@ window.addEventListener('load', function () {
         success: function (result) {
             for (let i = 0; i < imgs1.length; i++) {
                 imgs1[i].src = result.datas.picList[i];
-                text=result.datas.infoList[i];//文字渲染，text可更改
+                ps[i].innerHTML = result.datas.infoList[i];  //补充完整文字渲染
+                // text=result.datas.infoList[i];//文字渲染，text可更改
             }
         }
     })
     // 学术活动获取数据
     var academic = this.document.querySelector('.academic');
     var imgs2 = academic.querySelectorAll('img');
+    var ps = club.querySelectorAll('p');
     $.ajax({
         type: 'post',
         // url: "http://localhost8080/FindMore/Picture",
@@ -108,7 +110,8 @@ window.addEventListener('load', function () {
         success: function (result) {
             for (let i = 0; i < imgs2.length; i++) {
                 imgs2[i].src = result.datas.picList[i];
-                text=result.datas.infoList[i];//文字渲染，text可更改
+                // text=result.datas.infoList[i];//文字渲染，text可更改
+                ps[i].innerHTML = result.datas.infoList[i];
             }
         }
     })
@@ -128,7 +131,8 @@ window.addEventListener('load', function () {
         success: function (result) {
             for (let i = 0; i < imgs3.length; i++) {
                 imgs3[i].src = result.datas.picList[i];
-                text=result.datas.infoList[i];//文字渲染，text可更改
+                ps[i].innerHTML = result.datas.infoList[i];  //补充完整文字渲染
+                // text=result.datas.infoList[i];//文字渲染，text可更改
             }
         }
     })

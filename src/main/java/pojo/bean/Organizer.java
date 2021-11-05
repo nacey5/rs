@@ -17,7 +17,7 @@ public class Organizer implements Serializable {
     String password;
     String collage;
     /**头像*/
-    String headPortrait;
+    String headPortrait = PictureController.PIC_BASE_URL+"image/org.png";
 
     String info;
 
@@ -118,7 +118,7 @@ public class Organizer implements Serializable {
     }
 
     public void setHeadPortrait(String headPortrait) {
-        headPortrait = headPortrait;
+        this.headPortrait = headPortrait;
     }
 
     @Override

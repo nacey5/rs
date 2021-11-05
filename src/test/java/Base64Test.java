@@ -15,7 +15,7 @@ public class Base64Test {
         String img = null;
         File file = new File("");
 //        System.out.println(file.getAbsolutePath());
-        img = Base64Util.toBase64(new File(file.getAbsolutePath() + "/src/main/webapp/image/zxb.jpg"));
+//        img = Base64Util.toBase64(new File(file.getAbsolutePath() + "/src/main/webapp/image/zxb.jpg"));
 //        System.out.println(img);
         new ActivityServiceImpl().addPicture(7, "sssssssssssssssssssssssssssssss");
         System.out.println(new ActivityServiceImpl().getPicture(2));

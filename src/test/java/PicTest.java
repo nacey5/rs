@@ -36,9 +36,10 @@ public class PicTest {
 //        System.out.println(userService.queryUserInfo().toString());
 //        organizerService.orgRegister(new Organizer("小行星", 0, 201643239,
 //                "13053211234", "123456", null, null));
-        Organizer organizer = organizerService.orgLogin("13053211234", "123456");
-        System.out.println(organizer);
-
-        System.out.println(new SimpleDateFormat("yyyy.MM.dd").format(new Date()));
+//        Organizer organizer = organizerService.orgLogin("13053211234", "123456");
+//        System.out.println(organizer);
+//
+//        System.out.println(new SimpleDateFormat("yyyy.MM.dd").format(new Date()));
+        System.out.println(organizerService.getOrgs(0, 3));
     }
 }

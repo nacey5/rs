@@ -271,3 +271,15 @@ a {
 .photo:hover .nav2 {
     display: block;
 }
+.content .club-photo {
+      float: left;
+      width: 890px;
+      height: 360px;
+      margin-right: 0;
+      border: 1px solid #000;
+}
+
+.club-photo img {
+      width: 890px;
+      height: 360px;
+}
