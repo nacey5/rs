@@ -74,4 +74,13 @@
         where
               pic_org=#{picCode}
     </select>
+
+    <!--List<Organizer> queryOrgsByName(@Param("name") String name);-->
+    <select id="queryOrgsByName" resultType="org">
+        select *
+        from
+            user_organization
+        where
+            `name`=#{name}
+    </select>
 </mapper>
