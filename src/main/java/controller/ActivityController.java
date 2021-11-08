@@ -28,6 +28,8 @@ public class ActivityController extends BaseController {
     private static ActivityService activityService = new ActivityServiceImpl();
     private static UserService userService = new UserServiceImpl();
     private final ResultState result = new ResultState();
+    public static String actInfo;
+    public static ActivityUser newAct;
 
     /**
      * 发布活动
@@ -36,11 +38,34 @@ public class ActivityController extends BaseController {
      * @param response
      */
     public void addActivity(HttpServletRequest request, HttpServletResponse response) {
-        System.out.println(request.getParameter("name"));
-        ActivityUser addActivity= (ActivityUser) ObjectUtil.getObject(request,ActivityUser.class);
+
+        String name = request.getParameter("name");
+        String time = request.getParameter("time");
+        String organizer = request.getParameter("organizer");
+        String adress = request.getParameter("adress");
+        String joinWay = request.getParameter("joinWay");
+        String info = request.getParameter("info");
+        String levelText = request.getParameter("level");
+        actInfo = info;
+        Integer level = 0;
+        if (levelText.equals("体育赛事")) {
+            level = 0;
+        } else if (levelText.equals("学术活动")) {
+            level = 1;
+        } else if (levelText.equals("志愿活动")) {
+            level = 2;
+        }
+        System.out.println(organizer);
+        System.out.println(name);
+        ActivityUser addActivity = null;
+        try {
+            addActivity = new ActivityUser(name, Integer.valueOf(organizer), time, adress, joinWay, level);
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+        }
         System.out.println(addActivity.toString());
         //调用ObjectUtil工具类获取实例
-        if (activityService.checkActivityName(addActivity.getName())) {
+        if (!activityService.checkActivityName(name)) {
             try {
                 activityService.addActivity(addActivity);
             } catch (Exception e) {

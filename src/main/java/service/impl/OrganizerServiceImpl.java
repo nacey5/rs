@@ -19,6 +19,16 @@ public class OrganizerServiceImpl implements OrganizerService {
     private final OrganizatorDao orgDao = openSession.getMapper(OrganizatorDao.class);
 
     @Override
+    public Organizer checkOrgPhone(String name) {
+        return orgDao.checkOrgPhone(name);
+    }
+
+    @Override
+    public Organizer selectOrgByHeadPortrait(String picCode) {
+        return orgDao.selectOrgByHeadPortrait(picCode);
+    }
+
+    @Override
     public Organizer orgLogin(String phone, String password) {
         try {
             return orgDao.selectInfoByPhoneAndPassword(phone, password);

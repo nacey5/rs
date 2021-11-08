@@ -6,7 +6,9 @@ import common.utils.ObjectUtil;
 import common.utils.WebUtil;
 import pojo.bean.User;
 import pojo.dto.ResultState;
+import service.OrganizerService;
 import service.UserService;
+import service.impl.OrganizerServiceImpl;
 import service.impl.UserServiceImpl;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -28,9 +30,9 @@ import static com.google.code.kaptcha.Constants.KAPTCHA_SESSION_KEY;
 public class UserSignController extends BaseController {
 
     public static final String NOW_USER = "nowUser";
-    public static final String DATE = new SimpleDateFormat("yyyy-MM-dd HH:mm").format(new Date());
+    public static final String DATE = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(new Date());
     private static final UserService userService = new UserServiceImpl();
-    private final ResultState result = new ResultState();
+    public static final OrganizerService orgService=new OrganizerServiceImpl();
 
     /**
      * 用户登录
@@ -38,8 +40,9 @@ public class UserSignController extends BaseController {
      * @param request
      * @param response
      */
-    public void login(HttpServletRequest request, HttpServletResponse response) {
+    public void login(HttpServletRequest request, HttpServletResponse response) throws IOException {
 //        String token = WebUtil.getCode(request);
+        ResultState result = new ResultState();
         //获取Session中的验证码
         String token = (String) request.getSession().getAttribute(KAPTCHA_SESSION_KEY);
         System.out.println("验证码为："+token);
@@ -70,7 +73,15 @@ public class UserSignController extends BaseController {
                     System.out.println("登陆成功！");
                     System.out.println(request.getSession().getAttribute("nowUser").toString());
                 }
-            } else {
+            } else if(orgService.checkOrgPhone(phone)!=null) {
+                //组织登录
+                System.out.println("组织登录");
+                try {
+                    request.getRequestDispatcher("/Organizer").forward(request, response);
+                } catch (ServletException e) {
+                    e.printStackTrace();
+                }
+            }else {
                 result.setMsg("用户名不存在！");
             }
 //        } else {
@@ -86,9 +97,9 @@ public class UserSignController extends BaseController {
      * @param request
      * @param response
      */
-    public void register(HttpServletRequest request, HttpServletResponse response) throws
-            ServletException, IOException {
+    public void register(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // 获取Session中的验证码
+        ResultState result = new ResultState();
         String token = WebUtil.getCode(request);
         String vcode = request.getParameter("vcode");
         String phone = request.getParameter("phone");
@@ -102,7 +113,7 @@ public class UserSignController extends BaseController {
                 //判断用户是否已存在
                 //调用ObjectUtil工具类获取实例
                 try {
-                    userService.register(new User(count, phone, password));
+                    userService.register(new User(count,Md5Util.getMd5String(password),phone));
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

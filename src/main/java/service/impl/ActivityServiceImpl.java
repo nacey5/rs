@@ -1,6 +1,8 @@
 package service.impl;
 
 import common.utils.SqlUtil;
+import controller.ActivityController;
+import controller.UserSignController;
 import dao.ActivityDao;
 import org.apache.ibatis.session.SqlSession;
 import pojo.bean.ActivityUser;
@@ -19,6 +21,11 @@ public class ActivityServiceImpl implements ActivityService {
 
     private final SqlSession openSession = SqlUtil.getOpeningSession();
     private final ActivityDao activityDao = openSession.getMapper(ActivityDao.class);
+
+    @Override
+    public String getInfoById(Integer id) {
+        return activityDao.getInfoById(id);
+    }
 
     @Override
     public List<Pictures> selectPicturesById(Integer id) {
@@ -62,7 +69,7 @@ public class ActivityServiceImpl implements ActivityService {
 
     @Override
     public List<ActivityUser> getActsByLevel(Integer level) {
-        return activityDao.getActsByLevel(level);
+        return activityDao.getOrgActByLevel(level);
     }
 
     @Override
@@ -71,8 +78,12 @@ public class ActivityServiceImpl implements ActivityService {
             //设置id
             Integer sum = activityDao.countAllAct();
             activityUser.setId(++sum);
+            activityUser.setInfo(ActivityController.actInfo);
+            activityUser.setTime(UserSignController.DATE);
+            System.out.println(activityUser);
             activityDao.addActivity(activityUser);
             openSession.commit();
+            ActivityController.newAct=activityUser;
         } catch (Exception e) {
             throw new RuntimeException("添加活动失败!");
         }
@@ -151,7 +162,19 @@ public class ActivityServiceImpl implements ActivityService {
 
     @Override
     public List<ActivityUser> searchActivityByName(String searchText) {
-        return null;
+        return activityDao.getActSearch(searchText);
+    }
+
+    @Override
+    public void addOrgActivity(ActivityUser activityUser) {
+        try {
+            Integer sum = activityDao.countAllAct();
+            activityUser.setId(++sum);
+            activityDao.addOrgActivity(activityUser);
+            openSession.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 }

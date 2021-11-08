@@ -28,7 +28,6 @@ public class CorsFilter implements Filter {
         httpResponse.addHeader("Access-Control-Allow-Methods", "GET,POST,PUT,DELETE");
         filterChain.doFilter(servletRequest, servletResponse);
     }
-
     @Override
     public void destroy() {
 

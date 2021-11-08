@@ -44,7 +44,7 @@ li {
     width: 80px;
     height: 80px;
     border-radius: 50%;
-    background-color: rgb(203, 243, 255);
+    /*background-color: rgb(203, 243, 255);*/
 }
 
 .header .avatar_box .sign_out {
@@ -52,10 +52,10 @@ li {
     width: 60px;
     height: 40px;
     margin-top: 20px;
-    border: 1px solid rgb(203, 243, 255);
+    /*border: 1px solid rgb(203, 243, 255);*/
 }
 
-.header .avatar_box .sign_out a {
+.header .avatar_box .sign_out p {
     display: inline-block;
     width: 60px;
     line-height: 40px;
@@ -90,7 +90,11 @@ li {
     height: 80px;
     margin-left: 24px;
     border-radius: 50%;
-    background-color: rgb(203, 243, 255);
+}
+
+.content .avatar_change .img_change img {
+    width: 80px;
+    height: 80px;
 }
 
 .content .avatar_change p {
@@ -124,7 +128,7 @@ li {
 }
 
 .content .form p {
-    margin-left: 5px;
+    margin-left: 150px;
 }
 
 .content .form input {

@@ -20,6 +20,13 @@ public interface OrganizatorDao {
      * @return
      */
     Organizer checkOrgName(@Param("name") String name);
+    /**
+     * 检查用户名是否存在
+     *
+     * @param name
+     * @return
+     */
+    Organizer checkOrgPhone(@Param("phone") String name);
 
     /**
      * 根据组织名称查询组织对象-----(模糊查询)
@@ -93,6 +100,7 @@ public interface OrganizatorDao {
      * @return
      */
     Organizer selectOrgByHeadPortrait(@Param("picCode")String picCode);
+
 }
 
 

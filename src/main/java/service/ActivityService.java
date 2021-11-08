@@ -13,6 +13,12 @@ import java.util.List;
  */
 public interface ActivityService {
     /**
+     *通过id查询活动信息
+     * @param id
+     * @return
+     */
+    String getInfoById(Integer id);
+    /**
      * 查询活动的所有图片
      * @param id
      * @return
@@ -165,6 +171,12 @@ public interface ActivityService {
      * @return
      */
     List<ActivityUser> searchActivityByName(String searchText);
+
+    /**
+     *
+     * @param activityUser
+     */
+    void addOrgActivity(ActivityUser activityUser);
 //    /**
 //     *查询分页的活动
 //     * @param pageNo 页码
@@ -173,4 +185,5 @@ public interface ActivityService {
 //     * @return 查询到的博客
 //     */
 //    PageBo<ActivityUser> page(int pageNo, int pageSize, Integer id);
+
 }

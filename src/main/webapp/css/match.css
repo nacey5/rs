@@ -66,11 +66,12 @@ li {
 /* 头像 */
 
 .photo {
+    /* position: relative; */
     float: left;
     width: 80px;
     height: 80px;
     border-radius: 50%;
-    background-color: rgb(203, 243, 255);
+    /*background-color: rgb(203, 243, 255);*/
 }
 
 .login-true1 span {
@@ -98,13 +99,22 @@ li {
 /* 二级导航栏 */
 
 .nav2 {
+    position: absolute;
+    top: 65px;
     display: none;
     width: 105px;
     height: 105px;
+    z-index: 10;
+    background-color: white;
 }
 
 .nav2 li {
     line-height: 35px;
+}
+
+.nav2 li a {
+    line-height: 35px;
+    text-align: center;
 }
 
 .nav2 li:hover {
@@ -117,6 +127,8 @@ li {
 
 .photo:hover .nav2 {
     display: block;
+    margin-left: -5px;
+
 }
 
 .header .search {
@@ -238,6 +250,11 @@ li {
     height: 260px;
 }
 
+.sports .sports-img img {
+    width: 682px;
+    height: 260px;
+}
+
 .sports .sports-p {
     width: 518px;
     height: 260px;
@@ -256,6 +273,11 @@ li {
 }
 
 .academic-img {
+    width: 600px;
+    height: 290px;
+}
+
+.academic-img img {
     width: 600px;
     height: 290px;
 }
@@ -279,6 +301,11 @@ li {
 
 .voluntary-img {
     width: 600px;
+    height: 320px;
+}
+
+.voluntary-img img {
+    width: 590px;
     height: 320px;
 }
 

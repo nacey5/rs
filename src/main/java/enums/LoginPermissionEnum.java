@@ -16,14 +16,14 @@ public class  LoginPermissionEnum {
             /**
              * 游客未登录之前可以访问的页面
              */
-            new HashSet<>(Arrays.asList("/login.html","/register.html","/index.html"))
+            new HashSet<>(Arrays.asList("/login.html","/register.html","/index.html","/club-details.html","/match-details.html"))
     );
 
     public static final Set<String> CHECK_NOT_MAP_ORG=Collections.unmodifiableSet(
             /**
              * 组织登陆之后不可以访问的页面
              */
-            new HashSet<>(Arrays.asList(""))
+            new HashSet<>(Arrays.asList("/myActive.html"))
     );
 
     public static final Set<String> CHECK_NOT_MAP_USER=Collections.unmodifiableSet(
@@ -32,6 +32,4 @@ public class  LoginPermissionEnum {
              */
             new HashSet<>(Arrays.asList(""))
     );
-
-
 }

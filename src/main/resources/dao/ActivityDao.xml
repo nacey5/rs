@@ -12,6 +12,14 @@
         where
             id=#{id}
     </select>
+    <!--String getInfoById(@Param("id") Integer id);-->
+    <select id="getInfoById" resultType="java.lang.String">
+        select `info`
+        from
+            info_activity
+        where
+            id=#{id}
+    </select>
 
     <!--List<ActivityUser> selectActivitiesByOrganizer(@Param("org") Integer organizer);-->
     <select id="selectActivitiesByOrganizer" resultType="activityUser">
@@ -39,6 +47,14 @@
         values
         (
         #{name},#{organizer},#{time},#{adress},#{joinWay},#{level}
+        )
+    </insert>
+    <insert id="addOrgActivity" parameterType="activityUser" useGeneratedKeys="true" keyProperty="id" databaseId="mysql">
+        insert into
+            activity_organization(`name`,`time`,`adress`,`organizer`,`joinWay`,`level`)
+        values
+        (
+        #{name},#{time},#{adress},#{organizer},#{joinWay},#{level}
         )
     </insert>
 

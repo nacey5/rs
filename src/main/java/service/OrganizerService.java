@@ -13,7 +13,19 @@ import java.util.List;
  */
 public interface OrganizerService {
 
-
+    /**
+     * 检查用户名是否存在
+     *
+     * @param name
+     * @return
+     */
+    Organizer checkOrgPhone(@Param("phone") String name);
+    /**
+     * 通过头像获得组织信息
+     * @param picCode
+     * @return
+     */
+    Organizer selectOrgByHeadPortrait(String picCode);
     /**
      * (登录)通过手机号码和密码查询组织
      *

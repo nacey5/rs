@@ -36,11 +36,13 @@ a {
 }
 
 .index-box .header .nav-box .nav {
-    width: 280px;
+    width: 380px;
     height: 60px;
     float: left;
 }
-
+.nav li a{
+    font-size: 16px;
+}
 .index-box .header .nav-box .nav ul li {
     float: left;
     width: 70px;
@@ -53,7 +55,7 @@ a {
     position: relative;
     float: left;
     width: 200px;
-    margin-left: 300px;
+    margin-left: 200px;
     line-height: 60px;
 }
 
@@ -161,11 +163,24 @@ a {
     height: 360px;
     margin-right: 10px;
     margin-top: 30px;
-    border: 1px solid #000;
+    /*border: 1px solid #000;*/
 }
 
-.content li:nth-child(4) {
+.score li:nth-child(4) {
     margin-right: 0;
+}
+
+.content .club-photo {
+    float: left;
+    width: 892px;
+    height: 360px;
+    margin-right: 0;
+    /*border: 1px solid #000;*/
+}
+
+.club-photo img {
+    width: 890px;
+    height: 360px;
 }
 
 
@@ -173,10 +188,15 @@ a {
 
 .footer {
     clear: both;
-    width: 1200px;
+    width: 100%;
     height: 110px;
+    background-color:#31baee;
+    opacity: 0.6;
 }
-
+.footer >div{
+    width: 1200px;
+    margin: 0 auto;
+}
 .footer .copyright {
     float: left;
 }
@@ -218,13 +238,16 @@ a {
 /* 头像 */
 
 .photo {
+    /* position: relative; */
     float: left;
     width: 80px;
     height: 80px;
     border-radius: 50%;
-    background-color: rgb(203, 243, 255);
+    /*background-color: rgb(203, 243, 255);*/
 }
+.photo .img{
 
+}
 .login-true1 span {
     line-height: 60px;
     text-align: center;
@@ -250,14 +273,22 @@ a {
 /* 二级导航栏 */
 
 .nav2 {
+    position: absolute;
+    top: 65px;
     display: none;
     width: 105px;
     height: 105px;
-    z-index: 5;
+    z-index: 10;
+    background-color: white;
 }
 
 .nav2 li {
     line-height: 35px;
+}
+
+.nav2 li a {
+    line-height: 35px;
+    text-align: center;
 }
 
 .nav2 li:hover {
@@ -265,21 +296,8 @@ a {
     background-color: rgb(116, 203, 191);
 }
 
-
 /* 点击头像之后二级导航栏出现 */
-
 .photo:hover .nav2 {
     display: block;
-}
-.content .club-photo {
-      float: left;
-      width: 890px;
-      height: 360px;
-      margin-right: 0;
-      border: 1px solid #000;
-}
-
-.club-photo img {
-      width: 890px;
-      height: 360px;
+    margin-left: -5px;
 }

@@ -17,14 +17,15 @@ public interface ActivityDao {
     //-----------------------------------------------------------------------------------------------
     //-----------------------------------------------------------------------------------------------
 
-    /**
-     * 根据level查询活动，返回该level的所有活动
-     * @param level
-     * @return
-     */
-    List<ActivityUser> getActsByLevel(Integer level);
     //-----------------------------------分割线---------上面是需要新增的方法--11.04---------------------------
     //-----------------------------------------------------------------------------------------------
+
+    /**
+     *通过id查询活动信息
+     * @param id
+     * @return
+     */
+    String getInfoById(@Param("id") Integer id);
     /**
      * 根据名字查看活动是否存在
      * @param name
@@ -74,6 +75,12 @@ public interface ActivityDao {
      * @param activity
      */
     void addActivity(ActivityUser activity);
+    /**
+     * 活动时间设置需要设置时间格式 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+     * 或者传入的日期格式为 yyyy-mm-dd 例如（2021-10-07）
+     * @param activity
+     */
+    void addOrgActivity(ActivityUser activity);
 
     /**
      * 根据id删除活动

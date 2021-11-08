@@ -18,6 +18,12 @@
         from user_organization
         where `name` = #{name}
     </select>
+    <!--新增的查询组织phone是否存在的方法-->
+    <select id="checkOrgPhone" resultType="org">
+        select *
+        from user_organization
+        where `phone` = #{phone}
+    </select>
 
     <!--void addOrg(Organizer org);-->
     <!--头像，姓名，管理者学号，联系手机号码(登陆)，密码，学院-->
@@ -81,6 +87,18 @@
         from
             user_organization
         where
-            `name`=#{name}
+                `name`
+                like
+                '%${name}%'
     </select>
+<!--    &lt;!&ndash;List<Organizer> getOrgSearch(@Param("nameSer")String name);&ndash;&gt;-->
+<!--    <select id="getOrgSearch" resultType="org">-->
+<!--        select-->
+<!--            * from-->
+<!--            user_organization-->
+<!--        where-->
+<!--                `name`-->
+<!--                like-->
+<!--                '%${nameSer}%'-->
+<!--    </select>-->
 </mapper>

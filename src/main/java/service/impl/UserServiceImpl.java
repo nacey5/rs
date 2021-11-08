@@ -49,6 +49,7 @@ public class UserServiceImpl implements UserService {
             user.setId(++sum);
             //设置用户默认名称
             user.setUsername(user.getUsername() + user.getId());
+            System.out.println(user);
             userDao.addUser(user);
             openSession.commit();
         } catch (Exception e) {

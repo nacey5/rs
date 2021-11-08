@@ -20,8 +20,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/Organizer")
 public class OrganizerSignController extends BaseController {
     public static final String NOW_ORG = "nowOrg";
-    private static OrganizerService organizerService=new OrganizerServiceImpl();
-    private ResultState result = new ResultState();
+    private static OrganizerService organizerService = new OrganizerServiceImpl();
 
     /**
      * 社团组织登录
@@ -29,36 +28,27 @@ public class OrganizerSignController extends BaseController {
      * @param request
      * @param response
      */
-    public void orgLogin(HttpServletRequest request, HttpServletResponse response) {
-        String token = WebUtil.getCode(request);
+    public void login(HttpServletRequest request, HttpServletResponse response) {
+        ResultState result = new ResultState();
         String vcode = request.getParameter("vcode");
         String phone = request.getParameter("phone");
         String password = request.getParameter("password");
         Organizer org = null;
-        //判断验证码
-        if (token != null && token.equalsIgnoreCase(vcode)) {
-            //登录
-            if (organizerService.checkOrgName(phone)) {
-                try {
-                    org=organizerService.orgLogin(phone, password);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-                if (org== null) {
-                    result.setMsg("组织名称错误或密码错误！");
-                } else {
-                    result.setMsg("登陆成功!");
-                    result.setCode(true);
-                    //存入当前登录的组织
-                    request.getSession().setAttribute(NOW_ORG, org);
-                }
-            } else {
-                result.setMsg("该组织不存在！");
-            }
+        try {
+            org = organizerService.orgLogin(phone, password);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        if (org == null) {
+            result.setMsg("组织名称错误或密码错误！");
         } else {
-            result.setMsg("验证码错误!");
+            result.setMsg("登陆成功!");
+            result.setCode(true);
+            //存入当前登录的组织
+            request.getSession().setAttribute(NOW_ORG, org);
         }
         //调用工具类返回结果
+        System.out.println(result);
         JsonUtil.returnJson(response, result);
     }
 
@@ -68,12 +58,12 @@ public class OrganizerSignController extends BaseController {
      * @param request
      * @param response
      */
-    public void orgRegister(HttpServletRequest request, HttpServletResponse response) {
-
+    public void register(HttpServletRequest request, HttpServletResponse response) {
+        ResultState result = new ResultState();
         String token = WebUtil.getCode(request);
-        String name=request.getParameter("name");
-        String phone=request.getParameter("phone");
-        String password=request.getParameter("password");
+        String name = request.getParameter("name");
+        String phone = request.getParameter("phone");
+        String password = request.getParameter("password");
         String vcode = request.getParameter("vcode");
         //调用ObjectUtil工具类获取实例
         Organizer org = (Organizer) ObjectUtil.getObject(request, Organizer.class);
@@ -84,7 +74,7 @@ public class OrganizerSignController extends BaseController {
                 //判断该组织是否已存在
                 //调用ObjectUtil工具类获取实例
                 try {
-                    organizerService.orgRegister((Organizer) ObjectUtil.getObject(request,Organizer.class));
+                    organizerService.orgRegister((Organizer) ObjectUtil.getObject(request, Organizer.class));
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

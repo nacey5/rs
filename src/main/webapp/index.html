@@ -8,7 +8,6 @@
     <title>首页</title>
     <link rel="stylesheet" href="css/index.css">
 </head>
-
 <body>
 <div class="index-box">
     <div class="header">
@@ -24,40 +23,29 @@
                         <a href="match.html">赛事</a>
                     </li>
                     <li><a href="club.html">社团组织</a></li>
+                    <li><a href="await.html">招新</a></li>
                 </ul>
             </div>
             <div class="search">
-                <input type="text">
-                <img src="image/搜索图标.jpg" alt="">
+                <input type="text" id="searchInput">
+                <img src="image/搜索图标.jpg" alt="" id="search">
             </div>
             <!-- 搜索时会出现的提示框 -->
             <div class="searchA">
 
             </div>
             <div class="login">
-                <span><a href="macth-send.html">登录</a>&nbsp;|</span>
+                <span><a href="login.html">登录</a>&nbsp;|</span>
                 <span><a href="resign.html">注册</a></span>
             </div>
             <!-- 个人登录之后显示 -->
             <div class="login-true1">
                 <div class="photo">
-                    <img src="" alt="头像" id="img1">
+                    <img src="image/user.png" alt="头像" id="img1">
                     <ul class="nav2">
-                        <li><a href="person_center.html">个人中心</a></li>
-                        <li><a href="myActive.html">我的活动</a></li>
-                        <li><a href="macth-send.html">赛事发布</a></li>
-                    </ul>
-                </div>
-                <span class="avatar"><a href="index.html">退出</a></span>
-            </div>
-            <!-- 社团组织登录之后显示 -->
-            <div class="login-true2">
-                <div class="photo">
-                    <img src="" alt="头像" id="img2">
-                    <ul class="nav2">
-                        <li><a href="club_center.html">个人中心</a></li>
-                        <li><a href="myActive.html">我的活动</a></li>
-                        <li><a href="macth-send.html">赛事发布</a></li>
+                        <li><a href="person_center.html"> 个人中心</a></li>
+                        <li><a href="myActive.html"> 我的活动</a></li>
+                        <li><a href="macth-send.html"> 赛事发布</a></li>
                     </ul>
                 </div>
                 <span class="avatar"><a href="index.html">退出</a></span>
@@ -88,7 +76,9 @@
             <li class="club-photo"><img src="image/allclub.jpg" alt=""></li>
         </ul>
     </div>
-    <div class="footer">
+</div>
+<div class="footer" style="">
+    <div>
         <div class="copyright">
             <p>©2021版权所有</p>
         </div>
@@ -100,5 +90,4 @@
 </body>
 <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
 <script src="js/index.js"></script>
-
 </html>

@@ -11,76 +11,61 @@
 </head>
 
 <body>
-    <div class="header">
-        <div class="logo"><img src="image/logo.png" alt="logo"></div>
-        <div class="nav">
-            <ul>
-                <li><a href="index.html">首页</a></li>
-                <li><a href="match.html">赛事</a></li>
-                <li><a href="club.html">社团组织</a></li>
-            </ul>
-        </div>
-        <div class="avatar_box">
-            <div class="avatar"><img src="" alt=""></div>
-            <div class="sign_out">
-                <a href="index.html">退出</a>
-            </div>
-        </div>
-        <!-- 个人登录之后显示 -->
-        <div class="login-true1">
-            <div class="photo">
-                <img src="" alt="">
-                <ul class="nav2">
-                    <li><a href="person_center.html">个人中心</a></li>
-                    <li><a href="myActive.html">我的活动</a></li>
-                    <li><a href="macth-send.html">赛事发布</a></li>
-                </ul>
-            </div>
-            <span><a href="index.html">退出</a></span>
-        </div>
-        <!-- 社团组织登录之后显示 -->
-        <div class="login-true2">
-            <div class="photo">
-                <img src="" alt="">
-                <ul class="nav2">
-                    <li><a href="club_center.html">个人中心</a></li>
-                    <li><a href="myActive.html">我的活动</a></li>
-                    <li><a href="macth-send.html">赛事发布</a></li>
-                </ul>
-            </div>
-            <span><a href="index.html">退出</a></span>
+<div class="header">
+    <div class="logo"><img src="image/logo.png" alt="logo"></div>
+    <div class="nav">
+        <ul>
+            <li><a href="index.html">首页</a></li>
+            <li><a href="match.html">赛事</a></li>
+            <li><a href="club.html">社团组织</a></li>
+        </ul>
+    </div>
+    <div class="avatar_box">
+        <div class="sign_out">
+            <p id="out">退出</p>
         </div>
     </div>
-    <div class="content">
-        <div class="avatar_change">
-            <div class="img_change"><img src="" alt=""></div>
-            <p>修改头像</p>
-        </div>
-        <div class="message">
-            <p>基本信息</p>
-        </div>
-        <div class="form" id="name">
-            <p>姓名<input type="text" name="" id="" placeholder="请输入姓名"></p>
-        </div>
-        <div class="form" id="number">
-            <p>学号<input type="text" name="" id="" placeholder="请输入班级学号"></p>
-        </div>
-        <div class="form" id="sex">
-            <p>性别
-                <input type="radio" name="sex">男
-                <input type="radio" name="sex">女</p>
-        </div>
-        <div class="form" id="phone">
-            <p>手机号码<input type="text" placeholder="请输入手机号码"></p>
-        </div>
-        <div class="form" id="nickname">
-            <p>昵称<input type="text" placeholder="请输入昵称"></p>
-        </div>
-        <div class="form" id="institute">
-            <p>学院<input type="text" placeholder="请输入所在学院"></p>
-        </div>
+</div>
+</div>
+<div class="content">
+<!--        <div class="avatar_change">-->
+<!--            <div class="img_change"><img src="" alt=""></div>-->
+<!--            <p>修改头像</p>-->
+<!--        </div>-->
+    <div class="message">
+        <p>基本信息</p>
     </div>
-    <div class="submit"><button>提交</button></div>
+    <div class="form">
+        <!--            <p>姓名<input type="text" id="name" placeholder="请输入姓名"></p>-->
+        <p id="name"></p>
+    </div>
+    <div class="form">
+        <!--            <p>学号<input type="text" id="number" placeholder="请输入学号"></p>-->
+        <p id="number"></p>
+    </div>
+    <!--        <div class="form">-->
+    <!--            <p>性别-->
+    <!--                <input type="radio" name="sex" id="boy">男-->
+    <!--                <input type="radio" name="sex" id="girl">女</p>-->
+    <!--        </div>-->
+    <div class="form">
+        <!--            <p>手机号码<input type="text" id="phone" placeholder="请输入手机号码"></p>-->
+        <p id="phone">13010610071</p>
+    </div>
+<!--    <div class="form">-->
+<!--        &lt;!&ndash;            <p>昵称<input type="text" id="nickname" placeholder="请输入昵称"></p>&ndash;&gt;-->
+<!--        <p id="nickName"></p>-->
+<!--    </div>-->
+<!--    <div class="form">-->
+<!--        &lt;!&ndash;            <p>学院<input type="text" id="institute" placeholder="请输入所在学院"></p>&ndash;&gt;-->
+<!--        <p id="institute"></p>-->
+<!--    </div>-->
+</div>
+<!--<div class="submit">-->
+<!--    <button>提交</button>-->
+<!--</div>-->
 </body>
+<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="js/person_center.js"></script>
 
 </html>

@@ -40,6 +40,15 @@ public class ActivityUser implements Serializable {
     public ActivityUser() {
     }
 
+    public ActivityUser(String name, Integer organizer, String time, String adress, String joinWay, String info) {
+        this.name = name;
+        this.organizer = organizer;
+        this.time = time;
+        this.adress = adress;
+        this.joinWay = joinWay;
+        this.info = info;
+    }
+
     public String getStatus() {
         return status;
     }

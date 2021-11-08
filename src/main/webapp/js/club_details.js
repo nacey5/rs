@@ -12,19 +12,18 @@ window.addEventListener('load', function () {
         url: 'http://localhost:8080/FindMore/Find',
         dataType: 'json',
         data: {
-            action: "findNowAct",
+            action: "findNowOrg",
         },
         success: function (result) {
             // 活动图片 ——>点击的活动图片url
             // 活动名称 result.data.nowAct.name
-            h2.innerHTML = result.datas.nowAct.name;
+            h2.innerHTML = result.datas.nowOrg.name;
             // 活动时间 result.data.nowAct.time
             // for (let i = 0; i < ps.length; i++) {
             // }
-            ps[0].innerHTML = result.datas.nowAct.time;
-            act_content.innerHTML = result.datas.nowAct.info;
+            act_content.innerHTML = result.datas.nowOrgInfo;
             // 获取图片
-            code.src = result.datas.nowActPic;
+            code.src = result.datas.nowOrgPic;
         }
     })
 })
