@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.HotPointDao">
+    <cache eviction="FIFO" flushInterval="300000" readOnly="false"/>
+    <!--Integer getHotPoint(@Param("id") Integer id);-->
+    <select id="getHotPoint" resultType="integer">
+        select
+               `point_count`
+        from
+             `activity_count`
+        where
+              id=#{id}
+    </select>
+    <!--void updateHotPoint(@Param("id") Integer id);-->
+    <update id="updateHotPoint" databaseId="mysql">
+        update
+            `activity_count`
+        set
+            `point_count`=point_count+1
+        where
+              id=#{id}
+    </update>
+    <!--ActivityUser getHeightHotPoint();-->
+    <select id="getHeightHotPoint" resultType="activityUser">
+        select
+               `point_count`
+        from
+             `activity_count`
+        order by
+                 `point_count`
+        desc limit
+                1
+    </select>
+    <!--List<ActivityUser> getHotPointAscTen();-->
+    <select id="getHotPointAscTen" resultType="activityUser">
+        select
+            ao.*
+        from
+            `activity_organization` ao,`activity_count` ac
+        where ao.id=ac.id
+        order by ac.`point_count`
+            desc
+        limit
+            10
+    </select>
+</mapper>
