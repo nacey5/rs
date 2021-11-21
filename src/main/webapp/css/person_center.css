@@ -47,7 +47,12 @@ li {
     font-size: 20px;
 }
 
-.content .left .nickName img {
+.content .left #alter {
+    margin-left: 65px;
+    cursor: pointer;
+}
+
+#alter img {
     width: 20px;
     height: 20px;
 }
@@ -86,4 +91,28 @@ li {
     font-size: 18px;
     border: 0;
     outline: none;
+}
+
+
+/* 点击修改信息弹出框 */
+
+.alter {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(143, 153, 153);
+}
+
+.alter .alter-con {
+    position: absolute;
+    width: 380px;
+    height: 400px;
+    margin: 0 auto;
+}
+
+
+/* 点击按钮之后添加cur，改变背景颜色 */
+
+.cur {
+    background-color: rgb(255, 130, 0);
 }
