@@ -55,22 +55,35 @@ li {
 .content .right {
     float: left;
     width: 780px;
-    height: 600px;
+    height: 500px;
     background-image: url(../image/person-center-bg.png);
+    background-size: 420px 448px;
+    background-repeat: no-repeat;
+    background-position: right;
 }
 
 .content .right div {
-    width: 300px;
+    width: 380px;
     height: 400px;
     margin: 180px 50px 40px 0;
 }
 
 .content .right p {
     margin: 10px 0;
+    padding: 5px;
     font-size: 18px;
+    border: 1px solid #000;
+    border-radius: 5px;
 }
 
 .content .right p img {
-    width: 25px;
-    height: 25px;
+    width: 20px;
+    height: 20px;
+}
+
+.content .right p input {
+    width: 200px;
+    font-size: 18px;
+    border: 0;
+    outline: none;
 }
