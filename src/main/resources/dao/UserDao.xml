@@ -112,7 +112,7 @@
         where
             ao.id=ac.id
           and
-            ac.student_count=(select count from user_student where id=#{id})
+            ac.student_count=(select `count` from user_student where id=#{id})
     </select>
 
     <!--Integer countAllUser();-->

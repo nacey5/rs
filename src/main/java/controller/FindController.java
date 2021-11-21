@@ -43,7 +43,6 @@ public class FindController extends BaseController {
         ResultState result = new ResultState();
         User nowUser = (User) request.getSession().getAttribute("nowUser");
         Organizer nowOrg = (Organizer) request.getSession().getAttribute(OrganizerSignController.NOW_ORG);
-        System.out.println("now——>" + nowUser);
         if (nowUser != null) {
             //个人登录
             result.setCode(true);
@@ -53,9 +52,8 @@ public class FindController extends BaseController {
             result.setCode(true);
             result.getDatas().put("nowOrg", nowOrg);
         }
-        //如果两种清空都不是，则无用户登录，可将result直接返回，因为其code默认为false
+        //如果两种情况都不是，则无用户登录，可将result直接返回，因为其code默认为false
         JsonUtil.returnJson(response, result);
-        System.out.println(result.toString());
     }
 
     /**
@@ -67,9 +65,6 @@ public class FindController extends BaseController {
     public void findNowUser(HttpServletRequest request, HttpServletResponse response) {
         ResultState result = new ResultState();
         User nowUser = (User) request.getSession().getAttribute("nowUser");
-
-        System.out.println(nowUser);
-
         result.getDatas().put("nowUser", nowUser);
         JsonUtil.returnJson(response, result);
     }
@@ -83,7 +78,6 @@ public class FindController extends BaseController {
     public void findNowOrg(HttpServletRequest request, HttpServletResponse response) {
         ResultState result = new ResultState();
         String url = (String) request.getSession().getAttribute("clickClub");
-        System.out.println(url);
         Organizer nowOrg = null;
         String info = null;
         try {
@@ -94,8 +88,6 @@ public class FindController extends BaseController {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        System.out.println("nowOrg——>" + nowOrg);
-        System.out.println("nowOrgInfo——>" + info);
         result.getDatas().put("nowOrg", nowOrg);
         result.getDatas().put("nowOrgPic", url);
         result.getDatas().put("nowOrgInfo", info);
@@ -112,12 +104,10 @@ public class FindController extends BaseController {
         ResultState result = new ResultState();
 
         String url = (String) request.getSession().getAttribute("clickMatch");
-        System.out.println(url);
         ActivityUser nowAct = activityService.selectActByMainPic(url);
         String info = activityService.getInfoById(nowAct.getId());
         String picture = activityService.getActMainPic(nowAct.getId()).getPicture();
         nowAct.setInfo(info);
-        System.out.println("nowAct——>" + nowAct);
         result.getDatas().put("nowAct", nowAct);
         result.getDatas().put("nowActPic", picture);
         JsonUtil.returnJson(response, result);
@@ -132,17 +122,26 @@ public class FindController extends BaseController {
     public void findMyAct(HttpServletRequest request, HttpServletResponse response) {
         ResultState result = new ResultState();
         User nowUser = (User) request.getSession().getAttribute("nowUser");
-        System.out.println(nowUser);
         List<String> picList = new ArrayList<>();
-        List<ActivityUser> actList = userService.selectActListByUserId(nowUser.getId());
+        List<ActivityUser> actList = null;
+        try {
+            actList = userService.selectActListByUserId(1);
+            System.out.println(actList);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         if (actList.size() != 0) {
             for (ActivityUser activityUser : actList) {
                 //获取对应的图片数组，获取info
-                picList.add(activityService.getActMainPic(activityUser.getId()).getPicture());
+                try {
+                    picList.add(activityService.getActMainPic(activityUser.getId()).getPicture());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
             result.getDatas().put("picList", picList);
-            result.setCode(true);
             result.getDatas().put("actList", actList);
+            result.setCode(true);
         }
         JsonUtil.returnJson(response, result);
     }

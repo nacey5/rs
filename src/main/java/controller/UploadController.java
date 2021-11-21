@@ -1,12 +1,10 @@
 package controller;
 
 import common.utils.JsonUtil;
-import enums.UploadEnum;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileItemFactory;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
-import pojo.bean.ActivityUser;
 import pojo.bean.Pictures;
 import pojo.dto.ResultState;
 import service.ActivityService;
@@ -25,6 +23,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Logger;
 
 /**
  * @author 23931
@@ -32,15 +31,14 @@ import java.util.Map;
  */
 @WebServlet("/Upload")
 public class UploadController extends HttpServlet {
-
     private static final ActivityService activityService = new ActivityServiceImpl();
     private static final UserService userService = new UserServiceImpl();
-    private ResultState result = new ResultState();
+    private static ResultState result = new ResultState();
     private static Integer id;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        doPost(req,resp);
+        doPost(req, resp);
     }
 
     @Override
@@ -50,27 +48,28 @@ public class UploadController extends HttpServlet {
         //获取图片
         Pictures uploadPic = (Pictures) upload(request);
         System.out.println(uploadPic.getPicture());
-        switch (action) {
-            case UploadEnum.ADD_USER_IMG: {
-                addUserImg(id, uploadPic.getPicture());
-                result.setCode(true);
-                break;
-            }
-            case UploadEnum.ADD_ACTIVITY_PICTURE: {
-                setActivityPic(id, uploadPic.getPicture());
-                result.setCode(true);
-                break;
-            }
-            case UploadEnum.ADD_ACTIVITY_FILE: {
-
-                break;
-            }
-            default: {
-                result.setMsg("上传图片失败！");
-                break;
-            }
-        }
+//        switch (action) {
+//            case UploadEnum.ADD_USER_IMG: {
+//                addUserImg(id, uploadPic.getPicture());
+//                result.setCode(true);
+//                break;
+//            }
+//            case UploadEnum.ADD_ACTIVITY_PICTURE: {
+//                setActivityPic(id, uploadPic.getPicture());
+//                result.setCode(true);
+//                break;
+//            }
+//            case UploadEnum.ADD_ACTIVITY_FILE: {
+//
+//                break;
+//            }
+//            default: {
+//                result.setMsg("上传图片失败！");
+//                break;
+//            }
+//        }
         JsonUtil.returnJson(response, result);
+        System.out.println(result.toString());
     }
 
     /**
@@ -79,7 +78,6 @@ public class UploadController extends HttpServlet {
      * @param request
      */
     public static <T> Object upload(HttpServletRequest request) {
-        String imgPath;
         Pictures pic = new Pictures(-1, "");
         if (ServletFileUpload.isMultipartContent(request)) {
             //创建FileItemFactory工厂实现类
@@ -99,14 +97,14 @@ public class UploadController extends HttpServlet {
                         //如果类型是活动的话,将数据添加到actList中
                     } else {
                         //上传的图片
-                        imgPath = "image/" + fileItem.getName();
                         //获取保存路径
-                        String imgSavePath = PictureController.PIC_BASE_URL + imgPath;
+                        String imgSavePath = request.getServletContext().getRealPath("/") + "image\\" + fileItem.getName();
                         //保存图片
                         fileItem.write(new File(imgSavePath));
                         //返回图片
                         pic.setPicture(imgSavePath);
                         System.out.println("上传成功！");
+                        result.setCode(true);
                     }
                 }
             } catch (Exception e) {

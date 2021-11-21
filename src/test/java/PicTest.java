@@ -22,6 +22,9 @@ public class PicTest {
         ActivityServiceImpl activityService = new ActivityServiceImpl();
         OrganizerService organizerService = new OrganizerServiceImpl();
         UserService userService = new UserServiceImpl();
-        System.out.println(activityService.searchActivityByName("西部"));
+//        System.out.println(activityService.searchActivityByName("西部"));
+        System.out.println(userService.selectActListByUserId(1));
+        System.out.println(userService.selectActListByUserId(7));
+        System.out.println(userService.selectActListByUserId(26));
     }
 }

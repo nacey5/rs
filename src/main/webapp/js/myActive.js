@@ -12,34 +12,33 @@ window.addEventListener('load', function () {
             if (result.code) {
                 //返回的result.data.actList和picList为数组，需要遍历使用
                 for (let i = 0; i < result.datas.actList.length; i++) {
-                    create();
+                    // create();
                     // 活动图片 result.data.picList[0]
-                    img.src = result.datas.picList[i];
+                    let src = result.datas.picList[i];
                     // 活动名称 result.data.actList[0].name
-                    p1= result.datas.actList[i].name;
-                    // 活动时间 result.data.actList[0].time
+                    let name = result.datas.actList[i].name;
+                    let time = result.datas.actList[i].time
+                    let status;
+                    let color;
                     // 活动状态result.data.actList[0].status
-                    if (result.datas.actList[0].status) {
-                        p2.innerHTML = "进行中";
+                    if (result.datas.actList[i].status ==='true') {
+                        status = "进行中";
+                        color = "green";
                     } else {
-                        p2.innerHTML = "已结束";
+                        status = "已结束";
+                        color = "#31baee";
                     }
+                    let activeDiv = " <div style='margin-top: 20px;height: 70px'>\n" +
+                        "            <img src=" + src + " alt='' height='60px' width='60px' style='float:left;padding-left: 80px'>\n" +
+                        "            <p style=\"float:left;padding-left: 150px;font-size: 28px;width: 280px\">" + name + "</p>\n" +
+                        "            <p style=\"float:left;padding-left: 150px\">&nbsp;&nbsp;开始时间<br>" + time + "</p>\n" +
+                        "            <p style=\"float:left;padding-left: 200px;font-size: 24px;color:" + color + "\">" + status + "</p>\n" +
+                        "        </div>";
+                    $("<div></div>").append(activeDiv).appendTo("#activeDiv");
                 }
             } else {
                 alert("当前用户还没有活动！")
             }
         }
     })
-
-    //创建元素的页面
-    function create() {
-        var li = ul.createElement("li"); //动态创建一个li
-        ul.appendChild(li); //将li插入Ul中
-        var img = li.createElement("img");
-        li.appendChild(img);
-        var p1 = li.createElement("p");
-        li.appendChild(p1);
-        var p2 = li.createElement("p");
-        li.appendChild(p2);
-    }
 })
