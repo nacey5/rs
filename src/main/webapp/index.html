@@ -8,86 +8,50 @@
     <title>首页</title>
     <link rel="stylesheet" href="css/index.css">
 </head>
+
 <body>
-<div class="index-box">
-    <div class="header">
-        <!-- 顶部导航栏 -->
-        <div class="nav-box">
-            <div class="logo">
-                <img src="image/logo.png" alt="logo">
+    <div class="index-box">
+        <div class="header">
+            <!-- 顶部导航栏 -->
+            <iframe src="nav.html" frameborder="0" width="1200px" height="60px" scrolling="no"></iframe>
+            <!-- 轮播图 -->
+            <div class="wrap">
+                <a href=""><img src="" alt="" class="img-active"></a>
+                <img src="" alt="">
+                <img src="" alt="">
+                <ol class="slide_points">
+                    <li class="slide_point slide_point_active"></li>
+                    <li class="slide_point"></li>
+                    <li class="slide_point"></li>
+                </ol>
             </div>
-            <div class="nav">
-                <ul>
-                    <li><a href="index.html">首页</a></li>
-                    <li>
-                        <a href="match.html">赛事</a>
-                    </li>
-                    <li><a href="club.html">社团组织</a></li>
-                    <li><a href="await.html">招新</a></li>
-                </ul>
-            </div>
-            <div class="search">
-                <input type="text" id="searchInput">
-                <img src="image/搜索图标.jpg" alt="" id="search">
-            </div>
-            <!-- 搜索时会出现的提示框 -->
-            <div class="searchA">
 
-            </div>
-            <div class="login">
-                <span><a href="login.html">登录</a>&nbsp;|</span>
-                <span><a href="resign.html">注册</a></span>
-            </div>
-            <!-- 个人登录之后显示 -->
-            <div class="login-true1">
-                <div class="photo">
-                    <img src="image/user.png" alt="头像" id="img1">
-                    <ul class="nav2">
-                        <li><a href="person_center.html"> 个人中心</a></li>
-                        <li><a href="myActive.html"> 我的活动</a></li>
-                        <li><a href="macth-send.html"> 赛事发布</a></li>
-                    </ul>
-                </div>
-                <span class="avatar"><a href="index.html">退出</a></span>
-            </div>
         </div>
-        <!-- 轮播图 -->
-        <div class="wrap">
-            <a href=""><img src="" alt="" class="img-active"></a>
-            <img src="" alt="">
-            <img src="" alt="">
-            <ol class="slide_points">
-                <li class="slide_point slide_point_active"></li>
-                <li class="slide_point"></li>
-                <li class="slide_point"></li>
-            </ol>
-        </div>
-
-    </div>
-    <div class="content">
-        <ul class="score">
-            <li><img src="image/score.jpg" alt=""></li>
-            <li><img src="image/knowledge.jpg" alt=""></li>
-            <li><img src="image/sport.jpg" alt=""></li>
-            <li><img src="image/love.jpg" alt=""></li>
-        </ul>
-        <ul class="club">
-            <li><img src="image/club.jpg" alt=""></li>
-            <li class="club-photo"><img src="image/allclub.jpg" alt=""></li>
-        </ul>
-    </div>
-</div>
-<div class="footer" style="">
-    <div>
-        <div class="copyright">
-            <p>©2021版权所有</p>
-        </div>
-        <div class="contact">
-            <span><a href="javascript:;">联系我们</a></span>
+        <div class="content">
+            <ul class="score">
+                <li><img src="image/score.jpg" alt=""></li>
+                <li><img src="image/knowledge.jpg" alt=""></li>
+                <li><img src="image/sport.jpg" alt=""></li>
+                <li><img src="image/love.jpg" alt=""></li>
+            </ul>
+            <ul class="club">
+                <li><img src="image/club.jpg" alt=""></li>
+                <li class="club-photo"><img src="image/allclub.jpg" alt=""></li>
+            </ul>
         </div>
     </div>
-</div>
+    <div class="footer" style="">
+        <div>
+            <div class="copyright">
+                <p>©2021版权所有</p>
+            </div>
+            <div class="contact">
+                <span><a href="javascript:;">联系我们</a></span>
+            </div>
+        </div>
+    </div>
 </body>
 <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
 <script src="js/index.js"></script>
+
 </html>

@@ -6,64 +6,52 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>个人中心</title>
-    <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/person_center.css">
 </head>
 
 <body>
-<div class="header">
-    <div class="logo"><img src="image/logo.png" alt="logo"></div>
-    <div class="nav">
-        <ul>
-            <li><a href="index.html">首页</a></li>
-            <li><a href="match.html">赛事</a></li>
-            <li><a href="club.html">社团组织</a></li>
-        </ul>
+    <div class="header">
+        <!-- 顶部导航栏 -->
+        <iframe src="nav.html" frameborder="0" width="1200px" height="60px" scrolling="no"></iframe>
     </div>
-    <div class="avatar_box">
-        <div class="sign_out">
-            <p id="out">退出</p>
+    </div>
+    <div class="content">
+        <div class="left">
+            <div class="photo">
+                <img src="" alt="更换头像">
+            </div>
+            <p class="nickName">昵称：哈哈
+                <img src="../webapp/image/personCenter-icon2.png" title="修改信息">
+            </p>
+        </div>
+        <div class="right">
+            <div>
+                <p>姓名
+                    <img src="../webapp/image/personCenter-icon3.jpg" alt="">
+                    <input type="text">
+                </p>
+                <p>学号
+                    <img src="../webapp/image/personCenter-icon4.jpg" alt="">
+                    <input type="text">
+                </p>
+                <p>性别
+                    <img src="../webapp/image/personCenter-icon1.jpg" alt="">
+                    <input type="text">
+                </p>
+                <p>手机号码
+                    <input type="text">
+                </p>
+                <p>学院
+                    <img src="../webapp/image/personCenter-icon5.jpg" alt="">
+                    <input type="text">
+                </p>
+                <p>邮箱
+                    <img src="../webapp/image/personCenter-icon6.jpg" alt="">
+                    <input type="text">
+                </p>
+            </div>
         </div>
     </div>
-</div>
-</div>
-<div class="content">
-<!--        <div class="avatar_change">-->
-<!--            <div class="img_change"><img src="" alt=""></div>-->
-<!--            <p>修改头像</p>-->
-<!--        </div>-->
-    <div class="message">
-        <p>基本信息</p>
-    </div>
-    <div class="form">
-        <!--            <p>姓名<input type="text" id="name" placeholder="请输入姓名"></p>-->
-        <p id="name"></p>
-    </div>
-    <div class="form">
-        <!--            <p>学号<input type="text" id="number" placeholder="请输入学号"></p>-->
-        <p id="number"></p>
-    </div>
-    <!--        <div class="form">-->
-    <!--            <p>性别-->
-    <!--                <input type="radio" name="sex" id="boy">男-->
-    <!--                <input type="radio" name="sex" id="girl">女</p>-->
-    <!--        </div>-->
-    <div class="form">
-        <!--            <p>手机号码<input type="text" id="phone" placeholder="请输入手机号码"></p>-->
-        <p id="phone">13010610071</p>
-    </div>
-<!--    <div class="form">-->
-<!--        &lt;!&ndash;            <p>昵称<input type="text" id="nickname" placeholder="请输入昵称"></p>&ndash;&gt;-->
-<!--        <p id="nickName"></p>-->
-<!--    </div>-->
-<!--    <div class="form">-->
-<!--        &lt;!&ndash;            <p>学院<input type="text" id="institute" placeholder="请输入所在学院"></p>&ndash;&gt;-->
-<!--        <p id="institute"></p>-->
-<!--    </div>-->
-</div>
-<!--<div class="submit">-->
-<!--    <button>提交</button>-->
-<!--</div>-->
 </body>
 <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
 <script src="js/person_center.js"></script>
