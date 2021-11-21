@@ -15,14 +15,14 @@ li {
 
 .content {
     width: 1200px;
-    height: 500px;
+    height: 400px;
     margin: 0 auto;
 }
 
 .content .left {
     float: left;
     width: 420px;
-    height: 500px;
+    height: 400px;
 }
 
 .content .left .photo {
@@ -55,7 +55,7 @@ li {
 .content .right {
     float: left;
     width: 780px;
-    height: 500px;
+    height: 400px;
     background-image: url(../image/person-center-bg.png);
     background-size: 420px 448px;
     background-repeat: no-repeat;
