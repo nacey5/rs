@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.FuzzyDao">
+    <cache eviction="FIFO" flushInterval="300000" readOnly="false"/>
+    <!--List<String> selectUserName(@Param("keyWord") String keyWord));-->
+    <select id="selectUserName" resultType="string">
+        select `name`
+        from
+            user_student
+        where `name` like '%${keyWord}%'
+    </select>
+    <!--List<String> selectActName(@Param("keyWord") String keyWord));-->
+    <select id="selectActName" resultType="string">
+        select `name`
+        from
+            activity_organization
+        where `name` like '%${keyWord}%'
+    </select>
+    <!--List<String> selectOrgName(@Param("keyWord") String keyWord));-->
+    <select id="selectOrgName" resultType="string">
+        select `name`
+        from
+            user_organization
+        where `name` like '%${keyWord}%'
+    </select>
+</mapper>
