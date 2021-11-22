@@ -7,6 +7,7 @@ window.addEventListener('load', function () {
     var institute = document.querySelector('#institute');
     // var submit = document.querySelector('.submit');
     // var btn = submit.querySelector('button');
+    //当前用户信息
     $.ajax({
         type: 'post',
         url: "http://localhost:8080/FindMore/Find",

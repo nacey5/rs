@@ -27,4 +27,22 @@ window.addEventListener('load', function () {
             code.src = result.datas.nowActPic;
         }
     })
+    //参赛详情点击事件
+    var pars = document.querySelector('.count');
+    pars.addEventListener('click', function () {
+        $.ajax({
+            type: "post",
+            url: "http://localhost:8080/FindMore/Find",
+            dataType: "json",
+            data:{
+                action: "loginOut",
+            },
+            success: function (result) {
+                alert(result.msg);
+                if (result.code) {
+                    window.location.href = "index.html";
+                }
+            }
+        })
+    })
 })

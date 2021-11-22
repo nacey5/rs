@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import pojo.bean.ActivityUser;
 import pojo.bean.Participater;
 import pojo.bean.Pictures;
+import pojo.bean.User;
 import service.ActivityService;
 
 import java.util.List;
@@ -30,6 +31,16 @@ public class ActivityServiceImpl implements ActivityService {
     @Override
     public List<Pictures> selectPicturesById(Integer id) {
         return activityDao.selectPicturesById(id);
+    }
+
+    @Override
+    public List<User> selectParByActId(Integer id) {
+        return activityDao.selectParByActId(id);
+    }
+
+    @Override
+    public ActivityUser getActivityByName(String name) {
+        return activityDao.getActivityByName(name);
     }
 
     @Override

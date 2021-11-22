@@ -22,6 +22,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet("/Data")
 public class DataController extends BaseController{
+
     private static final ActivityService activityService = new ActivityServiceImpl();
     private static final UserService userService = new UserServiceImpl();
     public static final OrganizerService organizationService=new OrganizerServiceImpl();
@@ -48,6 +49,20 @@ public class DataController extends BaseController{
         ResultState result = new ResultState();
         String clickMatchUrl=request.getParameter("clickMatch");
         request.getSession().setAttribute("clickMatch",clickMatchUrl);
+        result.setCode(true);
+        JsonUtil.returnJson(response,result);
+    }
+
+    /**
+     *
+     * @param request
+     * @param response
+     */
+    public void setNowAct(HttpServletRequest request, HttpServletResponse response){
+        ResultState result = new ResultState();
+        String nowActName=request.getParameter("nowActName");
+        ActivityUser nowAct = activityService.getActivityByName(nowActName);
+        request.getSession().setAttribute("nowAct",nowAct);
         result.setCode(true);
         JsonUtil.returnJson(response,result);
     }

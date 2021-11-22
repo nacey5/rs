@@ -29,16 +29,25 @@ window.addEventListener('load', function () {
                         color = "#31baee";
                     }
                     let activeDiv = " <div style='margin-top: 20px;height: 70px'>\n" +
-                        "            <img src=" + src + " alt='' height='60px' width='60px' style='float:left;padding-left: 80px'>\n" +
+                        "            <img src=" + src +" alt='' height='60px' width='60px' style='float:left;padding-left: 80px'>\n" +
                         "            <p style=\"float:left;padding-left: 150px;font-size: 28px;width: 280px\">" + name + "</p>\n" +
                         "            <p style=\"float:left;padding-left: 150px\">&nbsp;&nbsp;开始时间<br>" + time + "</p>\n" +
                         "            <p style=\"float:left;padding-left: 200px;font-size: 24px;color:" + color + "\">" + status + "</p>\n" +
                         "        </div>";
-                    $("<div></div>").append(activeDiv).appendTo("#activeDiv");
+                    $("<div id='act'></div>").append(activeDiv).appendTo("#activeDiv");
                 }
             } else {
                 alert("当前用户还没有活动！")
             }
         }
     })
+    //某个活动点击事件
+    $("#act").live("click", function () {
+        $.post("http://localhost:8080/FindMore/Find", {
+            action: "findBlog",
+            title: $(this).val()
+        }, function () {
+            window.location.href = "blog_details.html"
+        });
+    });
 })

@@ -4,6 +4,8 @@ import org.apache.ibatis.annotations.Param;
 import pojo.bean.ActivityUser;
 import pojo.bean.Participater;
 import pojo.bean.Pictures;
+import pojo.bean.User;
+
 import java.util.List;
 
 /**
@@ -24,7 +26,20 @@ public interface ActivityService {
      * @return
      */
     List<Pictures> selectPicturesById(Integer id);
-
+    /**
+     * 通过活动id查找出参加的用户
+     *
+     * @param id
+     * @return
+     */
+    List<User> selectParByActId(Integer id);
+    /**
+     * 根据名字查询活动
+     *
+     * @param name
+     * @return 返回名称为name的活动
+     */
+    ActivityUser getActivityByName( String name);
     /**
      * 通过活动id查找参加活动的学生
      * @param id

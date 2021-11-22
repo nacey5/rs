@@ -21,34 +21,48 @@ public interface ActivityDao {
     //-----------------------------------------------------------------------------------------------
 
     /**
-     *通过id查询活动信息
+     * 通过id查询活动信息
+     *
      * @param id
      * @return
      */
     String getInfoById(@Param("id") Integer id);
+
     /**
      * 根据名字查看活动是否存在
+     *
      * @param name
      * @return 返回名称中含有name的活动
      */
     boolean checkActivityExist(@Param("name") String name);
 
     /**
+     * 根据名字查询活动
+     *
+     * @param name
+     * @return 返回名称为name的活动
+     */
+    ActivityUser getActivityByName(@Param("name") String name);
+
+    /**
      * 模糊查询组织
+     *
      * @param name
      * @return
      */
-    List<Organizer> getOrgSearch(@Param("nameSer")String name);
+    List<Organizer> getOrgSearch(@Param("nameSer") String name);
 
     /**
      * 模糊查询活动
+     *
      * @param name
      * @return
      */
-    List<ActivityUser> getActSearch(@Param("nameSer")String name);
+    List<ActivityUser> getActSearch(@Param("nameSer") String name);
 
     /**
-     *通过id查询个人活动（非组织）
+     * 通过id查询个人活动（非组织）
+     *
      * @param id
      * @return
      */
@@ -56,40 +70,45 @@ public interface ActivityDao {
 
     /**
      * 通过活动组织者学号查找活动
+     *
      * @param organizer
      * @return
      */
     List<ActivityUser> selectActivitiesByOrganizer(@Param("org") Integer organizer);
 
     /**
-     *
      * @param organizer
      * @return
      */
     @MapKey("name")
-    Map<String,ActivityUser> selectActivitiesByOrganizerReturnMap(@Param("org") Integer organizer);
+    Map<String, ActivityUser> selectActivitiesByOrganizerReturnMap(@Param("org") Integer organizer);
 
     /**
      * 活动时间设置需要设置时间格式 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
      * 或者传入的日期格式为 yyyy-mm-dd 例如（2021-10-07）
+     *
      * @param activity
      */
     void addActivity(ActivityUser activity);
+
     /**
      * 活动时间设置需要设置时间格式 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
      * 或者传入的日期格式为 yyyy-mm-dd 例如（2021-10-07）
+     *
      * @param activity
      */
     void addOrgActivity(ActivityUser activity);
 
     /**
      * 根据id删除活动
+     *
      * @param id
      */
     void deleteActivity(Integer id);
 
     /**
      * 通过活动id查找参加活动的学生
+     *
      * @param id
      * @return
      */
@@ -97,6 +116,7 @@ public interface ActivityDao {
 
     /**
      * 找到包含参赛人员的所有信息的比赛信息
+     *
      * @param id 要查询的比赛的id
      * @return
      */
@@ -104,27 +124,31 @@ public interface ActivityDao {
 
     /**
      * 添加活动的具体内容信息（不包括图片）
+     *
      * @param id
      * @param info
      */
-    void addActivityInfo(@Param("id") Integer id,@Param("info") String info);
+    void addActivityInfo(@Param("id") Integer id, @Param("info") String info);
 
     /**
      * 为活动添加图片
+     *
      * @param id
      * @param picture
      */
-    void addActivityPicture(@Param("id") Integer id,@Param("basecode") String picture);
+    void addActivityPicture(@Param("id") Integer id, @Param("basecode") String picture);
 
     /**
      * 查询活动的所有图片
+     *
      * @param id
      * @return
      */
     List<Pictures> selectPicturesById(@Param("id") Integer id);
 
     /**
-     *得到头像
+     * 得到头像
+     *
      * @param id
      * @return 返回头像所存储的照片
      */
@@ -132,21 +156,24 @@ public interface ActivityDao {
 
     /**
      * 添加组织图片
+     *
      * @param pic
      */
-    void addHeadPortrait(@Param("baseCode")String pic,@Param("id") Integer id);
+    void addHeadPortrait(@Param("baseCode") String pic, @Param("id") Integer id);
 
     /**
      * 一次性查询多个活动，具体取决于页面，limit
      * select *from activity_organization where 1=1 order by id asc limit #{num}
+     *
      * @param number1 从num1+1行开始
      * @param number2 找到多少行数据 如select * from student limit 2,8;  返回3到10行记录
      * @return
      */
-    List<ActivityUser> getActivity(@Param("num1") Integer number1,@Param("num2") Integer number2);
+    List<ActivityUser> getActivity(@Param("num1") Integer number1, @Param("num2") Integer number2);
 
     /**
      * 得到活动的状态
+     *
      * @param id
      * @return
      */
@@ -154,12 +181,14 @@ public interface ActivityDao {
 
     /**
      * 更新活动状态,将活动的状态由true改成false
+     *
      * @param id
      */
-    void upStatus(@Param("id")Integer id);
+    void upStatus(@Param("id") Integer id);
 
     /**
      * 获得某一张活动的图片，用于轮播图
+     *
      * @param id
      * @return
      */
@@ -167,27 +196,31 @@ public interface ActivityDao {
 
     /**
      * 插入活动的主照片
+     *
      * @param id
      * @param picture
      * @return
      */
-    void setActMainPic(@Param("id") Integer id,@Param("mainPic") String picture);
+    void setActMainPic(@Param("id") Integer id, @Param("mainPic") String picture);
 
     /**
      * 得到活动的主照片
+     *
      * @param id
      * @return
      */
-    Pictures getActMainPic(@Param("id")Integer id);
+    Pictures getActMainPic(@Param("id") Integer id);
 
     /**
      * 统计活动个数
+     *
      * @return
      */
     Integer countAllAct();
 
     /**
-     *获得活动的类型，0为体育活动，1为学术活动，2为志愿活动
+     * 获得活动的类型，0为体育活动，1为学术活动，2为志愿活动
+     *
      * @param id
      * @return
      */
@@ -195,6 +228,7 @@ public interface ActivityDao {
 
     /**
      * 通过主图片获得活动
+     *
      * @param picCode
      * @return
      */
@@ -202,6 +236,7 @@ public interface ActivityDao {
 
     /**
      * 通过活动id查找出参加的用户
+     *
      * @param id
      * @return
      */
@@ -209,15 +244,17 @@ public interface ActivityDao {
 
     /**
      * 添加时间
+     *
      * @param id
-     * @param signTime 报名截止时间
+     * @param signTime  报名截止时间
      * @param firstTime 初赛时间
-     * @param endTime 决赛时间
+     * @param endTime   决赛时间
      */
-    void AddActTime(@Param("id") Integer id,@Param("sign") String signTime,@Param("first") String firstTime,@Param("end") String endTime);
+    void AddActTime(@Param("id") Integer id, @Param("sign") String signTime, @Param("first") String firstTime, @Param("end") String endTime);
 
     /**
      * 得到活动报名的截止时间
+     *
      * @param id
      * @return
      */
@@ -225,6 +262,7 @@ public interface ActivityDao {
 
     /**
      * 得到初赛的时间
+     *
      * @param id
      * @return
      */
@@ -232,13 +270,15 @@ public interface ActivityDao {
 
     /**
      * 得到决赛时间
+     *
      * @param id
      * @return
      */
-    String getActEndTime(@Param("id")Integer id);
+    String getActEndTime(@Param("id") Integer id);
 
     /**
      * 通过level查找活动
+     *
      * @param level
      * @return
      */

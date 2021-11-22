@@ -1,10 +1,7 @@
 package controller;
 
 import common.utils.JsonUtil;
-import pojo.bean.ActivityUser;
-import pojo.bean.Organizer;
-import pojo.bean.Pictures;
-import pojo.bean.User;
+import pojo.bean.*;
 import pojo.dto.ResultState;
 import service.ActivityService;
 import service.OrganizerService;
@@ -16,7 +13,6 @@ import service.impl.UserServiceImpl;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -102,7 +98,6 @@ public class FindController extends BaseController {
      */
     public void findNowAct(HttpServletRequest request, HttpServletResponse response) {
         ResultState result = new ResultState();
-
         String url = (String) request.getSession().getAttribute("clickMatch");
         ActivityUser nowAct = activityService.selectActByMainPic(url);
         String info = activityService.getInfoById(nowAct.getId());
@@ -123,7 +118,7 @@ public class FindController extends BaseController {
         ResultState result = new ResultState();
         User nowUser = (User) request.getSession().getAttribute("nowUser");
         List<String> picList = new ArrayList<>();
-        List<ActivityUser> actList = null;
+        List<ActivityUser> actList = new ArrayList<>();
         try {
             actList = userService.selectActListByUserId(1);
             System.out.println(actList);
@@ -141,6 +136,43 @@ public class FindController extends BaseController {
             }
             result.getDatas().put("picList", picList);
             result.getDatas().put("actList", actList);
+            result.setCode(true);
+        }
+        JsonUtil.returnJson(response, result);
+    }
+
+    /**
+     * 查询赛事活动的参赛者
+     *
+     * @param request
+     * @param response
+     */
+    public void findParticipaters(HttpServletRequest request, HttpServletResponse response) {
+        ResultState result = new ResultState();
+        ActivityUser nowAct = (ActivityUser) request.getSession().getAttribute("nowAct");
+        List<String> picList = new ArrayList<>();
+        List<Participater> parList = new ArrayList<>();
+        List<User> userList = new ArrayList<>();
+        try {
+            parList = activityService.selectStudentsByArtId(7);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        if (parList.size() != 0) {
+            for (Participater participater : parList) {
+                //获取对应的图片数组，获取info
+                try {
+                    //通过 userId查询用户信息
+                    userList = activityService.selectParByActId(7);
+                    picList.add(activityService.getActMainPic(participater.getId()).getPicture());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+            result.getDatas().put("picList", picList);
+            result.getDatas().put("userList", userList);
+            result.getDatas().put("parList", parList);
+            System.out.println(userList);
             result.setCode(true);
         }
         JsonUtil.returnJson(response, result);

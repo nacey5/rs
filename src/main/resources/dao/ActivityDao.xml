@@ -198,6 +198,12 @@
          <![CDATA[ select count(`name`)
                    from activity_organization where `name`=#{name}]]>
     </select>
+    <!--activityUser getActivityByName(@Param("name") String name);-->
+    <select id="getActivityByName" resultType="activityUser">
+         select count(*)
+        from activity_organization
+         where `name`=#{name}
+    </select>
 
     <!--void setActMainPic(@Param("id") Integer id,@Param("mainPic") String picture);-->
     <insert id="setActMainPic" databaseId="mysql">

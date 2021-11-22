@@ -23,8 +23,6 @@ public class PicTest {
         OrganizerService organizerService = new OrganizerServiceImpl();
         UserService userService = new UserServiceImpl();
 //        System.out.println(activityService.searchActivityByName("西部"));
-        System.out.println(userService.selectActListByUserId(1));
-        System.out.println(userService.selectActListByUserId(7));
-        System.out.println(userService.selectActListByUserId(26));
+        System.out.println(userService.queryUserInfo(1));
     }
 }

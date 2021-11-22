@@ -14,6 +14,8 @@ public class Participater implements Serializable {
     private static final long serialVersionUID=15841112455255456L;
     //对应的活动id
     Integer id;
+    /**用户id*/
+    Integer userId;
     //学生学号
     Integer studentCount;
 
@@ -33,13 +35,20 @@ public class Participater implements Serializable {
         this.studentCount = studentCount;
     }
 
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
+
     @Override
     public String toString() {
-        return "participater{" +
+        return "Participater{" +
                 "id=" + id +
+                ", userId=" + userId +
                 ", studentCount=" + studentCount +
                 '}';
     }
-
-
 }
