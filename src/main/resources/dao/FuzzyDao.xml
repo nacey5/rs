@@ -4,6 +4,32 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="dao.FuzzyDao">
     <cache eviction="FIFO" flushInterval="300000" readOnly="false"/>
+    <!--List<Organizer> queryOrgsByName(@Param("name") String name);-->
+    <select id="queryOrgsByName" resultType="org">
+        select *
+        from
+            user_organization
+        where
+                `name`
+                like
+                '%${name}%'
+    </select>
+    <!--List<Organizer> getOrgSearch(@Param("nameSer")String name);-->
+    <select id="getOrgSearch" resultType="org">
+        select *
+        from user_organization
+        where `name`
+                  like
+              '%${nameSer}%'
+    </select>
+    <!--List<ActivityUser> getActSearch(@Param("nameSer")String name);-->
+    <select id="getActSearch" resultType="activityUser">
+        select *
+        from activity_organization
+        where `name`
+                  like
+              '%${nameSer}%'
+    </select>
     <!--List<String> selectUserName(@Param("keyWord") String keyWord));-->
     <select id="selectUserName" resultType="string">
         select `name`

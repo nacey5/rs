@@ -171,10 +171,6 @@ public class ActivityServiceImpl implements ActivityService {
         return activityDao.selectInfoIncludePars(id);
     }
 
-    @Override
-    public List<ActivityUser> searchActivityByName(String searchText) {
-        return activityDao.getActSearch(searchText);
-    }
 
     @Override
     public void addOrgActivity(ActivityUser activityUser) {

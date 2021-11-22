@@ -7,8 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>导航栏</title>
     <link rel="stylesheet" href="css/nav.css">
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="js/searchTips.js"></script>
 </head>
-
 <body>
     <div class="nav-box">
         <div class="logo">
@@ -25,7 +26,7 @@
             </ul>
         </div>
         <div class="search">
-            <input type="text" id="searchInput">
+            <input type="text" id="searchInput" oninput="tip()">
             <img src="image/搜索图标.jpg" alt="" id="search">
         </div>
         <!-- 搜索时会出现的提示框 -->

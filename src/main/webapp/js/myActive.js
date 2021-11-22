@@ -44,10 +44,10 @@ window.addEventListener('load', function () {
     //某个活动点击事件
     $("#act").live("click", function () {
         $.post("http://localhost:8080/FindMore/Find", {
-            action: "findBlog",
+            action: "findNowAct",
             title: $(this).val()
         }, function () {
-            window.location.href = "blog_details.html"
+            window.location.href = "match_details.html"
         });
     });
 })

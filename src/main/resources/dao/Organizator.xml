@@ -81,24 +81,4 @@
               pic_org=#{picCode}
     </select>
 
-    <!--List<Organizer> queryOrgsByName(@Param("name") String name);-->
-    <select id="queryOrgsByName" resultType="org">
-        select *
-        from
-            user_organization
-        where
-                `name`
-                like
-                '%${name}%'
-    </select>
-<!--    &lt;!&ndash;List<Organizer> getOrgSearch(@Param("nameSer")String name);&ndash;&gt;-->
-<!--    <select id="getOrgSearch" resultType="org">-->
-<!--        select-->
-<!--            * from-->
-<!--            user_organization-->
-<!--        where-->
-<!--                `name`-->
-<!--                like-->
-<!--                '%${nameSer}%'-->
-<!--    </select>-->
 </mapper>

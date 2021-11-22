@@ -14,12 +14,6 @@ import java.util.Map;
  */
 public interface ActivityDao {
 
-    //-----------------------------------------------------------------------------------------------
-    //-----------------------------------------------------------------------------------------------
-
-    //-----------------------------------分割线---------上面是需要新增的方法--11.04---------------------------
-    //-----------------------------------------------------------------------------------------------
-
     /**
      * 通过id查询活动信息
      *
@@ -44,21 +38,7 @@ public interface ActivityDao {
      */
     ActivityUser getActivityByName(@Param("name") String name);
 
-    /**
-     * 模糊查询组织
-     *
-     * @param name
-     * @return
-     */
-    List<Organizer> getOrgSearch(@Param("nameSer") String name);
 
-    /**
-     * 模糊查询活动
-     *
-     * @param name
-     * @return
-     */
-    List<ActivityUser> getActSearch(@Param("nameSer") String name);
 
     /**
      * 通过id查询个人活动（非组织）

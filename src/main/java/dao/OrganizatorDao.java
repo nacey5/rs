@@ -27,16 +27,6 @@ public interface OrganizatorDao {
      * @return
      */
     Organizer checkOrgPhone(@Param("phone") String name);
-
-    /**
-     * 根据组织名称查询组织对象-----(模糊查询)
-     *
-     * @param name 组织名
-     * @return 返回名称中含有name的组织
-     */
-    List<Organizer> queryOrgsByName(@Param("name") String name);
-    //-----------------------------------分割线---------上面是需要新增的方法-----------------------------
-
     /**
      * 通过手机号码和密码查询用户
      *

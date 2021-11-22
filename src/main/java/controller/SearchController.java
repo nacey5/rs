@@ -7,8 +7,10 @@ import pojo.bean.Pictures;
 import pojo.dto.ResultState;
 import service.ActivityService;
 import service.OrganizerService;
+import service.SearchService;
 import service.impl.ActivityServiceImpl;
 import service.impl.OrganizerServiceImpl;
+import service.impl.SearchServiceImpl;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -25,8 +27,10 @@ import java.util.Map;
  */
 @WebServlet("/Search")
 public class SearchController extends BaseController {
+
     public static final ActivityService activityService = new ActivityServiceImpl();
     public static final OrganizerService organizerService = new OrganizerServiceImpl();
+    public static final SearchService searchService = new SearchServiceImpl();
 
     /**
      * 搜索
@@ -35,13 +39,28 @@ public class SearchController extends BaseController {
      * @param response 响应
      */
     public void search(HttpServletRequest request, HttpServletResponse response) {
-         ResultState result = new ResultState();
+        ResultState result = new ResultState();
 //获取搜索的内容
         String text = request.getParameter("searchText");
-        System.out.println("搜索555555555" + text);
         request.getSession().setAttribute("searchText", text);
         result.setCode(true);
         //使用json工具类返回结果
+        JsonUtil.returnJson(response, result);
+    }
+
+    /**
+     * 搜索提示
+     *
+     * @param request
+     * @param response
+     */
+    public void findSearchTips(HttpServletRequest request, HttpServletResponse response) {
+        ResultState result = new ResultState();
+        String searchText = request.getParameter("searchText");
+        List<String> strings = searchService.searchByKeyWords(searchText);
+        result.setCode(true);
+        result.getDatas().put("strings",strings);
+        System.out.println(result);
         JsonUtil.returnJson(response, result);
     }
 
@@ -50,7 +69,7 @@ public class SearchController extends BaseController {
      * @param response
      */
     public void findSearch(HttpServletRequest request, HttpServletResponse response) {
-         ResultState result = new ResultState();
+        ResultState result = new ResultState();
         String searchType;
         HttpSession session = request.getSession();
         //搜索内容
@@ -61,15 +80,15 @@ public class SearchController extends BaseController {
         List<Organizer> orgs = null;
         List<String> actPicList = new ArrayList<>();
         List<ActivityUser> actList = null;
-        boolean isAct=false;
+        boolean isAct = false;
         try {
-            orgs = organizerService.queryOrgsByName(searchText);
+            orgs = searchService.queryOrgsByName(searchText);
             searchOrgFlag = orgs.isEmpty();
         } catch (Exception e) {
             e.printStackTrace();
         }
         try {
-            isAct= activityService.searchActivityByName(searchText)!=null;
+            isAct = searchService.searchActivityByName(searchText) != null;
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -89,12 +108,12 @@ public class SearchController extends BaseController {
             result.getDatas().put("size", size);
             result.setCode(true);
             result.getDatas().put("searchType", searchType);
-        } else if(isAct){
+        } else if (isAct) {
             //搜索赛事活动标题
             searchType = "act";
             //查询对应的赛事活动
             try {
-                actList = activityService.searchActivityByName(searchText);
+                actList = searchService.searchActivityByName(searchText);
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -104,10 +123,10 @@ public class SearchController extends BaseController {
                     System.out.println(id);
                     Pictures actMainPic = activityService.getActMainPic(id);
                     System.out.println(actMainPic);
-                    if (actMainPic==null){
-                     actPicList.add(PictureController.PIC_BASE_URL+"image/default_match.jpg");
-                    }else {
-                    actPicList.add(actMainPic.getPicture());
+                    if (actMainPic == null) {
+                        actPicList.add(PictureController.PIC_BASE_URL + "image/default_match.jpg");
+                    } else {
+                        actPicList.add(actMainPic.getPicture());
                     }
                 }
                 result.getDatas().put("actList", actList);

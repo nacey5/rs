@@ -77,8 +77,5 @@ public class OrganizerServiceImpl implements OrganizerService {
         return orgDao.checkOrgName(name) != null;
     }
 
-    @Override
-    public List<Organizer> queryOrgsByName(String name) {
-        return orgDao.queryOrgsByName(name);
-    }
+
 }

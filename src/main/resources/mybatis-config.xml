@@ -111,6 +111,7 @@
         <mapper resource="dao\Organizator.xml"/>
         <mapper resource="dao\UserDao.xml"/>
         <mapper resource="dao\ActivityDao.xml"/>
+        <mapper resource="dao\FuzzyDao.xml"/>
 
     </mappers>
 </configuration>

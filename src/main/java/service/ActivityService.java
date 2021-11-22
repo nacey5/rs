@@ -171,34 +171,9 @@ public interface ActivityService {
      */
     List<ActivityUser> selectInfoIncludePars(Integer id);
 
-//    /**
-//     *查询分页的活动
-//     * @param pageNo 页码
-//     * @param pageSize 当前页显示数量
-//     * @param id  用户id
-//     * @return 查询到的博客
-//     */
-//    PageBO<ActivityUser> page(int pageNo, int pageSize, Integer id);
-
-    /**
-     * 通过活动名称查询活动
-     * @param searchText
-     * @return
-     */
-    List<ActivityUser> searchActivityByName(String searchText);
-
     /**
      *
      * @param activityUser
      */
     void addOrgActivity(ActivityUser activityUser);
-//    /**
-//     *查询分页的活动
-//     * @param pageNo 页码
-//     * @param pageSize 当前页显示数量
-//     * @param id  用户id
-//     * @return 查询到的博客
-//     */
-//    PageBo<ActivityUser> page(int pageNo, int pageSize, Integer id);
-
 }

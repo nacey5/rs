@@ -7,72 +7,55 @@
     <!--ActivityUser selectInfoById(@Param("id") Integer id);-->
     <select id="selectInfoById" resultType="activityUser">
         select *
-        from
-            activity_user
-        where
-            id=#{id}
+        from activity_user
+        where id = #{id}
     </select>
     <!--String getInfoById(@Param("id") Integer id);-->
     <select id="getInfoById" resultType="java.lang.String">
         select `info`
-        from
-            info_activity
-        where
-            id=#{id}
+        from info_activity
+        where id = #{id}
     </select>
 
     <!--List<ActivityUser> selectActivitiesByOrganizer(@Param("org") Integer organizer);-->
     <select id="selectActivitiesByOrganizer" resultType="activityUser">
         select *
-        from
-            activity_user
-        where
-            organizer=#{org}
+        from activity_user
+        where organizer = #{org}
     </select>
 
     <!--@MapKey("name")
         Map<String,ActivityUser> selectActivitiesByOrganizerReturnMap(@Param("org") Integer organizer);-->
     <select id="selectActivitiesByOrganizerReturnMap" resultType="map">
         select *
-        from
-        activity_user
-        where
-            organizer=#{org};
+        from activity_user
+        where organizer = #{org};
     </select>
 
     <!--    void addActivity(@Param("activity") ActivityUser activity); -->
     <insert id="addActivity" parameterType="activityUser" useGeneratedKeys="true" keyProperty="id" databaseId="mysql">
-        insert into
-            activity_user(`name`,`organizer`,`time`,`adress`,`joinWay`,`level`)
-        values
-        (
-        #{name},#{organizer},#{time},#{adress},#{joinWay},#{level}
-        )
+        insert into activity_user(`name`, `organizer`, `time`, `adress`, `joinWay`, `level`)
+        values (#{name}, #{organizer}, #{time}, #{adress}, #{joinWay}, #{level})
     </insert>
-    <insert id="addOrgActivity" parameterType="activityUser" useGeneratedKeys="true" keyProperty="id" databaseId="mysql">
-        insert into
-            activity_organization(`name`,`time`,`adress`,`organizer`,`joinWay`,`level`)
-        values
-        (
-        #{name},#{time},#{adress},#{organizer},#{joinWay},#{level}
-        )
+    <insert id="addOrgActivity" parameterType="activityUser" useGeneratedKeys="true" keyProperty="id"
+            databaseId="mysql">
+        insert into activity_organization(`name`, `time`, `adress`, `organizer`, `joinWay`, `level`)
+        values (#{name}, #{time}, #{adress}, #{organizer}, #{joinWay}, #{level})
     </insert>
 
     <!--void deleteActivity(Integer id);-->
     <delete id="deleteActivity">
-        delete from activity_user
-        where
-        id=#{id}
+        delete
+        from activity_user
+        where id = #{id}
     </delete>
 
     <!--List<Integer> selectStudentsByArtId(Integer id);-->
     <select id="selectStudentsByArtId" resultType="participater">
-        select
-            `id`,`student_count`
-        from
-            activity_content
-        where
-            id=#{id}
+        select `id`,
+               `student_count`
+        from activity_content
+        where id = #{id}
     </select>
 
     <resultMap id="InfoIncludeParsMap" type="activityUser">
@@ -97,27 +80,21 @@
     </resultMap>
     <!--ActivityUser selectInfoIncludePars(Integer id);-->
     <select id="selectInfoIncludePars" resultMap="InfoIncludeParsMap">
-	select
-		d.name,e.*
-	from
-        user_student d,activity_user e
-    where
-        e.id=#{id}
+        select d.name,
+               e.*
+        from user_student d,
+             activity_user e
+        where e.id = #{id}
     </select>
 
     <insert id="addActivityInfo" databaseId="mysql">
-         insert into info_activity(`id`,`info`)
-    values
-    (
-        #{id},#{info}
-    )
+        insert into info_activity(`id`, `info`)
+        values (#{id}, #{info})
     </insert>
 
     <insert id="addActivityPicture" databaseId="mysql">
-        insert into
-        picture_activity(`id`,`picture`)
-        values
-        (#{id},#{basecode})
+        insert into picture_activity(`id`, `picture`)
+        values (#{id}, #{basecode})
     </insert>
 
     <resultMap id="picMap" type="pic">
@@ -126,205 +103,164 @@
     </resultMap>
     <!--List<Pictures> selectPicturesById(@Param("id") Integer id);-->
     <select id="selectPicturesById" resultMap="picMap">
-        select
-            `id`,`picture`
-        from
-            picture_activity
-        where
-            id=#{id}
+        select `id`,
+               `picture`
+        from picture_activity
+        where id = #{id}
     </select>
 
     <!--String getHeadPortrait(@Param("id") Integer id);-->
     <select id="getHeadPortrait" resultType="string">
         select pic_org
-        from
-            user_organization
-        where
-            id=#{id}
+        from user_organization
+        where id = #{id}
     </select>
 
     <!--void addHeadPortrait(@Param("baseCode")String pic,@Param("id") Integer id);-->
     <update id="addHeadPortrait" databaseId="mysql">
         update user_organization
-        set
-            pic_org=#{baseCode}
-        where
-            id=#{id}
+        set pic_org=#{baseCode}
+        where id = #{id}
 
     </update>
 
     <!--List<ActivityUser> getActivity();-->
     <select id="getActivity" resultType="activityUser">
         select *
-        from
-             activity_organization
-        where 1=1
-        order by
-                 id
-        asc limit
-            #{num1},#{num2}
+        from activity_organization
+        where 1 = 1
+        order by id
+            asc
+        limit #{num1},#{num2}
     </select>
 
     <!--String getStatus(@Param("id") Integer id);-->
     <select id="getStatus" resultType="string">
-        select
-               `status`
-        from
-            activity_organization
-        where
-              id=#{id}
+        select `status`
+        from activity_organization
+        where id = #{id}
     </select>
 
     <!--void upStatus(@Param("id")Integer id);-->
     <update id="upStatus">
         update activity_organization
         set `status`='false'
-        where id=#{id}
+        where id = #{id}
     </update>
 
     <!--String getCarouselPic(@Param("id") Integer id);-->
     <select id="getCarouselPic" resultType="string">
-        select
-               picture
-        from
-             picture_activity
-        where
-              id=#{id}
+        select picture
+        from picture_activity
+        where id = #{id}
         limit 1
     </select>
 
     <!--boolean checkActivityExist(@Param("name") String name);-->
     <select id="checkActivityExist" resultType="java.lang.Boolean">
-         <![CDATA[ select count(`name`)
-                   from activity_organization where `name`=#{name}]]>
+         <![CDATA[
+        select count(`name`)
+        from activity_organization
+        where `name` = #{name}
+        ]]>
     </select>
     <!--activityUser getActivityByName(@Param("name") String name);-->
     <select id="getActivityByName" resultType="activityUser">
-         select count(*)
+        select count(*)
         from activity_organization
-         where `name`=#{name}
+        where `name` = #{name}
     </select>
 
     <!--void setActMainPic(@Param("id") Integer id,@Param("mainPic") String picture);-->
     <insert id="setActMainPic" databaseId="mysql">
-        insert into
-            pcituremain_activity(`id`,`picture`)
-        values
-            (#{id},#{mainPic})
+        insert into pcituremain_activity(`id`, `picture`)
+        values (#{id}, #{mainPic})
     </insert>
 
     <!--Pictures getActMainPic(@Param("id")Integer id);-->
     <select id="getActMainPic" resultType="pic">
-        select
-            *
-        from
-            pcituremain_activity
-        where
-            id=#{id}
+        select *
+        from pcituremain_activity
+        where id = #{id}
     </select>
 
-    <!--List<Organizer> getOrgSearch(@Param("nameSer")String name);-->
-    <select id="getOrgSearch" resultType="org">
-        select
-            * from
-            user_organization
-        where
-                `name`
-                like
-                '%${nameSer}%'
-    </select>
-
-    <!--List<ActivityUser> getActSearch(@Param("nameSer")String name);-->
-    <select id="getActSearch" resultType="activityUser">
-        select
-            * from
-            activity_organization
-        where
-                `name`
-                like
-                '%${nameSer}%'
-    </select>
 
     <!--Integer countAllAct();-->
     <select id="countAllAct" resultType="Integer">
-        select
-            count(*)
-        from
-             activity_organization
+        select count(*)
+        from activity_organization
     </select>
 
     <!--Integer getLevelByID(@Param("id") Integer id);-->
     <select id="getLevelByID" resultType="Integer">
-        select
-            `level`
-        from
-            activity_organization
-        where
-            id=#{id}
+        select `level`
+        from activity_organization
+        where id = #{id}
     </select>
 
     <!--ActivityUser selectActByMainPic(@Param("picCode") String picCode);-->
     <select id="selectActByMainPic" resultType="activityUser">
-        select ao.*from activity_organization ao,pcituremain_activity pa
-        where ao.id=(select pa.id where pa.picture=#{picCode})
+        select ao.*
+        from activity_organization ao,
+             pcituremain_activity pa
+        where ao.id = (select pa.id where pa.picture = #{picCode})
     </select>
 
     <!--List<User> selectParByActId(@Param("id") Integer id);-->
     <select id="selectParByActId" resultType="user">
-        select
-            us.name `username`,us.id,us.count,us.major,us.gender,us.password,us.phone,us.email,us.collage
-        from
-            user_student us,activity_content ac
-        where
-            ac.student_count=us.count
-          and
-            ac.id=#{id}
+        select us.name `username`,
+               us.id,
+               us.count,
+               us.major,
+               us.gender,
+               us.password,
+               us.phone,
+               us.email,
+               us.collage
+        from user_student us,
+             activity_content ac
+        where ac.student_count = us.count
+          and ac.id = #{id}
     </select>
 
     <!--void AddActTime(@Param("id") Integer id,@Param("sign") String signTime,@Param("first") String firstTime,@Param("end") String endTime);-->
     <insert id="AddActTime" databaseId="mysql">
-        insert  into
-            time_activity (`id`,`sign_up_end_time`,`first_match_time`,`final_match_time`)
-        values
-            (#{id},#{sign},#{first},#{end})
+        insert into time_activity (`id`, `sign_up_end_time`, `first_match_time`, `final_match_time`)
+        values (#{id}, #{sign}, #{first}, #{end})
     </insert>
 
     <!--String getActSignTime(@Param("id") Integer id);-->
     <select id="getActSignTime" resultType="string">
         select `sign_up_end_time`
         from time_activity
-        where id=#{id}
+        where id = #{id}
     </select>
 
     <!--String getActFirstTime(@Param("id") Integer id);-->
     <select id="getActFirstTime" resultType="string">
         select `first_match_time`
         from time_activity
-        where id=#{id}
+        where id = #{id}
     </select>
 
     <!--String getActEndTime(@Param("id")Integer id);-->
     <select id="getActEndTime" resultType="string">
         select `final_match_time`
-        from  time_activity
-        where id=#{id}
+        from time_activity
+        where id = #{id}
     </select>
 
     <!--List<ActivityUser> getOrgActByLevel(@Param("level") Integer level);-->
     <select id="getOrgActByLevel" resultType="activityUser">
         select *
-        from
-            activity_organization
-        where
-            `level`=#{level}
+        from activity_organization
+        where `level` = #{level}
     </select>
 
     <!--List<ActivityUser> getUserActByLevel(@Param("level") Integer level);-->
     <select id="getUserActByLevel" resultType="activityUser">
         select *
-        from
-            activity_user
-        where
-            `level`=#{level}
+        from activity_user
+        where `level` = #{level}
     </select>
 </mapper>

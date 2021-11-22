@@ -5,6 +5,7 @@ import service.OrganizerService;
 import service.UserService;
 import service.impl.ActivityServiceImpl;
 import service.impl.OrganizerServiceImpl;
+import service.impl.SearchServiceImpl;
 import service.impl.UserServiceImpl;
 
 import java.text.SimpleDateFormat;
@@ -22,7 +23,8 @@ public class PicTest {
         ActivityServiceImpl activityService = new ActivityServiceImpl();
         OrganizerService organizerService = new OrganizerServiceImpl();
         UserService userService = new UserServiceImpl();
-//        System.out.println(activityService.searchActivityByName("西部"));
-        System.out.println(userService.queryUserInfo(1));
+        SearchServiceImpl searchService = new SearchServiceImpl();
+        List<String> strings = searchService.searchByKeyWords("协会");
+        System.out.println(strings);
     }
 }
