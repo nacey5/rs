@@ -47,21 +47,53 @@ window.addEventListener('load', function() {
         })
     })
 
-    // 点击我要报名之后弹出框
-    $('.list').click(function() {
-        $('.alter').show(); //显示修改信息页面
-    })
-
-    //点击按钮之后背景色变色
     var down = document.querySelector('.down');
     var btns = down.querySelectorAll('button');
-    console.log(btns);
+    $('#alter').click(function() {
+
+        $('.alter').show(); //显示修改信息页面
+
+    })
+
+    // 点击确定按钮，进行数据的提交，关闭模态框
+    function confirm() {
+        // 获取输入框的数据
+        // 调用后台接口，进行数据的添加
+        $('.alter').css("display", 'none')
+        for (let j = 0; j < btns.length; j++) {
+            btns[j].classList.remove('cur');
+        }
+    }
+
+    // 点击取消按钮，关闭模态框，将输入框置空
+    function cancel() {
+        // 将将输入框置空
+        //关闭模态框
+        $('.alter').css("display", 'none')
+        for (let j = 0; j < btns.length; j++) {
+            btns[j].classList.remove('cur');
+        }
+    }
+
+    //点击按钮之后背景色变色
+
     for (let i = 0; i < btns.length; i++) {
         btns[i].addEventListener('click', function() {
             for (let j = 0; j < btns.length; j++) {
                 btns[j].classList.remove('cur');
             }
             this.classList.add('cur');
+
+            var timer = setInterval(function() {
+                clearInterval(timer);
+                // 判断点击了哪个按钮
+                if (btns[i].innerHTML == '确定') {
+                    confirm();
+                } else {
+                    cancel();
+                }
+            }, 2000)
+
         })
     }
 })
