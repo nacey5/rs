@@ -7,7 +7,23 @@ a {
     color: #000;
     text-decoration: none;
 }
-
+#activeDiv{
+    margin-top: 40px;
+    border: 2px solid black;
+    border-radius:15px;
+}
+#activeDiv li {
+    border-bottom: 1px solid #000000;
+}
+#activeDiv li:nth-child(last){
+    border: none;
+}
+#parDiv{
+    border: 2px solid black;
+    border-radius:15px 15px 15px 15px;
+}
+#act{
+}
 .content {
     width: 1200px;
     margin: 0 auto;

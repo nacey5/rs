@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        $(function () {
+            var $sendSmsCode = $('.phone-wrap .send-sms-code');
+            var $submitButton = $('.relative-operation > .ok');
+            var $pwdErrorConatiner = $('.password-error-container');
+            var $pwdWrap = $('.password-wrap');
+            var $phoneWrap = $('.phone-wrap');
+            var $form = $('.pwd-and-phone');
+            var $phoneCaptcha = $('#_pavise_phone_captcha');
+            var $pwd = $('#_pavise_password');
+            var $phoneErrorConatiner = $('.phone-error-container');
+            var $smsCode = $('#sms-code');
+            $('.change-verify-way').click(function () {
+                $('#_pavise_change_way').val('password_and_email');
+                $form.submit();
+            })
+            setTimeout(function () {
+                $('.without-phone-help').popup({
+                    position: 'right center',
+                    inline: true,
+                    hoverable: true,
+                    content: "号码已注销或停用？点此查看"
+                })
+            }, 500);
+            $sendSmsCode.click(function () {
+                var userPassword = $pwd.val();
+                if (!userPassword) {
+                    requirePwdTip();
+                    return;
+                }
+                $sendSmsCode.addClass('disabled');
+                $pwdWrap.removeClass('error');
+                $pwdErrorConatiner.text('');
+                $pwdErrorConatiner.addClass('hide');
+
+                $phoneWrap.removeClass('error');
+                $phoneErrorConatiner.text('');
+                $phoneErrorConatiner.addClass('hide');
+                $phoneCaptcha.val('');
+
+                $.ajax({
+                    type: 'post',
+                    url: "/phones/send_verification_code",
+                    data: {
+                        password: userPassword
+                    },
+                    success: function (res) {
+                        if (res.result == 1) {
+                            $sendSmsCode.countdown({
+                                template: "${time} 秒后重发",
+                                callback: function () {
+                                    $sendSmsCode.removeClass('disabled');
+                                    $pwd.attr('readonly', false);
+                                }
+                            })
+                            $pwd.attr('readonly', true);
+                            $phoneCaptcha.attr('readonly', false);
+                            $smsCode.text(res.code);
+                            $('#_pavise_captcha_token').val(res.code);
+                            $smsCode.addClass('show');
+                        } else {
+                            $pwdWrap.addClass('error');
+                            $sendSmsCode.removeClass('disabled');
+                            $pwdErrorConatiner.text('（' + res.notice + '）');
+                            $pwdErrorConatiner.removeClass('hide');
+                        }
+                    }
+                })
+            })
+            $submitButton.click(function () {
+                var password = $pwd.val();
+                var captcha = $phoneCaptcha.val().trim();
+                if (!password) {
+                    requirePwdTip();
+                    return;
+                }
+                if (!captcha) {
+                    requireCaptchaTip();
+                    return;
+                }
+                $('.relative-operation > .ok').addClass('loading disabled');
+                $form.submit();
+            })
+
+            function requirePwdTip() {
+                $pwdWrap.addClass('error');
+                $pwdErrorConatiner.text("（密码不能为空）");
+                $pwdErrorConatiner.removeClass('hide');
+            }
+
+            function requireCaptchaTip() {
+                $phoneWrap.addClass('error');
+                $phoneErrorConatiner.text("（验证码不能为空）");
+                $phoneErrorConatiner.removeClass('hide');
+            }
+        })
+    </script>
+    <title></title>
+</head>
+<body>
+<div class="content">
+    <form class="ui form pwd-and-phone" action="/phones/change_phone" accept-charset="UTF-8" data-remote="true"
+          method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="_method" value="PUT">
+        <div class="field">
+            <label>
+                你正在进行敏感操作，继续操作前请验证您的身份
+            </label>
+        </div>
+        <div class="field">
+            <div class="ui message yellow">
+                更换号码后，你将无法通过 「原手机号码+密码」 登录
+            </div>
+        </div>
+
+        <div class="field">
+            <input type="hidden" name="_pavise[bundle]" id="_pavise_bundle"
+                   value="emNmYmZzZWdVRm9EQzJvNkM2b1E3Wjc0WUx2eUQyUldIQTNobWVSV1gvOGNFbEpHRjBONFAvQWQzVWduc3lYYkw5ZmFMNU5EbndScGd3YzlQci9SeStVWjV4dTdxcDljU1ByNEVpd2JybXhkQ01XZEx1ZVBWNTNjRzIya1NMSHFZV2tpSFo4b2Q2V2VzdDRQUTlLcmZDb2VPK0tYenFUWVZjTDVwWEM5MDMwNXFBdzR2SndWVTVGVWhWVFh2MHZTRWF5djg3ZUEyS0pUU3NIa2tXZGdmUT09LS1lN2NvY2tJeVY5MVVsUmdpaXZCV1pnPT0=--6c3fb0a6bab87b2f819b3bc054d4053e17e6ebf6">
+            <input type="hidden" name="_pavise[captcha_token]" id="_pavise_captcha_token">
+            <input type="hidden" name="_pavise[verify_way]" id="_pavise_verify_way" value="password_and_phone">
+            <input type="hidden" name="_pavise[change_way]" id="_pavise_change_way" value="">
+        </div>
+        <div class="field password-wrap">
+            <label>
+                密码验证
+            </label>
+            <span class="hide password-error-container">
+（）
+</span>
+            <input type="password" name="_pavise[password]" id="_pavise_password" value="" placeholder="请输入当前帐号密码"
+                   autocomplete="new-password" aria-autocomplete="list">
+        </div>
+        <div class="field phone-wrap">
+            <label>
+                短信验证 (接收手机号 130****4158)
+                <a target="_blank" href="/help/articles/4244">
+                    <div class="without-phone-help iconfont icon-help-circle"></div>
+                </a></label>
+            <span class="hide phone-error-container">
+（）
+</span>
+            <div class="ui action input">
+<span class="" id="sms-code">
+
+</span>
+                <input type="text" name="_pavise[phone_captcha]" id="_pavise_phone_captcha" value=""
+                       placeholder="请输入短信验证码" readonly="readonly">
+                <div class="ui button basic orange send-sms-code">
+                    发送验证码
+                </div>
+            </div>
+        </div>
+        <div class="actions relative-operation">
+            <div class="ui button blank cancel">
+                取消
+            </div>
+            <div class="ui orange button ok" type="submit">
+                下一步
+            </div>
+            <span class="change-verify-way">手机不在身边？换个方式验证</span>
+        </div>
+    </form>
+</div>
+</body>
+
+</html>
+

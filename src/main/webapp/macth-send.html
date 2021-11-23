@@ -13,78 +13,78 @@
 </head>
 
 <body>
-    <div class="header">
-        <!-- 顶部导航栏 -->
-        <iframe src="nav.html" frameborder="0" width="1200px" height="60px" scrolling="no"></iframe>
+<div class="header">
+    <!-- 顶部导航栏 -->
+    <iframe src="nav.html" frameborder="0" width="1200px" height="60px" scrolling="no"></iframe>
+</div>
+<div class="content">
+    <div class="title">
+        <h3>赛事发布</h3>
     </div>
-    <div class="content">
-        <div class="title">
-            <h3>赛事发布</h3>
-        </div>
-        <form name="text1" id="scoreBox">
-            <div class="scoreBox">
-                <div class="score">
-                    <p>赛事标题</p>
-                    <div>
-                        <input type="text" placeholder="请输入赛事发布的标题" id="Title">
-                        <img src="image/score-icon1.jpg" alt="">
-                    </div>
+    <form name="text1" id="scoreBox">
+        <div class="scoreBox">
+            <div class="score">
+                <p>赛事标题</p>
+                <div>
+                    <input type="text" placeholder="请输入赛事发布的标题" id="Title">
+                    <img src="image/score-icon1.jpg" alt="">
                 </div>
-                <div class="score">
-                    <p>赛事类型</p>
-                    <div>
-                        <input id="type" type="text" placeholder="请选择" disabled="disabled">
-                        <select id="textSelect">
+            </div>
+            <div class="score">
+                <p>赛事类型</p>
+                <div>
+                    <input id="type" type="text" placeholder="请选择" disabled="disabled">
+                    <select id="textSelect">
                         <option>体育赛事</option>
                         <option>学术活动</option>
                         <option>志愿活动</option>
                     </select>
-                    </div>
                 </div>
-                <div class="score">
-                    <p>时间</p>
-                    <div>
-                        <input type="text" placeholder="请输入赛事举行的时间" id="time">
-                        <img src="image/score-icon3.jpg" alt="">
-                    </div>
+            </div>
+            <div class="score">
+                <p>时间</p>
+                <div>
+                    <input type="text" placeholder="请输入赛事举行的时间" id="time">
+                    <img src="image/score-icon3.jpg" alt="">
                 </div>
-                <div class="score">
-                    <p>组织者</p>
-                    <div><input type="text" placeholder="请输入赛事负责人的学号" id="count"></div>
+            </div>
+            <div class="score">
+                <p>组织者</p>
+                <div><input type="text" placeholder="请输入赛事负责人的学号" id="count"></div>
 
+            </div>
+            <div class="score">
+                <p>地点</p>
+                <div>
+                    <input type="text" placeholder="请输入赛事举行的地点" id="adress">
+                    <img src="image/score-icon4.jpg" alt="">
                 </div>
-                <div class="score">
-                    <p>地点</p>
-                    <div>
-                        <input type="text" placeholder="请输入赛事举行的地点" id="adress">
-                        <img src="image/score-icon4.jpg" alt="">
-                    </div>
-                </div>
-                <div class="score">
-                    <p>报名方式</p>
-                    <div><input type="text" placeholder="请输入参加赛事的报名方式" id="joinWay"></div>
-                </div>
+            </div>
+            <div class="score">
+                <p>报名方式</p>
+                <div><input type="text" placeholder="请输入参加赛事的报名方式" id="joinWay"></div>
+            </div>
+        </div>
+    </form>
+
+    <div class="activeBox">
+        <h3>活动介绍</h3>
+        <div>
+            <p>文字介绍</p>
+            <textarea cols="150" rows="8" placeholder="请输入活动相关的文字介绍" class="textarea"></textarea>
+        </div>
+        <button id="sumbit" style="font-size: 24px;width: 100px;height: 50px;background-color: white">提交</button>
+        <form name="text2" id="activeBox">
+            <p>图片介绍</p>
+            <div class="fileBox">
+                <img src="" alt="" class="file_img">
+                <input type="file" name="file" class="file" accept="image/gif,image/jpeg,image/jpg,image/png,image/svg">
+<!--                <button id="fileSumbit">上传</button>-->
             </div>
         </form>
-
-        <div class="activeBox">
-            <h3>活动介绍</h3>
-            <div>
-                <p>文字介绍</p>
-                <textarea cols="150" rows="8" placeholder="请输入活动相关的文字介绍" class="textarea"></textarea>
-            </div>
-            <button id="sumbit" style="font-size: 24px;width: 100px;height: 50px;background-color: white">提交</button>
-            <!--        <form name="text2" id="activeBox">-->
-            <!--            <p>图片介绍</p>-->
-            <!--            <div class="fileBox">-->
-            <!--                <img src="" alt="" class="file_img">-->
-            <!--                <input type="file" name="file" class="file" accept="image/gif,image/jpeg,image/jpg,image/png,image/svg">-->
-            <!--                <button id="fileSumbit">上传</button>-->
-            <!--            </div>-->
-            <!--        </form>-->
-        </div>
-
     </div>
+
+</div>
 </body>
 
 </html>

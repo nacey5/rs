@@ -91,7 +91,6 @@ public class ActivityServiceImpl implements ActivityService {
             activityUser.setId(++sum);
             activityUser.setInfo(ActivityController.actInfo);
             activityUser.setTime(UserSignController.DATE);
-            System.out.println(activityUser);
             activityDao.addActivity(activityUser);
             openSession.commit();
             ActivityController.newAct=activityUser;

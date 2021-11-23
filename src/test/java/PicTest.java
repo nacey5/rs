@@ -24,7 +24,7 @@ public class PicTest {
         OrganizerService organizerService = new OrganizerServiceImpl();
         UserService userService = new UserServiceImpl();
         SearchServiceImpl searchService = new SearchServiceImpl();
-        List<String> strings = searchService.searchByKeyWords("协会");
+        List<String> strings = searchService.searchByKeyWords("");
         System.out.println(strings);
     }
 }

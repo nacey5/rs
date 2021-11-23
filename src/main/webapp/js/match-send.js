@@ -17,9 +17,9 @@ window.addEventListener('load', function () {
     }
     // 将用户上传的图片传输到服务器
     var formData1 = new FormData();
-    submit.addEventListener('click', function () {
+    function fileSubmit() {
         formData1.append('file', input.files[0]);
-        console.log(formData1);
+        alert(formData1);
         let a = new Promise((resolve, reject) => {
             let xhr = new XMLHttpRequest();
             xhr.open("post", "http://rsrs.nat300.top/FindMore/Upload", false);
@@ -33,19 +33,17 @@ window.addEventListener('load', function () {
             xhr.send(formData1);
         });
         a.then(value => {
-            alert("value");
-            alert(value);
             if (value.code) {
                 alert("上传成功");
                 window.location.href = "match.html";
-            } else {
+            } else if(value.msg!='无图片上传'){
                 alert("上传失败");
                 window.location.reload();
             }
         }, reason => {
             console.log(reason);
         });
-    });
+    }
     //赛事相关的信息上传到服务器
     button.addEventListener('click', function () {
         //赛事相关的信息上传到服务器
@@ -65,7 +63,8 @@ window.addEventListener('load', function () {
                 info: $('.textarea').val(),
             },
             success: function (data) {
-                alert(data.msg);
+                //图片上传
+                fileSubmit();
                 if (data.code) {
                     window.location.href = 'match.html';
                 }

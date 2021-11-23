@@ -1,14 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>导航栏</title>
     <link rel="stylesheet" href="css/nav.css">
-    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
-    <script src="js/searchTips.js"></script>
 </head>
 <body>
     <div class="nav-box">
@@ -17,22 +14,18 @@
         </div>
         <div class="nav">
             <ul>
-                <li><a href="index.html" target=“_parent”>首页</a></li>
-                <li>
-                    <a href="match.html" target=“_parent”>赛事</a>
-                </li>
+                <li class="cur"><a href="index.html" target=“_parent”>首页</a></li>
+                <li><a href="match.html" target=“_parent”>赛事</a></li>
                 <li><a href="club.html" target=“_parent”>社团组织</a></li>
                 <li><a href="await.html" target=“_parent”>招新</a></li>
             </ul>
         </div>
         <div class="search">
-            <input type="text" id="searchInput" oninput="tip()">
+            <input type="text" id="searchInput" placeholder="搜一搜" style="padding-left: 5px" />
             <img src="image/搜索图标.jpg" alt="" id="search">
         </div>
         <!-- 搜索时会出现的提示框 -->
-        <div class="searchA">
-
-        </div>
+        <div id="searchA"></div>
         <div class="login">
             <span><a href="login.html" target=“_parent”>登录</a>&nbsp;|</span>
             <span><a href="resign.html" target=“_parent”>注册</a></span>
@@ -51,5 +44,7 @@
         </div>
     </div>
 </body>
-
+<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="js/searchTips.js"></script>
+<script src="js/nav.js"></script>
 </html>

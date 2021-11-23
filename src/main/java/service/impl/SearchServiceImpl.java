@@ -19,16 +19,12 @@ public class SearchServiceImpl implements SearchService {
     private static FuzzyDao fuzzyDao= openSession.getMapper(FuzzyDao.class);
     @Override
     public List<String> searchByKeyWords(String keyWord) {
-        List<String> acts = fuzzyDao.selectActName(keyWord);
-        List<String> orgs = fuzzyDao.selectOrgName(keyWord);
-        List<String> users = fuzzyDao.selectUserName(keyWord);
         List<String> strings = new ArrayList<>();
-        strings.addAll(orgs);
-        strings.addAll(acts);
-        strings.addAll(users);
+        strings.addAll(fuzzyDao.selectOrgName(keyWord));
+        strings.addAll(fuzzyDao.selectActName(keyWord));
+        strings.addAll(fuzzyDao.selectUserName(keyWord));
         return strings;
     }
-
     @Override
     public List<ActivityUser> searchActivityByName(String searchText) {
         return fuzzyDao.getActSearch(searchText);

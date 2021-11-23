@@ -5,6 +5,7 @@ import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileItemFactory;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import org.apache.commons.fileupload.util.FileItemHeadersImpl;
 import pojo.bean.Pictures;
 import pojo.dto.ResultState;
 import service.ActivityService;
@@ -33,8 +34,6 @@ import java.util.logging.Logger;
 public class UploadController extends HttpServlet {
     private static final ActivityService activityService = new ActivityServiceImpl();
     private static final UserService userService = new UserServiceImpl();
-    private static ResultState result = new ResultState();
-    private static Integer id;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -43,10 +42,11 @@ public class UploadController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        System.out.println(request.getRequestURI());
+        ResultState result = new ResultState();
+        response.setCharacterEncoding("UTF-8");
         String action = request.getParameter("addType");
         //获取图片
-        Pictures uploadPic = (Pictures) upload(request);
+        Pictures uploadPic = (Pictures) upload(request,result);
         System.out.println(uploadPic.getPicture());
 //        switch (action) {
 //            case UploadEnum.ADD_USER_IMG: {
@@ -77,25 +77,30 @@ public class UploadController extends HttpServlet {
      *
      * @param request
      */
-    public static <T> Object upload(HttpServletRequest request) {
+    public static <T> Object upload(HttpServletRequest request,ResultState result) {
         Pictures pic = new Pictures(-1, "");
         if (ServletFileUpload.isMultipartContent(request)) {
             //创建FileItemFactory工厂实现类
             FileItemFactory fileItemFactory = new DiskFileItemFactory();
             // 创建用于解析上传数据的工具类ServletFileUpload类
             ServletFileUpload servletFileUpload = new ServletFileUpload(fileItemFactory);
+            servletFileUpload.setHeaderEncoding("UTF-8");
             try {
                 // 解析上传的数据，得到每一个表单项FileItem
                 List<FileItem> list = servletFileUpload.parseRequest(request);
-                System.out.println(list);
                 // 遍历判断每一个表单项，是普通类型，还是上传的图片
                 for (FileItem fileItem : list) {
                     // 普通表单项
                     if (fileItem.isFormField()) {
                         // 设置UTF-8，解决乱码问题，存入字符数组
                         System.out.println("普通");
+                        result.setMsg("无图片上传");
                         //如果类型是活动的话,将数据添加到actList中
                     } else {
+                        if(fileItem.getSize()>(1024*1024)){
+                        }
+                        System.out.println("图片大小");
+                        System.out.println(fileItem.getSize()>(1024*1024));
                         //上传的图片
                         //获取保存路径
                         String imgSavePath = request.getServletContext().getRealPath("/") + "image\\" + fileItem.getName();
