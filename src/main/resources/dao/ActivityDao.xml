@@ -263,4 +263,13 @@
         from activity_user
         where `level` = #{level}
     </select>
+
+    <!--void fillInUserInfo(PactInfo pactInfo);-->
+    <insert id="fillInUserInfo" parameterType="pInfo">
+        insert into registration_information
+        values
+        (
+         #{id},#{name},#{num},#{phone},#{collage},#{major}
+        )
+    </insert>
 </mapper>

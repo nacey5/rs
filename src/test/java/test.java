@@ -7,6 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.junit.Test;
 import pojo.bean.ActivityUser;
+import pojo.bean.PactInfo;
 
 import java.util.List;
 
@@ -42,12 +43,13 @@ public class test {
     public void test3(){
         SqlSession openSession = SqlUtil.getOpeningSession();
         try{
-            FuzzyDao mapper = openSession.getMapper(FuzzyDao.class);
-            List<String> strings = mapper.selectOrgName("协会");
-            for (String string : strings) {
-                System.out.println(string);
-            }
-        }finally {
+            ActivityDao mapper = openSession.getMapper(ActivityDao.class);
+            mapper.fillInUserInfo(new PactInfo(7,"大黄","201543220","13012344321","互联网金融与信息工程学院","计算机科学与技术"));
+            openSession.commit();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        finally {
             openSession.close();
         }
     }
