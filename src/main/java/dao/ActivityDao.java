@@ -264,5 +264,11 @@ public interface ActivityDao {
      */
     List<ActivityUser> getOrgActByLevel(@Param("level") Integer level);
 
+    /**
+     * 用户添加自己的报名信息
+     * @param pactInfo 填写的信息类
+     */
+    void fillInUserInfo(PactInfo pactInfo);
+
 
 }
