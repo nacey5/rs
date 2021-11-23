@@ -37,3 +37,90 @@ h2 {
 .code {
     font-size: 14px;
 }
+
+
+/* 点击修改信息弹出框 */
+
+.alter {
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    opacity: .85;
+}
+
+.alter .alter-con {
+    position: absolute;
+    left: 38%;
+    top: 20%;
+    width: 380px;
+    height: 400px;
+    background-color: #fff;
+    border-radius: 5%;
+    opacity: 1;
+}
+
+.alter .alter-con .up {
+    width: 350px;
+    height: 300px;
+    margin: 20px auto;
+}
+
+.alter .alter-con .up .first {
+    margin-top: 20px;
+}
+
+.alter .alter-con .up p {
+    width: 330px;
+    margin: 10px 0;
+    padding: 5px;
+    font-size: 18px;
+    border: 1px solid #000;
+    border-radius: 5px;
+}
+
+.alter .alter-con .up p img {
+    width: 20px;
+    height: 20px;
+}
+
+.alter .alter-con .up p input {
+    width: 200px;
+    font-size: 18px;
+    border: 0;
+    outline: none;
+}
+
+.down {
+    width: 330px;
+    height: 300px;
+    margin: 20px auto;
+}
+
+.down .left {
+    float: left;
+}
+
+.down .right {
+    float: right;
+}
+
+.down button {
+    display: inline-block;
+    width: 80px;
+    height: 35px;
+    border: 1px solid #000;
+    background: #fff;
+}
+
+
+/* 点击按钮之后添加cur，改变背景颜色 */
+
+.down .cur {
+    border: 1px solid rgb(255, 130, 0);
+    background-color: rgb(255, 130, 0);
+}
