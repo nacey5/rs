@@ -7,10 +7,12 @@ a {
     text-decoration: none;
     color: #000;
 }
-.code{
+
+.code {
     width: 90px;
-    height: 45px;
+    /* height: 45px; */
 }
+
 .resignBox {
     position: absolute;
     width: 100%;
@@ -27,7 +29,7 @@ a {
     right: 0;
     bottom: 0;
     width: 400px;
-    height: 425px;
+    height: 380px;
     margin: auto;
     background-color: #ffffff;
     opacity: 0.6;
