@@ -11,24 +11,27 @@ a {
     text-decoration: none;
     color: #000;
 }
+
+
 /*搜索提示框*/
 
-#searchA{
+#searchA {
     display: none;
     position: absolute;
     /*div覆盖*/
     z-index: 10;
     margin-left: 661px;
     margin-top: 40px;
-    color:red;
+    color: red;
     background: white;
     width: 287px;
     height: 100px;
     line-height: 1.5;
     /*加滚动条*/
-    overflow:auto;
+    overflow: auto;
 }
-.searchA li:hover{
+
+.searchA li:hover {
     cursor: pointer;
     background-color: #0b5d7f;
 }
@@ -61,6 +64,7 @@ a {
     line-height: 60px;
     text-align: center;
 }
+
 .nav-box .search {
     position: relative;
     float: left;
@@ -68,6 +72,7 @@ a {
     margin-left: 200px;
     line-height: 60px;
 }
+
 .nav-box .search input {
     width: 285px;
     line-height: 35px;
@@ -94,9 +99,11 @@ a {
 .nav-box .login span a {
     color: #000;
 }
+
 .nav .cur {
     background-color: rgb(116, 203, 191);
 }
+
 
 /* 导航栏浮动 */
 

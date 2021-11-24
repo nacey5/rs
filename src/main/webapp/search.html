@@ -6,8 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Search</title>
-    <link rel="stylesheet" href="css/club_center.css">
-    <link rel="stylesheet" href="css/myActive.css">
+    <link rel="stylesheet" href="css/search.css">
     <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="js/search.js"></script>
 </head>
@@ -15,15 +14,35 @@
 <body>
     <div class="header">
         <!-- 顶部导航栏 -->
-        <iframe src="nav.html" frameborder="0" width="1200px" height="60px" scrolling="no"></iframe>
+        <div>
+            <div class="logo">
+                <img src="image/logo.png" alt="logo">
+            </div>
+            <div class="search">
+                <input type="text" id="searchInput" style="padding-left: 5px" />
+                <img src="image/搜索图标.jpg" alt="" id="search">
+            </div>
+        </div>
     </div>
     <div class="content">
-        <div class="title">
-            <h3>搜索结果</h3>
+        <div class="left">
+            <ul>
+                <li>
+                    <!-- 填入搜索结果的标题 -->
+                    <p class="title"></p>
+                    <!-- 填入搜索到的内容 -->
+                    <p class="search-con"></p>
+                </li>
+            </ul>
         </div>
-        <div class="activeList">
-            <ul id="u">
-
+        <div class="right">
+            <ul>
+                <li>
+                    <!-- 填入热点搜索的标题 -->
+                    <p class="hotTitle"></p>
+                    <!-- 填入热点搜索的内容 -->
+                    <p class="search-con"></p>
+                </li>
             </ul>
         </div>
     </div>

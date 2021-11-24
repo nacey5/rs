@@ -28,7 +28,7 @@ li {
 .content .left .photo {
     width: 200px;
     height: 200px;
-    margin: 160px 170px 40px 45px;
+    margin: 100px 170px 40px 45px;
     border: 1px solid #000;
     border-radius: 50%;
 }
@@ -64,13 +64,13 @@ li {
     background-image: url(../image/person-center-bg.png);
     background-size: 420px 448px;
     background-repeat: no-repeat;
-    background-position: right;
+    background-position: center right;
 }
 
 .content .right div {
     width: 380px;
     height: 400px;
-    margin: 180px 50px 40px 0;
+    margin: 100px 50px 40px 0;
 }
 
 .content .right p {
