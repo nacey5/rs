@@ -148,4 +148,11 @@
         where
               pic_user=#{picCode}
     </select>
+
+    <!--void addInfo(@Param("user") User user);-->
+    <update id="addInfo" databaseId="mysql">
+        update user_student
+        set `count`=#{count},`name`=#{username},`phone`=#{phone},`collage`=#{collage},`major`=#{major},gender=#{gender},`password`=#{password},`email`=#{email}
+        where `id`=#{id}
+    </update>
 </mapper>
