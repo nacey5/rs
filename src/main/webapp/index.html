@@ -1,17 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>首页</title>
     <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/nav.css">
 </head>
+
 <body>
     <div class="index-box">
         <div class="header">
             <!-- 顶部导航栏 -->
-            <iframe src="nav.html" frameborder="0" width="1200px"  scrolling="no"></iframe>
+            <div class="nav-box">
+                <div class="logo">
+                    <img src="image/logo.png" alt="logo">
+                </div>
+                <div class="nav">
+                    <ul>
+                        <li class="cur"><a href="index.html" target=“_parent”>首页</a></li>
+                        <li><a href="match.html" target=“_parent”>赛事</a></li>
+                        <li><a href="club.html" target=“_parent”>社团组织</a></li>
+                        <li><a href="await.html" target=“_parent”>招新</a></li>
+                    </ul>
+                </div>
+                <div class="search">
+                    <input type="text" id="searchInput" placeholder="搜一搜" style="padding-left: 5px" />
+                    <img src="image/搜索图标.jpg" alt="" id="search">
+                </div>
+                <!-- 搜索时会出现的提示框 -->
+                <div id="searchA"></div>
+                <div class="login">
+                    <span><a href="login.html" target=“_parent”>个人入口</a>&nbsp;|</span>
+                    <span><a href="resign.html" target=“_parent”>社团入口</a></span>
+                </div>
+                <!-- 个人登录之后显示 -->
+                <div class="login-true1">
+                    <div class="photo">
+                        <img src="image/user.png" alt="头像" id="img1">
+                        <ul class="nav2">
+                            <li><a href="person_center.html" target=“_parent”> 个人中心</a></li>
+                            <li><a href="myActive.html" target=“_parent”> 我的活动</a></li>
+                            <li><a href="macth-send.html" target=“_parent”> 赛事发布</a></li>
+                        </ul>
+                    </div>
+                    <span class="avatar"><a href="index.html" target=“_parent”>退出</a></span>
+                </div>
+            </div>
             <!-- 轮播图 -->
             <div class="wrap">
                 <a href=""><img src="" alt="" class="img-active"></a>
@@ -50,4 +87,7 @@
 </body>
 <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
 <script src="js/index.js"></script>
+<script src="js/searchTips.js"></script>
+<script src="js/nav.js"></script>
+
 </html>
