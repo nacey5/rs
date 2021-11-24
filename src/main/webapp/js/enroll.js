@@ -9,14 +9,12 @@ window.addEventListener('load', function () {
             // url: "http://localhost:8080/FindMore/Activity",
             dataType: "json",
             data: {
-                action: "addActivity",
-                name: $('#Title').val(),
-                time: $('#time').val(),
-                organizer: $('#count').val(),
-                adress: $('#adress').val(),
-                joinWay: $('#joinWay').val(),
-                level: $('#textSelect option:selected').text(),
-                info: $('.textarea').val(),
+                action: "enroll",
+                name: $('#name').val(),
+                num: $('#count').val(),
+                phone: $('#phone').val(),
+                collage: $('#collage').val(),
+                major: $('#major').val(),
             },
             success: function (data) {
                 if (data.code) {

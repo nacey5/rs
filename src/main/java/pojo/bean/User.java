@@ -85,6 +85,50 @@ public class User implements Serializable {
         this.collage = collage;
     }
 
+
+    public User(String username, Integer id, Integer count, String major, String gender, String password, String phone, String email, String collage, UserPet pet, Participater pars, String headPortrait, Integer level) {
+        this.username = username;
+        this.id = id;
+        this.count = count;
+        this.major = major;
+        this.gender = gender;
+        this.password = password;
+        this.phone = phone;
+        this.email = email;
+        this.collage = collage;
+        this.pet = pet;
+        this.pars = pars;
+        this.headPortrait = headPortrait;
+        this.level = level;
+    }
+
+    public User(String username, Integer id, Integer count, String major, String gender, String password, String phone, String email, String collage, Participater pars, String headPortrait, Integer level) {
+        this.username = username;
+        this.id = id;
+        this.count = count;
+        this.major = major;
+        this.gender = gender;
+        this.password = password;
+        this.phone = phone;
+        this.email = email;
+        this.collage = collage;
+        this.pars = pars;
+        this.headPortrait = headPortrait;
+        this.level = level;
+    }
+
+    public User(String username, Integer id, Integer count, String major, String gender, String password, String phone, String email, String collage) {
+        this.username = username;
+        this.id = id;
+        this.count = count;
+        this.major = major;
+        this.gender = gender;
+        this.password = password;
+        this.phone = phone;
+        this.email = email;
+        this.collage = collage;
+    }
+
     public Integer getLevel() {
         return level;
     }

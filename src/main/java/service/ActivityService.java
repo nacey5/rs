@@ -1,10 +1,7 @@
 package service;
 
 import org.apache.ibatis.annotations.Param;
-import pojo.bean.ActivityUser;
-import pojo.bean.Participater;
-import pojo.bean.Pictures;
-import pojo.bean.User;
+import pojo.bean.*;
 
 import java.util.List;
 
@@ -176,4 +173,9 @@ public interface ActivityService {
      * @param activityUser
      */
     void addOrgActivity(ActivityUser activityUser);
+    /**
+     * 用户添加自己的报名信息
+     * @param pactInfo 填写的信息类
+     */
+    void enroll(PactInfo pactInfo);
 }

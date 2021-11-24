@@ -5,10 +5,7 @@ import controller.ActivityController;
 import controller.UserSignController;
 import dao.ActivityDao;
 import org.apache.ibatis.session.SqlSession;
-import pojo.bean.ActivityUser;
-import pojo.bean.Participater;
-import pojo.bean.Pictures;
-import pojo.bean.User;
+import pojo.bean.*;
 import service.ActivityService;
 
 import java.util.List;
@@ -177,6 +174,16 @@ public class ActivityServiceImpl implements ActivityService {
             Integer sum = activityDao.countAllAct();
             activityUser.setId(++sum);
             activityDao.addOrgActivity(activityUser);
+            openSession.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void enroll(PactInfo pactInfo) {
+        try {
+            activityDao.fillInUserInfo(pactInfo);
             openSession.commit();
         } catch (Exception e) {
             e.printStackTrace();
