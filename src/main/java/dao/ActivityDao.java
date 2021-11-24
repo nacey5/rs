@@ -269,6 +269,4 @@ public interface ActivityDao {
      * @param pactInfo 填写的信息类
      */
     void fillInUserInfo(PactInfo pactInfo);
-
-
 }

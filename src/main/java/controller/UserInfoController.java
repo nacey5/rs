@@ -2,6 +2,7 @@ package controller;
 
 import common.utils.JsonUtil;
 import common.utils.ObjectUtil;
+import pojo.bean.PactInfo;
 import pojo.bean.User;
 import pojo.dto.ResultState;
 import service.UserService;
@@ -16,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
  * @date 9/10/2021 - 17:16
  */
 @WebServlet("/UserInfo")
-public class UserInfoController extends BaseController{
+public class UserInfoController extends BaseController {
 
     private UserService userService;
     private final ResultState result = new ResultState();
@@ -40,20 +41,33 @@ public class UserInfoController extends BaseController{
         } catch (Exception e) {
             e.printStackTrace();
         }
-        result.getDatas().put("user",user);
+        result.getDatas().put("user", user);
         JsonUtil.returnJson(response, result);
     }
 
     /**
-     * 设置用户信息
+     * 修改用户信息
      *
      * @param request
      * @param response
      * @return
      */
     public void setUserInfo(HttpServletRequest request, HttpServletResponse response) {
+        ResultState resultState = new ResultState();
+        //获取当前用户的id
+        User nowUser = (User) request.getSession().getAttribute("nowUser");
+        Integer id = nowUser.getId();
         //调用ObjectUtil工具类获取实例
-        User user = (User) ObjectUtil.getObject(request, User.class);
-        userService.updateUser(user);
+        User newUser = (User) ObjectUtil.getObject(request, User.class);
+        newUser.setId(id);
+        resultState.setCode(true);
+        resultState.setMsg("修改信息成功！");
+        try {
+            userService.updateUser(newUser);
+        } catch (Exception e) {
+            resultState.setCode(false);
+            resultState.setMsg("修改信息失败！");
+        }
+        JsonUtil.returnJson(response, resultState);
     }
 }

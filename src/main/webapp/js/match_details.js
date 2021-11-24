@@ -46,14 +46,16 @@ window.addEventListener('load', function() {
             }
         })
     })
-
+    // 点击我要报名之后弹出框
+    $('.list').click(function() {
+        $('.alter').show(); //显示修改信息页面
+    })
     var down = document.querySelector('.down');
     var btns = down.querySelectorAll('button');
-    $('#alter').click(function() {
-
-        $('.alter').show(); //显示修改信息页面
-
-    })
+    // $('#alter').click(function() {
+    //     $('.alter').show(); //显示修改信息页面
+    //
+    // })
 
     // 点击确定按钮，进行数据的提交，关闭模态框
     function confirm() {
