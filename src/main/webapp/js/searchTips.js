@@ -18,7 +18,6 @@ window.addEventListener('load', function () {
         let keyVal = $.trim(searchText.value);
         //如果搜索框输入为空
         if (keyVal == null || keyVal == "") {
-            console.log("111");
             searchDivOff();
         } else {
             //显示搜索提示框
@@ -27,36 +26,42 @@ window.addEventListener('load', function () {
             $('#searchA').html("");
             $.ajax({
                 type: 'post',
-                url: 'http://rsrs.nat300.top/FindMore/Search',
-                // url: 'http://localhost:8080/FindMore/Search',
+                // url: 'http://rsrs.nat300.top/FindMore/Search',
+                url: 'http://localhost:8080/FindMore/Search',
                 dataType: 'json',
                 data: {
                     action: 'findSearchTips',
                     'searchText': keyVal,
                 },
                 success: function (result) {
+                    // alert(result.code);
                     if (result.code) {
                         // result.datas.strings 就是查询到的字符数组
                         for (let i = 0; i < result.datas.strings.length; i++) {
-                            $('#searchA').append('<li class="sl">' + result.datas.strings[i] + '</li>');
+                            $('#searchA').append("<li>" + result.datas.strings[i] + "</li>");
                         }
                     }
                 }
             })
         }
-    }
 
-// //点击提示框自动填充到搜索框
-    $(".sl").click(function () {
-        $('#searchInput').val($(this).text());
-        searchDivOff();
-    })
+        //点击提示框自动填充到搜索框
+        $(document).on("click", "#searchA>li", function () {
+            $('#searchInput').val($(this).text());
+            searchDivOff();
+        })
+//         $("#sl").click(function () {
+//             alert("1");
+//             $('#searchInput').val($(this).text());
+//             searchDivOff();
+//         })
+    }
 
     $('#search').click(function () {
         $.ajax({
             type: 'post',
-            url: 'http://rsrs.nat300.top/FindMore/Search',
-            // url: 'http://localhost:8080/FindMore/Search',
+            // url: 'http://rsrs.nat300.top/FindMore/Search',
+            url: 'http://localhost:8080/FindMore/Search',
             dataType: 'json',
             data: {
                 'action': "search",

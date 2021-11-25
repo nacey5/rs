@@ -30,17 +30,17 @@ public class ActivityInfoController extends BaseController {
      * @param response
      */
     public void setActivityInfo(HttpServletRequest request, HttpServletResponse response) {
-        ResultState resultState = new ResultState();
+        ResultState result = new ResultState();
         String info = request.getParameter("ActivityInfo");
-        resultState.setCode(true);
-        resultState.setMsg("添加活动信息成功！");
+        result.setCode(true);
+        result.setMsg("添加活动信息成功！");
         try {
             activityService.addActivityInfo(Integer.valueOf(request.getParameter("actId")), info);
         } catch (Exception e) {
-            resultState.setCode(false);
-            resultState.setMsg("添加活动信息失败！");
+            result.setCode(false);
+            result.setMsg("添加活动信息失败！");
         }
-        JsonUtil.returnJson(response, resultState);
+        JsonUtil.returnJson(response, result);
     }
 
     /**
@@ -63,21 +63,21 @@ public class ActivityInfoController extends BaseController {
      * @param response
      */
     public void enroll(HttpServletRequest request, HttpServletResponse response) {
-        ResultState resultState = new ResultState();
+        ResultState result = new ResultState();
         //获取当前用户的id
         User nowUser = (User) request.getSession().getAttribute("nowUser");
         Integer id = nowUser.getId();
-        resultState.setCode(true);
-        resultState.setMsg("报名成功！");
+        result.setCode(true);
+        result.setMsg("报名成功！");
         try {
             PactInfo info = (PactInfo) ObjectUtil.getObject(request, PactInfo.class);
             info.setId(id);
             activityService.enroll(info);
         } catch (Exception e) {
-            resultState.setCode(false);
-            resultState.setMsg("报名失败！");
+            result.setCode(false);
+            result.setMsg("报名失败！");
         }
-        JsonUtil.returnJson(response, resultState);
+        JsonUtil.returnJson(response, result);
     }
 
     public void setActivityService(ActivityService activityService) {

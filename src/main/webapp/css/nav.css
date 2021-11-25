@@ -22,10 +22,10 @@ a {
     z-index: 10;
     margin-left: 661px;
     margin-top: 40px;
-    color: red;
+    color: #000000;
     background: white;
     width: 287px;
-    height: 100px;
+    height: 200px;
     line-height: 1.5;
     /*加滚动条*/
     overflow: auto;

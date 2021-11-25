@@ -47,8 +47,8 @@ window.addEventListener('load', function () {
                 if (result.datas.nowUser != null) {
                     $(".login").hide();
                     $(".login-true1").show();
-                    // $("#img1").src = result.datas.nowUser.headPortrait;//头像路径
-                    $('#img1').src = "http://localhost:8080/FindMore/image/user.png";//头像路径
+                    $("#img1").src = result.datas.nowUser.headPortrait;//头像路径
+                    // $('#img1').src = "http://localhost:8080/FindMore/image/user.png";//头像路径
                 } else if (result.datas.nowOrg != null) {
                     //否则为社团组织时
                     $(".login").hide();

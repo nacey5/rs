@@ -8,8 +8,8 @@ window.addEventListener('load', function() {
     //查询当前赛事活动的Ajax请求
     $.ajax({
             type: 'post',
-            url: 'http://rsrs.nat300.top/FindMore/Find',
-            // url: 'http://localhost:8080/FindMore/Find',
+            // url: 'http://rsrs.nat300.top/FindMore/Find',
+            url: 'http://localhost:8080/FindMore/Find',
             dataType: 'json',
             data: {
                 action: "findNowAct",
@@ -32,8 +32,8 @@ window.addEventListener('load', function() {
     pars.addEventListener('click', function() {
         $.ajax({
             type: "post",
-            // url: "http://localhost:8080/FindMore/Find",
-            url: 'http://rsrs.nat300.top/FindMore/Find',
+            url: "http://localhost:8080/FindMore/Find",
+            // url: 'http://rsrs.nat300.top/FindMore/Find',
             dataType: "json",
             data: {
                 action: "loginOut",

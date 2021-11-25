@@ -53,21 +53,23 @@ public class UserInfoController extends BaseController {
      * @return
      */
     public void setUserInfo(HttpServletRequest request, HttpServletResponse response) {
-        ResultState resultState = new ResultState();
+        ResultState result = new ResultState();
         //获取当前用户的id
         User nowUser = (User) request.getSession().getAttribute("nowUser");
         Integer id = nowUser.getId();
+        id=11;
         //调用ObjectUtil工具类获取实例
         User newUser = (User) ObjectUtil.getObject(request, User.class);
         newUser.setId(id);
-        resultState.setCode(true);
-        resultState.setMsg("修改信息成功！");
+        System.out.println(newUser);
+        result.setCode(true);
+        result.setMsg("修改信息成功！");
         try {
             userService.updateUser(newUser);
         } catch (Exception e) {
-            resultState.setCode(false);
-            resultState.setMsg("修改信息失败！");
+            result.setCode(false);
+            result.setMsg("修改信息失败！");
         }
-        JsonUtil.returnJson(response, resultState);
+        JsonUtil.returnJson(response, result);
     }
 }

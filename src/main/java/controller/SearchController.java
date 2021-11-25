@@ -42,6 +42,7 @@ public class SearchController extends BaseController {
         ResultState result = new ResultState();
 //获取搜索的内容
         String text = request.getParameter("searchText");
+        System.out.println(text);
         request.getSession().setAttribute("searchText", text);
         result.setCode(true);
         //使用json工具类返回结果
@@ -59,7 +60,7 @@ public class SearchController extends BaseController {
         String searchText = request.getParameter("searchText");
         List<String> strings = searchService.searchByKeyWords(searchText);
         result.setCode(true);
-        result.getDatas().put("strings",strings);
+        result.getDatas().put("strings", strings);
         System.out.println(result);
         JsonUtil.returnJson(response, result);
     }
@@ -70,16 +71,15 @@ public class SearchController extends BaseController {
      */
     public void findSearch(HttpServletRequest request, HttpServletResponse response) {
         ResultState result = new ResultState();
+        //搜索类型
         String searchType;
-        HttpSession session = request.getSession();
         //搜索内容
-        String searchText = (String) session.getAttribute("searchText");
+        String searchText = (String) request.getSession().getAttribute("searchText");
         System.out.println("搜索" + searchText);
         //搜索内容是否是某个组织
         boolean searchOrgFlag = false;
-        List<Organizer> orgs = null;
+        List<Organizer> orgs = new ArrayList<>();
         List<String> actPicList = new ArrayList<>();
-        List<ActivityUser> actList = null;
         boolean isAct = false;
         try {
             orgs = searchService.queryOrgsByName(searchText);
@@ -93,17 +93,21 @@ public class SearchController extends BaseController {
             e.printStackTrace();
         }
         System.out.println(searchOrgFlag);
+
         if (!searchOrgFlag) {
             //搜索组织
             searchType = "org";
             //查询对应的社团组织
             List<String> orgPicList = new ArrayList<>();
+            List<String> infoList = new ArrayList<>();
             System.out.println("------------------" + orgs);
             for (Organizer organizer : orgs) {
                 orgPicList.add(organizerService.selectHeadPortrait(organizer.getId()));
+                infoList.add(organizerService.selectInfo(organizer.getId()));
             }
-            result.getDatas().put("orgList", orgs);
-            result.getDatas().put("orgPicList", orgPicList);
+            result.getDatas().put("objList", orgs);
+            result.getDatas().put("picList", orgPicList);
+            result.getDatas().put("infoList", infoList);
             Integer size = orgs.size();
             result.getDatas().put("size", size);
             result.setCode(true);
@@ -111,6 +115,8 @@ public class SearchController extends BaseController {
         } else if (isAct) {
             //搜索赛事活动标题
             searchType = "act";
+            List<ActivityUser> actList = new ArrayList<>();
+            List<String> infoList = new ArrayList<>();
             //查询对应的赛事活动
             try {
                 actList = searchService.searchActivityByName(searchText);
@@ -120,26 +126,24 @@ public class SearchController extends BaseController {
             if (actList.size() != 0) {
                 for (ActivityUser activityUser : actList) {
                     Integer id = activityUser.getId();
-                    System.out.println(id);
                     Pictures actMainPic = activityService.getActMainPic(id);
-                    System.out.println(actMainPic);
+                    infoList.add(activityService.getInfoById(id));
                     if (actMainPic == null) {
                         actPicList.add(PictureController.PIC_BASE_URL + "image/default_match.jpg");
                     } else {
                         actPicList.add(actMainPic.getPicture());
                     }
                 }
-                result.getDatas().put("actList", actList);
-                result.getDatas().put("actPicList", actPicList);
+                result.getDatas().put("objList", actList);
+                result.getDatas().put("infoList", infoList);
+                result.getDatas().put("picList", actPicList);
                 Integer size = actList.size();
                 result.setCode(true);
                 result.getDatas().put("size", size);
                 result.getDatas().put("searchType", searchType);
             }
         }
-        System.out.println(actList);
         //使用json工具类返回结果
         JsonUtil.returnJson(response, result);
-        System.out.println(result);
     }
 }

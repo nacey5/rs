@@ -114,7 +114,8 @@ window.addEventListener('load', function () {
             if (checkOrgMsg() && checkPsd()) {
                 $.ajax({
                     type: 'post',
-                    url: 'http://rsrs.nat300.top/FindMore/Organizer',
+                    // url: 'http://rsrs.nat300.top/FindMore/Organizer',
+                    url: 'http://localhost:8080/FindMore/Organizer',
                     data: {
                         action: "orgRegister",
                         name: name.value,

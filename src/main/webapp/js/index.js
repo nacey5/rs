@@ -46,8 +46,8 @@ window.addEventListener('load', function () {
                 if (result.datas.nowUser != null) {
                     $(".login").hide();
                     $(".login-true1").show();
-                    // $("#img1").src = result.datas.nowUser.headPortrait;//头像路径
-                    $('#img1').src = "http://localhost:8080/FindMore/image/user.png";//头像路径
+                    $("#img1").src = result.datas.nowUser.headPortrait;//头像路径
+                    // $('#img1').src = "http://localhost:8080/FindMore/image/user.png";//头像路径
                 } else if (result.datas.nowOrg != null) {
                     //否则为社团组织时
                     $(".login").hide();
@@ -123,20 +123,11 @@ window.addEventListener('load', function () {
         show();
     }, 4000);
 
-
-    //搜索框中的内容
-    var searchText = document.querySelector('#searchInput');
-
-    // 模糊查询时动态创建提示框
-    var searchA = this.document.querySelector('.searchA');
-    // 如果需要创建多个就用for循环
-    // var li = document.createElement("li"); //动态创建li
-
     function tip(){
         $.ajax({
             type: 'post',
-            url: 'http://rsrs.nat300.top/FindMore/Search',
-            // url: 'http://localhost:8080/FindMore/Search',
+            // url: 'http://rsrs.nat300.top/FindMore/Search',
+            url: 'http://localhost:8080/FindMore/Search',
             dataType: 'json',
             data: {
                 action: 'findSearchTips',
@@ -157,23 +148,29 @@ window.addEventListener('load', function () {
         })
     }
 
-    // document.querySelector('#search').addEventListener("click", function () {
-    //     $.ajax({
-    //         type: 'post',
-    //         // url: 'http://rsrs.nat300.top/FindMore/Search',
-    //         url: 'http://localhost:8080/FindMore/Search',
-    //         dataType: 'json',
-    //         data: {
-    //             'action': "search",
-    //             'searchText': searchText.value,
-    //         },
-    //         success: function (result) {
-    //             if (result.code) {
-    //                 window.location.href = ('search.html');
-    //             }
-    //         }
-    //     })
-    // })
+    //搜索框中的内容
+    var searchText = document.querySelector('#searchInput');
+    // 模糊查询时动态创建提示框
+    var searchA = this.document.querySelector('.searchA');
+    // 如果需要创建多个就用for循环
+    // var li = document.createElement("li"); //动态创建li
+    document.querySelector('#search').addEventListener("click", function () {
+        $.ajax({
+            type: 'post',
+            // url: 'http://rsrs.nat300.top/FindMore/Search',
+            url: 'http://localhost:8080/FindMore/Search',
+            dataType: 'json',
+            data: {
+                'action': "search",
+                'searchText': searchText.value,
+            },
+            success: function (result) {
+                if (result.code) {
+                    window.location.href = 'search.html';
+                }
+            }
+        })
+    })
     //点击退出框
     var avatar = document.querySelectorAll('.avatar');
     for (let i = 0; i < avatar.length; i++) {

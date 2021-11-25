@@ -5,8 +5,8 @@ window.addEventListener('load', function () {
         //报名相关的信息上传到服务器
         $.ajax({
             type: "post",
-            url: "http://rsrs.nat300.top/FindMore/Activity",
-            // url: "http://localhost:8080/FindMore/Activity",
+            // url: "http://rsrs.nat300.top/FindMore/Activity",
+            url: "http://localhost:8080/FindMore/Activity",
             dataType: "json",
             data: {
                 action: "enroll",

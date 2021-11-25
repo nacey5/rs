@@ -14,6 +14,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.List;
 
 /**
@@ -24,9 +25,9 @@ import java.util.List;
 @WebServlet("/Find")
 public class FindController extends BaseController {
 
-    private static ActivityService activityService = new ActivityServiceImpl();
-    private static UserService userService = new UserServiceImpl();
-    private static OrganizerService organizerService = new OrganizerServiceImpl();
+    private static final ActivityService activityService = new ActivityServiceImpl();
+    private static final UserService userService = new UserServiceImpl();
+    private static final OrganizerService organizerService = new OrganizerServiceImpl();
 
     /**
      * 首页查询是否有个人或者组织登录
@@ -59,9 +60,18 @@ public class FindController extends BaseController {
      * @param response
      */
     public void findNowUser(HttpServletRequest request, HttpServletResponse response) {
+        System.out.println("11111111111");
         ResultState result = new ResultState();
-        User nowUser = (User) request.getSession().getAttribute("nowUser");
-        result.getDatas().put("nowUser", nowUser);
+        try {
+//            User nowUser = (User) request.getSession().getAttribute("nowUser");
+            User nowUser = new User();
+            nowUser.setId(1000);
+            nowUser.setHeadPortrait("http://localhost:8080/FindMore/image/user.png");
+            result.getDatas().put("nowUser", nowUser);
+            System.out.println(nowUser);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         JsonUtil.returnJson(response, result);
     }
 
@@ -74,6 +84,7 @@ public class FindController extends BaseController {
     public void findNowOrg(HttpServletRequest request, HttpServletResponse response) {
         ResultState result = new ResultState();
         String url = (String) request.getSession().getAttribute("clickClub");
+        System.out.println(url);
         Organizer nowOrg = null;
         String info = null;
         try {
@@ -84,6 +95,7 @@ public class FindController extends BaseController {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        System.out.println(nowOrg);
         result.getDatas().put("nowOrg", nowOrg);
         result.getDatas().put("nowOrgPic", url);
         result.getDatas().put("nowOrgInfo", info);
@@ -120,7 +132,7 @@ public class FindController extends BaseController {
         List<String> picList = new ArrayList<>();
         List<ActivityUser> actList = new ArrayList<>();
         try {
-            actList = userService.selectActListByUserId(1);
+            actList = userService.selectActListByUserId(nowUser.getId());
             System.out.println(actList);
         } catch (Exception e) {
             e.printStackTrace();
@@ -154,7 +166,7 @@ public class FindController extends BaseController {
         List<Participater> parList = new ArrayList<>();
         List<User> userList = new ArrayList<>();
         try {
-            parList = activityService.selectStudentsByArtId(7);
+            parList = activityService.selectStudentsByArtId(nowAct.getId());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -163,7 +175,7 @@ public class FindController extends BaseController {
                 //获取对应的图片数组，获取info
                 try {
                     //通过 userId查询用户信息
-                    userList = activityService.selectParByActId(7);
+                    userList = activityService.selectParByActId(nowAct.getId());
                     picList.add(activityService.getActMainPic(participater.getId()).getPicture());
                 } catch (Exception e) {
                     e.printStackTrace();

@@ -3,25 +3,9 @@ window.addEventListener('load', function () {
     // var institute = document.querySelector('#institute');
     // var submit = document.querySelector('.submit');
     // var btn = submit.querySelector('button');
-    //当前用户信息
-    // $.ajax({
-    //     type: 'post',
-    //     // url: "http://localhost:8080/FindMore/Find",
-    //     url: "http://rsrs.nat300.top/FindMore/Find",
-    //     dataType: "json",
-    //     data: {
-    //         action: 'findNowUser',
-    //     },
-    //     success: function(result) {
-    //         //对应上面获取那些id名输入框的.value
-    //         name.innerHTML = "姓名：" + result.datas.nowUser.username;
-    //         number.innerHTML = "学号：" + result.datas.nowUser.count;
-    //         phone.innerHTML = "手机号码：" + result.datas.nowUser.phone;
-    //         // photo.src = result.datas.nowUser.headPortrait;
-    //         photo.src = "/image/user.png";
-    //         institute.innerHTML = "学院：" + result.datas.nowUser.collage;
-    //     }
-    // })
+    var right = document.querySelector('.right');
+    var alter = this.document.querySelector('.alter');
+    var photo = this.document.querySelector('.photo');
     //-----------退出-----------
     // var sign_out = document.querySelector('#out');
     // sign_out.addEventListener('click', function() {
@@ -44,20 +28,35 @@ window.addEventListener('load', function () {
 //发送请求查询当前用户信息
     $.ajax({
         type: 'post',
-        url: "http://localhost:8080/FindMore/Find",
+        // url: "http://localhost:8080/FindMore/Find",
+        url: 'http://rsrs.nat300.top/FindMore/Find',
         dataType: "json",
         data: {
             action: 'findNowUser',
         },
         success: function (result) {
-            alert(result.datas.nowUser);
+            alert(result.datas.nowUser.headPortrait == null ? "http://localhost:8080/FindMore/image/user.png" : result.datas.nowUser.headPortrait);
+            var src= result.datas.nowUser.headPortrait == null ? "http://localhost:8080/FindMore/image/user.png" : result.datas.nowUser.headPortrait;
+            alert(src);
             //对应上面获取那些id名输入框的.value
-            // name = result.datas.nowUser.name;
-            // number = result.datas.nowUser.count;
-            // photo.src = result.datas.nowUser.headPortrait;
-            // institute = result.datas.nowUser.collage;
+            right.querySelector('#r_name').value=(result.datas.nowUser.username == null ? "··暂无" : result.datas.nowUser.username);
+            right.querySelector('#r_count').value=(result.datas.nowUser.count == null ? "··暂无" : result.datas.nowUser.count);
+            right.querySelector('#r_gender').value=(result.datas.nowUser.gender == null ? "··暂无" : result.datas.nowUser.gender);
+            right.querySelector('#r_phone').value=(result.datas.nowUser.phone == null ? "··暂无" : result.datas.nowUser.phone);
+            right.querySelector('#r_collage').value=(result.datas.nowUser.collage == null ? "··暂无" : result.datas.nowUser.collage);
+            right.querySelector('#r_email').value=(result.datas.nowUser.email == null ? "··暂无" : result.datas.nowUser.email);
+            $("#r_photo").attr("src",src);
         }
     })
+    photo.onmouseover = function () {
+        photo.querySelector('.cPhoto').style.display = 'block';
+    }
+        document.querySelector('.change').addEventListener('click',function () {
+
+        })
+    photo.onmouseleave = function () {
+        photo.querySelector('.cPhoto').style.display = 'none';
+    }
     var down = document.querySelector('.down');
     var btns = down.querySelectorAll('button');
     $('#alter').click(function () {
@@ -87,14 +86,12 @@ window.addEventListener('load', function () {
     }
 
     //点击按钮之后背景色变色
-
     for (let i = 0; i < btns.length; i++) {
         btns[i].addEventListener('click', function () {
             for (let j = 0; j < btns.length; j++) {
                 btns[j].classList.remove('cur');
             }
             this.classList.add('cur');
-
             var timer = setInterval(function () {
                 clearInterval(timer);
                 // 判断点击了哪个按钮
@@ -103,7 +100,7 @@ window.addEventListener('load', function () {
                 } else {
                     cancel();
                 }
-            }, 2000)
+            }, 200)
 
         })
     }
@@ -112,17 +109,17 @@ window.addEventListener('load', function () {
         //发送修改用户信息Ajax请求
         $.ajax({
             type: 'post',
-            url: 'http://rsrs.nat300.top/FindMore/UserInfo',
-            // url: 'http://localhost:8080/FindMore/UserInfo',
+            // url: 'http://rsrs.nat300.top/FindMore/UserInfo',
+            url: 'http://localhost:8080/FindMore/UserInfo',
             dataType: 'json',
             data: {
                 'action': "setUserInfo",
-                name: document.querySelector('#name').value,
-                count: document.querySelector('#count').value,
-                gender: document.querySelector('#gender').value,
-                collage: document.querySelector('#collage').value,
-                email: document.querySelector('#email').value,
-                phone: document.querySelector('#phone').value,
+                name: alter.querySelector('#name').value,
+                count: alter.querySelector('#count').value,
+                gender: alter.querySelector('#gender').value,
+                collage: alter.querySelector('#collage').value,
+                email: alter.querySelector('#email').value,
+                phone: alter.querySelector('#phone').value,
             },
             success: function (result) {
                 alert(result.msg);

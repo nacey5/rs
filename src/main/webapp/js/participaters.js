@@ -2,8 +2,8 @@ window.addEventListener('load', function () {
     //参赛者
     $.ajax({
         type: 'post',
-        url: 'http://rsrs.nat300.top/FindMore/Find',
-        // url: 'http://localhost:8080/FindMore/Find',
+        // url: 'http://rsrs.nat300.top/FindMore/Find',
+        url: 'http://localhost:8080/FindMore/Find',
         dataType: 'json',
         data: {
             'action': "findParticipaters",

@@ -9,15 +9,15 @@ window.addEventListener('load', function () {
     var curBox = login.querySelector('.curBox');
     var hours = new Date().getHours();
     // alert(hours);
-    if (hours < 11 && hours > 5) {
-        $(".loginBox").css("backgroundImage", "url(http://localhost:8080/FindMore/image/loginBg/morning.jpg)");
-    }
-    if (hours <18&& hours >=11) {
-        $(".loginBox").css("backgroundImage", "url(http://localhost:8080/FindMore/image/loginBg/noon.jpg)");
-    }
-    if (hours>=18||hours<=5) {
-        $(".loginBox").css("backgroundImage", "url(http://localhost:8080/FindMore/image/loginBg/night.jpg)");
-    }
+    // if (hours < 11 && hours > 5) {
+    //     $(".loginBox").css("backgroundImage", "url(http://localhost:8080/FindMore/image/loginBg/morning.jpg)");
+    // }
+    // if (hours <18&& hours >=11) {
+    //     $(".loginBox").css("backgroundImage", "url(http://localhost:8080/FindMore/image/loginBg/noon.jpg)");
+    // }
+    // if (hours>=18||hours<=5) {
+    //     $(".loginBox").css("backgroundImage", "url(http://localhost:8080/FindMore/image/loginBg/night.jpg)");
+    // }
 
     loginBtn.addEventListener('click', function (e) {
         if (phone.value == "" || psd.value == "" || code.value == "") {

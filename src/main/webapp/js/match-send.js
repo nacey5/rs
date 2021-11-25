@@ -22,7 +22,7 @@ window.addEventListener('load', function () {
         alert(formData1);
         let a = new Promise((resolve, reject) => {
             let xhr = new XMLHttpRequest();
-            xhr.open("post", "http://rsrs.nat300.top/FindMore/Upload", false);
+            xhr.open("post", "http://localhost:8080/FindMore/Upload", false);
             xhr.onreadystatechange = function () {
                 if (xhr.readyState === 4 && (xhr.status >= 200 && xhr.status < 300)) {
                     resolve(JSON.parse(xhr.response));
@@ -49,8 +49,8 @@ window.addEventListener('load', function () {
         //赛事相关的信息上传到服务器
         $.ajax({
             type: "post",
-            url: "http://rsrs.nat300.top/FindMore/Activity",
-            // url: "http://localhost:8080/FindMore/Activity",
+            // url: "http://rsrs.nat300.top/FindMore/Activity",
+            url: "http://localhost:8080/FindMore/Activity",
             dataType: "json",
             data: {
                 action: "addActivity",

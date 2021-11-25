@@ -63,9 +63,14 @@ a {
 }
 
 .left .title {
-    font-size: 22px;
+    font-size: 26px;
 }
-
+.left .search-con{
+    font-size: 20px;
+}
+.left #infoDiv{
+    display: inline-block;
+}
 .right {
     width: 400px;
     height: 800px;
