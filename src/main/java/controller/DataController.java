@@ -35,7 +35,6 @@ public class DataController extends BaseController{
         ResultState result = new ResultState();
         String clickClubUrl=request.getParameter("clickClub");
         request.getSession().setAttribute("clickClub",clickClubUrl);
-        System.out.println(clickClubUrl);
         result.setCode(true);
         JsonUtil.returnJson(response,result);
     }

@@ -54,7 +54,6 @@ window.addEventListener('load', function () {
                     $(".login-true1").show();
                     $('#img1').src = result.datas.nowOrg.headPortrait;//头像路径
                 }
-
             }
         },
     })
@@ -133,8 +132,6 @@ window.addEventListener('load', function () {
                 action: 'findSearchTips',
                 'searchText': searchText.value,
             }, success: function (result) {
-                alert('搜索提示');
-                alert(result.datas.strings);
                 if (result.code) {
                     // result.datas.strings 就是查询到的字符数组
                     for (let s in result.datas.strings) {
@@ -183,7 +180,7 @@ window.addEventListener('load', function () {
                     action: "loginOut",
                 },
                 success: function (result) {
-                    alert(result.msg);
+                    // alert(result.msg);
                     if (result.code) {
                         window.location.href = "index.html";
                     }

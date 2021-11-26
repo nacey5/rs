@@ -19,7 +19,6 @@ window.addEventListener('load', function () {
     var formData1 = new FormData();
     function fileSubmit() {
         formData1.append('file', input.files[0]);
-        alert(formData1);
         let a = new Promise((resolve, reject) => {
             let xhr = new XMLHttpRequest();
             xhr.open("post", "http://localhost:8080/FindMore/Upload", false);

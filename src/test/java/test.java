@@ -70,4 +70,18 @@ public class test {
             openSession.close();
         }
     }
+    @Test
+    public void test05(){
+        SqlSession openSession = SqlUtil.getOpeningSession();
+        try{
+            UserDao mapper = openSession.getMapper(UserDao.class);
+            mapper.participateAct(26,201543219);
+            openSession.commit();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        finally {
+            openSession.close();
+        }
+    }
 }

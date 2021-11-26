@@ -15,14 +15,14 @@ import java.util.Map;
  */
 public class Md5UtilTest {
     public static void main(String[] args) throws InvocationTargetException, IllegalAccessException {
-//        System.out.println(Md5Util.getMd5String("123456"));
+        System.out.println(Md5Util.getMd5String("123456"));
 
-        Map<String,Integer>map=new HashMap<>();
-        map.put("id",1);
-        map.put("name",2);
-        UserPet userPet=new UserPet();
+        Map<String, Integer> map = new HashMap<>();
+//        map.put("id",1);
+//        map.put("name",2);
+        UserPet userPet = new UserPet();
 //        BeanUtils.populate(userPet,map);
-        BeanUtils.copyProperties(userPet,map);
-        System.out.println(userPet);
+//        BeanUtils.copyProperties(userPet,map);
+//        System.out.println(userPet);
     }
 }

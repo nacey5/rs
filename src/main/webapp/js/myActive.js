@@ -10,10 +10,14 @@ window.addEventListener('load', function () {
         },
         success: function (result) {
             if (result.code) {
+                // alert(result.datas.actList.length);
                 //返回的result.data.actList和picList为数组，需要遍历使用
                 for (let i = 0; i < result.datas.actList.length; i++) {
                     // 活动图片 result.data.picList[0]
-                    var src = result.datas.picList[i];
+                    var head = result.datas.picList[i];
+                    var defaultHead ="http://localhost:8080/FindMore/image/user.png";
+                    // alert( head== null ?defaultHead :head);
+                    var src=defaultHead;
                     // 活动名称 result.data.actList[0].name
                     var name = result.datas.actList[i].name;
                     var time = result.datas.actList[i].time
@@ -25,7 +29,7 @@ window.addEventListener('load', function () {
                         color = "green";
                     } else {
                         status = "已结束";
-                        color = "#31baee";
+                        color = "black";
                     }
                     var activeDiv = " <li style='margin-top: 20px;height: 70px;background-color: rgb(116, 203, 191)'  id='act'>\n" +
                         "            <img src=" + src +" alt='' height='60px' width='60px' style='float:left;padding-left: 80px'>\n" +

@@ -47,7 +47,7 @@ public class UploadController extends HttpServlet {
         String action = request.getParameter("addType");
         //获取图片
         Pictures uploadPic = (Pictures) upload(request,result);
-        System.out.println(uploadPic.getPicture());
+//        System.out.println(uploadPic.getPicture());
 //        switch (action) {
 //            case UploadEnum.ADD_USER_IMG: {
 //                addUserImg(id, uploadPic.getPicture());
@@ -69,7 +69,6 @@ public class UploadController extends HttpServlet {
 //            }
 //        }
         JsonUtil.returnJson(response, result);
-        System.out.println(result.toString());
     }
 
     /**
@@ -99,8 +98,8 @@ public class UploadController extends HttpServlet {
                     } else {
                         if(fileItem.getSize()>(1024*1024)){
                         }
-                        System.out.println("图片大小");
-                        System.out.println(fileItem.getSize()>(1024*1024));
+//                        System.out.println("图片大小");
+//                        System.out.println(fileItem.getSize()>(1024*1024));
                         //上传的图片
                         //获取保存路径
                         String imgSavePath = request.getServletContext().getRealPath("/") + "image\\" + fileItem.getName();
@@ -108,7 +107,7 @@ public class UploadController extends HttpServlet {
                         fileItem.write(new File(imgSavePath));
                         //返回图片
                         pic.setPicture(imgSavePath);
-                        System.out.println("上传成功！");
+//                        System.out.println("上传成功！");
                         result.setCode(true);
                     }
                 }

@@ -45,14 +45,14 @@ public class UserSignController extends BaseController {
         ResultState result = new ResultState();
         //获取Session中的验证码
         String token = (String) request.getSession().getAttribute(KAPTCHA_SESSION_KEY);
-        System.out.println("验证码为："+token);
+//        System.out.println("验证码为："+token);
         // 删除 Session中的验证码
         request.getSession().removeAttribute(KAPTCHA_SESSION_KEY);
         String phone = request.getParameter("phone");
         String password = request.getParameter("password");
         String vcode = request.getParameter("vcode");
-        System.out.println(vcode);
-        System.out.println("登录" + DATE);
+//        System.out.println(vcode);
+//        System.out.println("登录" + DATE);
         User user = null;
         //判断验证码
 //        if (token != null && token.equalsIgnoreCase(vcode)) {
@@ -70,7 +70,7 @@ public class UserSignController extends BaseController {
                     result.setCode(true);
                     //存入当前登录的用户
                     request.getSession().setAttribute("nowUser", user);
-                    System.out.println("登陆成功！");
+//                    System.out.println("登陆成功！");
                     System.out.println(request.getSession().getAttribute("nowUser").toString());
                 }
             } else if(orgService.checkOrgPhone(phone)!=null) {
@@ -105,9 +105,9 @@ public class UserSignController extends BaseController {
         String phone = request.getParameter("phone");
         Integer count = Integer.valueOf(request.getParameter("count"));
         String password = request.getParameter("password");
-        System.out.println("注册" + DATE);
+//        System.out.println("注册" + DATE);
         //检查 验证码是否正确
-        if (token != null && token.equalsIgnoreCase(vcode)) {
+//        if (token != null && token.equalsIgnoreCase(vcode)) {
             //判断用户名是否存在
             if (!userService.checkUserCount(phone)) {
                 //判断用户是否已存在
@@ -122,9 +122,9 @@ public class UserSignController extends BaseController {
             } else {
                 result.setMsg("该用户已存在！");
             }
-        } else {
-            result.setMsg("验证码错误!");
-        }
+//        } else {
+//            result.setMsg("验证码错误!");
+//        }
         //调用工具类返回结果
         JsonUtil.returnJson(response, result);
     }

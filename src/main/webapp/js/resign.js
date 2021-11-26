@@ -12,11 +12,21 @@ window.addEventListener('load', function () {
     var name = resign.querySelector('.name');
     var college = resign.querySelector('.college');
     var curBox = resign.querySelector('.curBox');
-
-    vcode.addEventListener('click', function (e) {
-        //验证码单击事件
-        vcode.src = "http://localhost:8080/FindMore/kaptcha.jpg?d=" + new Date();
-    });
+    var hours = new Date().getHours();
+    var s=new Date().toLocaleTimeString();
+    // if (hours < 11 && hours > 5) {
+    //     $(".resignBox").css("backgroundImage", "url(http://localhost:8080/FindMore/image/loginBg/morning.jpg)");
+    // }
+    // if (hours <18&& hours >=11) {
+    //     $(".resignBox").css("backgroundImage", "url(http://localhost:8080/FindMore/image/loginBg/noon.jpg)");
+    // }
+    // if (hours>=18||hours<=5) {
+    //     $(".resignBox").css("backgroundImage", "url(http://localhost:8080/FindMore/image/loginBg/night.jpg)");
+    // }
+    // vcode.addEventListener('click', function (e) {
+    //     //验证码单击事件
+    //     vcode.src = "http://localhost:8080/FindMore/kaptcha.jpg?d=" + new Date();
+    // });
 
 //检查用户信息是否为空
     function checkUserMsg() {

@@ -121,6 +121,6 @@ h2 {
 /* 点击按钮之后添加cur，改变背景颜色 */
 
 .down .cur {
-    border: 1px solid rgb(255, 130, 0);
-    background-color: rgb(255, 130, 0);
+    border: 1px solid rgb(116, 203, 191);
+    background-color: rgb(116, 203, 191);
 }

@@ -21,57 +21,57 @@ window.addEventListener('load', function () {
         }
     })
     //查询用户
-    $.ajax({
-        type: "post",
-        url: "http://localhost:8080/FindMore/Find",
-        // url: "http://rsrs.nat300.top/FindMore/Find",
-        dataType: "json",
-        sync: false,
-        data: {action: "findUserOrOrg"},
-        success: function (result) {
-            //返回的code为false，即没有登录用户
-            if (!result.code) {
-                $(".login").show();
-                $(".login-true1").hide();
-                $("#login").html("登录")
-                    .click(function () {
-                        window.location.href = "login.html"
-                    });
-                $("#resign").html("注册")
-                    .click(function () {
-                        window.location.href = "register.html"
-                    });
-            } else {
-                //否则，展示用户头像
-                //判断登录为个人用户时
-                if (result.datas.nowUser != null) {
-                    $(".login").hide();
-                    $(".login-true1").show();
-                    $("#img1").src = result.datas.nowUser.headPortrait;//头像路径
-                    // $('#img1').src = "http://localhost:8080/FindMore/image/user.png";//头像路径
-                } else if (result.datas.nowOrg != null) {
-                    //否则为社团组织时
-                    $(".login").hide();
-                    $(".login-true1").show();
-                    $('#img1').src = result.datas.nowOrg.headPortrait;//头像路径
-                }
-
-            }
-        },
-    })
-    $(".avatar").click(function () {
-        $.ajax({
-            type: 'post',
-            url: 'http://localhost:8080/FindMore/LoginOut',
-            action: 'loginOut',
-            success: function (result) {
-                alert(result.msg);
-                if (result.code) {
-                    window.location.href = "index.html";
-                }
-            }
-        })
-    });
+    // $.ajax({
+    //     type: "post",
+    //     url: "http://localhost:8080/FindMore/Find",
+    //     // url: "http://rsrs.nat300.top/FindMore/Find",
+    //     dataType: "json",
+    //     sync: false,
+    //     data: {action: "findUserOrOrg"},
+    //     success: function (result) {
+    //         //返回的code为false，即没有登录用户
+    //         if (!result.code) {
+    //             $(".login").show();
+    //             $(".login-true1").hide();
+    //             $("#login").html("登录")
+    //                 .click(function () {
+    //                     window.location.href = "login.html"
+    //                 });
+    //             $("#resign").html("注册")
+    //                 .click(function () {
+    //                     window.location.href = "register.html"
+    //                 });
+    //         } else {
+    //             //否则，展示用户头像
+    //             //判断登录为个人用户时
+    //             if (result.datas.nowUser != null) {
+    //                 $(".login").hide();
+    //                 $(".login-true1").show();
+    //                 $("#img1").src = result.datas.nowUser.headPortrait;//头像路径
+    //                 // $('#img1').src = "http://localhost:8080/FindMore/image/user.png";//头像路径
+    //             } else if (result.datas.nowOrg != null) {
+    //                 //否则为社团组织时
+    //                 $(".login").hide();
+    //                 $(".login-true1").show();
+    //                 $('#img1').src = result.datas.nowOrg.headPortrait;//头像路径
+    //             }
+    //
+    //         }
+    //     },
+    // })
+    // $(".avatar").click(function () {
+    //     $.ajax({
+    //         type: 'post',
+    //         url: 'http://localhost:8080/FindMore/LoginOut',
+    //         action: 'loginOut',
+    //         success: function (result) {
+    //             alert(result.msg);
+    //             if (result.code) {
+    //                 window.location.href = "index.html";
+    //             }
+    //         }
+    //     })
+    // });
     //点击图片跳转到赛事详情页面
     var imgList = document.querySelectorAll('img');
     for (let i = 0; i < imgList.length; i++) {

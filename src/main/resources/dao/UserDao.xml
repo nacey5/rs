@@ -91,7 +91,6 @@
         where
             id=#{id}
     </update>
-
     <!--User queryUserByName(@Param("name")String name);-->
     <select id="queryUserByName" resultType="user">
         select *

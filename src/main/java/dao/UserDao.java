@@ -85,7 +85,7 @@ public interface UserDao {
      * @param id 活动id
      * @param studentCount 学生账号
      */
-     void participateAct(Integer id,Integer studentCount);
+     void participateAct(@Param("id") Integer id,@Param("count") Integer studentCount);
 
     /**
      *得到头像

@@ -83,7 +83,6 @@ public class PictureController extends BaseController {
         picList.add(PIC_BASE_URL + "image/love.jpg");
         //往结果里面存图片数组
         result.getDatas().put("picList", picList);
-        System.out.println(picList.toString());
         //调用工具类返回结果
         JsonUtil.returnJson(response, result);
     }
@@ -96,7 +95,6 @@ public class PictureController extends BaseController {
         picList.add(PIC_BASE_URL + "image/sheying.jpg");
         //往结果里面存图片数组
         result.getDatas().put("picList", picList);
-        System.out.println(picList.toString());
         //调用工具类返回结果
         JsonUtil.returnJson(response, result);
     }
@@ -116,7 +114,6 @@ public class PictureController extends BaseController {
 
         //往结果里面存图片数组
         result.getDatas().put("picList", picList);
-        System.out.println(picList);
         //调用工具类返回结果
         JsonUtil.returnJson(response, result);
     }
@@ -149,7 +146,6 @@ public class PictureController extends BaseController {
      */
     public void getSportMatchList(HttpServletRequest request, HttpServletResponse response) {
         String matchType = request.getParameter("matchType");
-        System.out.println(matchType);
         List<String> picList = new ArrayList<>();
         List<ActivityUser> actList = new ArrayList<>();
         List<String> infoList = new ArrayList<>();
@@ -166,14 +162,12 @@ public class PictureController extends BaseController {
         //往结果里面存图片数组、信息数组
         result.getDatas().put("picList", picList);
         result.getDatas().put("infoList", infoList);
-        System.out.println(picList);
         //调用工具类返回结果
         JsonUtil.returnJson(response, result);
     }
 
     public void getAcademicMatchList(HttpServletRequest request, HttpServletResponse response) {
         String matchType = request.getParameter("matchType");
-        System.out.println(matchType);
         List<String> picList = new ArrayList<>();
         List<ActivityUser> actList = new ArrayList<>();
         List<String> infoList = new ArrayList<>();
@@ -193,7 +187,6 @@ public class PictureController extends BaseController {
 
     public void getVolunMatchList(HttpServletRequest request, HttpServletResponse response) {
         String matchType = request.getParameter("matchType");
-        System.out.println(matchType);
         List<String> picList = new ArrayList<>();
         List<ActivityUser> actList = new ArrayList<>();
         List<String> infoList = new ArrayList<>();
@@ -206,7 +199,6 @@ public class PictureController extends BaseController {
         //往结果里面存图片数组、信息数组
         result.getDatas().put("picList", picList);
         result.getDatas().put("infoList", infoList);
-        System.out.println(picList);
         //调用工具类返回结果
         JsonUtil.returnJson(response, result);
     }

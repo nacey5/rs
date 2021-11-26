@@ -5,86 +5,96 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>个人中心</title>
-    <link rel="stylesheet" href="css/person_center.css"><script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <link rel="stylesheet" href="css/person_center.css">
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="js/person_center.js"></script>
-
+    <script src="js/enroll.js"></script>
 </head>
 <body>
-    <div class="header">
-        <!-- 顶部导航栏 -->
-        <iframe src="nav.html" frameborder="0" width="1200px" height="60px" scrolling="no"></iframe>
-    </div>
-    <div class="content">
-        <div class="left">
-            <div class="photo">
-                <img src="" alt="" id="r_photo">
-                <div class="cPhoto"><span class="change">更换头像</span></div>
-            </div>
-            <p class="nickName">昵称：哈哈</p>
-            <p id="alter"><img src="image/personCenter-icon2.png" alt="">&nbsp;&nbsp;&nbsp;修改信息</p>
+<div class="header">
+    <!-- 顶部导航栏 -->
+    <iframe src="nav.html" frameborder="0" width="1200px" height="60px" scrolling="no"></iframe>
+</div>
+<div class="content">
+    <div class="left">
+        <div class="photo">
+            <img src="" alt="" id="r_photo">
+            <div class="cPhoto"><span class="change">更换头像</span></div>
         </div>
-        <div class="right">
-            <div>
-                <p>姓名
-                    <img src="image/personCenter-icon3.jpg" alt="">
-                    <input type="text" id="r_name" readonly>
-                </p>
-                <p>学号
-                    <img src="image/personCenter-icon4.jpg" alt="">
-                    <input type="text" id="r_count" readonly>
-                </p>
-                <p>性别
-                    <img src="image/personCenter-icon1.jpg" alt="">
-                    <input type="text" id="r_gender" readonly>
-                </p>
-                <p>手机
-                    <img src="image/电话.png" alt="">
-                    <input type="text" id="r_phone" readonly>
-                </p>
-                <p>学院
-                    <img src="image/personCenter-icon5.jpg" alt="">
-                    <input type="text" id="r_collage" readonly>
-                </p>
-                <p>邮箱
-                    <img src="image/personCenter-icon6.jpg" alt="">
-                    <input type="text" id="r_email" readonly>
-                </p>
-            </div>
-        </div>
+        <p class="nickName">昵称：哈哈</p>
+        <p id="alter"><img src="image/personCenter-icon2.png" alt="">&nbsp;&nbsp;&nbsp;修改信息</p>
     </div>
-    <!-- 点击修改信息弹出 -->
-    <div class="alter">
-        <div class="alter-con">
-            <div class="up">
-                <p class="first">姓名
-                    <img src="image/personCenter-icon3.jpg" alt="">
-                    <input type="text" id="name">
-                </p>
-                <p>学号
-                    <img src="image/personCenter-icon4.jpg" alt="">
-                    <input type="text" id="count">
-                </p>
-                <p>性别
-                    <img src="image/personCenter-icon1.jpg" alt="">
-                    <input type="text" id="gender">
-                </p>
-                <p>手机号码
-                    <input type="text" id="phone">
-                </p>
-                <p>学院
-                    <img src="image/personCenter-icon5.jpg" alt="">
-                    <input type="text" id="collage">
-                </p>
-                <p>邮箱
-                    <img src="image/personCenter-icon6.jpg" alt="">
-                    <input type="text" id="email">
-                </p>
-            </div>
-            <div class="down">
-                <button class="left">取消</button>
-                <button class="right" >确定</button>
-            </div>
+    <div class="right">
+        <div>
+            <p>姓名
+                <img src="image/personCenter-icon3.jpg" alt="">
+                <input type="text" id="r_name" readonly>
+            </p>
+            <p>学号
+                <img src="image/personCenter-icon4.jpg" alt="">
+                <input type="text" id="r_count" readonly>
+            </p>
+            <p>性别
+                <img src="image/personCenter-icon1.jpg" alt="">
+                <input type="text" id="r_gender" readonly>
+            </p>
+            <p>手机
+                <img src="image/电话.png" alt="">
+                <input type="text" id="r_phone" readonly>
+            </p>
+            <p>密码
+                <img src="image/密码.png" alt="">
+                <input type="password" id="r_password">
+            </p>
+            <p>学院
+                <img src="image/personCenter-icon5.jpg" alt="">
+                <input type="text" id="r_collage" readonly>
+            </p>
+            <p>邮箱
+                <img src="image/personCenter-icon6.jpg" alt="">
+                <input type="text" id="r_email" readonly>
+            </p>
         </div>
     </div>
+</div>
+<!-- 点击修改信息弹出 -->
+<div class="alter">
+    <div class="alter-con">
+        <div class="up">
+            <p class="first">姓名
+                <img src="image/personCenter-icon3.jpg" alt="">
+                <input type="text" id="name">
+            </p>
+            <p>学号
+                <img src="image/personCenter-icon4.jpg" alt="">
+                <input type="text" id="count">
+            </p>
+            <p>性别
+                <img src="image/personCenter-icon1.jpg" alt="">
+                <input type="text" id="gender">
+            </p>
+            <p>手机
+                <img src="image/电话.png" alt="">
+                <input type="text" id="phone">
+            </p>
+            <p>密码
+                <img src="image/密码.png" alt="">
+                <input type="text" id="password">
+            </p>
+            <p>学院
+                <img src="image/personCenter-icon5.jpg" alt="">
+                <input type="text" id="collage">
+            </p>
+            <p>邮箱
+                <img src="image/personCenter-icon6.jpg" alt="">
+                <input type="text" id="email">
+            </p>
+        </div>
+        <div class="down">
+            <button class="left">取消</button>
+            <button class="right">确定</button>
+        </div>
+    </div>
+</div>
 </body>
 </html>

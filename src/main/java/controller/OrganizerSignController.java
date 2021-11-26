@@ -1,6 +1,7 @@
 package controller;
 
 import common.utils.JsonUtil;
+import common.utils.Md5Util;
 import common.utils.ObjectUtil;
 import common.utils.WebUtil;
 import pojo.bean.Organizer;
@@ -35,7 +36,8 @@ public class OrganizerSignController extends BaseController {
         String password = request.getParameter("password");
         Organizer org = null;
         try {
-            org = organizerService.orgLogin(phone, password);
+            org = organizerService.orgLogin(phone, Md5Util.getMd5String(password));
+            System.out.println(Md5Util.getMd5String(password));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -45,10 +47,9 @@ public class OrganizerSignController extends BaseController {
             result.setMsg("登陆成功!");
             result.setCode(true);
             //存入当前登录的组织
-            request.getSession().setAttribute(NOW_ORG, org);
+            request.getSession().setAttribute("nowOrg", org);
         }
         //调用工具类返回结果
-        System.out.println(result);
         JsonUtil.returnJson(response, result);
     }
 

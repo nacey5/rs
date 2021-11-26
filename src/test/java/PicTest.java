@@ -24,7 +24,9 @@ public class PicTest {
         OrganizerService organizerService = new OrganizerServiceImpl();
         UserService userService = new UserServiceImpl();
         SearchServiceImpl searchService = new SearchServiceImpl();
-        List<String> strings = searchService.searchByKeyWords("");
-        System.out.println(strings);
+//        List<String> strings = searchService.searchByKeyWords("");
+//        System.out.println(strings);
+//        System.out.println(new Date().);
+        System.out.println(new SimpleDateFormat("HH:mm:ss").format(new Date()));
     }
 }

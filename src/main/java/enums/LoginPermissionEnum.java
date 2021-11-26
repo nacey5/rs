@@ -23,13 +23,13 @@ public class  LoginPermissionEnum {
             /**
              * 组织登陆之后不可以访问的页面
              */
-            new HashSet<>(Arrays.asList("/myActive.html"))
+            new HashSet<>(Arrays.asList("/myActive.html,/person_center.html,/personResign.html"))
     );
 
     public static final Set<String> CHECK_NOT_MAP_USER=Collections.unmodifiableSet(
             /**
              * 用户登陆之后不可以访问的页面
              */
-            new HashSet<>(Arrays.asList(""))
+            new HashSet<>(Arrays.asList("/club_center.html,/clubResign.html"))
     );
 }

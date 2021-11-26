@@ -9,7 +9,7 @@ a {
 }
 #activeDiv{
     margin-top: 40px;
-    border: 2px solid black;
+    /*border: 2px solid black;*/
     border-radius:15px;
 }
 #activeDiv li {
@@ -19,7 +19,7 @@ a {
     border: none;
 }
 #parDiv{
-    border: 2px solid black;
+    /*border: 2px solid black;*/
     border-radius:15px 15px 15px 15px;
 }
 #act{

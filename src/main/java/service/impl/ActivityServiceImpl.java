@@ -189,5 +189,4 @@ public class ActivityServiceImpl implements ActivityService {
             e.printStackTrace();
         }
     }
-
 }

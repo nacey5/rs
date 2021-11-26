@@ -26,7 +26,7 @@ public class LoginOutController extends BaseController{
      * @param response
      */
     public void loginOut(HttpServletRequest request, HttpServletResponse response) {
-        //销毁Session）
+        //销毁Session
         request.getSession().invalidate();
         result.setMsg("退出成功");
         result.setCode(true);

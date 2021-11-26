@@ -7,22 +7,89 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
+    <!--    <link rel="stylesheet" href="css/index.css">-->
+    <link rel="stylesheet" href="css/nav.css">
     <style>
-        #p_li {
-            float: right;
-            padding: 20px 20px 20px 20px ;
+        .wrap img {
+            padding-top: 0;
+            width: auto;
+        }
+        .nav-box {
+            width: 1519px;
+            height: 60px;
+            position: fixed;
+            z-index: 99999;
+            background: -webkit-linear-gradient(bottom, white, black, black);
+            /*background-color: black;*/
+            opacity: 0.5;
+        }
+
+        .nav ul li a {
+            font-family: "SourceSansPro-Regular", "微软雅黑", serif;
+            color: white;
         }
     </style>
 </head>
 <body>
-<div>
+<div class="index-box">
+    <div class="header">
+        <!-- 顶部导航栏 -->
+        <div class="nav-box">
+            <div class="logo">
+                <img src="image/logo2.0.png" alt="logo">
+            </div>
+            <div class="nav">
+                <ul>
+                    <li class="cur"><a href="index.html" target=“_parent”>首页</a></li>
+                    <li><a href="match.html" target=“_parent”>赛事</a></li>
+                    <li><a href="club.html" target=“_parent”>社团组织</a></li>
+                    <li><a href="await.html" target=“_parent”>招新</a></li>
+                </ul>
+            </div>
+            <div class="search">
+                <input type="text" id="searchInput" placeholder="搜一搜" style="padding-left: 5px"/>
+                <img src="image/搜索图标.jpg" alt="" id="search">
+            </div>
+            <!-- 搜索时会出现的提示框 -->
+            <div id="searchA"></div>
+            <div class="login">
+                <span><a href="personResign.html" target=“_parent”>个人入口</a>&nbsp;|</span>
+                <span><a href="clubResign.html" target=“_parent”>社团入口</a></span>
+            </div>
+            <!-- 个人登录之后显示 -->
+            <div class="login-true1">
+                <div class="photo">
+                    <img src="image/user.png" alt="头像" id="img1">
+                    <ul class="nav2">
+                        <li><a href="person_center.html" target=“_parent”> 个人中心</a></li>
+                        <li><a href="myActive.html" target=“_parent”> 我的活动</a></li>
+                        <li><a href="macth-send.html" target=“_parent”> 赛事发布</a></li>
+                    </ul>
+                </div>
+                <span class="avatar"><a href="index.html" target=“_parent”>退出</a></span>
+            </div>
+        </div>
+        <!-- 轮播图 -->
+        <div class="wrap">
+            <a href=""><img src="" alt="" class="img-active"></a>
+            <img src="image/zxb2.0.jpg" alt="">
+            <img src="" alt="">
+            <ol class="slide_points">
+                <li class="slide_point slide_point_active"></li>
+                <li class="slide_point"></li>
+                <li class="slide_point"></li>
+            </ol>
+        </div>
+    </div>
     <div>
-        <img src="image/index/index01.jpg" alt="" style="margin: 100px auto auto 0">
-        <div id="p_li" style="height: 360px;margin: 100px 300px 0 0">
-            <li id="1">赛事活动</li>
-            <li>体育模块</li>
-            <li>学术模块</li>
-            <li>志愿模块</li>
+        <div>
+            <p id="1" style="text-align: center;font-size: 48px">赛事活动</p>
+            <img src="image/index/index01.jpg" alt="" style="margin: 100px auto auto 0">
+            <div style="display: inline-block;">
+                <p>体育模块</p>
+                <p>学术模块</p>
+                <p>志愿模块</p>
+            </div>
         </div>
     </div>
 </div>

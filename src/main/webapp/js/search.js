@@ -21,12 +21,16 @@ window.addEventListener('load', function () {
                     var title = result.datas.objList[i].name;
                     var src = result.datas.picList[i];
                     var info = result.datas.infoList[i];
-                    info = info ? (info.length > 20 ? (info.substring(0, 20)) + "..." : info) :info;
+                    if (info == null) {
+                        info = "";
+                    } else {
+                        info = info ? (info.length > 20 ? (info.substring(0, 20)) + "..." : info) : info;
+                    }
                     var li = "<li style=\"float: left\">\n" +
-                        "     <img src="+src+" alt=\"\" style=\"height: 80px;width: 80px\">\n" +
+                        "     <img src=" + src + " alt=\"\" style=\"height: 80px;width: 80px\">\n" +
                         "     <div id='infoDiv'>\n" +
-                        "     <p class=\"title\">"+title+"</p>\n" +
-                        "     <p class=\"search-con\" id=\"content\">"+info+"</p>\n" +
+                        "     <p class=\"title\">" + title + "</p>\n" +
+                        "     <p class=\"search-con\" id=\"content\">" + info + "</p>\n" +
                         "     </div>\n" +
                         "     </li>";
 
@@ -48,7 +52,7 @@ window.addEventListener('load', function () {
             var src;
             if (isP) {
                 src = cls.parentNode.parentNode.querySelector('img').src;
-            }else {
+            } else {
                 src = cls.parentNode.querySelector('img').src;
             }
             //点击图片跳转到组织详情页面

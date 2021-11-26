@@ -39,11 +39,6 @@ public class ActivityController extends BaseController {
      */
     public void addActivity(HttpServletRequest request, HttpServletResponse response) {
 
-        String name = request.getParameter("name");
-        String time = request.getParameter("time");
-        String organizer = request.getParameter("organizer");
-        String adress = request.getParameter("adress");
-        String joinWay = request.getParameter("joinWay");
         String info = request.getParameter("info");
         String levelText = request.getParameter("level");
         actInfo = info;
@@ -55,17 +50,16 @@ public class ActivityController extends BaseController {
         } else if (levelText.equals("志愿活动")) {
             level = 2;
         }
-        System.out.println(organizer);
-        System.out.println(name);
         ActivityUser addActivity = null;
         try {
-            addActivity = new ActivityUser(name, Integer.valueOf(organizer), time, adress, joinWay, level);
+
+            addActivity = (ActivityUser) ObjectUtil.getObject(request,ActivityUser.class)
+            ;
         } catch (NumberFormatException e) {
             e.printStackTrace();
         }
-        System.out.println(addActivity.toString());
         //调用ObjectUtil工具类获取实例
-        if (!activityService.checkActivityName(name)) {
+        if (!activityService.checkActivityName(addActivity.getName())) {
             try {
                 activityService.addActivity(addActivity);
             } catch (Exception e) {

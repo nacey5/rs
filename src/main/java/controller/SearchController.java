@@ -42,7 +42,6 @@ public class SearchController extends BaseController {
         ResultState result = new ResultState();
 //获取搜索的内容
         String text = request.getParameter("searchText");
-        System.out.println(text);
         request.getSession().setAttribute("searchText", text);
         result.setCode(true);
         //使用json工具类返回结果
@@ -61,7 +60,6 @@ public class SearchController extends BaseController {
         List<String> strings = searchService.searchByKeyWords(searchText);
         result.setCode(true);
         result.getDatas().put("strings", strings);
-        System.out.println(result);
         JsonUtil.returnJson(response, result);
     }
 
@@ -75,7 +73,7 @@ public class SearchController extends BaseController {
         String searchType;
         //搜索内容
         String searchText = (String) request.getSession().getAttribute("searchText");
-        System.out.println("搜索" + searchText);
+//        System.out.println("搜索" + searchText);
         //搜索内容是否是某个组织
         boolean searchOrgFlag = false;
         List<Organizer> orgs = new ArrayList<>();
@@ -100,7 +98,7 @@ public class SearchController extends BaseController {
             //查询对应的社团组织
             List<String> orgPicList = new ArrayList<>();
             List<String> infoList = new ArrayList<>();
-            System.out.println("------------------" + orgs);
+//            System.out.println("------------------" + orgs);
             for (Organizer organizer : orgs) {
                 orgPicList.add(organizerService.selectHeadPortrait(organizer.getId()));
                 infoList.add(organizerService.selectInfo(organizer.getId()));

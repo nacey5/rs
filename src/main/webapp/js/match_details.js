@@ -28,34 +28,12 @@ window.addEventListener('load', function() {
             }
         })
         //参赛详情点击事件
-    var pars = document.querySelector('.count');
-    pars.addEventListener('click', function() {
-        $.ajax({
-            type: "post",
-            url: "http://localhost:8080/FindMore/Find",
-            // url: 'http://rsrs.nat300.top/FindMore/Find',
-            dataType: "json",
-            data: {
-                action: "loginOut",
-            },
-            success: function(result) {
-                alert(result.msg);
-                if (result.code) {
-                    window.location.href = "index.html";
-                }
-            }
-        })
-    })
     // 点击我要报名之后弹出框
     $('.list').click(function() {
         $('.alter').show(); //显示修改信息页面
     })
     var down = document.querySelector('.down');
     var btns = down.querySelectorAll('button');
-    // $('#alter').click(function() {
-    //     $('.alter').show(); //显示修改信息页面
-    //
-    // })
 
     // 点击确定按钮，进行数据的提交，关闭模态框
     function confirm() {
@@ -94,7 +72,7 @@ window.addEventListener('load', function() {
                 } else {
                     cancel();
                 }
-            }, 2000)
+            }, 200)
 
         })
     }

@@ -1,4 +1,17 @@
 window.addEventListener('load', function () {
+// alert(hours);
+//     alert("当前时间为" + s);
+//     var hours = new Date().getHours();
+//     var s = new Date().toLocaleTimeString();
+//     if (hours < 11 && hours > 5) {
+//         $(".loginBox").css("backgroundImage", "url(http://localhost:8080/FindMore/image/loginBg/morning.jpg)");
+//     }
+//     if (hours < 18 && hours >= 11) {
+//         $(".loginBox").css("backgroundImage", "url(http://localhost:8080/FindMore/image/loginBg/noon.jpg)");
+//     }
+//     if (hours >= 18 || hours <= 5) {
+//         $(".loginBox").css("backgroundImage", "url(http://localhost:8080/FindMore/image/loginBg/night.jpg)");
+//     }
     var login = document.querySelector('.login');
     var phone = login.querySelector('.phoneNo'); //获取账号输入框
     var psd = login.querySelector('.password'); //获取密码输入框
@@ -7,17 +20,7 @@ window.addEventListener('load', function () {
     var loginBtn = login.querySelector('button'); //获取登录按钮
     var loginBox = login.querySelector('.loginBox'); //获取登录按钮
     var curBox = login.querySelector('.curBox');
-    var hours = new Date().getHours();
-    // alert(hours);
-    // if (hours < 11 && hours > 5) {
-    //     $(".loginBox").css("backgroundImage", "url(http://localhost:8080/FindMore/image/loginBg/morning.jpg)");
-    // }
-    // if (hours <18&& hours >=11) {
-    //     $(".loginBox").css("backgroundImage", "url(http://localhost:8080/FindMore/image/loginBg/noon.jpg)");
-    // }
-    // if (hours>=18||hours<=5) {
-    //     $(".loginBox").css("backgroundImage", "url(http://localhost:8080/FindMore/image/loginBg/night.jpg)");
-    // }
+
 
     loginBtn.addEventListener('click', function (e) {
         if (phone.value == "" || psd.value == "" || code.value == "") {

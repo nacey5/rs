@@ -10,7 +10,7 @@ window.addEventListener('load', function () {
         },
         success: function (result) {
             if (result.code) {
-                for (let i = 0; i < result.datas.parList.length; i++) {
+                for (let i = result.datas.parList.length-1; i >=0; i--) {
                     let src = result.datas.userList[i].headPortrait;
                     let name = result.datas.userList[i].username;
                     let major = result.datas.userList[i].major;
@@ -19,7 +19,7 @@ window.addEventListener('load', function () {
                         "<img src= " + src + " alt='' height='60px' width='60px' style='float:left;padding-left: 80px'>\n" +
                         "<p style=\"height: 70px;padding-top:15px;float:left;padding-left: 130px;font-size: 28px;width: 280px\">" + name + "</p>\n" +
                         "<p style=\"width:288px;height: 70px;padding-top:15px;float:left;padding-left: 40px;font-size: 24px\">" + major + "</p>\n" +
-                        "<p style=\"height: 70px;padding-top:15px;float:left;padding-left: 100px;color: #31baee;font-size: 24px\">" + count + "</p>\n" +
+                        "<p style=\"height: 70px;padding-top:15px;float:left;padding-left: 100px;color: black;font-size: 24px\">" + count + "</p>\n" +
                         "</div>";
                     $("<div id='par'></div>").append(parDiv).appendTo("#parDiv");
                 }

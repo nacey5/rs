@@ -33,7 +33,7 @@ a {
 
 .searchA li:hover {
     cursor: pointer;
-    background-color: #0b5d7f;
+    /*background-color: #0b5d7f;*/
 }
 
 .nav-box {
@@ -108,7 +108,7 @@ a {
 }
 
 .nav .cur {
-    background-color: rgb(116, 203, 191);
+    /*background-color: rgb(116, 203, 191);*/
 }
 
 

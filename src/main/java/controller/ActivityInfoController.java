@@ -63,6 +63,7 @@ public class ActivityInfoController extends BaseController {
      * @param response
      */
     public void enroll(HttpServletRequest request, HttpServletResponse response) {
+        System.out.println("inter");
         ResultState result = new ResultState();
         //获取当前用户的id
         User nowUser = (User) request.getSession().getAttribute("nowUser");
@@ -74,9 +75,11 @@ public class ActivityInfoController extends BaseController {
             info.setId(id);
             activityService.enroll(info);
         } catch (Exception e) {
+            e.printStackTrace();
             result.setCode(false);
             result.setMsg("报名失败！");
         }
+        System.out.println("inter");
         JsonUtil.returnJson(response, result);
     }
 
