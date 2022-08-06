@@ -1,6 +1,5 @@
 # FindMore
 
-# FindMore
 
 #### 介绍
 
@@ -17,7 +16,7 @@
   -----------
 
   ## 图片实例：
-
+<div align=center><img src=""></div>
 
 
 
