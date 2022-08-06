@@ -18,17 +18,26 @@
   ## 图片实例：
   首页
   <br/>
-<div align=center><img src=""></div>
+<div align=center><img src="https://github.com/nacey5/rs/blob/master/result_images/RS_Index.png"></div>
 
   注册
-  
-  登陆
-  
-  活动
-  
-  白天登陆
-  
-  为完成
+  <br/>
+<div align=center><img src="https://github.com/nacey5/rs/blob/master/result_images/RS_Resister.png"></div>
 
+  登陆
+<br/>
+<div align=center><img src="https://github.com/nacey5/rs/blob/master/result_images/RS_Login.png"></div>
+
+  活动
+<br/>
+<div align=center><img src="https://github.com/nacey5/rs/blob/master/result_images/RS_Activity.png"></div>
+
+  白天登陆
+<br/>
+<div align=center><img src="https://github.com/nacey5/rs/blob/master/result_images/RS_Morning_Login.png"></div>
+
+  为完成
+<br/>
+<div align=center><img src="https://github.com/nacey5/rs/blob/master/result_images/RS_Sys1.png"></div>
 
 
